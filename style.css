@@ -5,3 +5,206 @@
  * Template: blocksy
  * Text Domain: blocksy-tainacan
  */
+/* Tainacan Items list customization */
+.theme-items-list {
+  --tainacan-font-family: var(--fontFamily, inherit);
+  --tainacan-base-font-size: var(--fontSize, 1em);
+  --tainacan-secondary: var(--paletteColor1, #3eaf7c);
+  --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
+  --tainacan-background-color: var(--backgroundColor, #f8f9fb);
+  --tainacan-item-background-color: var(--cardBackground, white);
+  --tainacan-item-hover-background-color: var(--tainacan-item-background-color, white);
+  --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
+  --tainacan-input-color: var(--color, rgba(44, 62, 80, 0.9));
+  --tainacan-input-background-color: var(--formBackgroundInitialColor, white);
+  --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
+  --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
+  --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
+  --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
+  display: grid !important;
+  grid-template-columns: var(--tainacan-filter-menu-width-theme, 20%) auto;
+  grid-template-rows: auto auto;
+  margin-top: -42px !important;
+  background: transparent;
+  /* Tainacan items list view modes */
+  /* Search control */
+  /* Filters panel */
+  /* Items list container */
+  /* Advanced Search */
+}
+
+.theme-items-list .tainacan-masonry-container .tainacan-masonry-item,
+.theme-items-list .tainacan-records-container .tainacan-record,
+.theme-items-list .tainacan-cards-container .tainacan-card,
+.theme-items-list .tainacan-list-container .tainacan-list {
+  border-radius: var(--borderRadius, 3px);
+  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+  border: var(--border, none);
+  overflow: hidden;
+}
+
+.theme-items-list .tainacan-masonry-container .tainacan-masonry-item .metadata-title p,
+.theme-items-list .tainacan-records-container .tainacan-record .metadata-title p,
+.theme-items-list .tainacan-cards-container .tainacan-card .metadata-title p,
+.theme-items-list .tainacan-list-container .tainacan-list .metadata-title p {
+  font-weight: 500;
+}
+
+.theme-items-list .tainacan-masonry-container .tainacan-masonry-item .metadata-value,
+.theme-items-list .tainacan-masonry-container .tainacan-masonry-item .metadata-label,
+.theme-items-list .tainacan-records-container .tainacan-record .metadata-value,
+.theme-items-list .tainacan-records-container .tainacan-record .metadata-label,
+.theme-items-list .tainacan-cards-container .tainacan-card .metadata-value,
+.theme-items-list .tainacan-cards-container .tainacan-card .metadata-label,
+.theme-items-list .tainacan-list-container .tainacan-list .metadata-value,
+.theme-items-list .tainacan-list-container .tainacan-list .metadata-label {
+  font-size: 0.8125em !important;
+}
+
+.theme-items-list .tainacan-records-container .tainacan-record,
+.theme-items-list .tainacan-list-container .tainacan-list {
+  background-color: var(--tainacan-item-background-color, white) !important;
+}
+
+.theme-items-list .tainacan-table .column-main-content p {
+  font-weight: 500;
+}
+
+.theme-items-list .tainacan-table td p {
+  font-size: 0.725em !important;
+}
+
+.theme-items-list .search-control {
+  grid-row-start: 1;
+  grid-row-end: 1;
+  justify-self: stretch;
+  align-self: start;
+  border-radius: var(--borderRadius, 3px);
+  background-color: var(--tainacan-item-background-color, white);
+  padding: 20px 20px 6px 20px !important;
+  margin: 12px 10px;
+  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+}
+
+.theme-items-list .search-control .search-control-item {
+  margin-bottom: 20px;
+}
+
+.theme-items-list .search-control .search-control-item:first-of-type {
+  width: 100%;
+}
+
+.theme-items-list #filters-modal {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  justify-self: stretch;
+  align-self: start;
+  max-width: 100%;
+}
+
+.theme-items-list #filters-modal .modal-content {
+  padding: 24px 18px;
+}
+
+.theme-items-list #filters-modal .modal-content #filters-items-list {
+  border-radius: var(--borderRadius, 3px);
+  background-color: var(--tainacan-item-background-color, white);
+  padding: 20px;
+  margin: -3px;
+  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+}
+
+.theme-items-list #items-list-area {
+  max-width: 100% !important;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-row-end: 3;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.theme-items-list #items-list-area #items-list-results {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.theme-items-list #items-list-area #items-list-results .table-container {
+  min-width: 100%;
+  padding-top: 12px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  padding-right: 24px;
+}
+
+.theme-items-list #items-list-area #items-list-results .pagination-area {
+  width: 100%;
+}
+
+.theme-items-list .advanced-search-criteria-title hr {
+  display: none;
+}
+
+/* Tooltips and Modals are outside of the items list div */
+body:not(.tainacan-admin-page) .tooltip,
+body:not(.tainacan-admin-page) .tainacan-modal-content {
+  --tainacan-font-family: var(--fontFamily, inherit);
+  --tainacan-base-font-size: var(--fontSize, 1em);
+  --tainacan-secondary: var(--paletteColor1, #3eaf7c);
+  --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
+  --tainacan-background-color: var(--backgroundColor, #f8f9fb);
+  --tainacan-input-color: var(--color, rgba(44, 62, 80, 0.9));
+  --tainacan-input-background-color: var(--formBackgroundInitialColor, white);
+  --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
+  --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
+  --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
+  --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
+}
+
+body:not(.tainacan-admin-page) .tainacan-modal-content {
+  border-radius: var(--borderRadius, 6px);
+}
+
+body:not(.tainacan-admin-page) .tainacan-modal-content .tainacan-modal-title hr {
+  display: none;
+}
+
+body:not(.tainacan-admin-page) .tainacan-modal-content .tabs li {
+  margin-bottom: 0px;
+}
+
+body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
+  background-color: var(--tainacan-item-background-color, white);
+}
+
+/* Collection Items List */
+.tainacan-collection-header {
+  display: flex;
+  padding: 36px 12px 28px 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tainacan-collection-header .tainacan-collection-header__box {
+  width: var(--maxSiteWidth);
+  border-radius: var(--borderRadius, 3px);
+  background-color: var(--tainacan-item-background-color, #fff);
+  padding: 20px;
+  box-shadow: var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04));
+}
+
+.tainacan-collection-header .tainacan-collection-header__box h1 {
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.tainacan-collection-header .tainacan-collection-header__box .collection-thumbnail {
+  max-width: var(--tainacan-filter-menu-width-theme, 20%);
+  float: left;
+  margin-right: 24px;
+}
+
+.tainacan-collection-header .tainacan-collection-header__box .collection-thumbnail img {
+  border-radius: var(--borderRadius, 3px);
+}
+
+/*# sourceMappingURL=style.css.map */
