@@ -116,8 +116,8 @@ function blocksy_tainacan_get_adjacent_item_links() {
 	$next = $next_link_url === false ? '' : (
 		'<a href="' . $next_link_url .'" rel="prev" class="nav-item-next"> ' .
 			'<div class="item-content">' .
-				(!empty( $next_title ) ? ('<span class="item-title">' . $next_title . '</span>') : '') .
 				'<span class="item-label">' . __( 'Next item', 'blocksy-tainacan') . '</span>' .
+				(!empty( $next_title ) ? ('<span class="item-title">' . $next_title . '</span>') : '') .
 			'</div>' .
 			($has_thumb ? $next_post_image_output : '') .
 		'</a>');

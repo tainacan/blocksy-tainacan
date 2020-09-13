@@ -129,6 +129,4 @@
         </section>
     </div>
 
-    <div class="my-5 border-bottom border-silver"></div>
-
 <?php endif; ?>
