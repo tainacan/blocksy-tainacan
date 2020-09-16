@@ -6,6 +6,17 @@
  * Text Domain: blocksy-tainacan
  */
 
+ /* Tainacan Gutenberg Blocks colors */
+ :root {
+    --tainacan-block-primary: var(--paletteColor1, #3eaf7c);
+    --tainacan-block-gray0: var(--backgroundColor, #f8f9fb);
+    --tainacan-block-gray1: var(--backgroundColor, #f8f9fb);
+    --tainacan-block-gray2: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-block-gray3: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-block-gray4: var(--color, rgba(44, 62, 80, 0.9));
+    --tainacan-block-gray5: var(--headingColor, rgba(44, 62, 80, 1));
+ }
+
 /* Tainacan Items list customization */
 .theme-items-list {
     --tainacan-font-family: var(--fontFamily, inherit);
