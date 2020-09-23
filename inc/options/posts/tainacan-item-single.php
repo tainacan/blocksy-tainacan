@@ -8,8 +8,9 @@ if (! isset($is_bbpress)) {
 	$is_bbpress = false;
 }
 
-$options = 
+$options = [
 	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/title-metadata.php', [
-	    'prefix' => $post_type->name . '_single',
+		'prefix' => $post_type->name . '_single',
 		'enabled' => 'yes'
-	], false);
+	], false)
+];

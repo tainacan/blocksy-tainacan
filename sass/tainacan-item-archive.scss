@@ -1,0 +1,237 @@
+
+/* Tainacan Items list customization */
+.theme-items-list {
+    --tainacan-font-family: var(--fontFamily, inherit);
+    --tainacan-base-font-size: var(--fontSize, 1em);
+    --tainacan-secondary: var(--paletteColor1, #3eaf7c);
+    --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-background-color: var(--backgroundColor, #f8f9fb);
+    --tainacan-item-background-color: var(--cardBackground, white);
+    --tainacan-item-hover-background-color: var(--tainacan-item-background-color, white);
+    --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
+    --tainacan-input-color: var(--color, rgba(44, 62, 80, 0.9));
+    --tainacan-input-background-color: var(--formBackgroundInitialColor, white);
+    --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
+    --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
+    --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
+    
+    &:not(.is-fullscreen) {
+        justify-content: center;
+        top: -52px !important;
+        background: transparent !important;
+        padding: 6px 13px;
+        display: grid;
+        grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+          ". searchcontrol ."
+          "itemslist itemslist itemslist";
+    }
+
+    /* Tainacan items list view modes */
+    .tainacan-masonry-container .tainacan-masonry-item,
+    .tainacan-records-container .tainacan-record,
+    .tainacan-cards-container .tainacan-card,
+    .tainacan-list-container .tainacan-list {
+        border-radius: var(--borderRadius, 3px);
+        box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+        border: var(--border, none);
+        overflow: hidden;
+
+        .metadata-title p {
+            font-weight: 500;
+        }
+        .metadata-value,
+        .metadata-label {
+           font-size: 0.8125em !important;
+        }
+    }
+    .tainacan-records-container .tainacan-record,
+    .tainacan-list-container .tainacan-list {
+        background-color: var(--tainacan-item-background-color, white) !important;
+    }
+    .tainacan-cards-container .tainacan-card {
+        min-height: 215px;
+        max-height: 215px;
+
+        .media .list-metadata {
+            padding: 0.125em 1.375em !important;
+
+            p.metadata-description {
+                max-height: 12.75em !important;
+                line-height: 1.25em;
+            }
+        }
+    }
+    .tainacan-table {
+        .column-main-content p { 
+            font-weight: 500;
+        }
+        td p {
+            font-size: 0.725em !important;
+        }
+    }
+
+    /* Search control */
+    .search-control {
+        grid-area: searchcontrol;
+        border-radius: var(--borderRadius, 3px);
+        background-color: var(--tainacan-item-background-color, white);
+        padding: 20px 20px 6px 20px !important;
+        margin: 5px;
+        box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+
+        .search-control-item {
+            margin-bottom: 20px !important;
+        }
+    }
+
+    /* Filters panel */
+    #filters-modal {
+        grid-area: itemslist;
+        justify-self: start;
+        align-self: normal;
+
+        .modal-content {
+            padding: 16px 10px;
+
+            #filters-items-list {
+                border-radius: var(--borderRadius, 3px);
+                background-color: var(--tainacan-item-background-color, white);
+                padding: 20px;
+                margin: -3px;
+                box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+
+                .filters-components-list {
+                    margin-bottom: 24px;
+                }
+            }
+        }
+    }
+
+    /* Items list container */
+    #items-list-area {
+        grid-area: itemslist;
+        justify-self: end;
+        align-self: normal;
+
+        #items-list-results {
+            .table-container {
+                min-width: 100%;
+                padding-top: 14px;
+                padding-left: 10px;
+                padding-bottom: 14px;
+                padding-right: 10px;
+            }
+            .pagination-area {
+                border-top: none;
+                margin-left: 12px;
+                margin-right: 12px;
+
+                .pagination {
+                    font-weight: bold;
+                    --colorActive: #ffffff;
+
+                    .pagination-link {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 40px;
+                        width: 42px;
+                        border-radius: 4px;
+                        border: 2px solid transparent;
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: var(--color);
+                        --linkInitialColor: var(--color);
+                        transition: color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), background 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955),border-color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+                        &:hover {
+                            text-decoration: none;
+                            border-color: var(--linkHoverColor);
+                            color: var(--linkHoverColor);
+                        }
+                        &.is-current {
+                            color: var(--colorActive) !important;
+                            background: var(--linkHoverColor);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Advanced Search */
+    .advanced-search-criteria-title hr {
+        display: none;
+    }
+}
+/* Tooltips and Modals are outside of the items list div */
+body:not(.tainacan-admin-page) {
+
+    .tooltip,
+    .tainacan-modal-content {
+        --tainacan-font-family: var(--fontFamily, inherit);
+        --tainacan-base-font-size: var(--fontSize, 1em);
+        --tainacan-secondary: var(--paletteColor1, #3eaf7c);
+        --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
+        --tainacan-background-color: var(--backgroundColor, #f8f9fb);
+        --tainacan-input-color: var(--color, rgba(44, 62, 80, 0.9));
+        --tainacan-input-background-color: var(--formBackgroundInitialColor, white);
+        --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
+        --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
+        --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
+        --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
+    }
+
+    .tainacan-modal-content {
+        border-radius: var(--borderRadius, 6px);
+
+        .tainacan-modal-title {
+            hr {
+                display: none;
+            }
+        }
+        .tabs li {
+            margin-bottom: 0px;
+        }
+        .modal-card-body {
+            background-color: var(--tainacan-item-background-color, white);
+        }
+    }
+}
+
+/* Collection Items List */
+.tainacan-collection-header {
+    display: flex;
+    padding: 36px 18px 28px 18px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--backgroundColor, #f8f9fb);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .tainacan-collection-header__box {
+        width: var(--maxSiteWidth, 1290px);
+        border-radius: var(--borderRadius,3px);
+        background-color: var(--tainacan-item-background-color,#fff);
+        padding: 20px;
+        box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));
+
+        h1 {
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .collection-thumbnail {
+            max-width: var(--tainacan-filter-menu-width-theme, 20%);
+            float: left;
+            margin-right: 24px;
+
+            img {
+                border-radius: var(--borderRadius,3px);
+            }
+        }
+    }
+}
+

@@ -16,6 +16,7 @@
   --tainacan-block-gray5: var(--headingColor, rgba(44, 62, 80, 1));
 }
 
+/* Remaining imports */
 /* Tainacan Items list customization */
 .theme-items-list {
   --tainacan-font-family: var(--fontFamily, inherit);
@@ -41,8 +42,13 @@
 
 .theme-items-list:not(.is-fullscreen) {
   justify-content: center;
-  top: -42px !important;
+  top: -52px !important;
   background: transparent !important;
+  padding: 6px 13px;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: ". searchcontrol ." "itemslist itemslist itemslist";
 }
 
 .theme-items-list .tainacan-masonry-container .tainacan-masonry-item,
@@ -101,10 +107,11 @@
 }
 
 .theme-items-list .search-control {
+  grid-area: searchcontrol;
   border-radius: var(--borderRadius, 3px);
   background-color: var(--tainacan-item-background-color, white);
   padding: 20px 20px 6px 20px !important;
-  margin: 12px;
+  margin: 5px;
   box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
 }
 
@@ -112,8 +119,14 @@
   margin-bottom: 20px !important;
 }
 
+.theme-items-list #filters-modal {
+  grid-area: itemslist;
+  justify-self: start;
+  align-self: normal;
+}
+
 .theme-items-list #filters-modal .modal-content {
-  padding: 24px 18px;
+  padding: 16px 10px;
 }
 
 .theme-items-list #filters-modal .modal-content #filters-items-list {
@@ -124,12 +137,22 @@
   box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
 }
 
+.theme-items-list #filters-modal .modal-content #filters-items-list .filters-components-list {
+  margin-bottom: 24px;
+}
+
+.theme-items-list #items-list-area {
+  grid-area: itemslist;
+  justify-self: end;
+  align-self: normal;
+}
+
 .theme-items-list #items-list-area #items-list-results .table-container {
   min-width: 100%;
-  padding-top: 22px;
-  padding-left: 24px;
-  padding-bottom: 24px;
-  padding-right: 24px;
+  padding-top: 14px;
+  padding-left: 10px;
+  padding-bottom: 14px;
+  padding-right: 10px;
 }
 
 .theme-items-list #items-list-area #items-list-results .pagination-area {
@@ -208,7 +231,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 /* Collection Items List */
 .tainacan-collection-header {
   display: flex;
-  padding: 36px 12px 28px 12px;
+  padding: 36px 18px 28px 18px;
   justify-content: center;
   align-items: center;
   background-color: var(--backgroundColor, #f8f9fb);
