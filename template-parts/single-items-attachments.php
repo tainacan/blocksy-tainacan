@@ -15,10 +15,6 @@
             )
         );
     }
-
-    function get_attachment_id($attachment) {
-        return $attachment->ID;
-    }
 ?>
 
 <?php if ( !empty( $attachments )  || ( get_theme_mod( 'tainacan_single_item_gallery_mode', false) && tainacan_has_document() )) : ?>
@@ -89,41 +85,34 @@
                     </div>
                 <?php endif; ?>
             <?php else : ?>
-                <div class="single-item-collection--attachments">
-                    <?php 
-                        echo blocksy_flexy([
-                            'images' => array_map('get_attachment_id', $attachments),
-                            'size'  => 'full',
-                            'pills_images' => array_map('get_attachment_id', $attachments),
-                            'pills_count' => '6'
-                        ]);
-                    ?>
-                    
-                    <?php /*
-                    foreach ( $attachments as $attachment ) { ?>
-                        <?php
-                        if ( function_exists('tainacan_get_attachment_html_url') ) {
-                            $href = tainacan_get_attachment_html_url($attachment->ID);
-                        } else {
-                            $href = wp_get_attachment_url($attachment->ID, 'large');
-                        }
-                        ?>
-                        <div class="single-item-collection--attachments-file">
-                            <a 
-                                class="<?php if (!wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments')) echo'attachment-without-image'; ?>"
-                                href="<?php echo $href; ?>"
-                                data-toggle="lightbox"
-                                data-gallery="example-gallery">
-                                <?php
-                                    echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
-                                    echo '<br>';
-                                ?>
-                                <span class="single-item-file-name <?php if (get_theme_mod('tainacan_single_item_hide_files_name', false)) echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
-                            </a>
-                        </div>
-                    <?php }
-                    */
-                    ?>
+                <div class="single-item-collection--attachments swiper-container-thumbs">
+                    <div class="swiper-wrapper">
+                        <?php foreach ( $attachments as $attachment ) { ?>
+                            <?php
+                            if ( function_exists('tainacan_get_attachment_html_url') ) {
+                                $href = tainacan_get_attachment_html_url($attachment->ID);
+                            } else {
+                                $href = wp_get_attachment_url($attachment->ID, 'large');
+                            }
+                            ?>
+                            <div class="single-item-collection--attachments-file swiper-slide">
+                                <a 
+                                    class="<?php if (!wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments')) echo'attachment-without-image'; ?>"
+                                    href="<?php echo $href; ?>"
+                                    data-toggle="lightbox"
+                                    data-gallery="example-gallery">
+                                    <?php
+                                        echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+                                        echo '<br>';
+                                    ?>
+                                    <span class="single-item-file-name <?php if (get_theme_mod('tainacan_single_item_hide_files_name', false)) echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
+                                </a>
+                            </div>
+                        <?php } ?>
+
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
                 </div>
             <?php endif; ?>
         </section>

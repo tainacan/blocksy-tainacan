@@ -1,18 +1,23 @@
 <?php get_header(); ?>
 
     <article class="page type-page hentry singular">
-        <header class="entry-header has-text-align-center">
-            <div class="entry-header-inner section-inner medium">  
-                <h1 class="entry-title">
-                    <?php the_archive_title(); ?>
-                </h1>
+
+        <header class="tainacan-collection-header">
+            <div class="tainacan-collection-header__box">  
+                <?php 
+                    echo blocksy_output_hero_section( 'type-1' );
+                ?>
             </div>
         </header>
+
         <div class="entry-content">										
             <?php 
-                tainacan_the_faceted_search(); 
+                tainacan_the_faceted_search([
+                    'show-filters-button-inside-search-control' => true
+                ]); 
             ?>
         </div>
+
     </article>
     
 <?php get_footer(); ?>

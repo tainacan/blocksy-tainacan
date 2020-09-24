@@ -20,6 +20,9 @@
     h6 {
         --fontSize: 16px;
     }
+    section{
+        margin-bottom: 2.25rem;
+    }
     .tainacan-item-file-download {
         position: absolute;
         opacity: 0;
@@ -99,6 +102,83 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
+            }
+        }
+    }
+    .single-item-collection--gallery-items {
+        font-weight: normal;
+        transition: font-weight 0.3s ease;
+
+        img {
+            border-bottom: 4px solid transparent;
+            margin-bottom: 4px;
+            transition: border 0.3s ease;
+        }
+        .slick-current{
+            font-weight: bold;
+            img {
+                border-bottom: 4px solid #298596;
+            }
+        }   
+    }
+    .single-item-collection--attachments-file {
+        &:hover {
+            .tainacan-item-file-download {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    } 
+    .single-item-collection--gallery-items,
+    .single-item-collection--attachments {
+        .single-item-collection--attachments-file {
+            margin: 10px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            word-break: break-all;
+            font-size: 0.875em;
+            padding: 0 14px;
+            
+            @media only screen and (max-width: 380px) {
+                margin: 10px 0;
+            }
+
+            img {
+                width: 125px;
+                height: 125px;
+                display: inline-block;
+                object-fit: cover;
+                &:focus {
+                    outline: none;
+                }
+            }
+            a {
+                width: 100%;
+                max-width: 125px;
+                margin: 0 auto;
+                display: inline-block;
+                font-size: 0.875rem; 
+                text-align: center;
+                word-break: break-all;
+                line-height: 1.5rem
+            }
+            a,
+            a:focus,
+            a:hover {
+                outline: none;
+                text-decoration: none;
+                cursor: pointer;
+                color: black;
+            }
+            .attachment-without-image img {
+                padding: 36px;
+                background-color: #dbdbdb;
+                object-fit: contain;
+            }
+            .item-card--thumbnail {
+                margin: 0 0 4px 0 !important;
             }
         }
     }

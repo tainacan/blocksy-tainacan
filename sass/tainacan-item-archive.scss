@@ -51,6 +51,10 @@
     .tainacan-list-container .tainacan-list {
         background-color: var(--tainacan-item-background-color, white) !important;
     }
+    .tainacan-masonry-container .tainacan-masonry-item {
+        display: flex !important;
+        flex-direction: column-reverse;
+    }
     .tainacan-cards-container .tainacan-card {
         min-height: 215px;
         max-height: 215px;
@@ -65,6 +69,7 @@
         }
     }
     .tainacan-table {
+        padding: 0 12px;
         .column-main-content p { 
             font-weight: 500;
         }
@@ -92,6 +97,7 @@
         grid-area: itemslist;
         justify-self: start;
         align-self: normal;
+        width: 100%;
 
         .modal-content {
             padding: 16px 10px;
@@ -115,6 +121,7 @@
         grid-area: itemslist;
         justify-self: end;
         align-self: normal;
+        width: 100%;
 
         #items-list-results {
             .table-container {
@@ -212,6 +219,12 @@ body:not(.tainacan-admin-page) {
     background-size: cover;
     background-repeat: no-repeat;
 
+    // We also apply this here as we want to keep the same style of the .theme-items-list
+    --tainacan-secondary: var(--paletteColor1, #3eaf7c);
+    --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-background-color: var(--backgroundColor, #f8f9fb);
+    --tainacan-item-background-color: var(--cardBackground, white);
+
     .tainacan-collection-header__box {
         width: var(--maxSiteWidth, 1290px);
         border-radius: var(--borderRadius,3px);
@@ -220,8 +233,14 @@ body:not(.tainacan-admin-page) {
         box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));
 
         h1 {
-            margin-bottom: 12px;
+            margin-bottom: 4px;
             display: inline-block;
+        }
+        .ct-title-label {
+            font-weight: normal;
+            &::after {
+                content: ': ';
+            }
         }
         .collection-thumbnail {
             max-width: var(--tainacan-filter-menu-width-theme, 20%);

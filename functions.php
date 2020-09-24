@@ -3,6 +3,9 @@ if (! defined('WP_DEBUG')) {
 	die( 'Direct access forbidden.' );
 }
 
+/** Theme version */
+const BLOCKSY_TAINACAN_VERSION = '0.0.1';
+
 /**
  * Enqueue scripts and styles.
  */
@@ -13,21 +16,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		array( 'blocksy-parent-style' )
 	);
 });
-
-
-/**
- * Filters the content if we're in a single item page.
- */
-function blocksy_tainacan_filter_the_content_in_the_main_loop( $content ) {
-
-    if ( is_singular() && in_the_loop() && is_main_query() && function_exists('tainacan_get_item') && tainacan_get_item(get_the_ID()) != null ) {
-        return get_template_part( 'template-parts/single-items-page' );
-    }
- 
-    return $content;
-}
-add_filter( 'the_content', 'blocksy_tainacan_filter_the_content_in_the_main_loop', 10, 1 );
-
 
 /**
  * Retrieves an item adjacent link, either using WP strategy or Tainacan plugin tainacan_get_adjacent_items()
@@ -191,3 +179,20 @@ function blocksy_tainacan_custom_post_types_supported_list( $potential_post_type
 	return $potential_post_types;
 }
 add_filter( 'blocksy:custom_post_types:supported_list', 'blocksy_tainacan_custom_post_types_supported_list', 10 );
+
+
+/**
+ * Enqueues js scripts related to swiper, only if in TainacanSingleItem pages
+ */
+function blocksy_tainacan_swiper_scripts() {
+	if ( defined ('TAINACAN_VERSION') ) {
+		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$post_type = get_post_type();
+
+		if ( in_array($post_type, $collections_post_types) ) {
+			wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), BLOCKSY_TAINACAN_VERSION, true );	
+			wp_enqueue_script( 'blocksy-tainacan-scripts', get_stylesheet_directory_uri() . '/js/attachments-carousel.js', ['swiper'], BLOCKSY_TAINACAN_VERSION, true );
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'blocksy_tainacan_swiper_scripts' );

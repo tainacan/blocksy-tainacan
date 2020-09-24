@@ -10,27 +10,16 @@
                         <img src="<?php echo get_the_post_thumbnail_url( tainacan_get_collection_id() ); ?>" alt="<?php echo esc_attr($alt); ?>">
                     </div>
                 <?php endif; ?>
-                <h1 class="entry-title">
-                    <?php tainacan_the_collection_name(); ?>
-                </h1>
-                <?php $tainacan_collection_description = tainacan_get_the_collection_description(); ?>
-                <?php if ( ! empty( $tainacan_collection_description )) : ?>
-                    <?php if (has_post_thumbnail( tainacan_get_collection_id() )): ?>
-                        <div class="entry-description">
-                    <?php else: ?>
-                        <div class="entry-description">
-                    <?php endif; ?>
-                        <?php tainacan_the_collection_description(); ?>
-                    </div>
-                <?php endif; ?> 
+                <?php 
+                    echo blocksy_output_hero_section( 'type-1' );
+                ?>
             </div>
         </header>		
 
         <div class="entry-content">										
             <?php 
                 tainacan_the_faceted_search([
-                    'show-filters-button-inside-search-control' => true,
-                    'filters-as-modal' => false
+                    'show-filters-button-inside-search-control' => true
                 ]); 
             ?>
         </div>
