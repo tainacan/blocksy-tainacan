@@ -35,8 +35,8 @@ function blocksy_tainacan_custom_post_types_single_options( $options, $post_type
 			], false);
 
 			if ( is_array($item_extra_options) ) {
-				$options['options'] = array_merge(
-					$options['options'],
+				$options['options'][$post_type . '_single_section_options']['inner-options'] = array_merge(
+					$options['options'][$post_type . '_single_section_options']['inner-options'],
 					$item_extra_options
 				);
 			}
