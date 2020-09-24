@@ -11,8 +11,8 @@ if (! isset($enabled)) {
 }
 
 $options = [	
-	$prefix . 'has_title_metadata' => [
-		'label' => __( 'Core title in the metadata list.', 'blocksy-tainacan' ),
+	$prefix . '_has_title_metadata' => [
+		'label' => __( 'Core title in the metadata list', 'blocksy-tainacan' ),
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],

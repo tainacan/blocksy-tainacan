@@ -1,3 +1,6 @@
+<?php 
+    $prefix = blocksy_manager()->screen->get_prefix();
+?>
 <div>
 
     <?php if ( get_theme_mod('tainacan_single_item_metadata_section_label', '') != '') : ?>
@@ -24,9 +27,8 @@
                             'after_title' => '</h3>',
                             'before_value' => '<p>',
                             'after_value' => '</p></div>',
-                            'exclude_title' => get_theme_mod('tainacan_single_item_hide_core_title_metadata', false)
+                            'exclude_title' => (get_theme_mod($prefix . '_has_title_metadata', 'yes') === 'no')
                         );
-                        //$field = null;
                         tainacan_the_metadata( $args );
                     ?>
                     <?php do_action( 'blocksy-tainacan-single-item-metadata-end' ); ?>
