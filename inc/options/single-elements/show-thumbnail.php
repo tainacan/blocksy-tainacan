@@ -7,16 +7,16 @@ if (! isset($prefix)) {
 }
 
 if (! isset($enabled)) {
-	$enabled = 'yes';
+	$enabled = 'no';
 }
 
 $options = [	
-	$prefix . '_has_title_metadata' => [
-		'label' => __( 'Core title in the metadata list', 'blocksy-tainacan' ),
+	$prefix . 'show_thumbnail' => [
+		'label' => __( 'Item thumbnail in the metadata list', 'blocksy-tainacan' ),
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
-		'desc' => __( 'Toggle to hide or not the core title from the metadada list, as it already appears on the page title.', 'blocksy' ),
+		'desc' => __( 'Toggle to show or not the item thumbnail on the metadada list.', 'blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])

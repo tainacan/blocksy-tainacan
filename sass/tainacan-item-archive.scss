@@ -29,59 +29,10 @@
           "itemslist itemslist itemslist";
     }
 
-    /* Tainacan items list view modes */
-    .tainacan-masonry-container .tainacan-masonry-item,
-    .tainacan-records-container .tainacan-record,
-    .tainacan-cards-container .tainacan-card,
-    .tainacan-list-container .tainacan-list {
-        border-radius: var(--borderRadius, 3px);
-        box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
-        border: var(--border, none);
-        overflow: hidden;
-
-        .metadata-title p {
-            font-weight: 500;
-        }
-        .metadata-value,
-        .metadata-label {
-           font-size: 0.8125em !important;
-        }
-    }
-    .tainacan-records-container .tainacan-record,
-    .tainacan-list-container .tainacan-list {
-        background-color: var(--tainacan-item-background-color, white) !important;
-    }
-    .tainacan-masonry-container .tainacan-masonry-item {
-        display: flex !important;
-        flex-direction: column-reverse;
-    }
-    .tainacan-cards-container .tainacan-card {
-        min-height: 215px;
-        max-height: 215px;
-
-        .media .list-metadata {
-            padding: 0.125em 1.375em !important;
-
-            p.metadata-description {
-                max-height: 12.75em !important;
-                line-height: 1.25em;
-            }
-        }
-    }
-    .tainacan-table {
-        padding: 0 12px;
-        .column-main-content p { 
-            font-weight: 500;
-        }
-        td p {
-            font-size: 0.725em !important;
-        }
-    }
-
     /* Search control */
     .search-control {
         grid-area: searchcontrol;
-        border-radius: var(--borderRadius, 3px);
+        border-radius: 0 0 var(--borderRadius, 3px) var(--borderRadius, 3px);
         background-color: var(--tainacan-item-background-color, white);
         padding: 20px 20px 6px 20px !important;
         margin: 5px;
@@ -131,6 +82,69 @@
                 padding-bottom: 14px;
                 padding-right: 10px;
             }
+            
+            /* Tainacan items list view modes */
+            .tainacan-masonry-container .tainacan-masonry-item,
+            .tainacan-records-container .tainacan-record,
+            .tainacan-cards-container .tainacan-card,
+            .tainacan-list-container .tainacan-list {
+                border-radius: var(--borderRadius, 3px);
+                box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+                border: var(--border, none);
+                overflow: hidden;
+
+                .metadata-title p {
+                    font-weight: 500;
+                }
+                .metadata-value,
+                .metadata-label {
+                font-size: 0.8125em !important;
+                }
+            }
+            .tainacan-records-container .tainacan-record,
+            .tainacan-list-container .tainacan-list {
+                background-color: var(--tainacan-item-background-color, white) !important;
+            }
+            .tainacan-masonry-container .tainacan-masonry-item {
+                display: flex !important;
+                flex-direction: column-reverse;
+            }
+            .tainacan-cards-container .tainacan-card {
+                min-height: 215px;
+                max-height: 215px;
+
+                .media .list-metadata {
+                    padding: 0.125em 1.375em !important;
+
+                    p.metadata-description {
+                        max-height: 12.75em !important;
+                        line-height: 1.25em;
+                    }
+                }
+            }
+            .tainacan-table {
+                padding: 0 12px;
+                .column-main-content p { 
+                    font-weight: 500;
+                }
+                td p {
+                    font-size: 0.725em !important;
+                }
+            }
+            .tainacan-slide-main-view {
+                iframe {
+                    border: none;
+                    border-radius: var(--borderRadius, 3px);
+                }
+            }
+            .tainacan-slides-list {
+                .swiper-slide img {
+                    border-radius: var(--borderRadius, 3px);
+                    padding-bottom: 0;
+                }
+            }
+
+            /* Pagination */
             .pagination-area {
                 border-top: none;
                 margin-left: 12px;
@@ -227,7 +241,7 @@ body:not(.tainacan-admin-page) {
 
     .tainacan-collection-header__box {
         width: var(--maxSiteWidth, 1290px);
-        border-radius: var(--borderRadius,3px);
+        border-radius: var(--borderRadius,3px) var(--borderRadius, 3px) 0 0;
         background-color: var(--tainacan-item-background-color,#fff);
         padding: 20px;
         box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));

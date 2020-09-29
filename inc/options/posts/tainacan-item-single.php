@@ -9,7 +9,15 @@ if (! isset($is_bbpress)) {
 }
 
 $options = [
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/title-metadata.php', [
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/show-title-metadata.php', [
+		'prefix' => $post_type->name . '_single',
+		'enabled' => 'yes'
+	], false),
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/show-thumbnail.php', [
+		'prefix' => $post_type->name . '_single',
+		'enabled' => 'no'
+	], false),
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/section-labels.php', [
 		'prefix' => $post_type->name . '_single',
 		'enabled' => 'yes'
 	], false)

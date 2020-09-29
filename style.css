@@ -33,7 +33,6 @@
   --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
   --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
   --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
-  /* Tainacan items list view modes */
   /* Search control */
   /* Filters panel */
   /* Items list container */
@@ -51,73 +50,9 @@
   grid-template-areas: ". searchcontrol ." "itemslist itemslist itemslist";
 }
 
-.theme-items-list .tainacan-masonry-container .tainacan-masonry-item,
-.theme-items-list .tainacan-records-container .tainacan-record,
-.theme-items-list .tainacan-cards-container .tainacan-card,
-.theme-items-list .tainacan-list-container .tainacan-list {
-  border-radius: var(--borderRadius, 3px);
-  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
-  border: var(--border, none);
-  overflow: hidden;
-}
-
-.theme-items-list .tainacan-masonry-container .tainacan-masonry-item .metadata-title p,
-.theme-items-list .tainacan-records-container .tainacan-record .metadata-title p,
-.theme-items-list .tainacan-cards-container .tainacan-card .metadata-title p,
-.theme-items-list .tainacan-list-container .tainacan-list .metadata-title p {
-  font-weight: 500;
-}
-
-.theme-items-list .tainacan-masonry-container .tainacan-masonry-item .metadata-value,
-.theme-items-list .tainacan-masonry-container .tainacan-masonry-item .metadata-label,
-.theme-items-list .tainacan-records-container .tainacan-record .metadata-value,
-.theme-items-list .tainacan-records-container .tainacan-record .metadata-label,
-.theme-items-list .tainacan-cards-container .tainacan-card .metadata-value,
-.theme-items-list .tainacan-cards-container .tainacan-card .metadata-label,
-.theme-items-list .tainacan-list-container .tainacan-list .metadata-value,
-.theme-items-list .tainacan-list-container .tainacan-list .metadata-label {
-  font-size: 0.8125em !important;
-}
-
-.theme-items-list .tainacan-records-container .tainacan-record,
-.theme-items-list .tainacan-list-container .tainacan-list {
-  background-color: var(--tainacan-item-background-color, white) !important;
-}
-
-.theme-items-list .tainacan-masonry-container .tainacan-masonry-item {
-  display: flex !important;
-  flex-direction: column-reverse;
-}
-
-.theme-items-list .tainacan-cards-container .tainacan-card {
-  min-height: 215px;
-  max-height: 215px;
-}
-
-.theme-items-list .tainacan-cards-container .tainacan-card .media .list-metadata {
-  padding: 0.125em 1.375em !important;
-}
-
-.theme-items-list .tainacan-cards-container .tainacan-card .media .list-metadata p.metadata-description {
-  max-height: 12.75em !important;
-  line-height: 1.25em;
-}
-
-.theme-items-list .tainacan-table {
-  padding: 0 12px;
-}
-
-.theme-items-list .tainacan-table .column-main-content p {
-  font-weight: 500;
-}
-
-.theme-items-list .tainacan-table td p {
-  font-size: 0.725em !important;
-}
-
 .theme-items-list .search-control {
   grid-area: searchcontrol;
-  border-radius: var(--borderRadius, 3px);
+  border-radius: 0 0 var(--borderRadius, 3px) var(--borderRadius, 3px);
   background-color: var(--tainacan-item-background-color, white);
   padding: 20px 20px 6px 20px !important;
   margin: 5px;
@@ -158,12 +93,91 @@
   width: 100%;
 }
 
+.theme-items-list #items-list-area #items-list-results {
+  /* Tainacan items list view modes */
+  /* Pagination */
+}
+
 .theme-items-list #items-list-area #items-list-results .table-container {
   min-width: 100%;
   padding-top: 14px;
   padding-left: 10px;
   padding-bottom: 14px;
   padding-right: 10px;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item,
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record,
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card,
+.theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list {
+  border-radius: var(--borderRadius, 3px);
+  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+  border: var(--border, none);
+  overflow: hidden;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-title p,
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .metadata-title p,
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .metadata-title p,
+.theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list .metadata-title p {
+  font-weight: 500;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-value,
+.theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-label,
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .metadata-value,
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .metadata-label,
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .metadata-value,
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .metadata-label,
+.theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list .metadata-value,
+.theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list .metadata-label {
+  font-size: 0.8125em !important;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record,
+.theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list {
+  background-color: var(--tainacan-item-background-color, white) !important;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item {
+  display: flex !important;
+  flex-direction: column-reverse;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card {
+  min-height: 215px;
+  max-height: 215px;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .media .list-metadata {
+  padding: 0.125em 1.375em !important;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .media .list-metadata p.metadata-description {
+  max-height: 12.75em !important;
+  line-height: 1.25em;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-table {
+  padding: 0 12px;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-table .column-main-content p {
+  font-weight: 500;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-table td p {
+  font-size: 0.725em !important;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-slide-main-view iframe {
+  border: none;
+  border-radius: var(--borderRadius, 3px);
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-slides-list .swiper-slide img {
+  border-radius: var(--borderRadius, 3px);
+  padding-bottom: 0;
 }
 
 .theme-items-list #items-list-area #items-list-results .pagination-area {
@@ -256,7 +270,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-collection-header .tainacan-collection-header__box {
   width: var(--maxSiteWidth, 1290px);
-  border-radius: var(--borderRadius, 3px);
+  border-radius: var(--borderRadius, 3px) var(--borderRadius, 3px) 0 0;
   background-color: var(--tainacan-item-background-color, #fff);
   padding: 20px;
   box-shadow: var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04));
