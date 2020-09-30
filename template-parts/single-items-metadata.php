@@ -2,9 +2,9 @@
     $prefix = blocksy_manager()->screen->get_prefix();
 ?>
 <div>
-    <?php if ( get_theme_mod('tainacan_single_item_metadata_section_label', '') != '') : ?>
+    <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'blocksy-tainacan' )) != '' ) : ?>
         <h2 class="title-content-items" id="single-item-metadata-label">
-            <?php echo esc_html( get_theme_mod('tainacan_single_item_metadata_section_label', '') ); ?>
+            <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'blocksy-tainacan' ) ) ); ?>
         </h2>
     <?php endif; ?>
     <section class="tainacan-content single-item-collection margin-two-column">

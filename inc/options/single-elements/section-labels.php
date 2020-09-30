@@ -12,7 +12,7 @@ if (! isset($enabled)) {
 
 $options = [
 	$prefix . 'display_section_labels' => [
-		'label' => __( 'Display section labels', 'blocksy' ),
+		'label' => __( 'Display section labels', 'blocksy-tainacan' ),
 		'type' => 'ct-panel',
 		'switch' => true,
 		'value' => $enabled,
@@ -20,16 +20,36 @@ $options = [
 			'prefix' => $prefix,
 		]),
 		'inner-options' => [
-			// $prefix . 'test_title_metadata' => [
-            //     'label' => __( 'Test title in the metadata list', 'blocksy-tainacan' ),
-            //     'type' => 'ct-switch',
-            //     'value' => 'yes',
-            //     'setting' => [ 'transport' => 'postMessage' ],
-            //     'desc' => __( 'Toggle to hide or not the core title from the metadada list, as it already appears on the page title.', 'blocksy' ),
-            //     'sync' => blocksy_sync_single_post_container([
-            //         'prefix' => $prefix
-            //     ])
-            // ]
+			$prefix . 'section_document_label' => [
+				'label' => __( 'Label for the "Document" section', 'blocksy-tainacan' ),
+				'desc' => __( 'Leave it blank for not displaying any label.', 'blocksy-tainacan' ),
+				'type' => 'text',
+				'design' => 'block',
+				'value' => __( 'Document', 'blocksy-tainacan' ),
+				'sync' => blocksy_sync_single_post_container([
+                    'prefix' => $prefix
+                ])
+			],
+			$prefix . 'section_attachments_label' => [
+				'label' => __( 'Label for the "Attachments" section', 'blocksy-tainacan' ),
+				'desc' => __( 'Leave it blank for not displaying any label.', 'blocksy-tainacan' ),
+				'type' => 'text',
+				'design' => 'block',
+				'value' => __( 'Attachments', 'blocksy-tainacan' ),
+				'sync' => blocksy_sync_single_post_container([
+                    'prefix' => $prefix
+                ])
+			],
+			$prefix . 'section_metadata_label' => [
+				'label' => __( 'Label for the "Metadata" section', 'blocksy-tainacan' ),
+				'desc' => __( 'Leave it blank for not displaying any label.', 'blocksy-tainacan' ),
+				'type' => 'text',
+				'design' => 'block',
+				'value' => __( 'Metadata', 'blocksy-tainacan' ),
+				'sync' => blocksy_sync_single_post_container([
+                    'prefix' => $prefix
+                ])
+			]
 		],
 	],
 ];

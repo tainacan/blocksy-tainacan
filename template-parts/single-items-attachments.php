@@ -15,14 +15,14 @@
             )
         );
     }
+    $prefix = blocksy_manager()->screen->get_prefix();
 ?>
-
 <?php if ( !empty( $attachments )  || ( get_theme_mod( 'tainacan_single_item_gallery_mode', false) && tainacan_has_document() )) : ?>
 
     <div>
-        <?php if ( !get_theme_mod( 'tainacan_single_item_gallery_mode', false ) && get_theme_mod('tainacan_single_item_attachments_section_label', __( 'Attachments', 'blocksy-tainacan' )) != '') : ?>
+        <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' )) != '' ) : ?>
             <h2 class="title-content-items" id="single-item-attachments-label">
-                <?php echo esc_html( get_theme_mod('tainacan_single_item_attachments_section_label', __( 'Attachments', 'blocksy-tainacan' )) ); ?>
+                <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' ) ) ); ?>
             </h2>
         <?php endif; ?>
         <?php if ( get_theme_mod( 'tainacan_single_item_gallery_mode', false ) && get_theme_mod('tainacan_single_item_documents_section_label', __( 'Documents', 'blocksy-tainacan' )) != '') : ?>

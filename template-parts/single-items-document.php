@@ -1,8 +1,11 @@
+<?php 
+    $prefix = blocksy_manager()->screen->get_prefix();
+?>
 <?php if ( tainacan_has_document() && !get_theme_mod( 'tainacan_single_item_gallery_mode', false )) : ?>
     <div>
-        <?php if ( get_theme_mod('tainacan_single_item_document_section_label', __( 'Document', 'blocksy-tainacan' )) != '') : ?>
+        <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'blocksy-tainacan' )) != '' ) : ?>
             <h2 class="title-content-items" id="single-item-document-label">
-                <?php echo esc_html( get_theme_mod('tainacan_single_item_document_section_label', __( 'Document', 'blocksy-tainacan' )) ); ?>
+                <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'blocksy-tainacan' ) ) ); ?>
             </h2>
         <?php endif; ?>
         <section class="tainacan-content single-item-collection margin-two-column">
