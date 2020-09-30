@@ -190,6 +190,7 @@ function blocksy_tainacan_swiper_scripts() {
 		$post_type = get_post_type();
 
 		if ( in_array($post_type, $collections_post_types) ) {
+			wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.css', array(), BLOCKSY_TAINACAN_VERSION );
 			wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), BLOCKSY_TAINACAN_VERSION, true );	
 			wp_enqueue_script( 'blocksy-tainacan-scripts', get_stylesheet_directory_uri() . '/js/attachments-carousel.js', ['swiper'], BLOCKSY_TAINACAN_VERSION, true );
 		}

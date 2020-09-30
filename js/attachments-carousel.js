@@ -1,10 +1,6 @@
 const attachmentsThumbsSwiper = new Swiper('.swiper-container-thumbs', {
   spaceBetween: 10,
-  slidesPerView: 6,
-  freeMode: true,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true,
-  watchOverflow: true,
+  slidesPerView: 7,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',

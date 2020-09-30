@@ -85,7 +85,7 @@
                     </div>
                 <?php endif; ?>
             <?php else : ?>
-                <div class="single-item-collection--attachments swiper-container-thumbs">
+                <div class="single-item-collection--attachments swiper-container-thumbs swiper-container">
                     <div class="swiper-wrapper">
                         <?php foreach ( $attachments as $attachment ) { ?>
                             <?php
@@ -109,10 +109,10 @@
                                 </a>
                             </div>
                         <?php } ?>
-
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
                     </div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             <?php endif; ?>
         </section>

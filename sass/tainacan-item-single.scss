@@ -132,23 +132,20 @@
     .single-item-collection--gallery-items,
     .single-item-collection--attachments {
         .single-item-collection--attachments-file {
-            margin: 10px;
             text-align: center;
-            display: inline-block;
             vertical-align: top;
             cursor: pointer;
             word-break: break-all;
             font-size: 0.875em;
-            padding: 0 14px;
+            padding: 0 6px;
             
             @media only screen and (max-width: 380px) {
                 margin: 10px 0;
             }
 
             img {
-                width: 125px;
-                height: 125px;
-                display: inline-block;
+                width: 130px;
+                height: 130px;
                 object-fit: cover;
                 &:focus {
                     outline: none;
@@ -156,9 +153,7 @@
             }
             a {
                 width: 100%;
-                max-width: 125px;
-                margin: 0 auto;
-                display: inline-block;
+                max-width: 130px;
                 font-size: 0.875rem; 
                 text-align: center;
                 word-break: break-all;
@@ -176,9 +171,6 @@
                 padding: 36px;
                 background-color: #dbdbdb;
                 object-fit: contain;
-            }
-            .item-card--thumbnail {
-                margin: 0 0 4px 0 !important;
             }
         }
     }
@@ -266,4 +258,37 @@
             border-left: 1px solid #f2f2f2;
         }
     }
+
+    --swiper-theme-color: var(--paletteColor1, #3eaf7c);
+    --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
+    .swiper-container {
+        .swiper-button-disabled {
+            display: none;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: calc(130px/2);
+
+            &:after {
+                filter: drop-shadow(0px 0px 1px white);
+            }
+        }  
+        .swiper-button-prev {
+            left: -30px;
+            transition: left 0.3s ease;
+        }
+        .swiper-button-next {
+            right: -30px;
+            transition: right 0.3s ease;
+        }
+        &:hover {
+            .swiper-button-prev {
+                left: 10px;
+            }
+            .swiper-button-next {
+                right: 10px;
+            }
+        }
+
+    } 
 }

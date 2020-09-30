@@ -300,6 +300,11 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 /* Single Item Page */
+.single-item-data-section {
+  --swiper-theme-color: var(--paletteColor1, #3eaf7c);
+  --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
+}
+
 .single-item-data-section h1 {
   --fontSize: 30px;
 }
@@ -443,14 +448,12 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .single-item-data-section .single-item-collection--gallery-items .single-item-collection--attachments-file,
 .single-item-data-section .single-item-collection--attachments .single-item-collection--attachments-file {
-  margin: 10px;
   text-align: center;
-  display: inline-block;
   vertical-align: top;
   cursor: pointer;
   word-break: break-all;
   font-size: 0.875em;
-  padding: 0 14px;
+  padding: 0 6px;
 }
 
 @media only screen and (max-width: 380px) {
@@ -462,9 +465,8 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .single-item-data-section .single-item-collection--gallery-items .single-item-collection--attachments-file img,
 .single-item-data-section .single-item-collection--attachments .single-item-collection--attachments-file img {
-  width: 125px;
-  height: 125px;
-  display: inline-block;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
 }
 
@@ -476,9 +478,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .single-item-data-section .single-item-collection--gallery-items .single-item-collection--attachments-file a,
 .single-item-data-section .single-item-collection--attachments .single-item-collection--attachments-file a {
   width: 100%;
-  max-width: 125px;
-  margin: 0 auto;
-  display: inline-block;
+  max-width: 130px;
   font-size: 0.875rem;
   text-align: center;
   word-break: break-all;
@@ -502,11 +502,6 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   padding: 36px;
   background-color: #dbdbdb;
   object-fit: contain;
-}
-
-.single-item-data-section .single-item-collection--gallery-items .single-item-collection--attachments-file .item-card--thumbnail,
-.single-item-data-section .single-item-collection--attachments .single-item-collection--attachments-file .item-card--thumbnail {
-  margin: 0 0 4px 0 !important;
 }
 
 .single-item-data-section .s-item-collection--metadata {
@@ -605,6 +600,38 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .single-item-data-section .s-item-collection--metadata .tainacan-compound-group {
   padding-left: 1.5rem;
   border-left: 1px solid #f2f2f2;
+}
+
+.single-item-data-section .swiper-container .swiper-button-disabled {
+  display: none;
+}
+
+.single-item-data-section .swiper-container .swiper-button-next,
+.single-item-data-section .swiper-container .swiper-button-prev {
+  top: calc(130px/2);
+}
+
+.single-item-data-section .swiper-container .swiper-button-next:after,
+.single-item-data-section .swiper-container .swiper-button-prev:after {
+  filter: drop-shadow(0px 0px 1px white);
+}
+
+.single-item-data-section .swiper-container .swiper-button-prev {
+  left: -30px;
+  transition: left 0.3s ease;
+}
+
+.single-item-data-section .swiper-container .swiper-button-next {
+  right: -30px;
+  transition: right 0.3s ease;
+}
+
+.single-item-data-section .swiper-container:hover .swiper-button-prev {
+  left: 10px;
+}
+
+.single-item-data-section .swiper-container:hover .swiper-button-next {
+  right: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
