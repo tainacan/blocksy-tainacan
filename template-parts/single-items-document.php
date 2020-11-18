@@ -12,12 +12,11 @@
             <div class="single-item-collection--document">
                 <?php 
                     tainacan_the_document(); 
-                    if ( !get_theme_mod( 'tainacan_single_item_hide_download_document', false ) && function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) {
+                    if ( get_theme_mod( $prefix . '_hide_download_button', 'no' ) == 'no' && function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) {
                         echo '<span class="tainacan-item-file-download">' . tainacan_the_item_document_download_link() . '</span>';
                     } 
                 ?>
             </div>
         </section>
     </div>
-
 <?php endif; ?>

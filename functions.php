@@ -10,11 +10,23 @@ const BLOCKSY_TAINACAN_VERSION = '0.0.1';
  * Enqueue scripts and styles.
  */
 add_action( 'wp_enqueue_scripts', function () {
+	
+	// First, we enqueue parent theme styles
 	wp_enqueue_style( 'blocksy-parent-style', get_template_directory_uri() . '/style.css' );
+
+	// Then, this child theme styles
 	wp_enqueue_style( 'tainacan-blocksy-style',
 		get_stylesheet_directory_uri() . '/style.min.css',
 		array( 'blocksy-parent-style' )
 	);
+
+	// Now, some dynamic css that is generated using blocksy dynamic css logic
+	add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
+		blocksy_theme_get_dynamic_styles(array_merge([
+			'path' => get_stylesheet_directory() . '/global.php',
+			'chunk' => 'global'
+		], $args));
+	}, 10, 3);
 });
 
 /**
@@ -192,8 +204,13 @@ function blocksy_tainacan_swiper_scripts() {
 		if ( in_array($post_type, $collections_post_types) ) {
 			wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.css', array(), BLOCKSY_TAINACAN_VERSION );
 			wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), BLOCKSY_TAINACAN_VERSION, true );	
-			wp_enqueue_script( 'blocksy-tainacan-scripts', get_stylesheet_directory_uri() . '/js/attachments-carousel.js', ['swiper'], BLOCKSY_TAINACAN_VERSION, true );
+			wp_enqueue_script( 'blocksy-tainacan-scripts__swiper', get_stylesheet_directory_uri() . '/js/attachments-carousel.js', ['swiper'], BLOCKSY_TAINACAN_VERSION, true );
 		}
+
+		wp_enqueue_script( 'blocksy-tainacan-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', [], BLOCKSY_TAINACAN_VERSION, true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'blocksy_tainacan_swiper_scripts' );
+
+/* Requires helpers */
+require get_stylesheet_directory() . '/helpers/blocksy-integration.php';

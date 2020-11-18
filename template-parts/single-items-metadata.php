@@ -10,13 +10,11 @@
     <section class="tainacan-content single-item-collection margin-two-column">
         <div class="single-item-collection--information justify-content-center">
             <div class="row">
-                <div class="col s-item-collection--metadata">
+                <div class="col single-item-collection--metadata" style="column-width: <?php echo get_theme_mod( $prefix . '_metadata_columns', ['mobile' => '200px', 'tablet' => '300px', 'desktop' => '400px' ] )['desktop'] ?>">
                     <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
-                        <div class="tainacan-item-thumbnail-container card">
-                            <div class="card-body">
-                                <h3><?php _e( 'Thumbnail', 'blocksy-tainacan' ); ?></h3>
-                                <?php the_post_thumbnail('tainacan-medium-full', array('class' => 'item-card--thumbnail')); ?>
-                            </div>
+                        <div class="tainacan-item-thumbnail-container">
+                            <h3><?php _e( 'Thumbnail', 'blocksy-tainacan' ); ?></h3>
+                            <?php the_post_thumbnail('tainacan-medium-full', array('class' => 'item-card--thumbnail')); ?>
                         </div>
                     <?php endif; ?>
                     <?php do_action( 'blocksy-tainacan-single-item-metadata-begin' ); ?>

@@ -9,6 +9,14 @@ if (! isset($is_bbpress)) {
 }
 
 $options = [
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/section-labels.php', [
+		'prefix' => $post_type->name . '_single',
+		'enabled' => 'yes'
+	], false),
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/hide-download-button.php', [
+		'prefix' => $post_type->name . '_single',
+		'enabled' => 'no'
+	], false),
 	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/show-title-metadata.php', [
 		'prefix' => $post_type->name . '_single',
 		'enabled' => 'yes'
@@ -17,8 +25,7 @@ $options = [
 		'prefix' => $post_type->name . '_single',
 		'enabled' => 'no'
 	], false),
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/section-labels.php', [
-		'prefix' => $post_type->name . '_single',
-		'enabled' => 'yes'
-	], false)
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-columns.php', [
+		'prefix' => $post_type->name . '_single'
+	], false),
 ];

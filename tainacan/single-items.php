@@ -40,24 +40,42 @@ if (
             }
         );
     }
-
+    
     if (have_posts()) {
         the_post();
     }
-
-
+    
     /**
      * Note to code reviewers: This line doesn't need to be escaped.
      * Function blocksy_output_hero_section() used here escapes the value properly.
      */
     echo blocksy_output_hero_section('type-2');
-
+    
     $container_class = 'ct-container';
-
+    
     if (blocksy_get_page_structure() === 'narrow') {
         $container_class = 'ct-container-narrow';
     }
-
+    
+    $content_area_class = 'content-area';
+    
+    $post_content = get_the_content();
+    $content_style = blocksy_get_content_style();
+    
+    if (
+        (
+            strpos($post_content, 'alignwide') !== false
+            ||
+            strpos($post_content, 'alignfull') !== false
+        )
+        &&
+        blocksy_sidebar_position() === 'none'
+        &&
+        blocksy_get_content_style() !== 'boxed'
+    ) {
+        $content_area_class .= ' content-area-wide';
+    }
+    
     ?>
 
         <div id="primary" class="content-area" <?php echo blocksy_get_v_spacing() ?>>
@@ -66,7 +84,8 @@ if (
                 <section>
                 
                     <?php 
-                       	$post_options = blocksy_get_post_options();
+                        $post_options = blocksy_get_post_options();
+                           
                         $prefix = blocksy_manager()->screen->get_prefix();
                     
                         $has_share_box = get_theme_mod(
@@ -158,9 +177,10 @@ if (
                         ]);
                     
                         $share_box2_location = get_theme_mod($prefix . '_share_box2_location', 'right');
+
+                        $content_editor = blocksy_get_entry_content_editor();
                     
                         $content_class = 'entry-content';
-                        $content_editor = blocksy_get_entry_content_editor();
                     
                         if (
                             strpos($content_editor, 'classic') === false
