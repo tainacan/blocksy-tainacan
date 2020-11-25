@@ -192,6 +192,24 @@ function blocksy_tainacan_custom_post_types_supported_list( $potential_post_type
 }
 add_filter( 'blocksy:custom_post_types:supported_list', 'blocksy_tainacan_custom_post_types_supported_list', 10 );
 
+/**
+ * Renders the item single page with a custom template that will use most of Blocksy features
+ */
+function filter_the_content_in_the_main_loop( $content ) {
+ 
+	if ( defined ('TAINACAN_VERSION') ) {
+		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$post_type = get_post_type();
+
+		// Check if we're inside the main loop in a single Post.
+		if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			return get_template_part( 'tainacan/item-single-page' );
+		}
+	}
+ 
+    return $content;
+}
+add_filter( 'the_content', 'filter_the_content_in_the_main_loop');
 
 /**
  * Enqueues js scripts related to swiper, only if in TainacanSingleItem pages

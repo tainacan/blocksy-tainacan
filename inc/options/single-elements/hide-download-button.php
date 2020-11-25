@@ -12,7 +12,7 @@ if (! isset($enabled)) {
 
 $options = [	
 	$prefix . 'hide_download_button' => [
-		'label' => __( ' Document download button', 'blocksy-tainacan' ),
+		'label' => __( 'Hide document download button', 'blocksy-tainacan' ),
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
