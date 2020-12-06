@@ -125,6 +125,258 @@ function blocksy_tainacan_get_adjacent_item_links() {
 	return ['next' => $next, 'previous' => $previous];
 }
 
+
+/**
+ * Copy of blocksy original post navigation function.
+ */
+function blocksy_default_post_navigation() {
+	$next_post = apply_filters(
+		'blocksy:post-navigation:next-post',
+		get_adjacent_post(false, '', true)
+	);
+
+	$previous_post = apply_filters(
+		'blocksy:post-navigation:previous-post',
+		get_adjacent_post(false, '', false)
+	);
+
+	if (! $next_post && ! $previous_post) {
+		return '';
+	}
+
+    $prefix = blocksy_manager()->screen->get_prefix();
+
+	$container_class = 'post-navigation';
+
+	$container_class .= ' ' . blocksy_visibility_classes(get_theme_mod(
+		$prefix . '_post_nav_visibility',
+		[
+			'desktop' => true,
+			'tablet' => true,
+			'mobile' => true,
+		]
+	));
+
+	$home_page_url = get_home_url();
+
+	$post_slug = get_post_type() === 'post' ? __( 'Post', 'blocksy' ) : get_post_type_object( get_post_type() )->labels->singular_name;
+	$post_slug = '<span>' . $post_slug . '</span>';
+
+	$has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
+
+	if ($has_thumb) {
+		$container_class .= ' has-thumbnails';
+	}
+
+	$has_title = get_theme_mod($prefix . '_has_post_nav_title', 'yes') === 'yes';
+
+	$next_post_image_output = '';
+	$previous_post_image_output = '';
+
+	if ($next_post) {
+		$next_title = '';
+
+		if ($has_title) {
+			$next_title = $next_post->post_title;
+		}
+
+		if ($has_thumb) {
+			$next_post_image_output = blocksy_image(
+				[
+					'attachment_id' => get_post_thumbnail_id( $next_post ),
+					'ratio' => '1/1',
+					'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="0,7.5 5.5,13 6.4,12.1 2.4,8.1 20,8.1 20,6.9 2.4,6.9 6.4,2.9 5.5,2 "/></svg>',
+					'tag_name' => 'figure'
+				]
+			);
+		}
+	}
+
+	if ($previous_post) {
+		$previous_title = '';
+		if ( $has_title ) {
+			$previous_title = $previous_post->post_title;
+		}
+
+		if ($has_thumb) {
+			$previous_post_image_output = blocksy_image(
+				[
+					'attachment_id' => get_post_thumbnail_id( $previous_post ),
+					'ratio' => '1/1',
+					'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="14.5,2 13.6,2.9 17.6,6.9 0,6.9 0,8.1 17.6,8.1 13.6,12.1 14.5,13 20,7.5 "/></svg>',
+					'tag_name' => 'figure'
+				]
+			);
+		}
+	}
+
+	ob_start();
+
+	?>
+
+		<nav class="<?php echo esc_attr( $container_class ); ?>">
+			<?php if ($next_post) { ?>
+				<a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="nav-item-prev">
+					<?php if ($has_thumb) { ?>
+						<?php
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							echo $next_post_image_output;
+						?>
+					<?php } ?>
+
+					<div class="item-content">
+						<span class="item-label">
+							<?php
+								echo wp_kses_post(sprintf(
+									// translators: post title
+									__( 'Previous %s', 'blocksy' ),
+									$post_slug
+								));
+							?>
+						</span>
+
+						<?php if ( ! empty( $next_title ) ) { ?>
+							<span class="item-title">
+								<?php echo wp_kses_post($next_title); ?>
+							</span>
+						<?php } ?>
+					</div>
+
+				</a>
+			<?php } else { ?>
+				<div class="nav-item-prev"></div>
+			<?php } ?>
+
+			<?php if ( $previous_post ) { ?>
+				<a href="<?php echo esc_url( get_permalink( $previous_post ) ); ?>" class="nav-item-next">
+					<div class="item-content">
+						<span class="item-label">
+							<?php
+								echo wp_kses_post(sprintf(
+									// translators: post title
+									__( 'Next %s', 'blocksy' ),
+									$post_slug
+								));
+							?>
+						</span>
+
+						<?php if ( ! empty( $previous_title ) ) { ?>
+							<span class="item-title">
+								<?php echo wp_kses_post($previous_title); ?>
+							</span>
+						<?php } ?>
+					</div>
+
+					<?php if ($has_thumb) { ?>
+						<?php
+							echo $previous_post_image_output;
+						?>
+					<?php } ?>
+				</a>
+			<?php } else { ?>
+				<div class="nav-item-next"></div>
+			<?php } ?>
+
+		</nav>
+
+	<?php
+
+	return ob_get_clean();
+}
+
+/**
+ * Outputs Tainacan custom logic for items navigtion with blocksy features
+ */
+function blocksy_tainacan_item_navigation() {
+	$next = '';
+	$previous = '';
+	$prefix = blocksy_manager()->screen->get_prefix();
+   
+   	if (get_theme_mod( $prefix . '_has_post_nav', $prefix === 'single_blog_post' ? 'yes' : 'no' ) === 'yes') {
+	  
+	   $container_class = 'post-navigation';
+   
+	   $container_class .= ' ' . blocksy_visibility_classes(get_theme_mod(
+		   $prefix . '_post_nav_visibility',
+		   [
+			   'desktop' => true,
+			   'tablet' => true,
+			   'mobile' => true,
+		   ]
+	   ));
+   
+	   $has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
+   
+	   if ($has_thumb)
+		   $container_class .= ' has-thumbnails';
+		   
+	   $adjacent_links = [
+		   'next' => '',
+		   'previous' => ''
+	   ];
+   
+	   $adjacent_links = blocksy_tainacan_get_adjacent_item_links();
+   
+	   $previous = $adjacent_links['previous'];
+	   $next = $adjacent_links['next'];
+	}
+	
+	?>
+		<?php if ($previous !== '' || $next !== '') : ?>
+			<nav class="<?php echo esc_attr( $container_class ); ?>">
+			<?php if ( $previous !== '' ) {
+				echo $previous;
+			} else { ?>
+				<div class="nav-item-prev"></div>
+			<?php } ?>
+
+			<?php if ( $next !== '' ) {
+				echo $next;
+			} else { ?>
+				<div class="nav-item-next"></div>
+			<?php } ?>
+		</nav>
+		<?php endif; ?>
+	<?
+}
+
+/**
+ * Overrides parent theme blocksy post navigation logic to handle items navigation
+ */
+function blocksy_post_navigation() {
+
+	// This should only happen if we have Tainacan plugin installed
+	if ( defined ('TAINACAN_VERSION') ) {
+		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$post_type = get_post_type();
+
+		// Check if we're inside the main loop in a single Post.
+		if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			return blocksy_tainacan_item_navigation();
+		}
+	}
+	return blocksy_default_post_navigation();
+}
+
+/**
+ * Uses Blocksy filter to customize the related posts logic on Tainacan Items page.
+ */
+function blocksy_tainacan_custom_related_posts_query( $related_posts_query ) {
+
+	// This should only happen if we have Tainacan plugin installed
+	if ( defined ('TAINACAN_VERSION') ) {
+		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$post_type = get_post_type();
+
+		// Check if we're inside the main loop in a single Post.
+		if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			// In the future, we might update the related_postd_query here for Tainacan items.
+		}
+	}
+	return $related_posts_query;
+}
+add_filter( 'blocksy:related-posts:query-args', 'blocksy_tainacan_custom_related_posts_query', 10 );
+
 /**
  * Retrieves the current items list source link
  */
@@ -149,6 +401,7 @@ function blocksy_tainacan_get_source_item_list_url() {
  */
 function blocksy_tainacan_custom_post_types_single_options( $options, $post_type, $post_type_object ) {
 
+	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
 		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 
@@ -183,6 +436,7 @@ add_filter( 'blocksy:custom_post_types:single-options', 'blocksy_tainacan_custom
  */
 function blocksy_tainacan_custom_post_types_supported_list( $potential_post_types ) {
 	
+	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
 		return array_filter( $potential_post_types, function($post_type) {
 			return !in_array($post_type, [ 'tainacan-metadatum', 'tainacan-filter' ]);
@@ -197,6 +451,7 @@ add_filter( 'blocksy:custom_post_types:supported_list', 'blocksy_tainacan_custom
  */
 function filter_the_content_in_the_main_loop( $content ) {
  
+	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
 		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 		$post_type = get_post_type();
@@ -215,6 +470,8 @@ add_filter( 'the_content', 'filter_the_content_in_the_main_loop');
  * Enqueues js scripts related to swiper, only if in TainacanSingleItem pages
  */
 function blocksy_tainacan_swiper_scripts() {
+	
+	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
 		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 		$post_type = get_post_type();
