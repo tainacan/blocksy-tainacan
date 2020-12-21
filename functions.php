@@ -34,8 +34,9 @@ add_action( 'wp_enqueue_scripts', function () {
  */
 function blocksy_tainacan_get_adjacent_item_links() {
 
+	$prefix = blocksy_manager()->screen->get_prefix();
     $has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
-
+	
 	if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
 		$adjacent_items = tainacan_get_adjacent_items();
 
@@ -164,10 +165,6 @@ function blocksy_default_post_navigation() {
 
 	$has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
 
-	if ($has_thumb) {
-		$container_class .= ' has-thumbnails';
-	}
-
 	$has_title = get_theme_mod($prefix . '_has_post_nav_title', 'yes') === 'yes';
 
 	$next_post_image_output = '';
@@ -180,7 +177,7 @@ function blocksy_default_post_navigation() {
 			$next_title = $next_post->post_title;
 		}
 
-		if ($has_thumb) {
+		if ($has_thumb && get_post_thumbnail_id($next_post)) {
 			$next_post_image_output = blocksy_image(
 				[
 					'attachment_id' => get_post_thumbnail_id( $next_post ),
@@ -198,7 +195,7 @@ function blocksy_default_post_navigation() {
 			$previous_title = $previous_post->post_title;
 		}
 
-		if ($has_thumb) {
+		if ($has_thumb && get_post_thumbnail_id($previous_post)) {
 			$previous_post_image_output = blocksy_image(
 				[
 					'attachment_id' => get_post_thumbnail_id( $previous_post ),
@@ -285,7 +282,7 @@ function blocksy_default_post_navigation() {
 }
 
 /**
- * Outputs Tainacan custom logic for items navigtion with blocksy features
+ * Outputs Tainacan custom logic for items navigation with blocksy features
  */
 function blocksy_tainacan_item_navigation() {
 	$next = '';
@@ -306,7 +303,7 @@ function blocksy_tainacan_item_navigation() {
 	   ));
    
 	   $has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
-   
+	   
 	   if ($has_thumb)
 		   $container_class .= ' has-thumbnails';
 		   
@@ -314,7 +311,7 @@ function blocksy_tainacan_item_navigation() {
 		   'next' => '',
 		   'previous' => ''
 	   ];
-   
+	   
 	   $adjacent_links = blocksy_tainacan_get_adjacent_item_links();
    
 	   $previous = $adjacent_links['previous'];
