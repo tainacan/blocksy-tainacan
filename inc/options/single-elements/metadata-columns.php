@@ -29,6 +29,8 @@ $options = [
 		]),
 		'responsive' => true,
 		'divider' => 'top',
-		'sync' => 'live',
+		'sync' => blocksy_sync_single_post_container([
+			'prefix' => $prefix
+		])
 	],
 ];

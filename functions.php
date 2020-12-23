@@ -404,11 +404,13 @@ function blocksy_tainacan_custom_post_types_single_options( $options, $post_type
 
 		if ( in_array($post_type, $collections_post_types) ) {
 			
+			// Change the section title in the customizer
 			$options['title'] = sprintf(
 				__('Item from %s', 'blocksy-tainacan'),
 				$post_type_object->labels->name
 			);
 
+			// Extra options to the archive items list
 			$item_extra_options = blocksy_get_options(get_stylesheet_directory() . '/inc/options/posts/tainacan-item-single.php', [
 				'post_type' => $post_type_object,
 				'is_general_cpt' => true
@@ -427,6 +429,41 @@ function blocksy_tainacan_custom_post_types_single_options( $options, $post_type
     return $options;
 }
 add_filter( 'blocksy:custom_post_types:single-options', 'blocksy_tainacan_custom_post_types_single_options', 10, 3 );
+
+
+/**
+ * Adds extra customizer options to items single page template
+ */
+function blocksy_tainacan_custom_post_types_archive_options( $options, $post_type, $post_type_object ) {
+
+	// This should only happen if we have Tainacan plugin installed
+	if ( defined ('TAINACAN_VERSION') ) {
+		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+
+		if ( in_array($post_type, $collections_post_types) ) {
+			
+			// Change the section title in the customizer
+			$options['title'] = sprintf(
+				__('Items list from %s', 'blocksy-tainacan'),
+				$post_type_object->labels->name
+			);
+
+			// Extra options to the archive items list
+			$items_extra_options = blocksy_get_options(get_stylesheet_directory() . '/inc/options/posts/tainacan-item-archive.php', [
+				'post_type' => $post_type_object,
+				'is_general_cpt' => true
+			], false);
+			
+			if ( is_array($items_extra_options) ) {
+				$options['options'][$post_type . '_section_options']['inner-options'] = $items_extra_options;
+			}
+		}
+	}
+
+    return $options;
+}
+add_filter( 'blocksy:custom_post_types:archive-options', 'blocksy_tainacan_custom_post_types_archive_options', 10, 3 );
+
 
 /**
  * Removes tainacan metadatum and filters from the custom metadata options in the customizer controller.
@@ -486,3 +523,46 @@ add_action( 'wp_enqueue_scripts', 'blocksy_tainacan_swiper_scripts' );
 
 /* Requires helpers */
 require get_stylesheet_directory() . '/helpers/blocksy-integration.php';
+
+/**
+ * Enqueues front-end CSS for the items page fixed filters logic.
+ *
+ * @see wp_add_inline_style()
+ */
+function blocksy_tainacan_items_page_filters_fixed_on_scroll_output() {
+	$prefix = blocksy_manager()->screen->get_prefix();
+
+	$should_use_fixed_filters_logic = (version_compare(TAINACAN_VERSION, '0.17') >= 0) && get_theme_mod( $prefix . '_filters_fixed_on_scroll', 'no' ) == 'yes';
+	
+	if (!$should_use_fixed_filters_logic)
+		return;
+		
+	$css = '
+	/* Items list fixed filter logic (Introduced in Tainacan 0.17) */
+	:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen).is-filters-menu-open.is-filters-menu-fixed-at-top .items-list-area {
+		margin-left: var(--tainacan-filter-menu-width-theme) !important;
+	}
+	:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen).is-filters-menu-open.is-filters-menu-fixed-at-top .filters-menu:not(.filters-menu-modal) {
+		position: fixed;
+		top: 0px !important;
+		z-index: 9;
+	}
+	:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen).is-filters-menu-open.is-filters-menu-fixed-at-top .filters-menu:not(.filters-menu-modal) .modal-content {
+		position: absolute;
+		top: 0px;
+		height: auto !important;
+		background: var(--tainacan-background-color, inherit);
+	}
+	:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen).is-filters-menu-open.is-filters-menu-fixed-at-top.is-filters-menu-fixed-at-bottom .filters-menu:not(.filters-menu-modal) {
+		position: absolute;
+	}
+	:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen).is-filters-menu-open.is-filters-menu-fixed-at-top.is-filters-menu-fixed-at-bottom .filters-menu:not(.filters-menu-modal) .modal-content {
+		top: auto;
+		bottom: 0;
+	}
+	';
+	echo '<style type="text/css" id="tainacan-fixed-filters-style">' . sprintf( $css ) . '</style>';
+
+}
+add_action( 'wp_head', 'blocksy_tainacan_items_page_filters_fixed_on_scroll_output');
+

@@ -14,7 +14,7 @@
                     <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
                         <div class="tainacan-item-thumbnail-container">
                             <h3><?php _e( 'Thumbnail', 'blocksy-tainacan' ); ?></h3>
-                            <?php the_post_thumbnail('tainacan-medium-full', array('class' => 'item-card--thumbnail')); ?>
+                            <p><?php the_post_thumbnail('tainacan-medium-full', array('class' => 'item-card--thumbnail')); ?></p>
                         </div>
                     <?php endif; ?>
                     <?php do_action( 'blocksy-tainacan-single-item-metadata-begin' ); ?>

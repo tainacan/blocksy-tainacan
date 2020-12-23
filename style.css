@@ -33,6 +33,7 @@
   --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
   --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
   --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
+  --tainacan-skeleton-color: rgba(252, 252, 252, 0.5);
   /* Search control */
   /* Filters panel */
   /* Items list container */
