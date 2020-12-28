@@ -7,7 +7,7 @@
             <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'blocksy-tainacan' ) ) ); ?>
         </h2>
     <?php endif; ?>
-    <section class="tainacan-content single-item-collection margin-two-column">
+    <section class="tainacan-content single-item-collection">
         <div class="single-item-collection--information justify-content-center">
             <div class="row">
                 <div class="col single-item-collection--metadata" style="column-width: <?php echo get_theme_mod( $prefix . '_metadata_columns', ['mobile' => '200px', 'tablet' => '300px', 'desktop' => '400px' ] )['desktop'] ?>">

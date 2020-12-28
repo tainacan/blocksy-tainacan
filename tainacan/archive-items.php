@@ -1,7 +1,6 @@
 <?php 
 
 $prefix = blocksy_manager()->screen->get_prefix();
-
 ?>
 
 <?php get_header(); ?>
