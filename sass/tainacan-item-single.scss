@@ -1,7 +1,57 @@
 
 /* Single Item Page */
-.single-item-data-section {
+.tainacan-item-single {
     
+    // Overall page layout structure -------------------
+    @include display-grid;
+    align-items: start;
+    grid-column-gap: 32px;
+    column-gap: 32px;
+    grid-row-gap: 2.25rem;
+    row-gap: 2.25rem;
+
+    .tainacan-item-section {
+        max-width: var(--block-max-width);;
+        align-self: flex-start;
+        align-self: start;
+    }
+    .tainacan-item-section--document { grid-area: document }
+    .tainacan-item-section--attachments { grid-area: attachments }
+    .tainacan-item-section--gallery { grid-area: gallery }
+    .tainacan-item-section--metadata { grid-area: metadata }
+    
+    &.tainacan-item-single--layout-type-dam {
+        grid-template-areas: 
+            'document'
+            'attachments'
+            'metadata';
+    }
+    &.tainacan-item-single--layout-type-dma {
+        grid-template-areas: 
+            'document'
+            'metadata'
+            'attachments';
+    }
+    &.tainacan-item-single--layout-type-mda {
+        grid-template-areas:
+            'metadata' 
+            'document'
+            'attachments';
+    }
+    &.tainacan-item-single--layout-type-mg {
+        grid-template-areas:
+            'metadata gallery document' 
+            'metadata gallery attachments'
+            'metadata . .'
+    }
+    &.tainacan-item-single--layout-type-gm {
+        grid-template-areas:
+            'gallery document metadata' 
+            'gallery attachments metadata'
+            '. . metadata'
+    }
+
+    // Headings and spacing ----------------------------
     h1 {
         --fontSize: 30px;
     }
@@ -20,56 +70,16 @@
     h6 {
         --fontSize: 16px;
     }
-    section{
-        margin-bottom: 2.25rem;
-    }
-    .tainacan-item-file-download {
-        position: absolute;
-        opacity: 0;
-        transform: scale(0);
-        border-radius: 24px;
-        width: 36px;
-        height: 36px;
-        bottom: -18px;
-        right: calc(50% - 18px);
-        cursor: pointer;
-        font-size: 0;
-        background-color: var(--paletteColor1, #3eaf7c);
-        color: white;
-        transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 
-        a {
-            height: 38px;
-            width: 38px;
-            display: block;
-            position: relative;
-            z-index: 99;
-        }
 
-        &::after {
-            position: relative;
-            top: -38px;
-            display: inline-block;
-            font: normal normal normal 20px/1 "TainacanIcons";
-            font-size: 1.25rem !important;
-            line-height: 2.25rem;
-            text-rendering: auto;
-            vertical-align: middle;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 1.25em;
-            text-transform: none !important;
-            letter-spacing: normal !important;
-            content: 'download';
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-    .single-item-collection--document {
+    // Document, Attachment and Gallery sections -----------------
+    .tainacan-item-section__document {
         display: flex;
         justify-content: center;
+        align-items: center;
+        height: auto;
         position: relative;
+        
         &:hover {
             .tainacan-item-file-download {
                 opacity: 1;
@@ -106,7 +116,7 @@
             }
         }
     }
-    .single-item-collection--gallery-items {
+    .tainacan-item-section__gallery-items {
         font-weight: normal;
         transition: font-weight 0.3s ease;
 
@@ -117,7 +127,7 @@
             transition: border 0.3s ease;
         }
     }
-    .single-item-collection--attachments-file {
+    .tainacan-item-section__attachments-file {
         &:hover {
             .tainacan-item-file-download {
                 opacity: 1;
@@ -125,13 +135,13 @@
             }
         }
     }
-    .single-item-collection--gallery {
+    .tainacan-item-section__gallery {
         margin-bottom: 24px;
         ul { 
             list-style: none; 
             padding: 0;
         }
-        .tainacan-content {
+        .tainacan-item-section__document {
             margin: 0;
             img {
                 max-height: 60vh;
@@ -146,8 +156,8 @@
             }
         }
     }
-    .single-item-collection--gallery-items,
-    .single-item-collection--attachments {
+    .tainacan-item-section__gallery-items,
+    .tainacan-item-section__attachments {
         position: relative;
         padding: 0 60px;
         
@@ -169,7 +179,7 @@
             list-style: none; 
             padding: 0;
         }
-        .single-item-collection--attachments-file {
+        .tainacan-item-section__attachments-file {
             text-align: center;
             vertical-align: top;
             cursor: pointer;
@@ -215,7 +225,39 @@
     }
     --swiper-theme-color: var(--paletteColor1, #3eaf7c);
     --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
-    .single-item-collection--metadata {
+
+    // Photoswip zoom ---------------------------------
+    .pswp__zoom-wrap .attachment-without-image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > iframe {
+           min-height: 80vh;
+           width: 80%;
+           border: none;
+        }
+
+        & > a,
+        & > p {
+            z-index: 99;
+            padding: 1rem 4.33337vw;
+            background: white;
+            border-radius: var(--borderRadius, 3px);
+            word-wrap: break-word;
+        }
+        & > audio,
+        & > video {
+            min-height: 54px;
+            padding: 12px;
+        }
+
+    }
+
+    // Metadata list -------------------------------------
+    .tainacan-item-section__metadata {
         height: 100%;
         
         div {
@@ -267,6 +309,9 @@
         p {
             word-wrap: break-word;
         }
+        .tainacan-item-section__metadata-thumbnail img {
+            border-radius: var(--borderRadius, 3px);
+        }
 
         // Metadata type textarea has different separator
         .multivalue-separator {
@@ -294,33 +339,48 @@
         }
     }
 
-    // Photoswip zoom
-    .pswp__zoom-wrap .attachment-without-image {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    // Document Download button -------------------------------------
+    .tainacan-item-file-download {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+        border-radius: 24px;
+        width: 36px;
+        height: 36px;
+        bottom: -18px;
+        right: calc(50% - 18px);
+        cursor: pointer;
+        font-size: 0;
+        background-color: var(--paletteColor1, #3eaf7c);
+        color: white;
+        transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 
-        & > iframe {
-           min-height: 80vh;
-           width: 80%;
-           border: none;
-        }
-
-        & > a,
-        & > p {
+        a {
+            height: 38px;
+            width: 38px;
+            display: block;
+            position: relative;
             z-index: 99;
-            padding: 1rem 4.33337vw;
-            background: white;
-            border-radius: var(--borderRadius, 3px);
-            word-wrap: break-word;
-        }
-        & > audio,
-        & > video {
-            min-height: 54px;
-            padding: 12px;
         }
 
+        &::after {
+            position: relative;
+            top: -38px;
+            display: inline-block;
+            font: normal normal normal 20px/1 "TainacanIcons";
+            font-size: 1.25rem !important;
+            line-height: 2.25rem;
+            text-rendering: auto;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 1.25em;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            content: 'download';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

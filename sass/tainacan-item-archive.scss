@@ -21,7 +21,7 @@
         top: -52px !important;
         background: transparent !important;
         padding: 6px 13px;
-        display: grid;
+        @include display-grid;
         grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
         grid-template-rows: auto 1fr;
         grid-template-areas:

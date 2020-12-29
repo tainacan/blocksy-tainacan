@@ -7,46 +7,23 @@
  * @package BlocksyTainacan
  */
 
+$prefix = blocksy_manager()->screen->get_prefix();
+
 do_action( 'blocksy-tainacan-single-item-top' ); 
+
 do_action( 'blocksy-tainacan-single-item-after-title' );
 
-echo '<div class="single-item-data-section">';
+echo '<div class="tainacan-item-single tainacan-item-single--layout-'. get_theme_mod( $prefix . '_page_structure_type', 'type-dam') . '">';
 
-switch (get_theme_mod( 'tainacan_single_item_layout_sections_order', 'document-attachments-metadata')) {
-    case 'document-attachments-metadata':
-        get_template_part( 'template-parts/single-items-document' );
-        do_action( 'blocksy-tainacan-single-item-after-document' );  
+    get_template_part( 'template-parts/tainacan-item-single-document' );
+    do_action( 'blocksy-tainacan-single-item-after-document' );  
 
-        get_template_part( 'template-parts/single-items-attachments' );
-        do_action( 'blocksy-tainacan-single-item-after-attachments' );
-        
-        get_template_part( 'template-parts/single-items-metadata' );
-        do_action( 'blocksy-tainacan-single-item-after-metadata' );
-    break;
+    get_template_part( 'template-parts/tainacan-item-single-attachments' );
+    do_action( 'blocksy-tainacan-single-item-after-attachments' );
+    
+    get_template_part( 'template-parts/tainacan-item-single-metadata' );
+    do_action( 'blocksy-tainacan-single-item-after-metadata' );
 
-    case 'metadata-document-attachments':
-        get_template_part( 'template-parts/single-items-metadata' );
-        do_action( 'blocksy-tainacan-single-item-after-metadata' );
-
-        get_template_part( 'template-parts/single-items-document' );
-        do_action( 'blocksy-tainacan-single-item-after-document' );  
-
-        get_template_part( 'template-parts/single-items-attachments' );
-        do_action( 'blocksy-tainacan-single-item-after-attachments' );
-    break;
-
-    case 'document-metadata-attachments':
-        get_template_part( 'template-parts/single-items-document' );
-        do_action( 'blocksy-tainacan-single-item-after-document' );
-
-        get_template_part( 'template-parts/single-items-metadata' );
-        do_action( 'blocksy-tainacan-single-item-after-metadata' );  
-
-        get_template_part( 'template-parts/single-items-attachments' );
-        do_action( 'blocksy-tainacan-single-item-after-attachments' );
-    break;
-        
-}
 echo '</div>';
 
 do_action( 'blocksy-tainacan-single-item-bottom' ); ?>

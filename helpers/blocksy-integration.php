@@ -28,3 +28,15 @@ if (! function_exists('blc_call_fnc')) {
         return call_user_func($args['fnc'], ...$params);
     }
 }
+
+/**
+ * Return the url to be used in image picker from the child theme. 
+ * The original function is on the /admin/helpers/options.php folder in the parent theme.
+ *
+ * @param string $path image name.
+ */
+if (! function_exists('blocksy_tainacan_image_picker_url')) {
+	function blocksy_tainacan_image_picker_url($path) {
+		return get_stylesheet_directory_uri() . '/static/images/' . $path;
+	}
+}

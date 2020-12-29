@@ -89,7 +89,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
           h: parseInt(imgHeight, 10)
         };
         
-        if (linkEl.children[1] && linkEl.children[1].classList.contains('single-item-file-name')) {
+        if (linkEl.children[1] && linkEl.children[1].classList.contains('swiper-slide-name')) {
           item.title = linkEl.children[1].innerText;
         }
       }
@@ -178,10 +178,10 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
   };
 
   var openPhotoSwipe = function(
-  index,
-   galleryElement,
-   disableAnimation,
-   fromURL
+    index,
+    galleryElement,
+    disableAnimation,
+    fromURL
   ) {
     var pswpElement = document.querySelectorAll(".pswp")[0],
         gallery,
