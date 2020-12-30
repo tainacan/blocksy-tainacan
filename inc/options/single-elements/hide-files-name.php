@@ -8,14 +8,14 @@ if (! isset($enabled)) {
 }
 
 $options = [	
-	$prefix . 'show_thumbnail' => [
-		'label' => __( 'Item thumbnail in the metadata list', 'blocksy-tainacan' ),
+	$prefix . 'hide_files_name' => [
+		'label' => __( 'Hide files name', 'blocksy-tainacan' ),
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
-		'desc' => __( 'Toggle to show or not the item thumbnail on the metadada list.', 'blocksy-tainacan' ),
+		'desc' => __( 'Toggle to hide the attachments and document name on the carousel.', 'blocksy-tainacan' ),
 		'sync' => blocksy_sync_single_post_container([
-			'prefix' => $prefix
-		])
+			'prefix' => $prefix,
+		]),
 	]
 ];

@@ -33,7 +33,7 @@
                         echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
                         echo '<br>';
                     ?>
-                    <span class="swiper-slide-name <?php if (get_theme_mod('tainacan_single_item_hide_files_name', false)) echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
+                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
                 </a>
             </li>
         <?php 
@@ -47,7 +47,7 @@
                         echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
                         echo '<br>';
                     ?>
-                    <span class="swiper-slide-name <?php if (get_theme_mod('tainacan_single_item_hide_files_name', false)) echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
+                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
                 </a>
             </li>
         <?php endif;
@@ -107,7 +107,7 @@
                                         the_post_thumbnail('tainacan-medium');
                                         echo '<br>';
                                     ?>
-                                    <span class="swiper-slide-name <?php if (get_theme_mod('tainacan_single_item_hide_files_name', false)) echo 'sr-only' ?>"><?php echo __( 'Document', 'blocksy-tainacan' ); ?></span>
+                                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo __( 'Document', 'blocksy-tainacan' ); ?></span>
                                 </li>
                             <?php endif; ?>
                             <?php foreach ( $attachments as $attachment ) {

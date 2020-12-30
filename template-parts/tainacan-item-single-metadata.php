@@ -8,7 +8,9 @@
             <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'blocksy-tainacan' ) ) ); ?>
         </h2>
     <?php endif; ?>
-    <div class="tainacan-item-section__metadata" style="column-width: <?php echo get_theme_mod( $prefix . '_metadata_columns', ['mobile' => '200px', 'tablet' => '300px', 'desktop' => '400px' ] )['desktop'] ?>">
+    <div 
+            class="tainacan-item-section__metadata" 
+            style="column-width: <?php echo get_theme_mod( $prefix . '_metadata_columns', ['mobile' => '200px', 'tablet' => '300px', 'desktop' => '400px' ] )['desktop'] ?>">
         <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">
                 <h3><?php _e( 'Thumbnail', 'blocksy-tainacan' ); ?></h3>

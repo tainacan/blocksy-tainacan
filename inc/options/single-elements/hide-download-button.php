@@ -2,10 +2,7 @@
 
 if (! isset($prefix)) {
 	$prefix = '';
-} else {
-	$prefix = $prefix . '_';
 }
-
 if (! isset($enabled)) {
 	$enabled = 'no';
 }
@@ -18,7 +15,7 @@ $options = [
 		'setting' => [ 'transport' => 'postMessage' ],
 		'desc' => __( 'Toggle to never display a "Download" button when hovering the document.', 'blocksy-tainacan' ),
 		'sync' => blocksy_sync_single_post_container([
-			'prefix' => $prefix
-		])
+			'prefix' => $prefix,
+		]),
 	]
 ];

@@ -7,48 +7,68 @@
     align-items: start;
     grid-column-gap: 32px;
     column-gap: 32px;
-    grid-row-gap: 2.25rem;
-    row-gap: 2.25rem;
 
     .tainacan-item-section {
         max-width: var(--block-max-width);;
         align-self: flex-start;
         align-self: start;
+        margin-bottom: 2.25rem;
     }
-    .tainacan-item-section--document { grid-area: document }
+    .tainacan-item-section--document,
+    .tainacan-item-section--gallery { grid-area: document }
     .tainacan-item-section--attachments { grid-area: attachments }
-    .tainacan-item-section--gallery { grid-area: gallery }
     .tainacan-item-section--metadata { grid-area: metadata }
     
     &.tainacan-item-single--layout-type-dam {
-        grid-template-areas: 
+        grid-template-areas:
             'document'
             'attachments'
             'metadata';
+        grid-template-columns: 100%;
     }
     &.tainacan-item-single--layout-type-dma {
-        grid-template-areas: 
+        grid-template-areas:
             'document'
             'metadata'
             'attachments';
+        grid-template-columns: 100%;
     }
     &.tainacan-item-single--layout-type-mda {
         grid-template-areas:
-            'metadata' 
+            'metadata'
             'document'
             'attachments';
+        grid-template-columns: 100%;
     }
     &.tainacan-item-single--layout-type-mg {
         grid-template-areas:
-            'metadata gallery document' 
-            'metadata gallery attachments'
-            'metadata . .'
+            'metadata document' 
+            'metadata attachments'
+            'metadata .';
+        grid-template-columns: 60% 40%;
+
+        @media only screen and (max-width: 960px) {
+            grid-template-areas:
+            'metadata'
+            'document'
+            'attachments';
+            grid-template-columns: 100% !important;
+        }
     }
     &.tainacan-item-single--layout-type-gm {
         grid-template-areas:
-            'gallery document metadata' 
-            'gallery attachments metadata'
-            '. . metadata'
+            'document metadata' 
+            'attachments metadata'
+            '. metadata';
+        grid-template-columns: 60% 40%;
+
+        @media only screen and (max-width: 960px) {
+            grid-template-areas:
+            'document'
+            'attachments'
+            'metadata';
+            grid-template-columns: 100% !important;
+        }
     }
 
     // Headings and spacing ----------------------------
@@ -159,7 +179,7 @@
     .tainacan-item-section__gallery-items,
     .tainacan-item-section__attachments {
         position: relative;
-        padding: 0 60px;
+        padding: 0px;
         
         .swiper-button-disabled {
             display: none;
@@ -167,7 +187,17 @@
         .swiper-button-next,
         .swiper-button-prev {
             top: 65px;
-        } 
+            padding: 20px;
+            border-radius: 30px;
+            background-color: var(--background-color, #f8f9fb);
+            border: 1px solid var(--paletteColor1, #3eaf7c);
+        }
+        .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+            left: -20px;
+        }
+        .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+            right: -20px;
+        }
         .swiper-slide-thumb-active {
             font-weight: bold;
             img {
@@ -185,7 +215,7 @@
             cursor: pointer;
             word-break: break-all;
             font-size: 0.875em;
-            //padding: 0 6px;
+            max-width: 157px;
             
             @media only screen and (max-width: 380px) {
                 margin: 10px 0;
@@ -196,6 +226,7 @@
                 width: 140px;
                 height: 140px;
                 object-fit: cover;
+                transition: border-bottom 0.3s ease;
                 &:focus {
                     outline: none;
                 }
@@ -225,6 +256,7 @@
     }
     --swiper-theme-color: var(--paletteColor1, #3eaf7c);
     --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
+    --swiper-navigation-size: 1.1rem;
 
     // Photoswip zoom ---------------------------------
     .pswp__zoom-wrap .attachment-without-image {

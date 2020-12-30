@@ -2,8 +2,6 @@
 
 if (! isset($prefix)) {
 	$prefix = '';
-} else {
-	$prefix = $prefix . '_';
 }
 
 if (! isset($enabled)) {
@@ -16,7 +14,7 @@ $options = [
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
-		'desc' => __( 'Toggle to hide or not the core title from the metadada list, as it already appears on the page title.', 'blocksy' ),
+		'desc' => __( 'Toggle to hide or not the core title from the metadada list, as it already appears on the page title.', 'blocksy-tainacan' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])

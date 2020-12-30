@@ -2,13 +2,11 @@
 
 if (! isset($prefix)) {
 	$prefix = '';
-} else {
-	$prefix = $prefix . '_';
 }
 
 $options = [	
 	$prefix . 'metadata_columns' => [
-		'label' => __( 'Metadata columns width', 'blocksy' ),
+		'label' => __( 'Metadata columns width', 'blocksy-tainacan' ),
 		'type' => 'ct-slider',
 		'value' => [
 			'mobile' => '200px',
