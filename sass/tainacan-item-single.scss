@@ -291,6 +291,9 @@
     // Metadata list -------------------------------------
     .tainacan-item-section__metadata {
         height: 100%;
+        -moz-column-width: var(--column-width, 400);
+        -webkit-column-width: var(--column-width, 400);
+        column-width: var(--column-width, 400);
         
         div {
             -webkit-column-break-inside: avoid;
@@ -311,7 +314,7 @@
             -moz-column-rule: none;
             -webkit-column-gap: 0;
             -webkit-column-rule: none;
-            column-gap: 4rem;;
+            column-gap: 4rem;
             column-rule: none;
         }
         @media only screen and (min-width: 1366px) {
@@ -340,6 +343,17 @@
         }
         p {
             word-wrap: break-word;
+        }
+        .tainacan-metadata-value {
+            font-family: var(--fontFamily);
+            font-size: var(--fontSize);
+            font-weight: var(--fontWeight);
+            font-style: var(--fontStyle, inherit);
+            line-height: var(--lineHeight);
+            letter-spacing: var(--letterSpacing);
+            text-transform: var(--textTransform);
+            -webkit-text-decoration: var(--textDecoration);
+            text-decoration: var(--textDecoration);
         }
         .tainacan-item-section__metadata-thumbnail img {
             border-radius: var(--borderRadius, 3px);

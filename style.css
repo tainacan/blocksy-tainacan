@@ -269,6 +269,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   align-items: center;
   background-color: var(--backgroundColor, #f8f9fb);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   --tainacan-secondary: var(--paletteColor1, #3eaf7c);
   --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
@@ -553,7 +554,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   cursor: pointer;
   word-break: break-all;
   font-size: 0.875em;
-  max-width: 160px;
+  max-width: 157px;
 }
 
 @media only screen and (max-width: 380px) {
@@ -637,6 +638,9 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-item-section__metadata {
   height: 100%;
+  -moz-column-width: var(--column-width, 400);
+  -webkit-column-width: var(--column-width, 400);
+  column-width: var(--column-width, 400);
 }
 
 .tainacan-item-single .tainacan-item-section__metadata div {
@@ -700,6 +704,18 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-item-section__metadata p {
   word-wrap: break-word;
+}
+
+.tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value {
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
+  font-weight: var(--fontWeight);
+  font-style: var(--fontStyle, inherit);
+  line-height: var(--lineHeight);
+  letter-spacing: var(--letterSpacing);
+  text-transform: var(--textTransform);
+  -webkit-text-decoration: var(--textDecoration);
+  text-decoration: var(--textDecoration);
 }
 
 .tainacan-item-single .tainacan-item-section__metadata .tainacan-item-section__metadata-thumbnail img {

@@ -24,6 +24,9 @@ $options = [
             ], false),
             blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-columns.php', [
                 'prefix' => $prefix
+            ], false),
+            blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-typography.php', [
+                'prefix' => $prefix
             ], false)
         ]
     ]

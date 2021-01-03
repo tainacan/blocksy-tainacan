@@ -20,6 +20,19 @@ $options = [
 			'prefix' => $prefix,
 		]),
 		'inner-options' => [
+			$prefix . 'tainacan_single_item_section_font' => [
+				'type' => 'ct-typography',
+				'label' => __( 'Section labels font', 'blocksy' ),
+				'value' => blocksy_typography_default_values([
+					'size' => '26px',
+					'variation' => 'n6',
+					'line-height' => '1.3'
+				]),
+				'divider' => 'top',
+				'sync' => blocksy_sync_single_post_container([
+					'prefix' => $prefix
+				])
+			],
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [

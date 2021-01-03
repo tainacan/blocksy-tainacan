@@ -235,6 +235,7 @@ body:not(.tainacan-admin-page) {
     align-items: center;
     background-color: var(--backgroundColor, #f8f9fb);
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 
     // We also apply this here as we want to keep the same style of the .theme-items-list

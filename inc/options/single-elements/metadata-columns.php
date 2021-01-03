@@ -5,7 +5,7 @@ if (! isset($prefix)) {
 }
 
 $options = [	
-	$prefix . 'metadata_columns' => [
+	$prefix . 'tainacan_metadata_columns' => [
 		'label' => __( 'Metadata columns width', 'blocksy-tainacan' ),
 		'type' => 'ct-slider',
 		'value' => [

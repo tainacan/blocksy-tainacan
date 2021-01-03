@@ -4,7 +4,7 @@
 <?php if ( tainacan_has_document() && get_theme_mod($prefix . '_gallery_mode', 'no') != 'yes') : ?>
     <section class="tainacan-item-section tainacan-item-section--document">
         <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'blocksy-tainacan' )) != '' ) : ?>
-            <h2 id="tainacan-item-document-label">
+            <h2 class="tainacan-single-item-section" id="tainacan-item-document-label">
                 <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'blocksy-tainacan' ) ) ); ?>
             </h2>
         <?php endif; ?>

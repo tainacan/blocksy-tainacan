@@ -58,12 +58,12 @@
 
     <section class="tainacan-item-section tainacan-item-section--<?php echo ((get_theme_mod($prefix . '_gallery_mode', 'no') == 'no' ? 'attachments' : 'gallery')) ?>">
         <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (get_theme_mod($prefix . '_gallery_mode', 'no') == 'no') && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' )) != '' ) : ?>
-            <h2 id="tainacan-item-attachments-label">
+            <h2 class="tainacan-single-item-section" id="tainacan-item-attachments-label">
                 <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' ) ) ); ?>
             </h2>
         <?php endif; ?>
         <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (get_theme_mod($prefix . '_gallery_mode', 'no') == 'yes') && get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) != '') : ?>
-            <h2 id="tainacan-item-documents-label">
+            <h2 class="tainacan-single-item-section" id="tainacan-item-documents-label">
                 <?php echo esc_html( get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) ); ?>
             </h2>
         <?php endif; ?>

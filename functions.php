@@ -24,7 +24,8 @@ add_action( 'wp_enqueue_scripts', function () {
 	add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
 		blocksy_theme_get_dynamic_styles(array_merge([
 			'path' => get_stylesheet_directory() . '/global.php',
-			'chunk' => 'global'
+			'chunk' => 'global',
+			'forced_call' => true
 		], $args));
 	}, 10, 3);
 });
