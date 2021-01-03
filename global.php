@@ -7,7 +7,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
 	'selector' => blocksy_prefix_selector('.tainacan-item-section__metadata', $prefix),
-	'variableName' => 'column-width',
+	'variableName' => 'metadata-column-width',
 	'value' => get_theme_mod( $prefix . '_tainacan_metadata_columns', [
 		'mobile' => '200px',
 		'tablet' => '300px',
@@ -29,6 +29,24 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 		])
 	)
 ]);
+
+
+blc_call_fnc(['fnc' => 'blocksy_output_border'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-item-section__metadata', $prefix),
+	'variableName' => 'metadata-border',
+	'value' => get_theme_mod( $prefix . '_metadata_border', [
+		'width' => 1,
+		'style' => 'solid',
+		'color' => [
+			'color' => '#e0e5eb',
+		],
+	]),
+	'responsive' => true
+]);
+
 
 blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,

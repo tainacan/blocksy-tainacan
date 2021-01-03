@@ -10,25 +10,25 @@ if (! isset($enabled)) {
 $options = [
 	$prefix . 'tainacan_metadata_label_font' => [
 		'type' => 'ct-typography',
-		'label' => __( 'Metadata label', 'blocksy' ),
+		'label' => __( 'Metadata label', 'blocksy-tainacan' ),
 		'value' => blocksy_typography_default_values([
 			'size' => '22px',
 			'variation' => 'n6',
 			'line-height' => '1.2'
 		]),
-		'divider' => 'top',
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])
 	],
 	$prefix . 'tainacan_metadata_value_font' => [
 		'type' => 'ct-typography',
-		'label' => __( 'Metadata value', 'blocksy' ),
+		'label' => __( 'Metadata value', 'blocksy-tainacan' ),
 		'value' => blocksy_typography_default_values([
 			'size' => '17px'
 		]),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
-		])
+		]),
+		'divider' => 'bottom',
 	],
 ];

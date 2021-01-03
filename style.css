@@ -638,9 +638,9 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-item-section__metadata {
   height: 100%;
-  -moz-column-width: var(--column-width, 400);
-  -webkit-column-width: var(--column-width, 400);
-  column-width: var(--column-width, 400);
+  -moz-column-width: var(--metadata-column-width, 400px);
+  -webkit-column-width: var(--metadata-column-width, 400px);
+  column-width: var(--metadata-column-width, 400px);
 }
 
 .tainacan-item-single .tainacan-item-section__metadata div {
@@ -716,6 +716,9 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   text-transform: var(--textTransform);
   -webkit-text-decoration: var(--textDecoration);
   text-decoration: var(--textDecoration);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: var(--metadata-border, 1px solid #e0e5eb);
 }
 
 .tainacan-item-single .tainacan-item-section__metadata .tainacan-item-section__metadata-thumbnail img {
@@ -744,7 +747,37 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group {
   padding-left: 1.5rem;
-  border-left: 1px solid #f2f2f2;
+  border-left: 1px solid #e0e5eb;
+}
+
+.tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-label {
+  flex-basis: 40%;
+  margin-bottom: 0;
+  border-right: var(--metadata-border, 1px solid #e0e5eb);
+}
+
+.tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-value {
+  flex-basis: 60%;
+  padding-left: 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div {
+    flex-wrap: wrap;
+  }
+  .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-label {
+    flex-basis: 100%;
+    margin-bottom: 0.25rem;
+  }
+  .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-value {
+    flex-basis: 100%;
+    padding-left: 0;
+  }
 }
 
 .tainacan-item-single .tainacan-item-file-download {

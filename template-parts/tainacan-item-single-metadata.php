@@ -1,5 +1,5 @@
 <?php 
-    $prefix = blocksy_manager()->screen->get_prefix();
+    $prefix = blocksy_manager()->screen->get_prefix(); 
 ?>
 
 <section class="tainacan-item-section tainacan-item-section--metadata">
@@ -8,7 +8,7 @@
             <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'blocksy-tainacan' ) ) ); ?>
         </h2>
     <?php endif; ?>
-    <div class="tainacan-item-section__metadata">
+    <div class="tainacan-item-section__metadata <?php echo get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') ?>">
         <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">
                 <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'blocksy-tainacan' ); ?></h3>
@@ -18,10 +18,10 @@
         <?php do_action( 'blocksy-tainacan-single-item-metadata-begin' ); ?>
         <?php
             $args = array(
-                'before_title' => '<div><h3 class="tainacan-metadata-label">',
+                'before_title' => '<h3 class="tainacan-metadata-label">',
                 'after_title' => '</h3>',
                 'before_value' => '<p class="tainacan-metadata-value">',
-                'after_value' => '</p></div>',
+                'after_value' => '</p>',
                 'exclude_title' => (get_theme_mod($prefix . '_show_title_metadata', 'yes') === 'no')
             );
             tainacan_the_metadata( $args );
