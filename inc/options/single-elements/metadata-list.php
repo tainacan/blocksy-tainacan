@@ -40,10 +40,10 @@ $options = [
                 'title' => __( 'Design', 'blocksy' ),
                 'type' => 'tab',
                 'options' => [
-                    blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-typography.php', [
+                    blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-labels.php', [
                         'prefix' => $prefix
                     ], false),
-                    blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-border.php', [
+                    blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/metadata-values.php', [
                         'prefix' => $prefix
                     ], false)
                 ],

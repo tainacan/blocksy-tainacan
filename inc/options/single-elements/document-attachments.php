@@ -41,6 +41,9 @@ $options = [
                 'title' => __( 'Design', 'blocksy' ),
                 'type' => 'tab',
                 'options' => [
+                    blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/attachments-typography.php', [
+                        'prefix' => $prefix
+                    ], false),
                     blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/attachments-size.php', [
                         'prefix' => $prefix
                     ], false)

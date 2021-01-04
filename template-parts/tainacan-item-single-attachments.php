@@ -34,7 +34,6 @@
                     href="<?php echo $href; ?>">
                     <?php
                         echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
-                        echo '<br>';
                     ?>
                     <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
                 </a>
@@ -48,7 +47,6 @@
                     href="<?php echo $img_scr[0] ?>">
                     <?php
                         echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
-                        echo '<br>';
                     ?>
                     <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
                 </a>
@@ -108,7 +106,6 @@
                                 <li class="tainacan-item-section__attachments-file swiper-slide">
                                     <?php
                                         the_post_thumbnail('tainacan-medium');
-                                        echo '<br>';
                                     ?>
                                     <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo __( 'Document', 'blocksy-tainacan' ); ?></span>
                                 </li>

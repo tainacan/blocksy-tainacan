@@ -90,7 +90,9 @@
     h6 {
         --fontSize: 14px;
     }
-
+    .tainacan-single-item-section {
+        text-align: var(--section-alignment, left);
+    }
 
     // Document, Attachment and Gallery sections -----------------
     .tainacan-item-section__document {
@@ -231,13 +233,24 @@
                     outline: none;
                 }
             }
+            .swiper-slide-name {
+                display: block;
+                margin-top: 0.5rem;
+                font-family: var(--fontFamily);
+                font-size: var(--fontSize);
+                font-weight: var(--fontWeight);
+                font-style: var(--fontStyle, inherit);
+                line-height: var(--lineHeight);
+                letter-spacing: var(--letterSpacing);
+                text-transform: var(--textTransform);
+                -webkit-text-decoration: var(--textDecoration);
+                text-decoration: var(--textDecoration);
+            }
             a {
                 width: 100%;
                 max-width: var(--attachments-size, 140px);
-                font-size: 0.875rem; 
                 text-align: center;
                 word-break: break-all;
-                line-height: 1.5rem
             }
             a,
             a:focus,
@@ -344,7 +357,11 @@
         p {
             word-wrap: break-word;
         }
+        .tainacan-metadata-label {
+            text-align: var(--metadata-label-alignment, left);
+        }
         .tainacan-metadata-value {
+            text-align: var(--metadata-value-alignment, left);
             font-family: var(--fontFamily);
             font-size: var(--fontSize);
             font-weight: var(--fontWeight);

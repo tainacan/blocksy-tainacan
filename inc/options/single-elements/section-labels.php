@@ -28,10 +28,27 @@ $options = [
 					'variation' => 'n6',
 					'line-height' => '1.3'
 				]),
-				'divider' => 'top',
 				'sync' => blocksy_sync_single_post_container([
 					'prefix' => $prefix
 				])
+			],
+			$prefix . 'tainacan_single_item_section_alignment' => [
+				'type' => 'ct-radio',
+				'label' => __( 'Section labels text alignment', 'blocksy' ),
+				'value' => 'left',
+				'view' => 'text',
+				'attr' => [ 'data-type' => 'alignment' ],
+				'responsive' => true,
+				'design' => 'block',
+				'choices' => [
+					'left' => '',
+					'center' => '',
+					'right' => '',
+				],
+				'sync' => blocksy_sync_single_post_container([
+					'prefix' => $prefix
+				]),
+				'divider' => 'bottom',
 			],
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',

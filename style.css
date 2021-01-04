@@ -405,6 +405,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   --fontSize: 14px;
 }
 
+.tainacan-item-single .tainacan-single-item-section {
+  text-align: var(--section-alignment, left);
+}
+
 .tainacan-item-single .tainacan-item-section__document {
   display: flex;
   justify-content: center;
@@ -578,14 +582,27 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   outline: none;
 }
 
+.tainacan-item-single .tainacan-item-section__gallery-items .tainacan-item-section__attachments-file .swiper-slide-name,
+.tainacan-item-single .tainacan-item-section__attachments .tainacan-item-section__attachments-file .swiper-slide-name {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
+  font-weight: var(--fontWeight);
+  font-style: var(--fontStyle, inherit);
+  line-height: var(--lineHeight);
+  letter-spacing: var(--letterSpacing);
+  text-transform: var(--textTransform);
+  -webkit-text-decoration: var(--textDecoration);
+  text-decoration: var(--textDecoration);
+}
+
 .tainacan-item-single .tainacan-item-section__gallery-items .tainacan-item-section__attachments-file a,
 .tainacan-item-single .tainacan-item-section__attachments .tainacan-item-section__attachments-file a {
   width: 100%;
   max-width: var(--attachments-size, 140px);
-  font-size: 0.875rem;
   text-align: center;
   word-break: break-all;
-  line-height: 1.5rem;
 }
 
 .tainacan-item-single .tainacan-item-section__gallery-items .tainacan-item-section__attachments-file a,
@@ -706,7 +723,12 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   word-wrap: break-word;
 }
 
+.tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-label {
+  text-align: var(--metadata-label-alignment, left);
+}
+
 .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value {
+  text-align: var(--metadata-value-alignment, left);
   font-family: var(--fontFamily);
   font-size: var(--fontSize);
   font-weight: var(--fontWeight);

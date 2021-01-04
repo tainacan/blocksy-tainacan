@@ -35,6 +35,17 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
+	'responsive' => true,
+	'variableName' => 'section-alignment',
+	'unit' => '',
+	'selector' => blocksy_prefix_selector('.tainacan-single-item-section', $prefix),
+	'value' => get_theme_mod($prefix . '_tainacan_single_item_section_alignment', 'left')
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
 	'selector' => blocksy_prefix_selector('.tainacan-item-section__attachments-file', $prefix),
 	'variableName' => 'attachments-size',
 	'value' => get_theme_mod( $prefix . '_attachments_size', [
@@ -45,6 +56,19 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => ''
 ]);
 
+
+blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.swiper-slide-name', $prefix),
+	'font_value' => get_theme_mod($prefix . '_attachment_label_font',
+		blocksy_typography_default_values([
+			'size' => '0.875rem',
+			'line-height' => '1.5'
+		])
+	)
+]);
 
 blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 	'css' => $css,
@@ -104,6 +128,28 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 			'size' => '17px'
 		])
 	)
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'responsive' => true,
+	'variableName' => 'metadata-label-alignment',
+	'unit' => '',
+	'selector' => blocksy_prefix_selector('.tainacan-metadata-label', $prefix),
+	'value' => get_theme_mod($prefix . '_tainacan_metadata_label_alignment', 'left')
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'responsive' => true,
+	'variableName' => 'metadata-value-alignment',
+	'unit' => '',
+	'selector' => blocksy_prefix_selector('.tainacan-metadata-value', $prefix),
+	'value' => get_theme_mod($prefix . '_tainacan_metadata_value_alignment', 'left')
 ]);
 
 ?>
