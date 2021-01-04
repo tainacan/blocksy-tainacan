@@ -17,6 +17,9 @@
     }
     $prefix = blocksy_manager()->screen->get_prefix();
 
+    // Galley mode is a shortname for when documents and attachments are displayed merged in the same list
+    $is_gallery_mode = get_theme_mod($prefix . '_document_attachments_structure', 'gallery-type-1') == 'gallery-type-2';
+    
     function render_attachment_thumbnail_slide_item($attachment) {
         if ( function_exists('tainacan_get_attachment_html_url') ) {
             $href = tainacan_get_attachment_html_url($attachment->ID);
@@ -54,21 +57,21 @@
     }
 ?>
 
-<?php if ( !empty( $attachments ) || ( get_theme_mod($prefix . '_gallery_mode', 'no')  == 'yes' && tainacan_has_document() ) ) : ?>
+<?php if ( !empty( $attachments ) || ( $is_gallery_mode && tainacan_has_document() ) ) : ?>
 
-    <section class="tainacan-item-section tainacan-item-section--<?php echo ((get_theme_mod($prefix . '_gallery_mode', 'no') == 'no' ? 'attachments' : 'gallery')) ?>">
-        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (get_theme_mod($prefix . '_gallery_mode', 'no') == 'no') && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' )) != '' ) : ?>
+    <section class="tainacan-item-section tainacan-item-section--<?php echo ((!$is_gallery_mode ? 'attachments' : 'gallery')) ?>">
+        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' )) != '' ) : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-attachments-label">
                 <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' ) ) ); ?>
             </h2>
         <?php endif; ?>
-        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (get_theme_mod($prefix . '_gallery_mode', 'no') == 'yes') && get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) != '') : ?>
+        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && ($is_gallery_mode) && get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) != '') : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-documents-label">
                 <?php echo esc_html( get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) ); ?>
             </h2>
         <?php endif; ?>
 
-        <?php if ( get_theme_mod($prefix . '_gallery_mode', 'no') == 'yes' ): ?>
+        <?php if ( $is_gallery_mode ): ?>
             <div class="tainacan-item-section__gallery">
                 <div class="swiper-container-main swiper-container">
                     <ul class="swiper-wrapper">

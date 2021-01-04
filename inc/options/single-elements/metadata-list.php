@@ -8,7 +8,7 @@ if (! isset($prefix)) {
 
 $options = [
 	$prefix . 'metadata-list' => [
-		'label' => __( 'Metadata list', 'blocksy-tainacan' ),
+		'label' => __( 'Item metadata list', 'blocksy-tainacan' ),
 		'type' => 'ct-panel',
 		'sync' => blocksy_sync_whole_page([
 			'prefix' => $prefix,

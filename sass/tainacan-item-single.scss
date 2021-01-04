@@ -76,19 +76,19 @@
         --fontSize: 30px;
     }
     h2 {
-        --fontSize: 26px;
+        --fontSize: 24px;
     }
     h3 {
-        --fontSize: 22px;
-    }
-    h4 {
         --fontSize: 20px;
     }
-    h5 {
+    h4 {
         --fontSize: 18px;
     }
-    h6 {
+    h5 {
         --fontSize: 16px;
+    }
+    h6 {
+        --fontSize: 14px;
     }
 
 
@@ -215,7 +215,7 @@
             cursor: pointer;
             word-break: break-all;
             font-size: 0.875em;
-            max-width: 157px;
+            max-width: calc(var(--attachments-size, 157px) + 17px);
             
             @media only screen and (max-width: 380px) {
                 margin: 10px 0;
@@ -223,8 +223,8 @@
 
             img {
                 border-radius: var(--borderRadius, 3px);
-                width: 140px;
-                height: 140px;
+                width: var(--attachments-size, 140px);
+                height: var(--attachments-size, 140px);
                 object-fit: cover;
                 transition: border-bottom 0.3s ease;
                 &:focus {
@@ -233,7 +233,7 @@
             }
             a {
                 width: 100%;
-                max-width: 140px;
+                max-width: var(--attachments-size, 140px);
                 font-size: 0.875rem; 
                 text-align: center;
                 word-break: break-all;
@@ -356,7 +356,7 @@
             text-decoration: var(--textDecoration);
             margin-bottom: 0.75rem;
             padding-bottom: 0.75rem;
-            border-bottom: var(--metadata-border, 1px solid #e0e5eb);
+            border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
         }
         .tainacan-item-section__metadata-thumbnail img {
             border-radius: var(--borderRadius, 3px);
@@ -395,7 +395,7 @@
                 .tainacan-metadata-label {
                     flex-basis: 40%;
                     margin-bottom: 0;
-                    border-right: var(--metadata-border, 1px solid #e0e5eb);
+                    border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
                 }
                 .tainacan-metadata-value {
                     flex-basis: 60%;

@@ -36,7 +36,7 @@ $options = [
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [
-                    $prefix . 'gallery_mode' => 'no'
+                    $prefix . 'document_attachments_structure' => 'gallery-type-1'
 				],
 				'options' => [
 					$prefix . 'section_document_label' => [
@@ -64,12 +64,12 @@ $options = [
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [
-                    $prefix . 'gallery_mode' => 'yes'
+                    $prefix . 'document_attachments_structure' => 'gallery-type-1'
 				],
 				'options' => [
 					$prefix . 'section_documents_label' => [
 						'label' => __( 'Label for the "Documents" section', 'blocksy-tainacan' ),
-						'desc' => __( 'Leave it blank for not displaying any label. This section is displayed only in Gallery mode.', 'blocksy-tainacan' ),
+						'desc' => __( 'Leave it blank for not displaying any label. This section is displayed only if Documents and Attachments are displayed merged.', 'blocksy-tainacan' ),
 						'type' => 'text',
 						'design' => 'block',
 						'value' => __( 'Documents', 'blocksy-tainacan' ),

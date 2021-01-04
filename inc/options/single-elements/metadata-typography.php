@@ -12,7 +12,7 @@ $options = [
 		'type' => 'ct-typography',
 		'label' => __( 'Metadata label', 'blocksy-tainacan' ),
 		'value' => blocksy_typography_default_values([
-			'size' => '22px',
+			'size' => '20px',
 			'variation' => 'n6',
 			'line-height' => '1.2'
 		]),
