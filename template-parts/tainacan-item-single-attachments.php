@@ -20,38 +20,40 @@
     // Galley mode is a shortname for when documents and attachments are displayed merged in the same list
     $is_gallery_mode = get_theme_mod($prefix . '_document_attachments_structure', 'gallery-type-1') == 'gallery-type-2';
     
-    function render_attachment_thumbnail_slide_item($attachment) {
-        if ( function_exists('tainacan_get_attachment_html_url') ) {
-            $href = tainacan_get_attachment_html_url($attachment->ID);
-        } else {
-            $href = wp_get_attachment_url($attachment->ID, 'full');
-        }
-        if (!wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments')) :
-        ?>
-            <li class="tainacan-item-section__attachments-file swiper-slide">
-                <a 
-                    class="attachment-without-image"
-                    href="<?php echo $href; ?>">
-                    <?php
-                        echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
-                    ?>
-                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
-                </a>
-            </li>
-        <?php 
-            else: 
-            $img_scr = wp_get_attachment_image_src( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+    if (!function_exists('render_attachment_thumbnail_slide_item')) {
+        function render_attachment_thumbnail_slide_item($attachment) {
+            if ( function_exists('tainacan_get_attachment_html_url') ) {
+                $href = tainacan_get_attachment_html_url($attachment->ID);
+            } else {
+                $href = wp_get_attachment_url($attachment->ID, 'full');
+            }
+            if (!wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments')) :
             ?>
-            <li class="tainacan-item-section__attachments-file swiper-slide">
-                <a 
-                    href="<?php echo $img_scr[0] ?>">
-                    <?php
-                        echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
-                    ?>
-                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
-                </a>
-            </li>
-        <?php endif;
+                <li class="tainacan-item-section__attachments-file swiper-slide">
+                    <a 
+                        class="attachment-without-image"
+                        href="<?php echo $href; ?>">
+                        <?php
+                            echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+                        ?>
+                        <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
+                    </a>
+                </li>
+            <?php 
+                else: 
+                $img_scr = wp_get_attachment_image_src( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+                ?>
+                <li class="tainacan-item-section__attachments-file swiper-slide">
+                    <a 
+                        href="<?php echo $img_scr[0] ?>">
+                        <?php
+                            echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+                        ?>
+                        <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
+                    </a>
+                </li>
+            <?php endif;
+        }
     }
 ?>
 

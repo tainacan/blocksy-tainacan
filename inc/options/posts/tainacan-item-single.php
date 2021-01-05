@@ -16,7 +16,8 @@ $options = [
 		],
 	],
 	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/tainacan-single-structure.php', [
-		'prefix' => $post_type->name . '_single'
+		'prefix' => $post_type->name . '_single',
+		'location' => 'teste'
 	], false),
 	blocksy_get_options(get_stylesheet_directory() . '/inc/options/single-elements/section-labels.php', [
 		'prefix' => $post_type->name . '_single',

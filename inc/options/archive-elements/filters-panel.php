@@ -20,6 +20,17 @@ $options = [
 			'prefix' => $prefix,
 		]),
 		'inner-options' => [
+            $prefix . 'filters_panel_background_style' => [
+                'label' => __('Panel style', 'blocksy'),
+                'type' => 'ct-radio',
+                'value' => 'boxed',
+                'view' => 'text',
+                'divider' => 'bottom',
+                'choices' => [
+                    'simple' => __('Simple', 'blocksy'),
+                    'boxed' => __('Boxed', 'blocksy'),
+                ],
+            ],
             $prefix . 'start_with_filters_hidden' => [
                 'label' => __( 'Start with filters hidden', 'blocksy-tainacan' ),
                 'type' => 'ct-switch',

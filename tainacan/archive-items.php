@@ -1,11 +1,13 @@
 <?php 
 
 $prefix = blocksy_manager()->screen->get_prefix();
+$page_container_classes = 'page type-page hentry singular';
+
+$page_container_classes = $page_container_classes . ( get_theme_mod($prefix . '_filters_panel_background_style', 'boxed') == 'boxed' ? ' has-filters-panel-style-boxed' : '' );
 ?>
 
 <?php get_header(); ?>
-
-    <article class="page type-page hentry singular">
+    <article class="<?php echo $page_container_classes ?>">
         <header class="tainacan-collection-header" style="background-image: <?php if ( get_header_image() ) { echo('linear-gradient(to bottom, rgba(255, 255, 255, 0.3), var(--backgroundColor, #f8f9fb)), url(' . get_header_image() . ')'); } else { echo ''; } ?>">
             <div class="tainacan-collection-header__box">  
                 <?php if ( has_post_thumbnail( tainacan_get_collection_id() ) ) : 

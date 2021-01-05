@@ -78,12 +78,16 @@
   padding: 16px 10px;
 }
 
+@media screen and (max-width: 768px) {
+  .theme-items-list #filters-modal .modal-content {
+    padding: 16px 10px 16px 12vw;
+  }
+}
+
 .theme-items-list #filters-modal .modal-content #filters-items-list {
-  border-radius: var(--borderRadius, 3px);
-  background-color: var(--tainacan-item-background-color, white);
+  background-color: var(--backgroundColor, #f8f9fb);
   padding: 20px;
   margin: -3px;
-  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
 }
 
 .theme-items-list #filters-modal .modal-content #filters-items-list .filters-components-list {
@@ -227,6 +231,13 @@
 
 .theme-items-list .advanced-search-criteria-title hr {
   display: none;
+}
+
+/* Extra classes applied from customizer */
+.page.has-filters-panel-style-boxed #filters-modal .modal-content #filters-items-list {
+  border-radius: var(--borderRadius, 3px);
+  background-color: var(--tainacan-item-background-color, white);
+  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
 }
 
 /* Tooltips and Modals are outside of the items list div */
