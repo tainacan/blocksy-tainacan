@@ -21,18 +21,8 @@
 .theme-items-list {
   --tainacan-font-family: var(--fontFamily, inherit);
   --tainacan-base-font-size: var(--fontSize, 1em);
-  --tainacan-secondary: var(--paletteColor1, #3eaf7c);
-  --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
-  --tainacan-background-color: var(--backgroundColor, #f8f9fb);
-  --tainacan-item-background-color: var(--cardBackground, white);
-  --tainacan-item-hover-background-color: var(--tainacan-item-background-color, white);
   --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
-  --tainacan-input-color: var(--color, rgba(44, 62, 80, 0.9));
-  --tainacan-input-background-color: var(--formBackgroundInitialColor, white);
   --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
-  --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
-  --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
-  --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
   --tainacan-skeleton-color: rgba(252, 252, 252, 0.5);
   /* Search control */
   /* Filters panel */
@@ -278,14 +268,13 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   padding: 36px 18px 28px 18px;
   justify-content: center;
   align-items: center;
-  background-color: var(--backgroundColor, #f8f9fb);
+  background-color: var(--tainacan-background-color, #f8f9fb);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  --tainacan-secondary: var(--paletteColor1, #3eaf7c);
-  --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
-  --tainacan-background-color: var(--backgroundColor, #f8f9fb);
-  --tainacan-item-background-color: var(--cardBackground, white);
+  --headingColor: var(--tainacan-heading-color, rgba(44, 62, 80, 1));
+  --color: var(--tainacan-label-color, #454647);
+  --linkInitialColor: var(--tainacan-secondary, #3eaf7c);
 }
 
 .tainacan-collection-header .tainacan-collection-header__box {
@@ -296,7 +285,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   box-shadow: var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04));
 }
 
-.tainacan-collection-header .tainacan-collection-header__box h1 {
+.tainacan-collection-header .tainacan-collection-header__box .page-title {
   margin-bottom: 4px;
   display: inline-block;
 }

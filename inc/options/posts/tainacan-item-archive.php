@@ -32,4 +32,7 @@ $options = [
 		'enabled' => 'yes'
 	], false),
 
+	blocksy_get_options(get_stylesheet_directory() . '/inc/options/archive-elements/color-palettes.php', [
+		'prefix' => $post_type->name . '_archive'
+	], false),
 ];

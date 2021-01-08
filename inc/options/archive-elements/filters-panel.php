@@ -25,11 +25,34 @@ $options = [
                 'type' => 'ct-radio',
                 'value' => 'boxed',
                 'view' => 'text',
-                'divider' => 'bottom',
                 'choices' => [
                     'simple' => __('Simple', 'blocksy'),
                     'boxed' => __('Boxed', 'blocksy'),
                 ],
+            ],
+            blocksy_rand_md5() => [
+                'type' => 'ct-condition',
+                'condition' => [
+                    $prefix . 'filters_as_modal'  => 'no'
+                ],
+                'options' => [
+                    $prefix . 'filters_panel_size' => [
+                        'label' => __( 'Panel size', 'blocksy-tainacan' ),
+                        'type' => 'ct-slider',
+                        'value' => '20%',
+                        'units' => blocksy_units_config([
+                            [
+                                'unit' => '%',
+                                'min' => 10,
+                                'max' => 80,
+                            ]
+                        ]),
+                        'sync' => blocksy_sync_whole_page([
+                            'prefix' => $prefix
+                        ]),
+                        'divider' => 'bottom'
+                    ]
+                ]
             ],
             $prefix . 'start_with_filters_hidden' => [
                 'label' => __( 'Start with filters hidden', 'blocksy-tainacan' ),
