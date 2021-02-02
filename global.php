@@ -50,11 +50,26 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'variableName' => 'attachments-size',
 	'value' => get_theme_mod( $prefix . '_attachments_size', [
 		'mobile' => '120px',
+		'tablet' => '130px',
+		'desktop' => '140px',
+	]),
+	'unit' => ''
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.collection-thumbnail', $prefix),
+	'variableName' => 'thumbnail-size',
+	'value' => get_theme_mod( $prefix . '_hero_thumbnail_size', [
+		'mobile' => '120px',
 		'tablet' => '300px',
 		'desktop' => '140px',
 	]),
 	'unit' => ''
 ]);
+
 
 
 blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [

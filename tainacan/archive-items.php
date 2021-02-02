@@ -44,15 +44,40 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
     <article class="<?php echo $page_container_classes ?>" style="<?php echo $page_container_style ?>">
         <header class="tainacan-collection-header" style="background-image: <?php if ( get_header_image() ) { echo('linear-gradient(to bottom, rgba(255, 255, 255, 0.3), var(--tainacan-background-color, var(--background-color, #f8f9fb))), url(' . get_header_image() . ')'); } else { echo ''; } ?>">
             <div class="tainacan-collection-header__box">  
-                <?php if ( has_post_thumbnail( tainacan_get_collection_id() ) ) : 
-                    $thumbnail_id = get_post_thumbnail_id( $post->ID );
-                    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>
-                    <div class="collection-thumbnail">
-                        <img src="<?php echo get_the_post_thumbnail_url( tainacan_get_collection_id() ); ?>" alt="<?php echo esc_attr($alt); ?>">
-                    </div>
-                <?php endif; ?>
                 <?php 
-                    echo blocksy_output_hero_section('type-1');
+
+                $thumbnail_element = '';
+                $is_thumbnail_enabled = false;
+                $hero_elements = blocksy_akg_or_customizer(
+                    'hero_elements',
+                    [ 'prefix' => $prefix ],
+                    []
+                );
+                foreach ($hero_elements as $index => $single_hero_element) {
+                    if ($single_hero_element['id'] == 'custom_thumbnail') {
+                        $is_thumbnail_enabled = $single_hero_element['enabled'];
+                    }
+                }
+                if ( $is_thumbnail_enabled && has_post_thumbnail( tainacan_get_collection_id() ) ) : 
+                    $thumbnail_id = get_post_thumbnail_id( $post->ID );
+                    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+
+                    $thumbnail_element = '
+                    <div class="collection-thumbnail">
+                        <img src="' . get_the_post_thumbnail_url( tainacan_get_collection_id() ) . '" alt="' . esc_attr($alt) . '">
+                    </div>
+                    ';
+
+                endif;
+                
+                $elements = $thumbnail_element . blocksy_render_view(
+                    get_template_directory() . '/inc/components/hero/elements.php', [ 'type' => 'type-1' ]
+                ); 
+                echo blocksy_output_hero_section([
+                    'type' => 'type-1',
+                    'source' => false,
+                    'elements' => $elements
+                ]);
                 ?>
             </div>
         </header>

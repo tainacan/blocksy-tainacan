@@ -76,7 +76,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
       
       if (linkEl.classList.contains('attachment-without-image')) {
         item = {
-          html: '<div class="attachment-without-image"><iframe src="' + linkEl.href +  '"></iframe></div>'
+          html: '<div class="attachment-without-image"><iframe id="tainacan-attachment-iframe" src="' + linkEl.href +  '"></iframe></div>'
         }
       } else {
         imgWidth = linkEl.children[0] && linkEl.children[0].attributes.getNamedItem('width') ? linkEl.children[0].attributes.getNamedItem('width').value : 140;
