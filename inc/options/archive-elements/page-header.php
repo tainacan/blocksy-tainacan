@@ -39,6 +39,16 @@ $options = [
 			'prefix' => $prefix,
 		]),
 		'inner-options' => [
+            $prefix . 'page_header_background_style' => [
+                'label' => __('Header style', 'blocksy-tainacan'),
+                'type' => 'ct-radio',
+                'value' => 'boxed',
+                'view' => 'text',
+                'choices' => [
+                    'simple' => __('Simple', 'blocksy'),
+                    'boxed' => __('Boxed', 'blocksy'),
+                ],
+            ],
             $prefix . 'hero_elements' => [
                 'label' => __('Elements', 'blocksy'),
                 'type' => 'ct-layers',

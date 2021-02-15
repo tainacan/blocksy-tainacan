@@ -188,6 +188,7 @@
         }
         .swiper-button-next,
         .swiper-button-prev {
+            background-image: none;
             top: 65px;
             padding: 20px;
             border-radius: 30px;
@@ -261,9 +262,12 @@
                 color: black;
             }
             .attachment-without-image img {
+                box-sizing: border-box;
                 padding: 36px;
                 background-color: #dbdbdb;
                 object-fit: contain;
+                max-width: var(--attachments-size,140px);
+                max-height: var(--attachments-size,140px);
             }
         }
     }
@@ -298,7 +302,10 @@
             min-height: 54px;
             padding: 12px;
         }
-
+    }
+    .pswp__caption__center {
+        text-align: center;
+        font-size: 1rem;
     }
 
     // Metadata list -------------------------------------

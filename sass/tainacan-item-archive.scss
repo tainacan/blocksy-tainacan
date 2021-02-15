@@ -22,7 +22,7 @@
         background: transparent !important;
         padding: 6px 13px;
         @include display-grid;
-        grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
+        grid-template-columns: 0fr 100% 1fr;
         grid-template-rows: auto 1fr;
         grid-template-areas:
           ". searchcontrol ."
@@ -33,10 +33,8 @@
     .search-control {
         grid-area: searchcontrol;
         border-radius: 0 0 var(--borderRadius, 3px) var(--borderRadius, 3px);
-        background-color: var(--tainacan-item-background-color, white);
         padding: 20px 20px 6px 20px !important;
         margin: 5px;
-        box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
 
         .search-control-item {
             margin-bottom: 20px !important;
@@ -281,11 +279,8 @@ body:not(.tainacan-admin-page) {
     --linkInitialColor: var(--tainacan-secondary, #3eaf7c);
 
     .tainacan-collection-header__box {
-        width: var(--maxSiteWidth, 1290px);
-        border-radius: var(--borderRadius,3px) var(--borderRadius, 3px) 0 0;
-        background-color: var(--tainacan-item-background-color,#fff);
+        width: 100%;
         padding: 20px;
-        box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));
 
         .page-title {
             margin-bottom: 4px;
@@ -306,6 +301,22 @@ body:not(.tainacan-admin-page) {
                 border-radius: var(--borderRadius,3px);
             }
         }
+    }
+}
+
+.page.has-page-header-style-boxed {
+    .theme-items-list:not(.is-fullscreen) {
+        grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
+    }
+    .tainacan-collection-header .tainacan-collection-header__box {
+        width: var(--maxSiteWidth, 1290px);
+        border-radius: var(--borderRadius,3px) var(--borderRadius, 3px) 0 0;
+        background-color: var(--tainacan-item-background-color,#fff);
+        box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));
+    }
+    .search-control {
+        background-color: var(--tainacan-item-background-color, white);
+        box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
     }
 }
 

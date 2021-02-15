@@ -4,6 +4,7 @@ $prefix = blocksy_manager()->screen->get_prefix();
 
 $page_container_classes = 'page type-page hentry singular';
 $page_container_classes = $page_container_classes . ( get_theme_mod($prefix . '_filters_panel_background_style', 'boxed') == 'boxed' ? ' has-filters-panel-style-boxed' : '' );
+$page_container_classes = $page_container_classes . ( get_theme_mod($prefix . '_page_header_background_style', 'boxed') == 'boxed' ? ' has-page-header-style-boxed' : '' );
 
 $filters_panel_size = get_theme_mod($prefix . '_filters_panel_size', '20%');
 $page_container_style = '--tainacan-filter-menu-width-theme:' . $filters_panel_size . ';';
@@ -42,7 +43,15 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
 
 <?php get_header(); ?>
     <article class="<?php echo $page_container_classes ?>" style="<?php echo $page_container_style ?>">
-        <header class="tainacan-collection-header" style="background-image: <?php if ( get_header_image() ) { echo('linear-gradient(to bottom, rgba(255, 255, 255, 0.3), var(--tainacan-background-color, var(--background-color, #f8f9fb))), url(' . get_header_image() . ')'); } else { echo ''; } ?>">
+        <header 
+            class="tainacan-collection-header" 
+            style="background-image: 
+                <?php if ( get_header_image() ) { 
+                    echo('linear-gradient(to bottom, rgba(255, 255, 255, ' . (get_theme_mod($prefix . '_page_header_background_style', 'boxed') == 'boxed' ? '0.3' : '0.8') . '), var(--tainacan-background-color, var(--background-color, #f8f9fb))), url(' . get_header_image() . ')'); 
+                } else { 
+                    echo ''; 
+                } ?>"
+        >
             <div class="tainacan-collection-header__box">  
                 <?php 
 
