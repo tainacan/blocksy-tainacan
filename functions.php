@@ -360,7 +360,7 @@ function blocksy_post_navigation() {
 }
 
 /**
- * Uses Blocksy filter to customize the related posts logic on Tainacan Items page.
+ * Uses Blocksy filter to customize the related posts logic on Tainacan Items page. (NOT IN USE YET)
  */
 function blocksy_tainacan_custom_related_posts_query( $related_posts_query ) {
 
@@ -371,31 +371,52 @@ function blocksy_tainacan_custom_related_posts_query( $related_posts_query ) {
 
 		// Check if we're inside the main loop in a single Post.
 		if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
-			// In the future, we might update the related_postd_query here for Tainacan items.
+			// In the future, we might update the related_post_query here for Tainacan items.
 		}
 	}
 	return $related_posts_query;
 }
-add_filter( 'blocksy:related-posts:query-args', 'blocksy_tainacan_custom_related_posts_query', 10 );
+//add_filter( 'blocksy:related-posts:query-args', 'blocksy_tainacan_custom_related_posts_query', 10 );
+
 
 /**
- * Retrieves the current items list source link
+ * Uses Blocksy filter to add custom link on the item breadcrumb
  */
-function blocksy_tainacan_get_source_item_list_url() {
-	$args = $_GET;
-	if (isset($args['ref'])) {
-		$ref = $_GET['ref'];
-		unset($args['pos']);
-		unset($args['ref']);
-		unset($args['source_list']);
-		return $ref . '?' . http_build_query(array_merge($args));
-	} else {
-		unset($args['pos']);
-		unset($args['ref']);
-		unset($args['source_list']);
-		return tainacan_the_collection_url() . '?' . http_build_query(array_merge($args));
+function blocksy_tainacan_custom_breadcrumbs( $array ) {
+
+	// This should only happen if we have Tainacan plugin installed
+	if ( defined ('TAINACAN_VERSION') ) {
+		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$post_type = get_post_type();
+
+		// Check if we're inside the main loop in a single Post.
+		if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			$args = $_GET;
+
+			for ($i = 0; $i < count($array); $i++) {
+				
+				// Check if the current thumbnail links to the collection, then enriches its URL  
+				if (
+					isset($array[$i]['url']) &&
+					isset($args['ref']) &&
+					substr($array[$i]['url'], -strlen($args['ref']))===$args['ref']
+				) {
+					$ref = $args['ref'];
+					unset($args['pos']);
+					unset($args['ref']);
+					unset($args['source_list']);
+					$array[$i]['url'] = $ref . '?' . http_build_query(array_merge($args));
+
+					break;
+				}
+			}
+			return $array;
+		}
 	}
+
+	return $array;
 }
+add_filter( 'blocksy:breadcrumbs:items-array', 'blocksy_tainacan_custom_breadcrumbs', 10, 3 );
 
 /**
  * Adds extra customizer options to items single page template
