@@ -435,7 +435,7 @@ function blocksy_tainacan_custom_post_types_single_options( $options, $post_type
 				$post_type_object->labels->name
 			);
 
-			// Extra options to the archive items list
+			// Extra options to the single item template
 			$item_extra_options = blocksy_get_options(get_stylesheet_directory() . '/inc/options/posts/tainacan-item-single.php', [
 				'post_type' => $post_type_object,
 				'is_general_cpt' => true
@@ -528,9 +528,9 @@ function filter_the_content_in_the_main_loop( $content ) {
 add_filter( 'the_content', 'filter_the_content_in_the_main_loop');
 
 /**
- * Enqueues js scripts related to swiper, only if in TainacanSingleItem pages
+ * Enqueues js general scripts and those related to swiper, only if in TainacanSingleItem pages
  */
-function blocksy_tainacan_swiper_scripts() {
+function blocksy_tainacan_enqueue_scripts() {
 	
 	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
@@ -550,7 +550,7 @@ function blocksy_tainacan_swiper_scripts() {
 		wp_enqueue_script( 'blocksy-tainacan-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', [], BLOCKSY_TAINACAN_VERSION, true );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'blocksy_tainacan_swiper_scripts' );
+add_action( 'wp_enqueue_scripts', 'blocksy_tainacan_enqueue_scripts' );
 
 /* Requires helpers */
 require get_stylesheet_directory() . '/helpers/blocksy-integration.php';

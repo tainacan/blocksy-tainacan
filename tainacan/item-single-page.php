@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single items
+ * The template for displaying all single Tainacan items
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -29,9 +29,10 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
         $template_columns_style = 'grid-template-columns: ' . $column_metadata_width . '% calc(' . $column_documents_attachments_width . '% - 32px)';
     }
 }
+?>
 
-echo '<div class="tainacan-item-single tainacan-item-single--layout-'. $page_structure_type . '" style="' . $template_columns_style .'">';
-
+<div class="tainacan-item-single tainacan-item-single--layout-'. $page_structure_type . '" style="' . $template_columns_style .'">
+<?php
     get_template_part( 'template-parts/tainacan-item-single-document' );
     do_action( 'blocksy-tainacan-single-item-after-document' );  
 
@@ -40,7 +41,7 @@ echo '<div class="tainacan-item-single tainacan-item-single--layout-'. $page_str
     
     get_template_part( 'template-parts/tainacan-item-single-metadata' );
     do_action( 'blocksy-tainacan-single-item-after-metadata' );
+?>
+</div>
 
-echo '</div>';
-
-do_action( 'blocksy-tainacan-single-item-bottom' ); ?>
+<?php do_action( 'blocksy-tainacan-single-item-bottom' ); ?>
