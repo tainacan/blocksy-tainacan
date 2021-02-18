@@ -4,7 +4,7 @@ if (! defined('WP_DEBUG')) {
 }
 
 /** Theme version */
-const BLOCKSY_TAINACAN_VERSION = '0.0.1';
+const BLOCKSY_TAINACAN_VERSION = '0.1.0';
 
 /**
  * Enqueue scripts and styles.
@@ -23,7 +23,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	// Now, some dynamic css that is generated using blocksy dynamic css logic
 	add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
 		blocksy_theme_get_dynamic_styles(array_merge([
-			'path' => get_stylesheet_directory() . '/global.php',
+			'path' => get_stylesheet_directory() . '/inc/global.php',
 			'chunk' => 'global',
 			'forced_call' => true
 		], $args));
@@ -36,8 +36,8 @@ add_action( 'wp_enqueue_scripts', function () {
 function blocksy_tainacan_get_adjacent_item_links() {
 
 	$prefix = blocksy_manager()->screen->get_prefix();
-    $has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
 	
+	// We use Tainacan own method for obtaining previous and next item objects
 	if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
 		$adjacent_items = tainacan_get_adjacent_items();
 
@@ -63,6 +63,11 @@ function blocksy_tainacan_get_adjacent_item_links() {
 		$previous_title = get_the_title( get_previous_post() );
 		$next_title = get_the_title( get_next_post() );
 	}
+
+	// Then we obtain blocksy settings
+	$has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
+
+	$has_title = get_theme_mod($prefix . '_has_post_nav_title', 'yes') === 'yes';
 
 	$previous = '';
 	$next = '';
@@ -100,9 +105,6 @@ function blocksy_tainacan_get_adjacent_item_links() {
 			]
 		);
 			
-	} else {
-		$previous = $previous_link_url === false ? '' : '<a rel="prev" href="' . $previous_link_url . '"><i class="tainacan-icon tainacan-icon-arrowleft tainacan-icon-30px"></i>&nbsp; <span>' . $previous_title . '</span></a>';
-		$next = $next_link_url === false ? '' :'<a rel="next" href="' . $next_link_url . '"><span>' . $next_title . '</span> &nbsp;<i class="tainacan-icon tainacan-icon-arrowright tainacan-icon-30px"></i></a>';
 	}
 
 	// Creates the links
@@ -111,7 +113,7 @@ function blocksy_tainacan_get_adjacent_item_links() {
 			($has_thumb ? $previous_post_image_output : '') .
 			'<div class="item-content">' .
 				'<span class="item-label">' . __( 'Previous item', 'blocksy-tainacan' )	. '</span>' .
-				(!empty( $previous_title ) ? ('<span class="item-title">' . $previous_title . '</span>') : '') .
+				(( !empty( $previous_title ) && $has_title ) ? ('<span class="item-title">' . $previous_title . '</span>') : '') .
 			'</div>'.
 		'</a>');
 
@@ -119,7 +121,7 @@ function blocksy_tainacan_get_adjacent_item_links() {
 		'<a href="' . $next_link_url .'" rel="prev" class="nav-item-next"> ' .
 			'<div class="item-content">' .
 				'<span class="item-label">' . __( 'Next item', 'blocksy-tainacan') . '</span>' .
-				(!empty( $next_title ) ? ('<span class="item-title">' . $next_title . '</span>') : '') .
+				(( !empty( $next_title ) && $has_title) ? ('<span class="item-title">' . $next_title . '</span>') : '') .
 			'</div>' .
 			($has_thumb ? $next_post_image_output : '') .
 		'</a>');
@@ -130,6 +132,7 @@ function blocksy_tainacan_get_adjacent_item_links() {
 
 /**
  * Copy of blocksy original post navigation function.
+ * Check inc/template-tags.php post navigation file on the parent theme
  */
 function blocksy_default_post_navigation() {
 	$next_post = apply_filters(
