@@ -31,7 +31,7 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
 }
 ?>
 
-<div class="tainacan-item-single tainacan-item-single--layout-'. $page_structure_type . '" style="' . $template_columns_style .'">
+<div class="<?php echo 'tainacan-item-single tainacan-item-single--layout-'. $page_structure_type ?>" style="<?php echo $template_columns_style ?>">
 <?php
     get_template_part( 'template-parts/tainacan-item-single-document' );
     do_action( 'blocksy-tainacan-single-item-after-document' );  
