@@ -215,7 +215,7 @@
         .tainacan-item-section__attachments-file {
             text-align: center;
             vertical-align: top;
-            cursor: pointer;
+            cursor: zoom-in;
             word-break: break-all;
             font-size: 0.875em;
             max-width: calc(var(--attachments-size, 157px) + 17px);
@@ -252,13 +252,13 @@
                 max-width: var(--attachments-size, 140px);
                 text-align: center;
                 word-break: break-all;
+                cursor: zoom-in;
             }
             a,
             a:focus,
             a:hover {
                 outline: none;
                 text-decoration: none;
-                cursor: pointer;
                 color: black;
             }
             .attachment-without-image img {

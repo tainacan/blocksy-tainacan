@@ -308,6 +308,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 .tainacan-collection-header .tainacan-collection-header__box .page-title {
+  margin-top: 0px;
   margin-bottom: 4px;
   display: inline-block;
 }
@@ -594,7 +595,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single .tainacan-item-section__attachments .tainacan-item-section__attachments-file {
   text-align: center;
   vertical-align: top;
-  cursor: pointer;
+  cursor: zoom-in;
   word-break: break-all;
   font-size: 0.875em;
   max-width: calc(var(--attachments-size, 157px) + 17px);
@@ -642,6 +643,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   max-width: var(--attachments-size, 140px);
   text-align: center;
   word-break: break-all;
+  cursor: zoom-in;
 }
 
 .tainacan-item-single .tainacan-item-section__gallery-items .tainacan-item-section__attachments-file a,
@@ -652,7 +654,6 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single .tainacan-item-section__attachments .tainacan-item-section__attachments-file a:hover {
   outline: none;
   text-decoration: none;
-  cursor: pointer;
   color: black;
 }
 

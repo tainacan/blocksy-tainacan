@@ -8,25 +8,25 @@ $options = [
 		],
 	],
 
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/archive-elements/page-header.php', [
-		'prefix' => $post_type->name . '_archive'
+	blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header.php', [
+		'prefix' => $prefix . '_archive'
 	], false),
 
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/archive-elements/search-control.php', [
-		'prefix' => $post_type->name . '_archive'
+	blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/archive-elements/search-control.php', [
+		'prefix' => $prefix . '_archive'
 	], false),
 
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/archive-elements/filters-panel.php', [
-		'prefix' => $post_type->name . '_archive',
+	blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/archive-elements/filters-panel.php', [
+		'prefix' => $prefix . '_archive',
 		'enabled' => 'yes'
 	], false),
 
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/archive-elements/pagination.php', [
-		'prefix' => $post_type->name . '_archive',
+	blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/archive-elements/pagination.php', [
+		'prefix' => $prefix . '_archive',
 		'enabled' => 'yes'
 	], false),
 
-	blocksy_get_options(get_stylesheet_directory() . '/inc/options/archive-elements/color-palettes.php', [
-		'prefix' => $post_type->name . '_archive'
+	blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/archive-elements/color-palettes.php', [
+		'prefix' => $prefix . '_archive'
 	], false),
 ];
