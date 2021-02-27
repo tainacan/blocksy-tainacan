@@ -44,4 +44,15 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
 ?>
 </div>
 
+<div class="tainacan-item-single">
+<?php
+    // Edit item button
+    if ( function_exists('tainacan_the_item_edit_link') ) {
+        echo '<span class="tainacan-edit-item-collection">';
+            tainacan_the_item_edit_link();
+        echo '</span>';
+    }
+?>
+</div>
+
 <?php do_action( 'blocksy-tainacan-single-item-bottom' ); ?>

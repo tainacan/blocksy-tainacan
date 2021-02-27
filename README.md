@@ -1,6 +1,6 @@
 # Blocksy Tainacan
 
-## What's this about?
+## What is this about?
 
 This project contains the source code necessary for integrating Tainacan pages to Blocksy theme. It allows you to choose betweent two strategies: either having a child theme or a plugin that does the job.
 
@@ -44,6 +44,6 @@ const BLOCKSY_TAINACAN_IS_PLUGIN = true;
 
 Then move all files to a folder inside WordPress plugins folder (`wp-content/plugins`);
 
-Donwload and activate the theme Blocksy;
+Download and activate the theme Blocksy;
 
-Go ahead, enable Blocksy theme and have fun ;)
+Then you just have to enable Blocksy theme and have fun ;)

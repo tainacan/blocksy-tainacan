@@ -6,7 +6,8 @@ const attachmentsThumbsSwiper = new Swiper('.swiper-container-thumbs', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-  autoplay: false
+  autoplay: false,
+  centerInsufficientSlides: true
 });
 const attachmentsMainSwiper = new Swiper('.swiper-container-main', {
   slidesPerView: 1,
