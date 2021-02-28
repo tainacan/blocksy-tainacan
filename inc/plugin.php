@@ -45,7 +45,6 @@ add_action('template_redirect', 'blocksy_tainacan_archive_templates_redirects');
  */
 if ( !function_exists('blocksy_tainacan_update_extensions_paths') ) {
     function blocksy_tainacan_update_extensions_paths($paths) {
-        var_dump($paths);
         return $paths;
     }
 }

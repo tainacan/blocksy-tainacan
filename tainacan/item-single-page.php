@@ -24,9 +24,9 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
     $column_metadata_width = 100 - $column_documents_attachments_width;
 
     if ($page_structure_type == 'type-gm') {
-        $template_columns_style = 'grid-template-columns: ' . $column_documents_attachments_width . '% calc(' . $column_metadata_width . '% - 32px)';
+        $template_columns_style = 'grid-template-columns: ' . $column_documents_attachments_width . '% calc(' . $column_metadata_width . '% - 48px)';
     } else {
-        $template_columns_style = 'grid-template-columns: ' . $column_metadata_width . '% calc(' . $column_documents_attachments_width . '% - 32px)';
+        $template_columns_style = 'grid-template-columns: ' . $column_metadata_width . '% calc(' . $column_documents_attachments_width . '% - 48px)';
     }
 }
 ?>

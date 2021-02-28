@@ -5,8 +5,8 @@
     // Overall page layout structure -------------------
     @include display-grid;
     align-items: start;
-    grid-column-gap: 32px;
-    column-gap: 32px;
+    grid-column-gap: 48px;
+    column-gap: 48px;
 
     .tainacan-item-section {
         max-width: var(--block-max-width);
@@ -223,7 +223,7 @@
             @media only screen and (max-width: 380px) {
                 margin: 10px 0;
             }
-            
+
             img {
                 border-radius: var(--borderRadius, 3px);
                 width: var(--attachments-size, 140px);
