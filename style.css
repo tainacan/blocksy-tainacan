@@ -354,8 +354,8 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   display: -ms-grid;
   display: grid;
   align-items: start;
-  grid-column-gap: 32px;
-  column-gap: 32px;
+  grid-column-gap: 48px;
+  column-gap: 48px;
   --swiper-theme-color: var(--paletteColor1, #3eaf7c);
   --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
   --swiper-navigation-size: 1.1rem;
@@ -522,6 +522,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   padding: 0;
 }
 
+.tainacan-item-single .tainacan-item-section__gallery li {
+  cursor: zoom-in;
+}
+
 .tainacan-item-single .tainacan-item-section__gallery .tainacan-item-section__document {
   margin: 0;
 }
@@ -591,11 +595,17 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   padding: 0;
 }
 
+.tainacan-item-single .tainacan-item-section__gallery-items:not(.tainacan-item-section__gallery-items) .tainacan-item-section__attachments-file,
+.tainacan-item-single .tainacan-item-section__gallery-items:not(.tainacan-item-section__gallery-items) .tainacan-item-section__attachments-file > a,
+.tainacan-item-single .tainacan-item-section__attachments:not(.tainacan-item-section__gallery-items) .tainacan-item-section__attachments-file,
+.tainacan-item-single .tainacan-item-section__attachments:not(.tainacan-item-section__gallery-items) .tainacan-item-section__attachments-file > a {
+  cursor: zoom-in;
+}
+
 .tainacan-item-single .tainacan-item-section__gallery-items .tainacan-item-section__attachments-file,
 .tainacan-item-single .tainacan-item-section__attachments .tainacan-item-section__attachments-file {
   text-align: center;
   vertical-align: top;
-  cursor: zoom-in;
   word-break: break-all;
   font-size: 0.875em;
   max-width: calc(var(--attachments-size, 157px) + 17px);
@@ -643,7 +653,6 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   max-width: var(--attachments-size, 140px);
   text-align: center;
   word-break: break-all;
-  cursor: zoom-in;
 }
 
 .tainacan-item-single .tainacan-item-section__gallery-items .tainacan-item-section__attachments-file a,

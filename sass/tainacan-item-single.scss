@@ -163,6 +163,9 @@
             list-style: none; 
             padding: 0;
         }
+        li {
+            cursor: zoom-in;
+        }
         .tainacan-item-section__document {
             margin: 0;
             img {
@@ -212,10 +215,15 @@
             list-style: none; 
             padding: 0;
         }
+        &:not(.tainacan-item-section__gallery-items) {
+            .tainacan-item-section__attachments-file,
+            .tainacan-item-section__attachments-file>a {
+                cursor: zoom-in;
+            }
+        }
         .tainacan-item-section__attachments-file {
             text-align: center;
             vertical-align: top;
-            cursor: zoom-in;
             word-break: break-all;
             font-size: 0.875em;
             max-width: calc(var(--attachments-size, 157px) + 17px);
@@ -252,7 +260,6 @@
                 max-width: var(--attachments-size, 140px);
                 text-align: center;
                 word-break: break-all;
-                cursor: zoom-in;
             }
             a,
             a:focus,

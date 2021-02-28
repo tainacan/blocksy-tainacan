@@ -243,5 +243,6 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 };
 
 // execute above function
-initPhotoSwipeFromDOM(".swiper-wrapper");
+initPhotoSwipeFromDOM(".tainacan-item-section__gallery .swiper-wrapper");
+initPhotoSwipeFromDOM(".tainacan-item-section__attachments .swiper-wrapper");
 
