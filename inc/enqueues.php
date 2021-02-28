@@ -3,7 +3,7 @@
 /**
  * Enqueues styles and scripts
  * Some JS files here are only necessary for Tainacan Item pages
- */
+ */ 
 function blocksy_tainacan_enqueue_scripts() {
 
 	// First, we enqueue parent theme styles

@@ -18,21 +18,31 @@ if (! defined('WP_DEBUG') ) {
 const BLOCKSY_TAINACAN_VERSION = '0.1.0';
 const BLOCKSY_TAINACAN_IS_PLUGIN = false;
 
-$plugin_root_url = BLOCKSY_TAINACAN_IS_PLUGIN ? plugin_dir_url(__FILE__) : get_stylesheet_directory_uri();
+/* Tools to define our next constants */
+require 'utils.php';
+
+$plugin_root_url = blocksy_tainacan_get_plugin_dir_url();
 define('BLOCKSY_TAINACAN_PLUGIN_URL_PATH', $plugin_root_url);
 
-$plugin_root_dir = BLOCKSY_TAINACAN_IS_PLUGIN ? plugin_dir_path(__FILE__) : get_stylesheet_directory() ;
+$plugin_root_dir = blocksy_tainacan_get_plugin_dir_path();
 define('BLOCKSY_TAINACAN_PLUGIN_DIR_PATH', $plugin_root_dir);
 
-/* Basic styles and script enqueues */
-require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/enqueues.php';
+$blocksy_tainacan_is_blocksy_activated = blocksy_tainacan_is_blocksy_activated();
+define('BLOCKSY_TAINACAN_IS_BLOCKSY_ACTIVATED', $blocksy_tainacan_is_blocksy_activated);
 
-/* Template redirection necessary only if in a plugin */
-if ( BLOCKSY_TAINACAN_IS_PLUGIN ) {
-	require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/plugin.php';
+/* This should only be used if in the child theme or if is a plugin and blocksy theme is installed */
+if (!BLOCKSY_TAINACAN_IS_PLUGIN || (BLOCKSY_TAINACAN_IS_BLOCKSY_ACTIVATED && BLOCKSY_TAINACAN_IS_PLUGIN) ) {
+
+	/* Basic styles and script enqueues */
+	require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/enqueues.php';
+
+	/* Template redirection necessary only if in a plugin */
+	if ( BLOCKSY_TAINACAN_IS_PLUGIN ) {
+		require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/plugin.php';
+	}
+
+	/* Requires several settings, functions and helpers */
+	require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/integration.php';
+	require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/customizer.php';
+	require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/navigation.php';
 }
-
-/* Requires several settings, functions and helpers */
-require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/integration.php';
-require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/customizer.php';
-require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/navigation.php';

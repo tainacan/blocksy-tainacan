@@ -148,13 +148,13 @@ if ( !function_exists('blocksy_tainacan_the_content_for_items') ) {
 
 			// Check if we're inside the main loop in a single Post.
 			if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
-				return get_template_part( 'tainacan/item-single-page' );
+				return blocksy_tainacan_get_template_part( 'tainacan/item-single-page' );
 			}
 		}
 	
 		return $content;
 	}
 }
-add_filter( 'the_content', 'blocksy_tainacan_the_content_for_items');
+add_filter( 'the_content', 'blocksy_tainacan_the_content_for_items', 11);
 
 ?>

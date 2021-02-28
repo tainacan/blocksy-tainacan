@@ -33,13 +33,13 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
 
 <div class="<?php echo 'tainacan-item-single tainacan-item-single--layout-'. $page_structure_type ?>" style="<?php echo $template_columns_style ?>">
 <?php
-    get_template_part( 'template-parts/tainacan-item-single-document' );
+    blocksy_tainacan_get_template_part( 'template-parts/tainacan-item-single-document' );
     do_action( 'blocksy-tainacan-single-item-after-document' );  
 
-    get_template_part( 'template-parts/tainacan-item-single-attachments' );
+    blocksy_tainacan_get_template_part( 'template-parts/tainacan-item-single-attachments' );
     do_action( 'blocksy-tainacan-single-item-after-attachments' );
     
-    get_template_part( 'template-parts/tainacan-item-single-metadata' );
+    blocksy_tainacan_get_template_part( 'template-parts/tainacan-item-single-metadata' );
     do_action( 'blocksy-tainacan-single-item-after-metadata' );
 ?>
 </div>

@@ -4,7 +4,7 @@
  * Uses Template redirect for setting the proper template to items
  * archives on Tainacan pages
  */
-if ( !function_exists('blocksy_tainacan_archive_templates_redirects') )
+if ( !function_exists('blocksy_tainacan_archive_templates_redirects') ) {
     function blocksy_tainacan_archive_templates_redirects() {
         global $wp_query;
         if (is_post_type_archive()) {
@@ -43,7 +43,7 @@ add_action('template_redirect', 'blocksy_tainacan_archive_templates_redirects');
  * Uses Template redirect for setting the proper template to items
  * archives on Tainacan pages
  */
-if ( !function_exists('blocksy_tainacan_update_extensions_paths') )
+if ( !function_exists('blocksy_tainacan_update_extensions_paths') ) {
     function blocksy_tainacan_update_extensions_paths($paths) {
         var_dump($paths);
         return $paths;
