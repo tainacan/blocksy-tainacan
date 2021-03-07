@@ -317,21 +317,50 @@ if ( !function_exists('blocksy_tainacan_item_navigation') ) {
 }
 
 /**
- * Overrides parent theme blocksy post navigation logic to handle items navigation
+ * The following has to happen on hook plugins_loaded because the parent theme
+ * has already declared the function in the plugin lifecycle, somehting that
+ * is not necessary if on a child theme.
  */
-function blocksy_post_navigation() {
+if (BLOCKSY_TAINACAN_IS_PLUGIN) {
+	function blocksy_tainacan_after_theme_setup() {
 
-	// This should only happen if we have Tainacan plugin installed
-	if ( defined ('TAINACAN_VERSION') ) {
-		$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-		$post_type = get_post_type();
+		/**
+		 * Overrides parent theme blocksy post navigation logic to handle items navigation
+		 */
+		function blocksy_post_navigation() {
+		
+			// This should only happen if we have Tainacan plugin installed
+			if ( defined ('TAINACAN_VERSION') ) {
+				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+				$post_type = get_post_type();
 
-		// Check if we're inside the main loop in a single Post.
-		if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
-			return blocksy_tainacan_item_navigation();
+				// Check if we're inside the main loop in a single Post.
+				if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+					return blocksy_tainacan_item_navigation();
+				}
+			}
+			return blocksy_default_post_navigation();
 		}
 	}
-	return blocksy_default_post_navigation();
+	add_action( 'plugins_loaded', 'blocksy_tainacan_after_theme_setup' );
+} else {
+	/**
+	 * Overrides parent theme blocksy post navigation logic to handle items navigation
+	 */
+	function blocksy_post_navigation() {
+
+		// This should only happen if we have Tainacan plugin installed
+		if ( defined ('TAINACAN_VERSION') ) {
+			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+			$post_type = get_post_type();
+
+			// Check if we're inside the main loop in a single Post.
+			if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+				return blocksy_tainacan_item_navigation();
+			}
+		}
+		return blocksy_default_post_navigation();
+	}
 }
 
 /**
