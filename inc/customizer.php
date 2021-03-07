@@ -6,9 +6,9 @@
 if ( !function_exists('blocksy_tainacan_add_repository_and_terms_items_options_panel') ) {
 	function blocksy_tainacan_add_repository_and_terms_items_options_panel($options) {
 
-		$options['tainacan_repository_items_list'] = blc_call_fn(
+		$options['tainacan_repository_items_list'] = blc_call_fnc(
 			[
-				'fn' => 'blocksy_get_options',
+				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
 			],
 			BLOCKSY_TAINACAN_PLUGIN_DIR_PATH  . '/inc/options/archives/tainacan-repository-items.php',
@@ -26,9 +26,9 @@ add_filter( 'blocksy_extensions_customizer_options', 'blocksy_tainacan_add_repos
 if ( !function_exists('blocksy_tainacan_add_terms_and_terms_items_options_panel') ) {
 	function blocksy_tainacan_add_terms_and_terms_items_options_panel($options) {
 
-		$options['tainacan_terms_items_list'] = blc_call_fn(
+		$options['tainacan_terms_items_list'] = blc_call_fnc(
 			[
-				'fn' => 'blocksy_get_options',
+				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
 			],
 			BLOCKSY_TAINACAN_PLUGIN_DIR_PATH  . '/inc/options/archives/tainacan-terms-items.php',
