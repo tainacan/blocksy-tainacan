@@ -7,17 +7,21 @@ if ( !function_exists('blocksy_tainacan_is_blocksy_activated') ) {
     function blocksy_tainacan_is_blocksy_activated() {
         $theme = wp_get_theme();
         $is_correct_theme = strpos( $theme->get_stylesheet(), 'blocksy' ) !== false;
-        $is_child_theme = $theme->parent() !== false;
+
+        $is_child_theme_of_blocksy = FALSE;
+        if ($theme->parent() !== false)
+            $is_child_theme_of_blocksy = strpos( $theme->get_template(), 'blocksy' ) !== false;
+
         $another_theme_in_preview = false;
         if ( (isset( $_REQUEST['theme'] ) && strpos( strtolower( $_REQUEST['theme'] ), 'blocksy' ) === false || isset( $_REQUEST['customize_theme'] ) && strpos( strtolower( $_REQUEST['customize_theme'] ), 'blocksy' ) === false) && strpos( $_SERVER['REQUEST_URI'], 'customize' ) !== false ) {
             $another_theme_in_preview = true;
         }
-        return $is_correct_theme && !$is_child_theme && !$another_theme_in_preview;
+        return ($is_correct_theme || $is_child_theme_of_blocksy) && !$another_theme_in_preview;
     }
 }
 
 /**
- * Checks is the current activate theme is blocksy
+ * Gets plugin or theme directory URL
  */
 if ( !function_exists('blocksy_tainacan_get_plugin_dir_url') ) {
     function blocksy_tainacan_get_plugin_dir_url() {
@@ -26,7 +30,7 @@ if ( !function_exists('blocksy_tainacan_get_plugin_dir_url') ) {
 }
 
 /**
- * Checks is the current activate theme is blocksy
+ * Gets plugin or theme directory path
  */
 if ( !function_exists('blocksy_tainacan_get_plugin_dir_path') ) {
     function blocksy_tainacan_get_plugin_dir_path() {
