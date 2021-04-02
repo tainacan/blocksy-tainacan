@@ -7,13 +7,13 @@
 function blocksy_tainacan_enqueue_scripts() {
 
 	// First, we enqueue parent theme styles
-	if ( !BLOCKSY_TAINACAN_IS_PLUGIN )
+	if ( BLOCKSY_TAINACAN_IS_CHILD_THEME )
 		wp_enqueue_style( 'blocksy-parent-style', get_template_directory_uri() . '/style.css' );
 
 	// Then, this child theme styles
 	wp_enqueue_style( 'tainacan-blocksy-style',
 		BLOCKSY_TAINACAN_PLUGIN_URL_PATH . '/style.min.css',
-		BLOCKSY_TAINACAN_IS_PLUGIN ? array() : array( 'blocksy-parent-style' ),
+		!BLOCKSY_TAINACAN_IS_CHILD_THEME ? array() : array( 'blocksy-parent-style' ),
 		BLOCKSY_TAINACAN_VERSION
 	);
 

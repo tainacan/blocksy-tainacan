@@ -16,7 +16,7 @@ if (! defined('WP_DEBUG') ) {
 
 /** Theme/plugin version */
 const BLOCKSY_TAINACAN_VERSION = '0.1.0';
-const BLOCKSY_TAINACAN_IS_PLUGIN = false;
+const BLOCKSY_TAINACAN_IS_CHILD_THEME = false;
 
 /* Tools to define our next constants */
 require 'utils.php';
@@ -30,14 +30,14 @@ define('BLOCKSY_TAINACAN_PLUGIN_DIR_PATH', $plugin_root_dir);
 $blocksy_tainacan_is_blocksy_activated = blocksy_tainacan_is_blocksy_activated();
 define('BLOCKSY_TAINACAN_IS_BLOCKSY_ACTIVATED', $blocksy_tainacan_is_blocksy_activated);
 
-/* This should only be used if in the child theme or if is a plugin and blocksy theme is installed */
-if (!BLOCKSY_TAINACAN_IS_PLUGIN || (BLOCKSY_TAINACAN_IS_BLOCKSY_ACTIVATED && BLOCKSY_TAINACAN_IS_PLUGIN) ) {
+/* This should only be used if we're in the child theme or if is a plugin and blocksy theme is installed */
+if ( BLOCKSY_TAINACAN_IS_CHILD_THEME || ( BLOCKSY_TAINACAN_IS_BLOCKSY_ACTIVATED && !BLOCKSY_TAINACAN_IS_CHILD_THEME ) ) {
 
 	/* Basic styles and script enqueues */
 	require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/enqueues.php';
 
 	/* Template redirection necessary only if in a plugin */
-	if ( BLOCKSY_TAINACAN_IS_PLUGIN ) {
+	if ( !BLOCKSY_TAINACAN_IS_CHILD_THEME ) {
 		require BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/plugin.php';
 	}
 

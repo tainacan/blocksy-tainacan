@@ -321,7 +321,7 @@ if ( !function_exists('blocksy_tainacan_item_navigation') ) {
  * has already declared the function in the plugin lifecycle, somehting that
  * is not necessary if on a child theme.
  */
-if (BLOCKSY_TAINACAN_IS_PLUGIN) {
+if (!BLOCKSY_TAINACAN_IS_CHILD_THEME) {
 	function blocksy_tainacan_after_theme_setup() {
 
 		/**

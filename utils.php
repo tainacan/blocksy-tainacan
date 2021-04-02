@@ -25,7 +25,7 @@ if ( !function_exists('blocksy_tainacan_is_blocksy_activated') ) {
  */
 if ( !function_exists('blocksy_tainacan_get_plugin_dir_url') ) {
     function blocksy_tainacan_get_plugin_dir_url() {
-        return BLOCKSY_TAINACAN_IS_PLUGIN ? plugin_dir_url(__FILE__) : get_stylesheet_directory_uri();
+        return !BLOCKSY_TAINACAN_IS_CHILD_THEME ? plugin_dir_url(__FILE__) : get_stylesheet_directory_uri();
     }
 }
 
@@ -34,7 +34,7 @@ if ( !function_exists('blocksy_tainacan_get_plugin_dir_url') ) {
  */
 if ( !function_exists('blocksy_tainacan_get_plugin_dir_path') ) {
     function blocksy_tainacan_get_plugin_dir_path() {
-        return BLOCKSY_TAINACAN_IS_PLUGIN ? plugin_dir_path(__FILE__) : get_stylesheet_directory();
+        return !BLOCKSY_TAINACAN_IS_CHILD_THEME ? plugin_dir_path(__FILE__) : get_stylesheet_directory();
     }
 }
 
@@ -43,6 +43,6 @@ if ( !function_exists('blocksy_tainacan_get_plugin_dir_path') ) {
  */
 if ( !function_exists('blocksy_tainacan_get_template_part') ) {
     function blocksy_tainacan_get_template_part($path) {
-        return BLOCKSY_TAINACAN_IS_PLUGIN ? include(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/' . $path . '.php') : get_template_part($path);
+        return !BLOCKSY_TAINACAN_IS_CHILD_THEME ? include(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/' . $path . '.php') : get_template_part($path);
     }
 }
