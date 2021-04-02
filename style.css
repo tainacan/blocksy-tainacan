@@ -608,7 +608,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-label {
   flex-basis: 40%;
-  margin-bottom: 0;
+  margin-bottom: .75rem;
   border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
 }
 
@@ -676,7 +676,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   align-items: center;
 }
 
-.tainacan-item-single .tainacan-item-section__attachments-file:hover .tainacan-item-file-download {
+.tainacan-item-single .tainacan-media-component__swiper-main:hover .tainacan-item-file-download {
   opacity: 1;
   transform: scale(1);
 }

@@ -242,7 +242,7 @@
                 
                 .tainacan-metadata-label {
                     flex-basis: 40%;
-                    margin-bottom: 0;
+                    margin-bottom: .75rem;
                     border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
                 }
                 .tainacan-metadata-value {
@@ -311,7 +311,7 @@
             align-items: center;
         }
     }
-    .tainacan-item-section__attachments-file {
+    .tainacan-media-component__swiper-main {
         &:hover {
             .tainacan-item-file-download {
                 opacity: 1;

@@ -12,7 +12,7 @@
 
     global $post;
     
-    if ( function_exists('tainacan_the_media_component') && ( empty( $attachments ) || ( $is_gallery_mode && tainacan_has_document() ) ) ) {
+    if ( function_exists('tainacan_the_media_component') && ( !empty( $attachments ) || ( $is_gallery_mode && tainacan_has_document() ) ) ) {
     ?>
         <section class="tainacan-item-section tainacan-item-section--<?php echo ((!$is_gallery_mode ? 'attachments' : 'gallery')) ?>">
             <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' )) != '' ) : ?>
@@ -107,7 +107,7 @@
                         ));
                 }
             }
-
+            
             tainacan_the_media_component(
                 'tainacan-item-attachments_id-' . $post->ID,
                 $media_items_thumbs,

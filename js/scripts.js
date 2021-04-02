@@ -8,11 +8,11 @@ onDocumentLoadedDo = cb => {
 }
 
 onDocumentLoadedDo(() => {
-	console.log("Resetar as coisas aqui...");
+	//console.log("Resetar as coisas aqui...");
 });
 
 window.ctEvents.default.on('blocksy:frontend:init', () => {
-	console.log("Resetar mais coisas aqui...", tainacan_plugin);
+	//console.log("Resetar mais coisas aqui...", tainacan_plugin);
     if (tainacan_plugin?.classes?.TainacanMediaGallery) {
         (tainacan_plugin?.tainacan_media_components || []).forEach((component) => {
             new tainacan_plugin.classes.TainacanMediaGallery(
