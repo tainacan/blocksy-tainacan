@@ -2,8 +2,10 @@
     $prefix = blocksy_manager()->screen->get_prefix();
     
     // Galley mode is a shortname for when documents and attachments are displayed merged in the same list
-    $is_gallery_mode = get_theme_mod($prefix . '_document_attachments_structure', 'gallery-type-1') == 'gallery-type-2';
-
+    $is_gallery_mode            = get_theme_mod($prefix . '_document_attachments_structure', 'gallery-type-1') == 'gallery-type-2';
+    $hide_file_name_main        = get_theme_mod( $prefix . '_hide_files_name_main', 'yes') == 'yes';
+    $hide_file_caption_main     = get_theme_mod( $prefix . '_hide_files_caption_main', 'yes') == 'yes';
+    $hide_file_description_main = get_theme_mod( $prefix . '_hide_files_description_main', 'yes') == 'yes';
 ?>
 <?php if ( tainacan_has_document() && !$is_gallery_mode ) : ?>
     <section class="tainacan-item-section tainacan-item-section--document">

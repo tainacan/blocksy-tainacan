@@ -39,6 +39,7 @@ $page_container_style .= '--tainacan-input-color:' . $text_color_palette['color5
 
 $page_container_style .= 'background-color: var(--tainacan-background-color, #f8f9fb);';
 
+global $post;
 ?>
 
 <?php get_header(); ?>

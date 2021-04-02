@@ -33,6 +33,18 @@ $options = [
                     blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-name.php', [
                         'prefix' => $prefix,
                         'enabled' => 'no'
+                    ], false),
+                    blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-caption-main.php', [
+                        'prefix' => $prefix,
+                        'enabled' => 'yes'
+                    ], false),
+                    blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-name-main.php', [
+                        'prefix' => $prefix,
+                        'enabled' => 'yes'
+                    ], false),
+                    blocksy_get_options(BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-description-main.php', [
+                        'prefix' => $prefix,
+                        'enabled' => 'yes'
                     ], false)
                 ]
             ],

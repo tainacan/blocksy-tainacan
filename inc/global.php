@@ -46,7 +46,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
-	'selector' => blocksy_prefix_selector('.tainacan-item-section__attachments-file', $prefix),
+	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
 	'variableName' => 'attachments-size',
 	'value' => get_theme_mod( $prefix . '_attachments_size', [
 		'mobile' => '120px',
@@ -76,7 +76,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
-	'selector' => blocksy_prefix_selector('.swiper-slide-name', $prefix),
+	'selector' => blocksy_prefix_selector('.swiper-slide-metadata', $prefix),
 	'font_value' => get_theme_mod($prefix . '_attachment_label_font',
 		blocksy_typography_default_values([
 			'size' => '0.875rem',
