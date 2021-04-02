@@ -16,7 +16,7 @@ if (! defined('WP_DEBUG') ) {
 
 /** Theme/plugin version */
 const BLOCKSY_TAINACAN_VERSION = '0.1.0';
-const BLOCKSY_TAINACAN_IS_CHILD_THEME = false;
+const BLOCKSY_TAINACAN_IS_CHILD_THEME = true;
 
 /* Tools to define our next constants */
 require 'utils.php';
