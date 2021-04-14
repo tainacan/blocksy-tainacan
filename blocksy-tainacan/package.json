@@ -1,7 +1,7 @@
 {
   "name": "blocksy-tainacan",
-  "version": "0.1.1",
-  "description": "A Blocksy child theme compatible with Tainacan",
+  "version": "0.1.2",
+  "description": "A Blocksy plugin/child theme compatible with Tainacan",
   "main": "index.js",
   "scripts": {
     "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 sass/style.scss style.css",

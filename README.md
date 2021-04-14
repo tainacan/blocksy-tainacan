@@ -37,3 +37,31 @@ npm run build
 ```
 
 But keep in mind that the script also takes care of removing some source files not necessary for the plugin to work, such as `.scss` and `.package.json`.
+
+## After all, a Plugin or a Child Theme?
+
+By default, it is a plugin. While the most traditional strategy for creating themes compatible to Tainacan is to add some pages to the theme directly or using a child theme, this project goes the other way, which is to use it as plugin. The reason is clear: developers might prefer to create child themes of Blocksy by their own, without creating forks of this project. It is although a not-very-canonical approach, so you might be more comfortable using it as child theme.
+
+## How to use it?
+
+### As a plugin:
+
+Just move all files to a folder inside WordPress plugins folder (`wp-content/plugins`) (which is what the script does);
+
+Download and activate the Blocksy. And Tainacan, of course;
+
+Then you just have to enable Blocksy theme and have fun ;)
+
+### As a child theme:
+
+Just go to `functions.php` file and set the constant as you prefer:
+
+```php
+const BLOCKSY_TAINACAN_IS_CHILD_THEME = true;
+```
+
+Then move all files to a folder inside WordPress themes folder (`wp-content/themes`);
+
+Download the Blocksy parent theme. And Tainacan, of course;
+
+Go ahead, enable the child theme and have fun ;)
