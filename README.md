@@ -1,4 +1,4 @@
-# Blocksy Tainacan
+# Tainacan Support for Blocksy
 
 This plugin integrates Tainacan pages with Blocksy theme.
 
@@ -31,7 +31,7 @@ To, besides that, move the necessary plugin files to your wordpress plugin direc
 If you don't like the script you can bundle things by yourself:
 
 ```sh
-cd blocksy-tainacan
+cd tainacan-blocksy
 npm install
 npm run build
 ```
@@ -57,7 +57,7 @@ Then you just have to enable Blocksy theme and have fun ;)
 Just go to `functions.php` file and set the constant as you prefer:
 
 ```php
-const BLOCKSY_TAINACAN_IS_CHILD_THEME = true;
+const TAINACAN_BLOCKSY_IS_CHILD_THEME = true;
 ```
 
 Then move all files to a folder inside WordPress themes folder (`wp-content/themes`);

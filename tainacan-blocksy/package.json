@@ -1,0 +1,26 @@
+{
+  "name": "tainacan-blocksy",
+  "version": "0.1.3",
+  "description": "A Blocksy plugin/child theme compatible with Tainacan",
+  "main": "index.js",
+  "scripts": {
+    "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 sass/style.scss style.css",
+    "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output style.min.css style.css",
+    "build": "npm run compile-styles && npm run css-minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tainacan/blocksy-tainacan.git"
+  },
+  "author": "mateuswetah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tainacan/blocksy-tainacan/issues"
+  },
+  "homepage": "https://github.com/tainacan/blocksy-tainacan#readme",
+  "devDependencies": {
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^4.14.1"
+  },
+  "dependencies": {}
+}

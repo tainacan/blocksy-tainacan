@@ -1,0 +1,38 @@
+/**
+ * Theme Name: Tainacan Support for Blocksy
+ * Description: A Tainacan plugin/child theme compatible with Blocksy theme
+ * Author: Tainacan
+ * Template: blocksy
+ * Text Domain: tainacan-blocksy
+ */
+
+ /* Tainacan Gutenberg Blocks colors */
+ :root {
+    --tainacan-block-primary: var(--paletteColor1, #3eaf7c);
+    --tainacan-block-gray0: var(--backgroundColor, #f8f9fb);
+    --tainacan-block-gray1: var(--backgroundColor, #f8f9fb);
+    --tainacan-block-gray2: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-block-gray3: var(--formBorderInitialColor, #e0e5eb);
+    --tainacan-block-gray4: var(--color, rgba(44, 62, 80, 0.9));
+    --tainacan-block-gray5: var(--headingColor, rgba(44, 62, 80, 1));
+ }
+
+// Grid mixin for display: grid compatibility
+@mixin display-grid {
+   flex-wrap: wrap;
+   display: flex;
+   display: -ms-grid;
+   display: grid;
+}
+@mixin grid-child ($col-start, $col-end, $row-start, $row-end) {
+   -ms-grid-column: $col-start;
+   -ms-grid-column-span: $col-end - $col-start;
+   -ms-grid-row: $row-start;
+   -ms-grid-row-span: $row-end - $row-start;
+   grid-column: #{$col-start}/#{$col-end};
+   grid-row: #{$row-start}/#{$row-end};
+}
+
+/* Remaining imports */
+@import './tainacan-item-archive.scss';
+@import './tainacan-item-single.scss';
