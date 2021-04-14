@@ -28,9 +28,9 @@ Upload the files to the plugins directory and activate it. You can also install 
 
 Once activated, go to the theme customizer and play around with Tainacan-related options for each of your collections.
  
-This plugin will only work with [Tainacan plugin](https://wordpress.org/plugins/tainacan/) active, preferably with a version greater than or equal to 0.18;
+This plugin will only work with [Tainacan plugin](https://wordpress.org/plugins/tainacan/) active, preferably with a version greater than or equal to 0.17.4;
 
-This plugin will only work with [Blocksy theme](https://wordpress.org/themes/blocksy/) active, preferably with a version greater than or equal to 1.7.0;
+Also, this plugin will only work with [Blocksy theme](https://wordpress.org/themes/blocksy/) active, preferably with a version greater than or equal to 1.7.0;
 
 
 == Find out more ==
