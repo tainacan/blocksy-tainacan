@@ -22,6 +22,16 @@ $default_hero_elements[] = [
 ];
 
 $default_hero_elements[] = [
+	'id' => 'breadcrumbs',
+	'enabled' => true,
+	'description_visibility' => [
+		'desktop' => true,
+		'tablet' => true,
+		'mobile' => false,
+	]
+];
+
+$default_hero_elements[] = [
 	'id' => 'custom_description',
 	'enabled' => true,
 	'description_visibility' => [
@@ -55,10 +65,7 @@ $options = [
                 'attr' => [ 'data-layers' => 'title-elements' ],
                 'design' => 'block',
                 'value' => $default_hero_elements,
-    
-                'sync' => blocksy_sync_whole_page([
-                    'prefix' => $prefix
-                ]),
+                'sync' => '',
     
                 'settings' => [
                     'breadcrumbs' => [

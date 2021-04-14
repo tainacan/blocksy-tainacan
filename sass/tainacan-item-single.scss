@@ -311,12 +311,14 @@
             align-items: center;
         }
     }
-    .tainacan-media-component__swiper-main {
-        &:hover {
-            .tainacan-item-file-download {
-                opacity: 1;
-                transform: scale(1);
-            }
+    .tainacan-item-section__document {
+        position: relative;
+    }
+    .tainacan-media-component__swiper-main,
+    .tainacan-item-section__document {
+        &:hover .tainacan-item-file-download {
+            opacity: 1;
+            transform: scale(1);
         }
     }
 }

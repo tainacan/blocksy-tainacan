@@ -20,7 +20,6 @@ $options = [
 			'<a href="https://creativethemes.com/blocksy/docs/general-options/colors/" target="_blank">',
 			'</a>'
 		),
-		'setting' => [ 'transport' => 'postMessage' ],
 		'predefined' => true,
 		'wrapperAttr' => [
 			'data-type' => 'color-palette',
@@ -70,9 +69,7 @@ $options = [
 				]
 			]
 		],
-		'sync' => blocksy_sync_whole_page([
-			'prefix' => $prefix
-		]),
+		'sync' => '',
     ],
     
     $prefix . 'items_list_text_palette' => [
@@ -85,7 +82,6 @@ $options = [
 			'<a href="https://creativethemes.com/blocksy/docs/general-options/colors/" target="_blank">',
 			'</a>'
 		),
-		'setting' => [ 'transport' => 'postMessage' ],
 		'predefined' => true,
 		'wrapperAttr' => [
 			'data-type' => 'color-palette',
@@ -132,8 +128,6 @@ $options = [
 				]
 			]
 		],
-		'sync' => blocksy_sync_whole_page([
-			'prefix' => $prefix
-		]),
+		'sync' => '',
 	]
 ];

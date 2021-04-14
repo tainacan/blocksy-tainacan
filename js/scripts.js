@@ -1,18 +1,5 @@
-// Copy of Blocksy theme's onDocumentLoaded from their helpers package 'blocksy-frontend'
-onDocumentLoadedDo = cb => {
-	if (/comp|inter|loaded/.test(document.readyState)) {
-		cb();
-	} else {
-		document.addEventListener('DOMContentLoaded', cb, false);
-	}
-}
-
-onDocumentLoadedDo(() => {
-	//console.log("Resetar as coisas aqui...");
-});
-
 window.ctEvents.default.on('blocksy:frontend:init', () => {
-	//console.log("Resetar mais coisas aqui...", tainacan_plugin);
+	console.log("Resetar mais coisas aqui...", tainacan_plugin);
     if (tainacan_plugin?.classes?.TainacanMediaGallery && tainacan_plugin?.tainacan_media_components) {
         (Object.values(tainacan_plugin.tainacan_media_components) || []).forEach((component) => {
             new tainacan_plugin.classes.TainacanMediaGallery(
@@ -22,4 +9,6 @@ window.ctEvents.default.on('blocksy:frontend:init', () => {
             );
         });
     }
+
+    document.dispatchEvent(new Event('TainacanReloadItemsListComponent'));
 });
