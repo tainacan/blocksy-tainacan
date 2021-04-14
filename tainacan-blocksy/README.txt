@@ -49,6 +49,13 @@ Tainacan Support for Blocksy plugin is distributed under the terms of the GNU GP
 License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENSE
 
 
+== Screenshots ==
+
+1. With the plugin enabled, your customizer will offer options for each Tainacan collection items list and item page, besides the repository and term items list page;
+2. The item single page can be customized for different layouts, so you can decide how to display the document, attachments and metadata;
+3. Besides that, Blocksy offers different title banners, post navigation and related post features that can also be used in your item single page;
+
+
 == Changelog ==
 
 = 0.1.3 =
