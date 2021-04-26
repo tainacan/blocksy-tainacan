@@ -312,7 +312,7 @@ if ( !function_exists('tainacan_blocksy_item_navigation') ) {
 				<?php } ?>
 			</nav>
 			<?php endif; ?>
-		<?
+		<?php
 	}
 }
 
