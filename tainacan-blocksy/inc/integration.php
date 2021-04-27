@@ -6,27 +6,26 @@
  * I renamed the usage from 'fn' to 'fnc' to avoid future conflicts
  */
 if (! function_exists('blc_call_fnc')) {
-    function blc_call_fnc($args = [], ...$params) {
-        $args = wp_parse_args(
-            $args,
-            [
-                'fnc' => null,
+	function blc_call_fnc($args = [], ...$params) {
+		$args = wp_parse_args(
+			$args,
+			[
+				'fnc' => null,
+				// string | null | array
+				'default' => ''
+			]
+		);
 
-                // string | null | array
-                'default' => ''
-            ]
-        );
+		if (! $args['fnc']) {
+			throw new Error('$fnc must be specified!');
+		}
 
-        if (! $args['fnc']) {
-            throw new Error('$fnc must be specified!');
-        }
+		if (! function_exists($args['fnc'])) {
+			return $args['default'];
+		}
 
-        if (! function_exists($args['fnc'])) {
-            return $args['default'];
-        }
-
-        return call_user_func($args['fnc'], ...$params);
-    }
+		return call_user_func($args['fnc'], ...$params);
+	}
 }
 
 /**
