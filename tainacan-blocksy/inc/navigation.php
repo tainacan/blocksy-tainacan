@@ -292,6 +292,7 @@ if ( !function_exists('tainacan_blocksy_item_navigation') ) {
 		$next = $adjacent_links['next'];
 		}
 		
+
 		if ($previous !== '' || $next !== '') {
 			echo '<nav class="' . esc_attr( $container_class ) . '">';
 			if ( $previous !== '' ) {
