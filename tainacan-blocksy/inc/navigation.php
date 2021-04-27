@@ -134,8 +134,6 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 			]
 		));
 
-		$home_page_url = get_home_url();
-
 		$post_slug = get_post_type() === 'post' ? __( 'Post', 'blocksy' ) : get_post_type_object( get_post_type() )->labels->singular_name;
 		$post_slug = '<span>' . $post_slug . '</span>';
 
@@ -188,14 +186,14 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 		?>
 
 			<nav class="<?php echo esc_attr( $container_class ); ?>">
-				<?php if ($next_post) { ?>
+				<?php if ($next_post): ?>
 					<a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="nav-item-prev">
-						<?php if ($has_thumb) { ?>
+						<?php if ($has_thumb): ?>
 							<?php
 								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								echo $next_post_image_output;
 							?>
-						<?php } ?>
+						<?php endif; ?>
 
 						<div class="item-content">
 							<span class="item-label">
@@ -208,19 +206,19 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 								?>
 							</span>
 
-							<?php if ( ! empty( $next_title ) ) { ?>
+							<?php if ( ! empty( $next_title ) ): ?>
 								<span class="item-title">
 									<?php echo wp_kses_post($next_title); ?>
 								</span>
-							<?php } ?>
+							<?php endif; ?>
 						</div>
 
 					</a>
-				<?php } else { ?>
+				<?php else: ?>
 					<div class="nav-item-prev"></div>
-				<?php } ?>
+				<?php endif; ?>
 
-				<?php if ( $previous_post ) { ?>
+				<?php if ( $previous_post ) : ?>
 					<a href="<?php echo esc_url( get_permalink( $previous_post ) ); ?>" class="nav-item-next">
 						<div class="item-content">
 							<span class="item-label">
@@ -233,22 +231,20 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 								?>
 							</span>
 
-							<?php if ( ! empty( $previous_title ) ) { ?>
+							<?php if ( ! empty( $previous_title ) ) : ?>
 								<span class="item-title">
 									<?php echo wp_kses_post($previous_title); ?>
 								</span>
-							<?php } ?>
+							<?php endif; ?>
 						</div>
 
-						<?php if ($has_thumb) { ?>
-							<?php
-								echo $previous_post_image_output;
-							?>
-						<?php } ?>
+						<?php if ($has_thumb) : ?>
+							<?php echo $previous_post_image_output; ?>
+						<?php endif; ?>
 					</a>
-				<?php } else { ?>
+				<?php else : ?>
 					<div class="nav-item-next"></div>
-				<?php } ?>
+				<?php endif; ?>
 
 			</nav>
 
@@ -296,23 +292,20 @@ if ( !function_exists('tainacan_blocksy_item_navigation') ) {
 		$next = $adjacent_links['next'];
 		}
 		
-		?>
-			<?php if ($previous !== '' || $next !== '') : ?>
-				<nav class="<?php echo esc_attr( $container_class ); ?>">
-				<?php if ( $previous !== '' ) {
-					echo $previous;
-				} else { ?>
-					<div class="nav-item-prev"></div>
-				<?php } ?>
-
-				<?php if ( $next !== '' ) {
-					echo $next;
-				} else { ?>
-					<div class="nav-item-next"></div>
-				<?php } ?>
-			</nav>
-			<?php endif; ?>
-		<?
+		if ($previous !== '' || $next !== '') {
+			echo '<nav class="' . esc_attr( $container_class ) . '">';
+			if ( $previous !== '' ) {
+				echo $previous;
+			} else {
+				echo '<div class="nav-item-prev"></div>';
+			}
+			if ( $next !== '' ) {
+				echo $next;
+			} else { 
+				echo '<div class="nav-item-next"></div>';
+			}
+			echo '</nav>';
+		};
 	}
 }
 
