@@ -147,7 +147,7 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 			$post_type = get_post_type();
 
 			// Check if we're inside the main loop in a single Post.
-			if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			if ( in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
 				return tainacan_blocksy_get_template_part( 'tainacan/item-single-page' );
 			}
 		}

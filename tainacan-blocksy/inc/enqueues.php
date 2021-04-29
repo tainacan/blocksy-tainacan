@@ -10,21 +10,12 @@ function tainacan_blocksy_enqueue_scripts() {
 	if ( TAINACAN_BLOCKSY_IS_CHILD_THEME )
 		wp_enqueue_style( 'blocksy-parent-style', get_template_directory_uri() . '/style.css' );
 
-	// Then, this child theme styles
+	// Then, this child plugin/theme styles
 	wp_enqueue_style( 'tainacan-blocksy-style',
 		TAINACAN_BLOCKSY_PLUGIN_URL_PATH . '/style.min.css',
 		!TAINACAN_BLOCKSY_IS_CHILD_THEME ? array() : array( 'blocksy-parent-style' ),
 		TAINACAN_BLOCKSY_VERSION
 	);
-
-	// Now, some dynamic css that is generated using blocksy dynamic css logic
-	add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
-		blocksy_theme_get_dynamic_styles(array_merge([
-			'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
-			'chunk' => 'global',
-			'forced_call' => true
-		], $args));
-	}, 10, 3);
 
 	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
@@ -34,6 +25,18 @@ function tainacan_blocksy_enqueue_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'tainacan_blocksy_enqueue_scripts' );
+
+/**
+ * Now, some dynamic css that is generated using blocksy dynamic css logic
+ */
+add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
+	error_log("aqui");
+	blocksy_theme_get_dynamic_styles(array_merge([
+		'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
+		'chunk' => 'global',
+		'forced_call' => true
+	], $args));
+}, 10, 3);
 
 /**
  * Enqueues front-end CSS for the items page fixed filters logic.

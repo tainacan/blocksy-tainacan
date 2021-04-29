@@ -43,6 +43,10 @@ if ( !function_exists('tainacan_blocksy_get_plugin_dir_path') ) {
  */
 if ( !function_exists('tainacan_blocksy_get_template_part') ) {
     function tainacan_blocksy_get_template_part($path) {
-        return !TAINACAN_BLOCKSY_IS_CHILD_THEME ? include(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/' . $path . '.php') : get_template_part($path);
+        if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
+            include(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/' . $path . '.php');
+            return; // Should not return this, as include contains boolean
+        } else
+            return get_template_part($path);
     }
 }

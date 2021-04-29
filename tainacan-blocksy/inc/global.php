@@ -41,7 +41,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'selector' => blocksy_prefix_selector('.tainacan-single-item-section', $prefix),
 	'value' => get_theme_mod($prefix . '_tainacan_single_item_section_alignment', 'left')
 ]);
-
+error_log(json_encode(get_theme_mod( $prefix . '_attachments_size')));
 blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
