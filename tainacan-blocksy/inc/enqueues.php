@@ -30,7 +30,6 @@ add_action( 'wp_enqueue_scripts', 'tainacan_blocksy_enqueue_scripts' );
  * Now, some dynamic css that is generated using blocksy dynamic css logic
  */
 add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
-	error_log("aqui");
 	blocksy_theme_get_dynamic_styles(array_merge([
 		'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
 		'chunk' => 'global',
