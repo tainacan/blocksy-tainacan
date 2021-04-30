@@ -30,6 +30,9 @@ define('TAINACAN_BLOCKSY_PLUGIN_DIR_PATH', $plugin_root_dir);
 $tainacan_blocksy_is_blocksy_activated = tainacan_blocksy_is_blocksy_activated();
 define('TAINACAN_BLOCKSY_IS_BLOCKSY_ACTIVATED', $tainacan_blocksy_is_blocksy_activated);
 
+$tainacan_blocksy_theme_version = tainacan_blocksy_get_theme_version();
+define('TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION', $tainacan_blocksy_theme_version);
+
 /* This should only be used if we're in the child theme or if is a plugin and blocksy theme is installed */
 if ( TAINACAN_BLOCKSY_IS_CHILD_THEME || ( TAINACAN_BLOCKSY_IS_BLOCKSY_ACTIVATED && !TAINACAN_BLOCKSY_IS_CHILD_THEME ) ) {
 

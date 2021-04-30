@@ -20,6 +20,29 @@ if ( !function_exists('tainacan_blocksy_is_blocksy_activated') ) {
     }
 }
 
+
+/**
+ * Gets version of current theme
+ */
+if ( !function_exists('tainacan_blocksy_get_theme_version') ) {
+    function tainacan_blocksy_get_theme_version() {
+
+        if ( tainacan_blocksy_is_blocksy_activated() ) {
+            $theme = wp_get_theme();
+    
+            $is_child_theme_of_blocksy = FALSE;
+
+            if ($theme->parent() !== false)
+                $is_child_theme_of_blocksy = strpos( $theme->get_template(), 'blocksy' ) !== false;
+                
+            return $is_child_theme_of_blocksy ? $theme->parent()->get('Version') : $theme->get('Version');
+        } else {
+            return NULL;
+        }
+    }
+}
+
+
 /**
  * Gets plugin or theme directory URL
  */

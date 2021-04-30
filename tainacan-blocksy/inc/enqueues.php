@@ -29,13 +29,33 @@ add_action( 'wp_enqueue_scripts', 'tainacan_blocksy_enqueue_scripts' );
 /**
  * Now, some dynamic css that is generated using blocksy dynamic css logic
  */
-add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
-	blocksy_theme_get_dynamic_styles(array_merge([
-		'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
-		'chunk' => 'global',
-		'forced_call' => true
-	], $args));
-}, 10, 3);
+
+if ( TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION !== NULL && ( version_compare(TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION, '1.7.9') <= 0 ) ) {
+	add_action('blocksy:global-dynamic-css:enqueue', function ($args) {
+		blocksy_theme_get_dynamic_styles(array_merge([
+			'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
+			'chunk' => 'global',
+			'forced_call' => true
+		], $args));
+	}, 10, 3);
+} else {
+	add_action('blocksy:global-dynamic-css:enqueue:inline', function ($args) {
+		if ( defined ('TAINACAN_VERSION') ) {	
+
+			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+			$post_type = get_post_type();
+
+			// Check if we're inside the main loop in a single Post.
+			if ( in_array($post_type, $collections_post_types) ) {
+				blocksy_theme_get_dynamic_styles(array_merge([
+					'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
+					'chunk' => 'global',
+					'forced_call' => true
+				], $args));
+			}
+		}
+	}, 10, 3);
+}
 
 /**
  * Enqueues front-end CSS for the items page fixed filters logic.
