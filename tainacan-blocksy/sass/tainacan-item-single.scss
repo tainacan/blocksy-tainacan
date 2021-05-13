@@ -313,6 +313,12 @@
     }
     .tainacan-item-section__document {
         position: relative;
+
+        &>.twitter-tweet,
+        &>iframe.wp-embedded-content {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     .tainacan-media-component__swiper-main,
     .tainacan-item-section__document {

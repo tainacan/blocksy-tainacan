@@ -68,7 +68,7 @@
 }
 
 .theme-items-list #filters-modal .modal-content {
-  padding: 16px 10px;
+  padding: 16px 10px !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -105,7 +105,7 @@
 
 .theme-items-list #items-list-area #items-list-results .table-container {
   min-width: 100%;
-  padding-top: 14px;
+  padding-top: 0px;
   padding-left: 10px;
   padding-bottom: 14px;
   padding-right: 10px;
@@ -678,6 +678,12 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-item-section__document {
   position: relative;
+}
+
+.tainacan-item-single .tainacan-item-section__document > .twitter-tweet,
+.tainacan-item-single .tainacan-item-section__document > iframe.wp-embedded-content {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tainacan-item-single .tainacan-media-component__swiper-main:hover .tainacan-item-file-download,
