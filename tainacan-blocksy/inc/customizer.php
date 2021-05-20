@@ -15,17 +15,6 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 			[], false
 		);
 
-		return $options;
-	}
-}
-add_filter( 'blocksy_extensions_customizer_options', 'tainacan_blocksy_add_repository_and_terms_items_options_panel' );
-
-/**
- * Adds Tainacan terms and term items list to settings on customizer.
- */
-if ( !function_exists('tainacan_blocksy_add_terms_and_terms_items_options_panel') ) {
-	function tainacan_blocksy_add_terms_and_terms_items_options_panel($options) {
-
 		$options['tainacan_terms_items_list'] = blc_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
@@ -34,11 +23,12 @@ if ( !function_exists('tainacan_blocksy_add_terms_and_terms_items_options_panel'
 			TAINACAN_BLOCKSY_PLUGIN_DIR_PATH  . '/inc/options/archives/tainacan-terms-items.php',
 			[], false
 		);
-		
+
 		return $options;
 	}
 }
-add_filter( 'blocksy_extensions_customizer_options', 'tainacan_blocksy_add_terms_and_terms_items_options_panel' );
+add_filter( 'blocksy_extensions_customizer_options', 'tainacan_blocksy_add_repository_and_terms_items_options_panel' );
+
 
 /**
  * Adds extra customizer options to items single page template
