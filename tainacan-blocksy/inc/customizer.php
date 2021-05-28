@@ -3,6 +3,7 @@
 /**
  * Adds Tainacan repository and term items list to settings on customizer.
  */
+
 if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_panel') ) {
 	function tainacan_blocksy_add_repository_and_terms_items_options_panel($options) {
 
@@ -23,7 +24,6 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 			TAINACAN_BLOCKSY_PLUGIN_DIR_PATH  . '/inc/options/archives/tainacan-terms-items.php',
 			[], false
 		);
-
 		return $options;
 	}
 }
@@ -101,7 +101,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 				}
 			}
 		}
-
+		
 		return $options;
 	}
 }

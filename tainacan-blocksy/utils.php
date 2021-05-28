@@ -1,22 +1,29 @@
 <?php
 
 /**
- * Checks is the current activate theme is blocksy
+ * Checks if the current activate theme is either blocksy, a child theme of blocksy or one of them in a customizer preview
  */
 if ( !function_exists('tainacan_blocksy_is_blocksy_activated') ) {
     function tainacan_blocksy_is_blocksy_activated() {
         $theme = wp_get_theme();
         $is_correct_theme = strpos( $theme->get_stylesheet(), 'blocksy' ) !== false;
 
-        $is_child_theme_of_blocksy = FALSE;
+        $is_child_theme_of_blocksy = false;
         if ($theme->parent() !== false)
             $is_child_theme_of_blocksy = strpos( $theme->get_template(), 'blocksy' ) !== false;
 
-        $another_theme_in_preview = false;
-        if ( (isset( $_REQUEST['theme'] ) && strpos( strtolower( $_REQUEST['theme'] ), 'blocksy' ) === false || isset( $_REQUEST['customize_theme'] ) && strpos( strtolower( $_REQUEST['customize_theme'] ), 'blocksy' ) === false) && strpos( $_SERVER['REQUEST_URI'], 'customize' ) !== false ) {
-            $another_theme_in_preview = true;
+        if ( isset($_SERVER['REQUEST_URI']) && strpos( $_SERVER['REQUEST_URI'], 'customize' ) !== false ) {
+            $preview_theme_slug = isset( $_REQUEST['theme'] ) ? strtolower($_REQUEST['theme']) : ( isset( $_REQUEST['customize_theme'] ) ? strtolower($_REQUEST['customize_theme']) : '');
+            
+            $preview_theme = wp_get_theme($preview_theme_slug);
+            $is_correct_theme = strpos( $preview_theme->get_stylesheet(), 'blocksy' ) !== false;
+
+            $is_child_theme_of_blocksy = false;
+            if ($preview_theme->parent() !== false)
+                $is_child_theme_of_blocksy = strpos( $preview_theme->get_template(), 'blocksy' ) !== false;
         }
-        return ($is_correct_theme || $is_child_theme_of_blocksy) && !$another_theme_in_preview;
+        
+        return $is_correct_theme || $is_child_theme_of_blocksy;
     }
 }
 

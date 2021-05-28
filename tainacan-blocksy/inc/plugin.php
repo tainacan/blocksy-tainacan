@@ -13,8 +13,8 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
             $current_post_type = get_post_type();
             
             if (in_array($current_post_type, $collections_post_types)) {
-                
-                if (is_post_type_archive()) { 			
+
+                if (is_post_type_archive()) {
                     include( TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/tainacan/archive-items.php' );
                     exit;
                 } 
@@ -37,7 +37,7 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
         
     }
 }
-add_action('template_redirect', 'tainacan_blocksy_archive_templates_redirects');
+add_action('template_redirect', 'tainacan_blocksy_archive_templates_redirects', 2, 0);
 
 /**
  * Uses Template redirect for setting the proper template to items
