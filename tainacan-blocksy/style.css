@@ -332,6 +332,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   border-radius: var(--borderRadius, 3px);
 }
 
+.tainacan-collection-header .tainacan-collection-header__box .page-description {
+  display: block;
+}
+
 .page.has-page-header-style-boxed .theme-items-list:not(.is-fullscreen) {
   grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
 }

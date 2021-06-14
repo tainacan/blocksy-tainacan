@@ -1,6 +1,6 @@
 {
   "name": "tainacan-blocksy",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A Blocksy plugin/child theme compatible with Tainacan",
   "main": "index.js",
   "scripts": {

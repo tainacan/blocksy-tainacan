@@ -304,6 +304,9 @@ body:not(.tainacan-admin-page) {
                 border-radius: var(--borderRadius,3px);
             }
         }
+        .page-description {
+            display: block;
+        }
     }
 }
 

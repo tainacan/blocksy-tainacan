@@ -5,7 +5,7 @@ Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blo
 Requires at least: 5.0
 Tested up to: 5.7.2
 Requires PHP: 5.6
-Stable tag: 0.1.8
+Stable tag: 0.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,9 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.1.9 =
+* Fixes collection description style
 
 = 0.1.8 =
 * Fixes several issues with archive header elements
