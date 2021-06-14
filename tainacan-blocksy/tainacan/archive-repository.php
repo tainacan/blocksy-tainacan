@@ -2,6 +2,7 @@
 
 $page_container_classes = 'page type-page hentry singular';
 $page_container_classes = $page_container_classes . ( get_theme_mod('tainacan-repository-items_archive_filters_panel_background_style', 'boxed') == 'boxed' ? ' has-filters-panel-style-boxed' : '' );
+$page_container_classes = $page_container_classes . ( get_theme_mod('tainacan-repository-items_archive_page_header_background_style', 'boxed') == 'boxed' ? ' has-page-header-style-boxed' : '' );
 
 $filters_panel_size = get_theme_mod('tainacan-repository-items_archive_filters_panel_size', '20%');
 $page_container_style = '--tainacan-filter-menu-width-theme:' . $filters_panel_size . ';';
@@ -39,17 +40,61 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
 ?>
 
 <?php get_header(); ?>
-
+    
     <article class="<?php echo $page_container_classes ?>" style="<?php echo $page_container_style ?>">
         <header class="tainacan-collection-header">
             <div class="tainacan-collection-header__box">  
                 <?php 
-                    echo blocksy_output_hero_section( 'type-1' );
+                    $hero_elements = get_theme_mod(
+                        'tainacan-repository-items_archive_hero_elements',
+                        [
+                            [
+                                'id' => 'custom_title',
+                                'enabled' => true,
+                                'heading_tag' => 'h1'
+                            ]
+                        ]
+                    );
+                    
+                    $elements = [];
+                    foreach ($hero_elements as $index => $single_hero_element) {
+                        if ($single_hero_element['id'] == 'custom_title' && $single_hero_element['enabled']) {
+                            $title = '';
+
+                            if (! empty($title)) {
+                                $title = blocksy_html_tag(
+                                    blocksy_akg('heading_tag', $single_hero_element, 'h1'),
+                                    array_merge([
+                                        'class' => 'page-title',
+                                    ], blocksy_schema_org_definitions('headline', [
+                                        'array' => true
+                                    ])),
+                                    $title
+                                );
+                            }
+
+                            do_action('blocksy:hero:title:before');
+                            $elements[] = $title;
+                            do_action('blocksy:hero:title:after');
+                            
+                        }
+                    }
+                    
+                    $html_elements = '';
+                    foreach ($elements as $element) {
+                        $html_elements .= $element;
+                    }
+                        
+                    echo blocksy_output_hero_section([
+                        'type' => 'type-1',
+                        'source' => false,
+                        'elements' => $html_elements
+                    ]);
                 ?>
             </div>
         </header>
 
-        <div class="entry-content">										
+        <div class="entry-content">
             <?php 
                 tainacan_the_faceted_search([
                     'hide_filters' => get_theme_mod('tainacan-repository-items_archive_display_filters_panel', 'yes') == 'no',

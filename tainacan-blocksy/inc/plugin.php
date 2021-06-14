@@ -31,7 +31,7 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
             }
         } else if ( $wp_query->get( 'tainacan_repository_archive' ) == 1 ) {
             
-            include( TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/tainacan/archive-items.php' );
+            include( TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/tainacan/archive-repository.php' );
             exit;
         }
         

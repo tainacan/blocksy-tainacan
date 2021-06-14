@@ -56,27 +56,91 @@ global $post;
             <div class="tainacan-collection-header__box">  
                 <?php 
 
-                    $thumbnail_element = '';
-                    $description_element = '';
-
-                    $is_thumbnail_enabled = false;
-                    $is_description_enabled = false;
-
                     $hero_elements = blocksy_akg_or_customizer(
                         'hero_elements',
                         [ 'prefix' => $prefix ],
-                        []
+                        [
+                            [
+                                'id' => 'custom_thumbnail',
+                                'enabled' => true,
+                            ],
+                            [
+                                'id' => 'custom_title',
+                                'enabled' => true,
+                                'heading_tag' => 'h1'
+                            ],
+                            [
+                                'id' => 'breadcrumbs',
+                                'enabled' => true
+                            ],
+                            [
+                                'id' => 'custom_description',
+                                'enabled' => true,
+                                'description_visibility' => [
+                                    'desktop' => true,
+                                    'tablet' => true,
+                                    'mobile' => false,
+                                ]
+                            ]
+                        ]
                     );
+                    
+                    $elements = [];
                     foreach ($hero_elements as $index => $single_hero_element) {
                         if ($single_hero_element['id'] == 'custom_thumbnail' && $single_hero_element['enabled'] && has_post_thumbnail( tainacan_get_collection_id() )) {
                             $thumbnail_id = get_post_thumbnail_id( $post->ID );
                             $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 
-                            $thumbnail_element = '
+                            $elements[] = '
                             <div class="collection-thumbnail">
                                 <img src="' . get_the_post_thumbnail_url( tainacan_get_collection_id() ) . '" alt="' . esc_attr($alt) . '">
                             </div>
                             ';
+                        } else if ($single_hero_element['id'] == 'custom_title' && $single_hero_element['enabled']) {
+                            $title = '';
+
+                            $has_category_label = blocksy_akg(
+                                'has_category_label',
+                                $single_hero_element,
+                                'yes'
+                            );
+
+                            if (! empty(get_the_archive_title())) {
+                                $title = wp_strip_all_tags(get_the_archive_title());
+            
+                                $divider_symbol = ':';
+            
+                                if (strpos($title, '：') !== false) {
+                                    $divider_symbol = '：';
+                                }
+            
+                                if (strpos($title, $divider_symbol) !== false) {
+                                    $title_pieces = explode($divider_symbol, $title, 2);
+            
+                                    $title = '<span class="ct-title-label">' . $title_pieces[0] . '</span>' . $title_pieces[1];
+            
+                                    if ($has_category_label !== 'yes') {
+                                        $title = $title_pieces[1];
+                                    }
+                                }
+                            }
+
+                            if (! empty($title)) {
+                                $title = blocksy_html_tag(
+                                    blocksy_akg('heading_tag', $single_hero_element, 'h1'),
+                                    array_merge([
+                                        'class' => 'page-title',
+                                    ], blocksy_schema_org_definitions('headline', [
+                                        'array' => true
+                                    ])),
+                                    $title
+                                );
+                            }
+
+                            do_action('blocksy:hero:title:before');
+                            $elements[] = $title;
+                            do_action('blocksy:hero:title:after');
+                            
                         } else if ($single_hero_element['id'] == 'custom_description' && $single_hero_element['enabled'] && get_the_archive_description()) {
                             $description_class = 'page-description';
                             $description_class .= ' ' . blocksy_visibility_classes(
@@ -90,21 +154,22 @@ global $post;
                                     ]
                                 )
                             );
-                            $description_element = '<div class="' . $description_class . '">' . get_the_archive_description() . '</div>';
+                            $elements[] = '<div class="' . $description_class . '">' . get_the_archive_description() . '</div>';
+                        } else if ($single_hero_element['id'] == 'breadcrumbs' && $single_hero_element['enabled']) {
+                            $breadcrumbs_builder = new Blocksy_Breadcrumbs_Builder();
+                            $elements[] = $breadcrumbs_builder->render();
                         }
                     }
-
-                    $elements = 
-                        $thumbnail_element . 
-                        blocksy_render_view(
-                            get_template_directory() . '/inc/components/hero/elements.php', [ 'type' => 'type-1' ]
-                        ) . 
-                        $description_element;
+                    
+                    $html_elements = '';
+                    foreach ($elements as $element) {
+                        $html_elements .= $element;
+                    }
                         
                     echo blocksy_output_hero_section([
                         'type' => 'type-1',
                         'source' => false,
-                        'elements' => $elements
+                        'elements' => $html_elements
                     ]);
                     
                 ?>

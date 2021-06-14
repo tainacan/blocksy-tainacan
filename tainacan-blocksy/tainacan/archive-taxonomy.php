@@ -42,7 +42,7 @@ $current_term = tainacan_get_term();
 $current_taxonomy = get_taxonomy( $current_term->taxonomy );
 $current_term = \Tainacan\Repositories\Terms::get_instance()->fetch($current_term->term_id, $current_term->taxonomy);
 $image = $current_term->get_header_image_id();
-$src = wp_get_attachment_image_src($image, 'full');
+$thumbnail_src = wp_get_attachment_image_src($image, 'full');
 
 ?>
 
@@ -53,35 +53,118 @@ $src = wp_get_attachment_image_src($image, 'full');
             <div class="tainacan-collection-header__box">  
                 <?php 
 
-                $thumbnail_element = '';
-                $is_thumbnail_enabled = false;
-                $hero_elements = blocksy_akg_or_customizer(
-                    'hero_elements',
-                    [ 'prefix' => 'tainacan-terms-items_archive' ],
-                    []
-                );
-                
-                foreach ($hero_elements as $index => $single_hero_element) {
-                    if ($single_hero_element['id'] == 'custom_thumbnail') {
-                        $is_thumbnail_enabled = $single_hero_element['enabled'];
+                    $hero_elements = get_theme_mod(
+                        'tainacan-terms-items_archive_hero_elements',
+                        [
+                            [
+                                'id' => 'custom_thumbnail',
+                                'enabled' => true,
+                            ],
+                            [
+                                'id' => 'custom_title',
+                                'enabled' => true,
+                                'heading_tag' => 'h1'
+                            ],
+                            [
+                                'id' => 'breadcrumbs',
+                                'enabled' => true
+                            ],
+                            [
+                                'id' => 'custom_description',
+                                'enabled' => true,
+                                'description_visibility' => [
+                                    'desktop' => true,
+                                    'tablet' => true,
+                                    'mobile' => false,
+                                ]
+                            ]
+                        ]
+                    );
+                    
+                    $elements = [];
+                    foreach ($hero_elements as $index => $single_hero_element) {
+                        if ($single_hero_element['id'] == 'custom_thumbnail' && $single_hero_element['enabled'] && $thumbnail_src && $thumbnail_src[0]) {
+
+                            $elements[] = '
+                            <div class="collection-thumbnail">
+                                <img src="' . $thumbnail_src[0] . '" alt="' . __('Term thumbnail', 'tainacan-blocksy') . '">
+                            </div>
+                            ';
+                        } else if ($single_hero_element['id'] == 'custom_title' && $single_hero_element['enabled']) {
+                            $title = '';
+
+                            $has_category_label = blocksy_akg(
+                                'has_category_label',
+                                $single_hero_element,
+                                'yes'
+                            );
+
+                            if (! empty(get_the_archive_title())) {
+                                $title = wp_strip_all_tags(get_the_archive_title());
+            
+                                $divider_symbol = ':';
+            
+                                if (strpos($title, '：') !== false) {
+                                    $divider_symbol = '：';
+                                }
+            
+                                if (strpos($title, $divider_symbol) !== false) {
+                                    $title_pieces = explode($divider_symbol, $title, 2);
+            
+                                    $title = '<span class="ct-title-label">' . $title_pieces[0] . '</span>' . $title_pieces[1];
+            
+                                    if ($has_category_label !== 'yes') {
+                                        $title = $title_pieces[1];
+                                    }
+                                }
+                            }
+
+                            if (! empty($title)) {
+                                $title = blocksy_html_tag(
+                                    blocksy_akg('heading_tag', $single_hero_element, 'h1'),
+                                    array_merge([
+                                        'class' => 'page-title',
+                                    ], blocksy_schema_org_definitions('headline', [
+                                        'array' => true
+                                    ])),
+                                    $title
+                                );
+                            }
+
+                            do_action('blocksy:hero:title:before');
+                            $elements[] = $title;
+                            do_action('blocksy:hero:title:after');
+                            
+                        } else if ($single_hero_element['id'] == 'custom_description' && $single_hero_element['enabled'] && get_the_archive_description()) {
+                            $description_class = 'page-description';
+                            $description_class .= ' ' . blocksy_visibility_classes(
+                                blocksy_akg(
+                                    'description_visibility',
+                                    $single_hero_element,
+                                    [
+                                        'desktop' => true,
+                                        'tablet' => true,
+                                        'mobile' => false,
+                                    ]
+                                )
+                            );
+                            $elements[] = '<div class="' . $description_class . '">' . get_the_archive_description() . '</div>';
+                        } else if ($single_hero_element['id'] == 'breadcrumbs' && $single_hero_element['enabled']) {
+                            $breadcrumbs_builder = new Blocksy_Breadcrumbs_Builder();
+                            $elements[] = $breadcrumbs_builder->render();
+                        }
                     }
-                }
-                if ( $is_thumbnail_enabled && $src && $src[0] ) {
-                    $thumbnail_element = '
-                        <div class="collection-thumbnail">
-                            <img src="' . $src[0] . '">
-                        </div>
-                    ';
-                }
-                
-                $elements = $thumbnail_element . blocksy_render_view(
-                    get_template_directory() . '/inc/components/hero/elements.php', [ 'type' => 'type-1' ]
-                ); 
-                echo blocksy_output_hero_section([
-                    'type' => 'type-1',
-                    'source' => false,
-                    'elements' => $elements
-                ]);
+                    
+                    $html_elements = '';
+                    foreach ($elements as $element) {
+                        $html_elements .= $element;
+                    }
+                        
+                    echo blocksy_output_hero_section([
+                        'type' => 'type-1',
+                        'source' => false,
+                        'elements' => $html_elements
+                    ]);
                 ?>
             </div>
         </header>

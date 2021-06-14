@@ -8,12 +8,10 @@ if (! isset($prefix)) {
 
 $default_hero_elements = [];
 
-
 $default_hero_elements[] = [
 	'id' => 'custom_thumbnail',
 	'enabled' => true,
 ];
-
 
 $default_hero_elements[] = [
 	'id' => 'custom_title',
@@ -23,12 +21,7 @@ $default_hero_elements[] = [
 
 $default_hero_elements[] = [
 	'id' => 'breadcrumbs',
-	'enabled' => true,
-	'description_visibility' => [
-		'desktop' => true,
-		'tablet' => true,
-		'mobile' => false,
-	]
+	'enabled' => true
 ];
 
 $default_hero_elements[] = [
@@ -87,19 +80,6 @@ $options = [
 
                     'custom_thumbnail' => [
                         'label' => __('Thumbnail', 'blocksy'),
-                        'options' => [
-                            'hero_thumbnail_size' => [
-                                'label' => __( 'Thumbnail size', 'blocksy' ),
-                                'type' => 'ct-slider',
-                                'value' => 226,
-                                'min' => 36,
-                                'max' => 500,
-                                'responsive' => true,
-                                'sync' => [
-                                    'id' => $prefix . 'hero_thumbnail_size',
-                                ],
-                            ],
-                        ],
                     ],
                     
                     'custom_title' => [
@@ -191,46 +171,7 @@ $options = [
                                 ],
                             ],
                         ],
-                    ],
-    
-                    'custom_meta' => [
-                        'label' => __('Post Meta', 'blocksy'),
-                        'clone' => true,
-                        'sync' => [
-                            'id' => $prefix . 'hero_elements_meta'
-                        ],
-                        'options' => [
-    
-                            'hero_item_spacing' => [
-                                'label' => __( 'Top Spacing', 'blocksy' ),
-                                'type' => 'ct-slider',
-                                'value' => 20,
-                                'min' => 0,
-                                'max' => 100,
-                                'responsive' => true,
-                                'sync' => [
-                                    'id' => $prefix . 'hero_elements_spacing',
-                                ],
-                            ],
-                        ],
-                    ],
-    
-                    'author_social_channels' => [
-                        'label' => __('Social Channels', 'blocksy'),
-                        'options' => [
-                            'hero_item_spacing' => [
-                                'label' => __( 'Top Spacing', 'blocksy' ),
-                                'type' => 'ct-slider',
-                                'value' => 20,
-                                'min' => 0,
-                                'max' => 100,
-                                'responsive' => true,
-                                'sync' => [
-                                    'id' => $prefix . 'hero_elements_spacing',
-                                ],
-                            ],
-                        ],
-                    ],
+                    ]
                 ]
             ],
 		],

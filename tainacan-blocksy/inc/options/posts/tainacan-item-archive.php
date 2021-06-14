@@ -8,7 +8,12 @@ $options = [
 		],
 	],
 
-	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header.php', [
+	blocksy_get_options(
+		(
+			$prefix !== 'tainacan-repository-items' ?
+				TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header.php' :
+				TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header-simpler.php'
+		), [
 		'prefix' => $prefix . '_archive'
 	], false),
 

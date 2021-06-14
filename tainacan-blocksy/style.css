@@ -99,6 +99,7 @@
 }
 
 .theme-items-list #items-list-area #items-list-results {
+  padding-top: 12px;
   /* Tainacan items list view modes */
   /* Pagination */
 }
