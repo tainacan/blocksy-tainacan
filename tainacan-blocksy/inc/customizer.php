@@ -140,7 +140,7 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 			if ( in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
 				return tainacan_blocksy_get_template_part( 'tainacan/item-single-page' );
 			}
-		}
+		}	
 	
 		return $content;
 	}

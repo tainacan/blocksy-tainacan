@@ -659,6 +659,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   position: relative;
   z-index: 99;
   background: transparent !important;
+  padding: 0px !important;
 }
 
 .tainacan-item-single .tainacan-item-file-download::after {
