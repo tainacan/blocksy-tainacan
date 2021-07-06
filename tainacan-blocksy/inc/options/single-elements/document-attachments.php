@@ -14,7 +14,6 @@ $options = [
 			'prefix' => $prefix,
 		]),
 		'inner-options' => [
-
             blocksy_rand_md5() => [
                 'title' => __( 'General', 'blocksy' ),
                 'type' => 'tab',
@@ -53,10 +52,25 @@ $options = [
                 'title' => __( 'Design', 'blocksy' ),
                 'type' => 'tab',
                 'options' => [
-                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-typography.php', [
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-attachments-colors.php', [
+                        'prefix' => $prefix
+                    ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-height.php', [
+                        'prefix' => $prefix
+                    ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-width.php', [
+                        'prefix' => $prefix
+                    ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-carousel-width.php', [
+                        'prefix' => $prefix
+                    ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-typography.php', [
                         'prefix' => $prefix
                     ], false),
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-size.php', [
+                        'prefix' => $prefix
+                    ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-typography.php', [
                         'prefix' => $prefix
                     ], false)
                 ],

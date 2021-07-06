@@ -38,6 +38,11 @@ $options = [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-mg.svg' ),
 				'title' => __( 'Metadata to the left', 'tainacan-blocksy' ),
 			],
+
+            'type-gtm' => [
+				'src'   => tainacan_blocksy_image_picker_url( 'type-gtm.svg' ),
+				'title' => __( 'Document and Attachments above Title', 'tainacan-blocksy' ),
+			],
         ],
         'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix

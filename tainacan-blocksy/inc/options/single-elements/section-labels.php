@@ -53,7 +53,8 @@ $options = [
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [
-                    $prefix . 'document_attachments_structure' => 'gallery-type-1'
+                    $prefix . 'document_attachments_structure' => 'gallery-type-1',
+                    $prefix . 'page_structure_type' => 'type-dam | type-dma | type-mda | type-gm | type mg',
 				],
 				'options' => [
 					$prefix . 'section_document_label' => [
@@ -66,6 +67,14 @@ $options = [
 							'prefix' => $prefix
 						])
 					],
+				]
+			],
+			blocksy_rand_md5() => [
+				'type' => 'ct-condition',
+				'condition' => [
+					$prefix . 'document_attachments_structure' => 'gallery-type-1'
+				],
+				'options' => [
 					$prefix . 'section_attachments_label' => [
 						'label' => __( 'Label for the "Attachments" section', 'tainacan-blocksy' ),
 						'desc' => __( 'Leave it blank for not displaying any label.', 'tainacan-blocksy' ),
@@ -81,7 +90,8 @@ $options = [
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [
-                    $prefix . 'document_attachments_structure' => 'gallery-type-1'
+                    $prefix . 'document_attachments_structure' => 'gallery-type-1',
+					$prefix . 'page_structure_type' => 'type-dam | type-dma | type-mda | type-gm | type mg'
 				],
 				'options' => [
 					$prefix . 'section_documents_label' => [

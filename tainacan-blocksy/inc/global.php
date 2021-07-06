@@ -60,6 +60,51 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
+	'variableName' => 'document-height',
+	'value' => get_theme_mod( $prefix . '_document_height', [
+		'mobile' => '40vh',
+		'tablet' => '50vh',
+		'desktop' => '60vh',
+	]),
+	'unit' => 'vh',
+	'defaultUnit' => 'vh',
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
+	'variableName' => 'document-width',
+	'value' => get_theme_mod( $prefix . '_document_width', [
+		'mobile' => '100%',
+		'tablet' => '100%',
+		'desktop' => '100%',
+	]),
+	'unit' => '%',
+	'defaultUnit' => '%',
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
+	'variableName' => 'attachments-carousel-width',
+	'value' => get_theme_mod( $prefix . '_attachments_carousel_width', [
+		'mobile' => '100%',
+		'tablet' => '100%',
+		'desktop' => '100%',
+	]),
+	'unit' => '%',
+	'defaultUnit' => '%',
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
 	'selector' => blocksy_prefix_selector('.collection-thumbnail', $prefix),
 	'variableName' => 'thumbnail-size',
 	'value' => get_theme_mod( $prefix . '_hero_thumbnail_size', [
@@ -70,13 +115,48 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => ''
 ]);
 
-
+blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.swiper-slide-metadata__name', $prefix),
+	'font_value' => get_theme_mod($prefix . '_document_name_font',
+		blocksy_typography_default_values([
+			'size' => '0.875rem',
+			'variation' => 'n6',
+		])
+	)
+]);
 
 blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
-	'selector' => blocksy_prefix_selector('.swiper-slide-metadata', $prefix),
+	'selector' => blocksy_prefix_selector('.swiper-slide-metadata__caption', $prefix),
+	'font_value' => get_theme_mod($prefix . '_document_caption_font',
+		blocksy_typography_default_values([
+			'size' => '1rem'
+		])
+	)
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.swiper-slide-metadata__description', $prefix),
+	'font_value' => get_theme_mod($prefix . '_document_description_font',
+		blocksy_typography_default_values([
+			'size' => '1rem'
+		])
+	)
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-item-section__attachments-file .swiper-slide-metadata', $prefix),
 	'font_value' => get_theme_mod($prefix . '_attachment_label_font',
 		blocksy_typography_default_values([
 			'size' => '0.875rem',
