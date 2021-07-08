@@ -11,6 +11,7 @@ $prefix = blocksy_manager()->screen->get_prefix();
 
 $page_structure_type = get_theme_mod( $prefix . '_page_structure_type', 'type-dam');
 $template_columns_style = '';
+$display_items_related_to_this = get_theme_mod( $prefix . '_display_items_related_to_this', 'no' ) === 'yes';
 
 if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
     $column_documents_attachments_width = 60;
@@ -85,6 +86,11 @@ add_action( 'blocksy:single:top', function() use ( $page_structure_type, $prefix
     
     tainacan_blocksy_get_template_part( 'template-parts/tainacan-item-single-metadata' );
     do_action( 'tainacan-blocksy-single-item-after-metadata' );
+
+    if ($display_items_related_to_this) {
+        tainacan_blocksy_get_template_part( 'template-parts/tainacan-item-single-items-related-to-this' );
+        do_action( 'tainacan-blocksy-single-item-after-items-related-to-this' );
+    }
 ?>
 </div>
 

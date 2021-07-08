@@ -16,7 +16,7 @@ $options = [
 		'units' => blocksy_units_config([
 			[
 				'unit' => 'px',
-				'min' => 80,
+				'min' => 42,
 				'max' => 200,
 			]
 		]),

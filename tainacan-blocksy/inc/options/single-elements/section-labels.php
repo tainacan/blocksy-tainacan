@@ -115,7 +115,25 @@ $options = [
 				'sync' => blocksy_sync_single_post_container([
                     'prefix' => $prefix
                 ])
-			]
+			],
+			blocksy_rand_md5() => [
+                'type' => 'ct-condition',
+                'condition' => [
+                    $prefix . 'display_items_related_to_this' => 'yes',
+				],
+				'options' => [
+					$prefix . 'section_items_related_to_this_label' => [
+						'label' => __( 'Label for the "Items related to this" section', 'tainacan-blocksy' ),
+						'desc' => __( 'Leave it blank for not displaying any label.', 'tainacan-blocksy' ),
+						'type' => 'text',
+						'design' => 'block',
+						'value' => __( 'Items related to this', 'tainacan-blocksy' ),
+						'sync' => blocksy_sync_single_post_container([
+							'prefix' => $prefix
+						])
+					],
+				]
+			],
 		],
 	],
 ];

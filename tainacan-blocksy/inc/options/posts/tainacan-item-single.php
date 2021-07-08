@@ -30,3 +30,10 @@ $options = [
 		'prefix' => $post_type->name . '_single',
 	], false)
 ];
+
+if ( function_exists('tainacan_the_related_items_carousel') ) {
+	$options[] = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/items-related-to-this.php', [
+		'prefix' => $post_type->name . '_single',
+		'enabled' => 'no'
+	], false);
+}
