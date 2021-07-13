@@ -99,6 +99,22 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 				if ( is_array($items_extra_options) ) {
 					$options['options'][$post_type . '_section_options']['inner-options'] = $items_extra_options;
 				}
+
+			// We also do some changes on the Collections
+			} else if ( $post_type == 'tainacan-collection' ) {
+
+				// Change the section title in the customizer
+				$options['title'] = __('Tainacan collections list', 'tainacan-blocksy');
+
+				return $options;
+
+			// And taxonomies
+			}  else if ( $post_type == 'tainacan-taxonomy' ) {
+
+				// Change the section title in the customizer
+				$options['title'] = __('Tainacan taxonomies list', 'tainacan-blocksy');
+
+				return $options;
 			}
 		}
 		

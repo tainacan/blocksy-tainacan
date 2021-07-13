@@ -31,7 +31,7 @@ do_action( 'tainacan-blocksy-single-item-top' );
 
 do_action( 'tainacan-blocksy-single-item-after-title' );
 
-add_action( 'blocksy:single:top', function() use ( $page_structure_type, $prefix ) {
+add_action( 'blocksy:hero:before', function() use ( $page_structure_type, $prefix ) {
 
     if ($page_structure_type === 'type-gtm') {
         
