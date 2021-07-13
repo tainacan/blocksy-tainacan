@@ -22,32 +22,37 @@
         .tainacan-item-section--gallery { grid-area: document }
         .tainacan-item-section--attachments { grid-area: attachments }
         .tainacan-item-section--metadata { grid-area: metadata }
+        .tainacan-item-section--items-related-to-this { grid-area: related }
         
         &.tainacan-item-single--layout-type-dam {
             grid-template-areas:
                 'document'
                 'attachments'
-                'metadata';
+                'metadata'
+                'related';
             grid-template-columns: 100%;
         }
         &.tainacan-item-single--layout-type-dma {
             grid-template-areas:
                 'document'
                 'metadata'
-                'attachments';
+                'attachments'
+                'related';
             grid-template-columns: 100%;
         }
         &.tainacan-item-single--layout-type-mda {
             grid-template-areas:
                 'metadata'
                 'document'
-                'attachments';
+                'attachments'
+                'related';
             grid-template-columns: 100%;
         }
         &.tainacan-item-single--layout-type-mg {
             grid-template-areas:
                 'metadata document' 
                 'metadata attachments'
+                'metadata related'
                 'metadata .';
             grid-template-columns: 60% 40%;
 
@@ -55,7 +60,8 @@
                 grid-template-areas:
                 'metadata'
                 'document'
-                'attachments';
+                'attachments'
+                'related';
                 grid-template-columns: 100% !important;
             }
         }
@@ -63,6 +69,7 @@
             grid-template-areas:
                 'document metadata' 
                 'attachments metadata'
+                'related metadata'
                 '. metadata';
             grid-template-columns: 60% 40%;
 
@@ -70,13 +77,15 @@
                 grid-template-areas:
                 'document'
                 'attachments'
-                'metadata';
+                'metadata'
+                'related';
                 grid-template-columns: 100% !important;
             }
         }
         &.tainacan-item-single--layout-type-gtm {
             grid-template-areas:
-                'metadata';
+                'metadata'
+                'related';
             grid-template-columns: 100%;
         }
 

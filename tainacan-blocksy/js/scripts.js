@@ -1,6 +1,8 @@
-/* Handles updating Media Items component when reloading page from customizer */
+// Scripts that run on document load need to be manually refreshed when inside the customizer
 if (window.ctEvents && window.ctEvents.default) {
     window.ctEvents.default.on('blocksy:frontend:init', () => {
+
+        /* Handles updating Media Items component */
         if (tainacan_plugin?.classes?.TainacanMediaGallery && tainacan_plugin?.tainacan_media_components) {
             (Object.values(tainacan_plugin.tainacan_media_components) || []).forEach((component) => {
                 new tainacan_plugin.classes.TainacanMediaGallery(
@@ -10,6 +12,11 @@ if (window.ctEvents && window.ctEvents.default) {
                 );
             });
         }
+
+        /* Handles reloading the Items list */
         document.dispatchEvent(new Event('TainacanReloadItemsListComponent'));
+
+        /* Handles updating Items carousel */
+        document.dispatchEvent(new Event('TainacanReloadCarouselItemsListBlock'));
     });
 }
