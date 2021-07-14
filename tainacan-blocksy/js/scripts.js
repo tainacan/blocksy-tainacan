@@ -15,7 +15,7 @@ if (window.ctEvents && window.ctEvents.default) {
 
         /* Handles reloading the Items list */
         document.dispatchEvent(new Event('TainacanReloadItemsListComponent'));
-
+        
         /* Handles updating Items carousel */
         document.dispatchEvent(new Event('TainacanReloadCarouselItemsListBlock'));
     });

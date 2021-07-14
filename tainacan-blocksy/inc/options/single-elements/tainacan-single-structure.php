@@ -12,7 +12,6 @@ $options = [
 		'type' => 'ct-image-picker',
 		'value' => 'type-dam',
 		'design' => 'block',
-		'setting' => [ 'transport' => 'postMessage' ],
 		'choices' => [
 			'type-dam' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-dam.svg' ),
@@ -44,8 +43,6 @@ $options = [
 			// 	'title' => __( 'Document and Attachments above Title', 'tainacan-blocksy' ),
 			// ],
         ],
-        'sync' => blocksy_sync_single_post_container([
-			'prefix' => $prefix
-		])
+        'sync' => ''
 	],
 ];
