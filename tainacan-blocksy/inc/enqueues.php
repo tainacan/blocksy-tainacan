@@ -99,4 +99,44 @@ if ( !function_exists('tainacan_blocksy_items_page_filters_fixed_on_scroll_outpu
 }
 add_action( 'wp_head', 'tainacan_blocksy_items_page_filters_fixed_on_scroll_output');
 
+/**
+ * Enqueues front-end CSS for the light scheme of the photoswipe layer
+ */
+if ( !function_exists('tainacan_blocksy_gallery_light_color_scheme') ) {
+	function tainacan_blocksy_gallery_light_color_scheme() {
+		$prefix = blocksy_manager()->screen->get_prefix();
+
+		$has_light_dark_color_scheme = get_theme_mod( $prefix . '_galery_color_scheme', 'dark' ) == 'light';
+		
+		if (!$has_light_dark_color_scheme)
+			return;
+			
+		$css = '
+		/* Photoswipe layer for the gallery dark */
+		.tainacan-photoswipe-layer .pswp__bg {
+			background-color: rgba(255, 255, 255, 0.85) !important;
+		}
+		.tainacan-photoswipe-layer .pswp__ui--fit .pswp__top-bar,
+		.tainacan-photoswipe-layer .pswp__ui--fit .pswp__caption {
+			background-color: rgba(255, 255, 255, 0.7) !important;
+		}
+		.tainacan-photoswipe-layer .pswp__top-bar .pswp__name,
+		.tainacan-photoswipe-layer .pswp__caption__center {
+			color: black !important;
+		}
+		.tainacan-photoswipe-layer .pswp__button,
+		.tainacan-photoswipe-layer .pswp__button--arrow--left::before,
+		.tainacan-photoswipe-layer .pswp__button--arrow--right::before {
+			filter: invert(100) !important;
+		}
+		.tainacan-photoswipe-layer .pswp--css_animation .pswp__preloader__donut {
+			border: 2px solid #000000 !important;
+		}
+		';
+		echo '<style type="text/css" id="tainacan-gallery-color-scheme">' . sprintf( $css ) . '</style>';
+
+	}
+}
+add_action( 'wp_head', 'tainacan_blocksy_gallery_light_color_scheme');
+
 ?>

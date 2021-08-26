@@ -287,7 +287,8 @@ body:not(.tainacan-admin-page) {
         .page-title {
             margin-top: 0px;
             margin-bottom: 4px;
-            display: inline-block;
+            display: block;
+            clear: none;
         }
         .ct-title-label {
             font-weight: normal;
@@ -296,7 +297,7 @@ body:not(.tainacan-admin-page) {
             }
         }
         .collection-thumbnail {
-            max-width: calc(var(--tainacan-filter-menu-width-theme, 20%) - 24px);
+            max-width: calc(var(--thumbnail-size, 20%) - 24px);
             float: left;
             margin-right: 24px;
 
@@ -304,8 +305,10 @@ body:not(.tainacan-admin-page) {
                 border-radius: var(--borderRadius,3px);
             }
         }
-        .page-description {
-            display: block;
+        .page-description ,
+        .page-description p {
+            display: block !important;
+            clear: none;
         }
     }
 }

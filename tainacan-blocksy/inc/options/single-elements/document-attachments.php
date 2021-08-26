@@ -72,6 +72,9 @@ $options = [
                     ], false),
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-typography.php', [
                         'prefix' => $prefix
+                    ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/gallery-color-scheme.php', [
+                        'prefix' => $prefix
                     ], false)
                 ],
             ]
