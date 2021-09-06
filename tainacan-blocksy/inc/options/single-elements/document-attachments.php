@@ -29,6 +29,10 @@ $options = [
                         'prefix' => $prefix,
                         'enabled' => 'no'
                     ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/disable-gallery-lightbox.php', [
+                        'prefix' => $prefix,
+                        'enabled' => 'no'
+                    ], false),
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-name.php', [
                         'prefix' => $prefix,
                         'enabled' => 'no'

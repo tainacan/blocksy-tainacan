@@ -106,7 +106,7 @@ if ( !function_exists('tainacan_blocksy_gallery_light_color_scheme') ) {
 	function tainacan_blocksy_gallery_light_color_scheme() {
 		$prefix = blocksy_manager()->screen->get_prefix();
 
-		$has_light_dark_color_scheme = get_theme_mod( $prefix . '_galery_color_scheme', 'dark' ) == 'light';
+		$has_light_dark_color_scheme = get_theme_mod( $prefix . '_gallery_color_scheme', 'dark' ) == 'light';
 		
 		if (!$has_light_dark_color_scheme)
 			return;
