@@ -7,7 +7,7 @@
     $hide_file_caption_main     = get_theme_mod( $prefix . '_hide_files_caption_main', 'yes') == 'yes';
     $hide_file_description_main = get_theme_mod( $prefix . '_hide_files_description_main', 'yes') == 'yes';
     $hide_download_button       = get_theme_mod( $prefix . '_hide_download_button', 'no' ) == 'yes';
-    $disable_gallery_lightbox   = get_theme_mod( $prefix . '_disable_gallery_lightbox', 'no');
+    $disable_gallery_lightbox   = get_theme_mod( $prefix . '_disable_gallery_lightbox', 'no') == 'yes';
 
     global $post;
 
