@@ -49,7 +49,7 @@ $thumbnail_src = wp_get_attachment_image_src($image, 'full');
 <?php get_header(); ?>
     <article class="<?php echo $page_container_classes ?>" style="<?php echo $page_container_style ?>">
 
-        <header class="tainacan-collection-header">
+        <header class="tainacan-collection-header tainacan-collection-header--term-page">
             <div class="tainacan-collection-header__box">  
                 <?php 
 

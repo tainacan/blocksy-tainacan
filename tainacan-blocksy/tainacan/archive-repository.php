@@ -42,7 +42,7 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
 <?php get_header(); ?>
     
     <article class="<?php echo $page_container_classes ?>" style="<?php echo $page_container_style ?>">
-        <header class="tainacan-collection-header">
+        <header class="tainacan-collection-header tainacan-collection-header--repository-page">
             <div class="tainacan-collection-header__box">  
                 <?php 
                     $hero_elements = get_theme_mod(
