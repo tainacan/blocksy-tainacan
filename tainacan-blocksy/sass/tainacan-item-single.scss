@@ -96,7 +96,7 @@
         h2 {
             --fontSize: 24px;
         }
-        h3 {
+        h3:not(.tainacan-metadata-label) {
             --fontSize: 20px;
         }
         h4 {

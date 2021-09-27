@@ -442,7 +442,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   --fontSize: 24px;
 }
 
-.tainacan-item-single-page .tainacan-item-single h3 {
+.tainacan-item-single-page .tainacan-item-single h3:not(.tainacan-metadata-label) {
   --fontSize: 20px;
 }
 
