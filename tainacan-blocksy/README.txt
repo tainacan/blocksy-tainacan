@@ -3,9 +3,9 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blocksy
 Requires at least: 5.0
-Tested up to: 5.7.2
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 0.1.11
+Stable tag: 0.1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,9 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.1.12 =
+* Fixes lack of --background-color variable due to recent versions of Blocksy
 
 = 0.1.11 =
 * Compatibility with Tainacan 0.18.5 and its display of related metadata
