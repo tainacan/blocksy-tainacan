@@ -1,6 +1,12 @@
 // Scripts that run on document load need to be manually refreshed when inside the customizer
-if (window.ctEvents && window.ctEvents.default) {
-    window.ctEvents.default.on('blocksy:frontend:init', () => {
+if (window.ctEvents) {
+
+    if ( window.ctEvents.default )
+        window.ctEvents.default.on('blocksy:frontend:init', onBlocksyFrontendInit);
+    else
+        window.ctEvents.on('blocksy:frontend:init', onBlocksyFrontendInit);
+
+    function onBlocksyFrontendInit() {
 
         /* Handles updating Media Items component */
         if (tainacan_plugin?.classes?.TainacanMediaGallery && tainacan_plugin?.tainacan_media_components) {
@@ -18,5 +24,9 @@ if (window.ctEvents && window.ctEvents.default) {
         
         /* Handles updating Items carousel */
         document.dispatchEvent(new Event('TainacanReloadCarouselItemsListBlock'));
-    });
+
+        /* Handles Dynamic Items lists */
+        document.dispatchEvent(new Event('TainacanReloadDynamicItemsBlock'));
+
+    }
 }
