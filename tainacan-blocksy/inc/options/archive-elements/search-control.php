@@ -6,6 +6,7 @@ if (! isset($prefix)) {
 	$prefix = $prefix . '_';
 }
 
+
 $options = [
 	$prefix . 'search-control-panel' => [
 		'label' => __( 'Search control', 'tainacan-blocksy' ),
@@ -69,6 +70,15 @@ $options = [
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
                 'label' => __( 'View modes', 'tainacan-blocksy' ),
+            ],
+            blocksy_rand_md5() => [
+                'type' => 'ct-condition',
+                'condition' => [
+                    $prefix !== 'tainacan-terms-items_archive_'
+                ],
+                'options' => blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/default-view-mode.php' , [
+                    'prefix' => $prefix
+                ], false)
             ],
             $prefix . 'show_inline_view_mode_options' => [
                 'label' => __( 'Show inline view mode options', 'tainacan-blocksy' ),

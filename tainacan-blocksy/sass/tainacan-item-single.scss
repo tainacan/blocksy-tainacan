@@ -190,6 +190,11 @@
                 border-radius: var(--borderRadius, 3px);
             }
 
+            p:empty {
+                display: none;
+                visibility: hidden;
+            }
+
             // Metadata type textarea has different separator
             .multivalue-separator {
                 color: #cbcbcb;
@@ -211,8 +216,23 @@
                 }
             }
             .tainacan-compound-group {
+                padding-top: 0.5em;
                 padding-left: 1.5rem;
                 border-left: 1px solid #e0e5eb;
+
+                .label {
+                    margin: 0;
+                    padding: 0;
+                    font-style: normal;
+                }
+                p {
+                    margin-top: 0rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                &>.multivalue-separator {
+                    margin: 1em auto 1.5em -1.5em;
+                }
             }
             .tainacan-relationship-group {
                 .tainacan-relationship-metadatum {
@@ -428,5 +448,11 @@
             opacity: 1;
             transform: scale(1);
         }
+    }
+
+    /* Items related to this section */
+    .tainacan-item-section--items-related-to-this .wp-block-tainacan-dynamic-items-list {
+        margin-top: 0.25em;
+        margin-bottom: 0.5em;
     }
 }

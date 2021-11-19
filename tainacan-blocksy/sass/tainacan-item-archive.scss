@@ -18,7 +18,6 @@
     
     &:not(.is-fullscreen) {
         justify-content: center;
-        top: -52px !important;
         background: transparent !important;
         padding: 6px 13px;
         @include display-grid;
@@ -220,6 +219,10 @@
         border-radius: var(--borderRadius, 3px) !important;
         border: 1px solid var(--tainacan-input-border-color);
     }
+}
+
+:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen) {
+    top: -52px !important;
 }
 
 /* Extra classes applied from customizer */

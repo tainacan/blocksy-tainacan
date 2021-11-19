@@ -68,4 +68,38 @@ if ( !function_exists('tainacan_blocksy_post_class') ) {
 }
 add_filter('post_class', 'tainacan_blocksy_post_class');
 
+
+/**
+ * Retrieves the current registered view modes on Tainacan plugin and filter some options to offer as default
+ * 
+ * @return array An associative array with view mode options and the default one
+ */
+function tainacan_get_default_view_mode_choices() {
+	$default_view_mode = '';
+	$enabled_view_modes = [];
+
+	if (function_exists('tainacan_get_the_view_modes')) {
+		$view_modes = tainacan_get_the_view_modes();
+		$default_view_mode = $view_modes['default_view_mode'];
+		$enabled_view_modes = [];
+		
+		foreach ($view_modes['registered_view_modes'] as $key => $view_mode) {
+			if (!$view_mode['full_screen'])
+				$enabled_view_modes[$key] = $view_mode['label'];
+		}
+	} else {
+		$default_view_mode = 'masonry';
+		$enabled_view_modes = [
+			'masonry' => __('Masonry', 'tainacan-interface'),
+			'cards' => __('Cards', 'tainacan-interface'),
+			'table' => __('Table', 'tainacan-interface'),
+			'grid' => __('Grid', 'tainacan-interface')
+		];
+	}
+	return [
+		'default_view_mode' => $default_view_mode,
+		'enabled_view_modes' => $enabled_view_modes
+	];
+}
+
 ?>

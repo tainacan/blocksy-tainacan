@@ -33,7 +33,6 @@
 
 .theme-items-list:not(.is-fullscreen) {
   justify-content: center;
-  top: -52px !important;
   background: transparent !important;
   padding: 6px 13px;
   flex-wrap: wrap;
@@ -249,6 +248,10 @@
   border: 1px solid var(--tainacan-input-border-color);
 }
 
+:not(.wp-block-tainacan-faceted-search) > .theme-items-list:not(.is-fullscreen) {
+  top: -52px !important;
+}
+
 /* Extra classes applied from customizer */
 .page.has-filters-panel-style-boxed #filters-modal .modal-content #filters-items-list {
   border-radius: var(--borderRadius, 3px);
@@ -356,6 +359,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 /* Single Item Page */
+.tainacan-item-single-page {
+  /* Items related to this section */
+}
+
 .tainacan-item-single-page .tainacan-item-section {
   max-width: var(--block-max-width);
   align-self: flex-start;
@@ -556,6 +563,11 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   border-radius: var(--borderRadius, 3px);
 }
 
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p:empty {
+  display: none;
+  visibility: hidden;
+}
+
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .multivalue-separator {
   color: #cbcbcb;
   margin: 0 8px;
@@ -577,8 +589,24 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group {
+  padding-top: 0.5em;
   padding-left: 1.5rem;
   border-left: 1px solid #e0e5eb;
+}
+
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group .label {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group p {
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+}
+
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group > .multivalue-separator {
+  margin: 1em auto 1.5em -1.5em;
 }
 
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-relationship-metadatum-header {
@@ -792,6 +820,11 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single-page .tainacan-item-section__document:hover .tainacan-item-file-download {
   opacity: 1;
   transform: scale(1);
+}
+
+.tainacan-item-single-page .tainacan-item-section--items-related-to-this .wp-block-tainacan-dynamic-items-list {
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
 }
 
 /*# sourceMappingURL=style.css.map */

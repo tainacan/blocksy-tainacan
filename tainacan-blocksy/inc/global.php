@@ -108,9 +108,9 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'selector' => blocksy_prefix_selector('.collection-thumbnail', $prefix),
 	'variableName' => 'thumbnail-size',
 	'value' => get_theme_mod( $prefix . '_hero_thumbnail_size', [
-		'mobile' => '120px',
-		'tablet' => '300px',
-		'desktop' => '140px',
+		'mobile' => '110px',
+		'tablet' => '180px',
+		'desktop' => '220px',
 	]),
 	'unit' => ''
 ]);
