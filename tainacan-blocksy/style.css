@@ -140,6 +140,7 @@
 }
 
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record,
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .list-metadata,
 .theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list {
   background-color: var(--tainacan-item-background-color, white) !important;
 }
