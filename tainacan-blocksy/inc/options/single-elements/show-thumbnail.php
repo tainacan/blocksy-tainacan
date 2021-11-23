@@ -13,7 +13,7 @@ $options = [
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
-		'desc' => __( 'Toggle to show or not the item thumbnail on the metadada list.', 'tainacan-blocksy' ),
+		'desc' => __( 'Toggle to show or not the item thumbnail on the metadata list.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])

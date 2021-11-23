@@ -63,7 +63,7 @@ $options = [
                 'label' => __( 'Show the "Hide filters" button', 'tainacan-blocksy' ),
                 'type' => 'ct-switch',
                 'value' => 'yes',
-                'desc' => __( 'Display the button for hidding the filters panel.', 'tainacan-blocksy' ),
+                'desc' => __( 'Display the button for hiding the filters panel.', 'tainacan-blocksy' ),
                 'sync' => ''
             ],
             blocksy_rand_md5() => [
