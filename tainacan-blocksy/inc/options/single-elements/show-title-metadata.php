@@ -14,7 +14,7 @@ $options = [
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
-		'desc' => __( 'Toggle to hide or not the core title from the metadada list, as it already appears on the page title.', 'tainacan-blocksy' ),
+		'desc' => __( 'Toggle to hide or not the core title from the metadata list, as it already appears on the page title.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])

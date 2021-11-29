@@ -24,7 +24,7 @@ $options = [
                 'label' => __( 'Show the "Items per page" button', 'tainacan-blocksy' ),
                 'type' => 'ct-switch',
                 'value' => 'yes',
-                                'desc' => __( 'Display the button for choosing how many items per page shoulb be loaded.', 'tainacan-blocksy' ),
+                                'desc' => __( 'Display the button for choosing how many items per page should be loaded.', 'tainacan-blocksy' ),
                 'sync' => ''
             ],
             $prefix . 'show_go_to_page_button' => [

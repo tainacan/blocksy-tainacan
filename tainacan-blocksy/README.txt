@@ -23,18 +23,18 @@ This project uses their customizer controls to offer options for setting differe
 
 
 == Installation ==
- 
+
 Upload the files to the plugins directory and activate it. You can also install and activate directly from the admin panel.
 
 Once activated, go to the theme customizer and play around with Tainacan-related options for each of your collections.
- 
-This plugin will only work with [Tainacan plugin](https://wordpress.org/plugins/tainacan/) active, preferably with a version greater than or equal to 0.17.4;
 
-Also, this plugin will only work with [Blocksy theme](https://wordpress.org/themes/blocksy/) active, preferably with a version greater than or equal to 1.7.0;
+This plugin will only work with [Tainacan plugin](https://wordpress.org/plugins/tainacan/) active, preferably at version 0.17.4 or newer;
+
+Also, this plugin will only work with [Blocksy theme](https://wordpress.org/themes/blocksy/) active, preferably at version 1.7.0 or newer;
 
 
 == Find out more ==
- 
+
 * Visit our official website: [https://tainacan.org/](https://tainacan.org/)
 * Check our documentation Wiki: [https://wiki.tainacan.org/](https://wiki.tainacan.org/)
 * Source code on GitHub: [https://github.com/tainacan/blocksy-tainacan](https://github.com/tainacan/blocksy-tainacan)
@@ -52,8 +52,8 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 == Screenshots ==
 
 1. With the plugin enabled, your customizer will offer options for each Tainacan collection items list and item page, besides the repository and term items list page;
-2. The item single page can be customized for different layouts, so you can decide how to display the document, attachments and metadata;
-3. Besides that, Blocksy offers different title banners, post navigation and related post features that can also be used in your item single page;
+2. The single item page can be customized for different layouts, so you can decide how to display the document, attachments and metadata;
+3. Besides that, Blocksy offers different title banners, post navigation and related post features that can also be used in your single item page;
 
 
 == Changelog ==

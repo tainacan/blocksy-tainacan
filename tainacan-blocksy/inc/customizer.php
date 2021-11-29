@@ -142,7 +142,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_supported_list') ) {
 add_filter( 'blocksy:custom_post_types:supported_list', 'tainacan_blocksy_custom_post_types_supported_list', 10 );
 
 /**
- * Renders the item single page with a custom template that will use most of Blocksy features
+ * Renders the single item page with a custom template that will use most of Blocksy features
  */
 if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 	function tainacan_blocksy_the_content_for_items( $content ) {
