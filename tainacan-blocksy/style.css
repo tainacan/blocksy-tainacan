@@ -25,6 +25,7 @@
   --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
   --tainacan-skeleton-color: var(--tainacan-item-background-color, white);
   /* Search control */
+  /* Advanced Search */
   /* Filters panel */
   /* Items list container */
   /* Advanced Search */
@@ -57,6 +58,15 @@
 
 .theme-items-list .search-control .control.has-icons-right .icon .mdi-magnify::before {
   color: var(--tainacan-secondary, #3eaf7c);
+}
+
+.theme-items-list #advanced-search-container {
+  max-width: 100%;
+  width: var(--maxSiteWidth, 1290px);
+  margin: 0.5rem auto;
+  border-radius: var(--borderRadius, 3px) var(--borderRadius, 3px) 0 0;
+  box-shadow: var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04));
+  border: none;
 }
 
 .theme-items-list #filters-modal {

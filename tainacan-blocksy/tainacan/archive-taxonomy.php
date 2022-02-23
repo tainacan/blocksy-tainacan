@@ -189,7 +189,7 @@ $thumbnail_src = wp_get_attachment_image_src($image, 'full');
                     'show_fullscreen_with_view_modes' => get_theme_mod($terms_items_prefix . '_show_fullscreen_with_view_modes', 'no') == 'yes',
                     'hide_exposers_button' => get_theme_mod($terms_items_prefix . '_show_exposers_button', 'yes') == 'no',
                     'hide_pagination_area' => get_theme_mod($terms_items_prefix . '_has_pagination', 'yes') == 'no',
-                    'default_view_mode' => get_theme_mod($terms_items_prefix . '_default_view_mode', 'masonry'),
+                    'default_view_mode' => get_theme_mod($terms_items_prefix . '_default_view_mode', 'masonry')
                 ]); 
             ?>
         </div>

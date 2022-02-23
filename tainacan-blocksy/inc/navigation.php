@@ -45,6 +45,9 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 
 		if ($has_thumb) {
 
+			$previous_thumb = '';
+			$next_thumb = '';
+
 			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
 				if ($adjacent_items['next']) {
 					$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-medium'][0];

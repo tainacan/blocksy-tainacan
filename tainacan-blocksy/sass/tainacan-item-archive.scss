@@ -44,6 +44,16 @@
         }
     }
 
+    /* Advanced Search */
+    #advanced-search-container {
+        max-width: 100%;
+        width: var(--maxSiteWidth,1290px);
+        margin: 0.5rem auto;
+        border-radius: var(--borderRadius,3px) var(--borderRadius,3px) 0 0;
+        box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));
+        border: none;
+    }
+
     /* Filters panel */
     #filters-modal {
         grid-area: itemslist;
