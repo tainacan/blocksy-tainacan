@@ -48,7 +48,27 @@ $options = [
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-description-main.php', [
                         'prefix' => $prefix,
                         'enabled' => 'yes'
-                    ], false)
+                    ], false),
+                    blocksy_rand_md5() => [
+                        'type' => 'ct-condition',
+                        'condition' => [
+                            $prefix . 'disable_gallery_lightbox'  => 'no'
+                        ],
+                        'options' => [
+                            blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-caption-lightbox.php', [
+                                'prefix' => $prefix,
+                                'enabled' => 'no'
+                            ], false),
+                            blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-name-lightbox.php', [
+                                'prefix' => $prefix,
+                                'enabled' => 'no'
+                            ], false),
+                            blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-description-lightbox.php', [
+                                'prefix' => $prefix,
+                                'enabled' => 'no'
+                            ], false)
+                        ]
+                    ]
                 ]
             ],
 
@@ -77,9 +97,17 @@ $options = [
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-typography.php', [
                         'prefix' => $prefix
                     ], false),
-                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/gallery-color-scheme.php', [
-                        'prefix' => $prefix
-                    ], false)
+                    blocksy_rand_md5() => [
+                        'type' => 'ct-condition',
+                        'condition' => [
+                            $prefix . 'disable_gallery_lightbox'  => 'no'
+                        ],
+                        'options' => [
+                            blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/gallery-color-scheme.php', [
+                                'prefix' => $prefix
+                            ], false)
+                        ]
+                    ]
                 ],
             ]
         ]

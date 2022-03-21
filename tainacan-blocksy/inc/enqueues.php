@@ -107,7 +107,7 @@ if ( !function_exists('tainacan_blocksy_gallery_light_color_scheme') ) {
 
 		$has_light_dark_color_scheme = get_theme_mod( $prefix . '_gallery_color_scheme', 'dark' ) == 'light';
 
-		if (!$has_light_dark_color_scheme)
+		if (!$has_light_dark_color_scheme || function_exists('tainacan_the_item_gallery'))
 			return;
 			
 		$css = '
