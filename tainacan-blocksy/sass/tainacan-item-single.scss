@@ -93,8 +93,8 @@
         h1 {
             --fontSize: 30px;
         }
-        h2 {
-            --fontSize: 24px;
+        h2:not(.tainacan-single-item-section) {
+            --fontSize: 22px;
         }
         h3:not(.tainacan-metadata-label) {
             --fontSize: 20px;
@@ -447,6 +447,112 @@
         &:hover .tainacan-item-file-download {
             opacity: 1;
             transform: scale(1);
+        }
+    }
+
+    /* Metadata section layouts */
+    .tainacan-metadata-sections-container {
+        &.metadata-section-layout--tabs {
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            
+            .tainacan-item-section {
+                width: 100%;
+                display: none;
+                padding: 2rem 4.16667vw 1rem 4.16667vw;
+                border-top: 1px solid var(--formBorderInitialColor, #e0e5eb);
+            }
+            label {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                cursor: pointer;
+                opacity: 0.85;
+                border-bottom: 3px solid transparent;
+                transition: border-bottom 0.2s ease;
+
+                h1,h2,h3,h4 {
+                    font-size: 1.0rem !important;
+                    margin: 0.75rem 1.5rem;
+                }
+
+                &:hover {
+                    opacity: 1.0;
+                }
+            }
+            input {
+                position: absolute;
+                opacity: 0;
+            }
+            input:checked+label {
+                opacity: 1.0;
+                border-bottom-color: var(--paletteColor1, #3eaf7c);
+            }
+            input:checked+label+.tainacan-item-section {
+                display: block;
+            }    
+            @media screen and (min-width: 768px) {
+                label {
+                    width: auto;
+                }
+                .tainacan-item-section {
+                    order: 99;
+                }
+            } 
+        }
+        &.metadata-section-layout--collapses,
+        &.metadata-section-layout--accordion {
+            box-sizing: border-box;
+            
+            .tainacan-item-section {
+                width: 100%;
+                display: none;
+                padding: 2rem 4.16667vw 1rem 4.16667vw;
+                border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                margin-bottom: 0;
+            }
+            label {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin: 0;
+                cursor: pointer;
+                opacity: 0.85;
+                border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                transition: opacity 0.2s ease;
+
+                h1,h2,h3,h4 {
+                    margin: 0.75rem;
+                }
+                .tainacan-icon {
+                    color: var(--paletteColor1, #3eaf7c);
+                    transform: rotate(0deg);
+                    transition: transform 0.2s ease;
+
+                    &::before {
+                        font-size: 1.75em;
+                    }
+                }
+                &:hover {
+                    opacity: 1.0;
+                    border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                }
+            }
+            input {
+                position: absolute;
+                opacity: 0;
+            }
+            input:checked+label {
+                opacity: 1.0;
+
+                .tainacan-icon {
+                    transform: rotate(90deg);
+                }
+            }
+            input:checked+label+.tainacan-item-section {
+                display: block;
+            }         
         }
     }
 

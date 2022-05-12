@@ -24,7 +24,7 @@ $options = [
 				'type' => 'ct-typography',
 				'label' => __( 'Section labels font', 'blocksy' ),
 				'value' => blocksy_typography_default_values([
-					'size' => '26px',
+					'size' => '22px',
 					'variation' => 'n6',
 					'line-height' => '1.3'
 				]),
