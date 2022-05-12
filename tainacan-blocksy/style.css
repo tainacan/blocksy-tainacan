@@ -459,7 +459,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 .tainacan-item-single-page .tainacan-item-single h2:not(.tainacan-single-item-section) {
-  --fontSize: 24px;
+  --fontSize: 22px;
 }
 
 .tainacan-item-single-page .tainacan-item-single h3:not(.tainacan-metadata-label) {
@@ -670,31 +670,31 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   margin: 0.5em 0 0.5em 40px;
 }
 
-.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div {
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum {
   display: flex;
   flex-wrap: nowrap;
 }
 
-.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-label {
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum .tainacan-metadata-label {
   flex-basis: 40%;
   margin-bottom: .75rem;
   border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
 }
 
-.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-value {
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum .tainacan-metadata-value {
   flex-basis: 60%;
   padding-left: 1rem;
 }
 
 @media only screen and (max-width: 767px) {
-  .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div {
+  .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum {
     flex-wrap: wrap;
   }
-  .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-label {
+  .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum .tainacan-metadata-label {
     flex-basis: 100%;
     margin-bottom: 0.25rem;
   }
-  .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 > div .tainacan-metadata-value {
+  .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum .tainacan-metadata-value {
     flex-basis: 100%;
     padding-left: 0;
   }
@@ -858,8 +858,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   transition: border-bottom 0.2s ease;
 }
 
-.tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--tabs label h1, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--tabs label h2, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--tabs label h3, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--tabs label h4 {
-  font-size: 1.0rem !important;
+.tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--tabs label .tainacan-single-item-section {
   margin: 0.75rem 1.5rem;
 }
 
@@ -913,7 +912,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   transition: opacity 0.2s ease;
 }
 
-.tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--collapses label h1, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--collapses label h2, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--collapses label h3, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--collapses label h4, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--accordion label h1, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--accordion label h2, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--accordion label h3, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--accordion label h4 {
+.tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--collapses label .tainacan-single-item-section, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--accordion label .tainacan-single-item-section {
   margin: 0.75rem;
 }
 

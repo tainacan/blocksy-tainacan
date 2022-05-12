@@ -281,7 +281,7 @@
             }
 
             &.metadata-type-2 {
-                &>div {
+                .tainacan-item-section__metadatum {
                     display: flex;
                     flex-wrap: nowrap;
                     
@@ -472,8 +472,7 @@
                 border-bottom: 3px solid transparent;
                 transition: border-bottom 0.2s ease;
 
-                h1,h2,h3,h4 {
-                    font-size: 1.0rem !important;
+                .tainacan-single-item-section {
                     margin: 0.75rem 1.5rem;
                 }
 
@@ -522,7 +521,7 @@
                 border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
                 transition: opacity 0.2s ease;
 
-                h1,h2,h3,h4 {
+                .tainacan-single-item-section {
                     margin: 0.75rem;
                 }
                 .tainacan-icon {
