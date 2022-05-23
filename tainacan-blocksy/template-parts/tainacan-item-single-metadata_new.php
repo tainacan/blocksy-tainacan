@@ -95,7 +95,7 @@
                             <h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
             'after_name' => '</h2>
                         </label>',
-            'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' .do_action( 'tainacan-blocksy-single-item-metadata-begin' ). '
+            'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' . do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '
                     <div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '" aria-labelledby="metadata-section-$slug">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ) . '</section>',
             'metadata_list_args' => $metadata_args
@@ -120,7 +120,7 @@
                             <h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
             'after_name' => '</h2>
                         </label>',
-            'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' .do_action( 'tainacan-blocksy-single-item-metadata-begin' ). '
+            'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' . do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '
                 <div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '" aria-labelledby="metadata-section-$slug">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ) . '</section>',
             'metadata_list_args' => $metadata_args
@@ -145,7 +145,7 @@
                             <h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
             'after_name' => '</h2>
                         </label>',
-            'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' .do_action( 'tainacan-blocksy-single-item-metadata-begin' ). '
+            'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' . do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '
                 <div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '" aria-labelledby="metadata-section-$slug">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ) . '</section>',
             'metadata_list_args' => $metadata_args

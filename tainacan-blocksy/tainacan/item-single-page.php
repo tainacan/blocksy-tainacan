@@ -74,7 +74,7 @@ add_action( 'blocksy:hero:before', function() use ( $page_structure_type, $prefi
 });
 ?>
 
-<div class="<?php echo 'tainacan-item-single tainacan-item-single--layout-'. $page_structure_type ?>" style="<?php echo $template_columns_style ?>">
+<div class="<?php echo esc_attr('tainacan-item-single tainacan-item-single--layout-'. $page_structure_type) ?>" style="<?php echo esc_attr($template_columns_style) ?>">
 <?php
     if ($page_structure_type !== 'type-gtm') {
         tainacan_blocksy_get_template_part( 'template-parts/tainacan-item-single-document' );

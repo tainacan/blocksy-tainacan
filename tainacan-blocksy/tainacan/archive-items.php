@@ -43,12 +43,12 @@ global $post;
 ?>
 
 <?php get_header(); ?>
-    <article class="<?php echo $page_container_classes ?>" style="<?php echo $page_container_style ?>">
+    <article class="<?php echo esc_attr($page_container_classes) ?>" style="<?php echo esc_attr($page_container_style) ?>">
         <header 
             class="tainacan-collection-header" 
             style="background-image: 
                 <?php if ( get_header_image() ) { 
-                    echo('linear-gradient(to bottom, rgba(255, 255, 255, ' . (get_theme_mod($prefix . '_page_header_background_style', 'boxed') == 'boxed' ? '0.3' : '0.8') . '), var(--tainacan-background-color, var(--background-color, #f8f9fb))), url(' . get_header_image() . ')'); 
+                    echo('linear-gradient(to bottom, rgba(255, 255, 255, ' . (get_theme_mod($prefix . '_page_header_background_style', 'boxed') == 'boxed' ? '0.3' : '0.8') . '), var(--tainacan-background-color, var(--background-color, #f8f9fb))), url(' . esc_url(get_header_image()) . ')'); 
                 } else { 
                     echo ''; 
                 } ?>"

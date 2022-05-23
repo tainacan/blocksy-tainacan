@@ -299,12 +299,12 @@ if ( !function_exists('tainacan_blocksy_item_navigation') ) {
 		if ($previous !== '' || $next !== '') {
 			echo '<nav class="' . esc_attr( $container_class ) . '">';
 			if ( $previous !== '' ) {
-				echo $previous;
+				echo wp_kses_post($previous);
 			} else {
 				echo '<div class="nav-item-prev"></div>';
 			}
 			if ( $next !== '' ) {
-				echo $next;
+				echo wp_kses_post($next);
 			} else { 
 				echo '<div class="nav-item-next"></div>';
 			}
