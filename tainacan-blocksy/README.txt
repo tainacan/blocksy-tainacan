@@ -3,9 +3,9 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blocksy
 Requires at least: 5.0
-Tested up to: 5.8.2
+Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 0.1.14
+Stable tag: 0.1.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,7 +44,7 @@ Also, this plugin will only work with [Blocksy theme](https://wordpress.org/them
 
 == Copyright ==
 
-Tainacan Support for Blocksy, Copyright 2021 Tainacan.org
+Tainacan Support for Blocksy, Copyright 2022 Tainacan.org
 Tainacan Support for Blocksy plugin is distributed under the terms of the GNU GPLv3
 License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENSE
 
@@ -57,6 +57,12 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.1.15 =
+* New metadata sections layouts (requires Tainacan 0.19)
+* New options to lightbox view (requires Tainacan 0.19)
+* Safer scaping of some html tags and attributes
+* Fixes some options unit compatibility with latest Blocksy
 
 = 0.1.14 =
 * Fixes advanced search layout
