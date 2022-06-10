@@ -10,8 +10,8 @@ $general_tab_options = [
     [
         blocksy_rand_md5() => [
             'type' => 'ct-title',
-            'label' => __( 'Metadata List', 'tainacan-blocksy' ),
-        ],
+            'label' => __( 'Metadata List', 'tainacan-blocksy' )
+        ]
     ],
     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-list-structure.php', [
         'prefix' => $prefix
@@ -36,12 +36,14 @@ if ( function_exists('tainacan_get_the_metadata_sections') ) {
         [
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'Metadata Sections', 'tainacan-blocksy' ),
-            ],
+                'label' => __( 'Metadata Sections', 'tainacan-blocksy' )
+            ]
         ],
-        blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-sections.php', [
-            'prefix' => $prefix
-        ], false),
+        [
+            blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-sections.php', [
+                'prefix' => $prefix
+            ], false)
+        ]
     );
 }
 
@@ -70,7 +72,7 @@ $options = [
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-values.php', [
                         'prefix' => $prefix
                     ], false)
-                ],
+                ]
             ]
         ]
     ]

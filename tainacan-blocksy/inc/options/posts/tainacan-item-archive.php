@@ -4,8 +4,8 @@ $options = [
 	[
 		blocksy_rand_md5() => [
 			'type' => 'ct-title',
-			'label' => __( 'Page Elements', 'blocksy' ),
-		],
+			'label' => __( 'Page Elements', 'blocksy' )
+		]
 	],
 
 	blocksy_get_options(
@@ -33,5 +33,5 @@ $options = [
 
 	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/color-palettes.php', [
 		'prefix' => $prefix . '_archive'
-	], false),
+	], false)
 ];

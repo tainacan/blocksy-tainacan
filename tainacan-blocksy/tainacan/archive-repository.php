@@ -16,7 +16,7 @@ $background_color_palette = get_theme_mod($repository_items_prefix . '_items_lis
     'color2' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
     'color3' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
     'color4' => [ 'color' => 'var(--formBackgroundInitialColor, #ffffff)' ],
-    'color5' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
+    'color5' => [ 'color' => 'var(--background-color, #f8f9fb)' ]
 ]);
 $page_container_style .= '--tainacan-background-color:' . $background_color_palette['color1']['color'] . ';';
 $page_container_style .= '--tainacan-item-background-color:' . $background_color_palette['color2']['color'] . ';';
@@ -30,7 +30,7 @@ $text_color_palette = get_theme_mod($repository_items_prefix . '_items_list_text
     'color2' => [ 'color' => 'var(--headingColor, rgba(44, 62, 80, 1))' ],
     'color3' => [ 'color' => 'var(--color, #454647)' ],
     'color4' => [ 'color' => '#555758' ],
-    'color5' => [ 'color' => 'var(--formTextInitialColor, #454647)' ],
+    'color5' => [ 'color' => 'var(--formTextInitialColor, #454647)' ]
 ]);
 $page_container_style .= '--tainacan-secondary:' . $text_color_palette['color1']['color'] . ';';
 $page_container_style .= '--tainacan-heading-color:' . $text_color_palette['color2']['color'] . ';';

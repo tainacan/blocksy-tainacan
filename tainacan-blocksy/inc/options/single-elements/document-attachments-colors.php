@@ -33,7 +33,7 @@ $options = [
 
 							'color1' => [ 'color' => 'var(--paletteColor6, #edeff2)' ],
 							'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
-							'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ],
+							'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ]
 
 						],
 
@@ -42,14 +42,14 @@ $options = [
 
 							'color1' => [ 'color' => 'var(--paletteColor3, #415161)' ],
 							'color2' => [ 'color' => 'var(--paletteColor7, #f8f9fb)' ],
-							'color3' => [ 'color' => 'var(--paletteColor2, #33a370)' ],
+							'color3' => [ 'color' => 'var(--paletteColor2, #33a370)' ]
 
-						],
+						]
 
 					]
 				],
 				'sync' => '',
 			]
 		]
-    ],
+    ]
 ];

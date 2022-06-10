@@ -42,7 +42,7 @@ $options = [
 					'color2' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
 					'color3' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
 					'color4' => [ 'color' => 'var(--formBackgroundInitialColor, #ffffff)' ],
-					'color5' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
+					'color5' => [ 'color' => 'var(--background-color, #f8f9fb)' ]
 
 				],
 
@@ -53,7 +53,7 @@ $options = [
 					'color2' => [ 'color' => '#ece6db' ],
 					'color3' => [ 'color' => '#f4eee2' ],
 					'color4' => [ 'color' => '#f4eee2' ],
-					'color5' => [ 'color' => '#dfd9cd' ],
+					'color5' => [ 'color' => '#dfd9cd' ]
 
 				],
 
@@ -64,7 +64,7 @@ $options = [
 					'color2' => [ 'color' => '#282828' ],
 					'color3' => [ 'color' => '#333333' ],
 					'color4' => [ 'color' => '#333333' ],
-					'color5' => [ 'color' => '#1e1e1e' ],
+					'color5' => [ 'color' => '#1e1e1e' ]
 					
 				]
 			]
@@ -101,7 +101,7 @@ $options = [
 					'color2' => [ 'color' => 'var(--headingColor, rgba(44, 62, 80, 1))' ],
 					'color3' => [ 'color' => 'var(--color, #454647)' ],
 					'color4' => [ 'color' => '#555758' ],
-					'color5' => [ 'color' => 'var(--formTextInitialColor, #454647)' ],
+					'color5' => [ 'color' => 'var(--formTextInitialColor, #454647)' ]
 
 				],
 
@@ -112,7 +112,7 @@ $options = [
 					'color2' => [ 'color' => 'rgb(80, 54, 44)' ],
 					'color3' => [ 'color' => '#474545' ],
 					'color4' => [ 'color' => '#585655' ],
-					'color5' => [ 'color' => '#474545' ],
+					'color5' => [ 'color' => '#474545' ]
 
 				],
 
@@ -123,7 +123,7 @@ $options = [
 					'color2' => [ 'color' => 'rgb(207, 216, 225)' ],
 					'color3' => [ 'color' => '#f0f0f0' ],
 					'color4' => [ 'color' => '#c8c8c8' ],
-					'color5' => [ 'color' => '#f0f0f0' ],
+					'color5' => [ 'color' => '#f0f0f0' ]
 					
 				]
 			]

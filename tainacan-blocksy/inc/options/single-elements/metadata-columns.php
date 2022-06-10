@@ -23,12 +23,12 @@ $options = [
 				'unit' => 'vw',
 				'min' => 20,
 				'max' => 100,
-			],
+			]
 		]),
 		'responsive' => true,
 		'divider' => 'bottom',
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])
-	],
+	]
 ];

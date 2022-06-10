@@ -13,7 +13,7 @@ $options = [
 		'divider' => 'top',
 		'choices' => [
 			'dark' => __('Dark', 'blocksy'),
-			'light' => __('Light', 'blocksy'),
-		],
+			'light' => __('Light', 'blocksy')
+		]
 	]
 ];

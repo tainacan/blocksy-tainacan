@@ -8,8 +8,8 @@ $options = [
 	[
 		blocksy_rand_md5() => [
 			'type' => 'ct-title',
-			'label' => __( 'Metadata Label', 'tainacan-blocksy' ),
-		],
+			'label' => __( 'Metadata Label', 'tainacan-blocksy' )
+		]
 	],
 	$prefix . 'tainacan_metadata_label_font' => [
 		'type' => 'ct-typography',
@@ -51,10 +51,10 @@ $options = [
             'style' => 'solid',
             'color' => [
                 'color' => 'rgba(125, 125, 125, 0.5)',
-            ],
+            ]
         ],
         'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])
-    ],
+    ]
 ];

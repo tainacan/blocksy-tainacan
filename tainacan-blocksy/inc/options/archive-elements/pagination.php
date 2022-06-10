@@ -34,6 +34,6 @@ $options = [
                                 'desc' => __( 'Display the button for jumping to an specific page.', 'tainacan-blocksy' ),
                 'sync' => ''
             ]
-		],
-	],
+		]
+	]
 ];

@@ -29,16 +29,16 @@ $options = [
 				'choices' => [
 					'carousel' => [
 						'src'   => tainacan_blocksy_image_picker_url( 'items-carousel.svg' ),
-						'title' => __( 'Carousel', 'tainacan-blocksy' ),
+						'title' => __( 'Carousel', 'tainacan-blocksy' )
 					],
 					'grid' => [
 						'src'   => tainacan_blocksy_image_picker_url( 'items-grid.svg' ),
-						'title' => __( 'Grid', 'tainacan-blocksy' ),
+						'title' => __( 'Grid', 'tainacan-blocksy' )
 					],
 					'list' => [
 						'src'   => tainacan_blocksy_image_picker_url( 'items-list.svg' ),
-						'title' => __( 'List', 'tainacan-blocksy' ),
-					],
+						'title' => __( 'List', 'tainacan-blocksy' )
+					]
 				],
 				'sync' => blocksy_sync_single_post_container([
 					'prefix' => $prefix

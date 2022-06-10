@@ -15,7 +15,7 @@ $options = [
 		'inner-options' => [
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'Textual search', 'tainacan-blocksy' ),
+                'label' => __( 'Textual search', 'tainacan-blocksy' )
             ],
             $prefix . 'show_search' => [
                 'label' => __( 'Show simple search', 'tainacan-blocksy' ),
@@ -37,12 +37,12 @@ $options = [
                         
                         'desc' => __( 'Display a link to open the advanced search panel.', 'tainacan-blocksy' ),
                         'sync' => ''
-                    ],
-                ],
+                    ]
+                ]
             ],
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'Sorting', 'tainacan-blocksy' ),
+                'label' => __( 'Sorting', 'tainacan-blocksy' )
             ],
             $prefix . 'show_sorting_area' => [
                 'label' => __( 'Show sorting options', 'tainacan-blocksy' ),
@@ -64,12 +64,12 @@ $options = [
                         
                         'desc' => __( 'Display the "Sort by" button, to select a metadata to sort by.', 'tainacan-blocksy' ),
                         'sync' => ''
-                    ],
-                ],
+                    ]
+                ]
             ],
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'View modes', 'tainacan-blocksy' ),
+                'label' => __( 'View modes', 'tainacan-blocksy' )
             ],
             blocksy_rand_md5() => [
                 'type' => 'ct-condition',
@@ -103,7 +103,7 @@ $options = [
             ],
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'Exposers', 'tainacan-blocksy' ),
+                'label' => __( 'Exposers', 'tainacan-blocksy' )
             ],
             $prefix . 'show_exposers_button' => [
                 'label' => __( 'Show "View as..." button', 'tainacan-blocksy' ),
@@ -111,7 +111,7 @@ $options = [
                 'value' => 'yes',
                                 'desc' => __( 'Display the "View as..." button, which opens the exposers modal.', 'tainacan-blocksy' ),
                 'sync' => ''
-            ],
-		],
-	],
+            ]
+		]
+	]
 ];

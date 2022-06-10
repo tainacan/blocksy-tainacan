@@ -14,16 +14,16 @@ $options = [
 		'choices' => [
 			'metadata-type-1' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'metadata-type-1.svg' ),
-				'title' => __( 'Label above values', 'tainacan-blocksy' ),
+				'title' => __( 'Label above values', 'tainacan-blocksy' )
             ],
             
             'metadata-type-2' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'metadata-type-2.svg' ),
-				'title' => __( 'Label aside values', 'tainacan-blocksy' ),
-            ],
+				'title' => __( 'Label aside values', 'tainacan-blocksy' )
+            ]
         ],
         'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])
-	],
+	]
 ];

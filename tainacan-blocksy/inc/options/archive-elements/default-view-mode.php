@@ -12,6 +12,6 @@ $options = [
         'sync' => '',
         'choices' => blocksy_ordered_keys(
             $view_modes['enabled_view_modes']
-        ),
+        )
     ]
 ];

@@ -12,8 +12,8 @@ $options = [
 	[
 		blocksy_rand_md5() => [
 			'type' => 'ct-title',
-			'label' => __( 'Tainacan Item Elements', 'tainacan-blocksy' ),
-		],
+			'label' => __( 'Tainacan Item Elements', 'tainacan-blocksy' )
+		]
 	],
 	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/tainacan-single-structure.php', [
 		'prefix' => $post_type->name . '_single',

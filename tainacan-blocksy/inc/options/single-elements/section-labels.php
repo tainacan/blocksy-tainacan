@@ -66,7 +66,7 @@ $options = [
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])
-					],
+					]
 				]
 			],
 			blocksy_rand_md5() => [
@@ -84,7 +84,7 @@ $options = [
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])
-					],
+					]
 				]
 			],
 			blocksy_rand_md5() => [
@@ -103,7 +103,7 @@ $options = [
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])
-					],
+					]
 				]
 			],
 			$prefix . 'section_metadata_label' => [
@@ -131,9 +131,9 @@ $options = [
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])
-					],
+					]
 				]
-			],
-		],
-	],
+			]
+		]
+	]
 ];

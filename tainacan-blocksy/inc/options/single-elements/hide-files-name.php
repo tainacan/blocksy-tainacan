@@ -16,6 +16,6 @@ $options = [
 		'desc' => __( 'Toggle to hide the attachments and document name on the carousel.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix,
-		]),
+		])
 	]
 ];

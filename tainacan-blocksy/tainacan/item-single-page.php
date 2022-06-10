@@ -56,7 +56,7 @@ add_action( 'blocksy:hero:before', function() use ( $page_structure_type, $prefi
         [
             'color1' => [ 'color' => 'var(--paletteColor6, #edeff2)' ],
 			'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
-			'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ],
+			'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ]
         ]);
         
         $media_component_style .= '--tainacan-media-background-color:' . $media_component_color_palette['color1']['color'] . ';';

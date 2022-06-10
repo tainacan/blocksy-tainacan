@@ -16,6 +16,6 @@ $options = [
 		'desc' => __( 'Toggle to not open a modal when clicking in the document.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix,
-		]),
+		])
 	]
 ];

@@ -49,8 +49,8 @@ $options = [
                 'view' => 'text',
                 'choices' => [
                     'simple' => __('Simple', 'blocksy'),
-                    'boxed' => __('Boxed', 'blocksy'),
-                ],
+                    'boxed' => __('Boxed', 'blocksy')
+                ]
             ],
             $prefix . 'hero_elements' => [
                 'label' => __('Elements', 'blocksy'),
@@ -73,13 +73,13 @@ $options = [
                                 'responsive' => true,
                                 'sync' => [
                                     'id' => $prefix . 'hero_elements_spacing',
-                                ],
-                            ],
-                        ],
+                                ]
+                            ]
+                        ]
                     ],
 
                     'custom_thumbnail' => [
-                        'label' => __('Thumbnail', 'blocksy'),
+                        'label' => __('Thumbnail', 'blocksy')
                     ],
                     
                     'custom_title' => [
@@ -104,8 +104,8 @@ $options = [
                                             'h5' => 'H5',
                                             'h6' => 'H6',
                                         ]
-                                    ),
-                                ],
+                                    )
+                                ]
                             ],
     
                             
@@ -128,9 +128,9 @@ $options = [
                                 'responsive' => true,
                                 'sync' => [
                                     'id' => $prefix . 'hero_elements_spacing',
-                                ],
-                            ],
-                        ],
+                                ]
+                            ]
+                        ]
                     ],
     
                     'custom_description' => [
@@ -151,12 +151,12 @@ $options = [
                                 'choices' => blocksy_ordered_keys([
                                     'desktop' => __( 'Desktop', 'blocksy' ),
                                     'tablet' => __( 'Tablet', 'blocksy' ),
-                                    'mobile' => __( 'Mobile', 'blocksy' ),
+                                    'mobile' => __( 'Mobile', 'blocksy' )
                                 ]),
     
                                 'sync' => [
                                     'id' => $prefix . 'hero_elements_spacing',
-                                ],
+                                ]
                             ],
     
                             'hero_item_spacing' => [
@@ -168,12 +168,12 @@ $options = [
                                 'responsive' => true,
                                 'sync' => [
                                     'id' => $prefix . 'hero_elements_spacing',
-                                ],
-                            ],
-                        ],
+                                ]
+                            ]
+                        ]
                     ]
                 ]
-            ],
-		],
-	],
+            ]
+		]
+	]
 ];

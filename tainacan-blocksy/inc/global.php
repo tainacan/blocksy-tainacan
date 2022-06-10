@@ -176,7 +176,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 		'style' => 'solid',
 		'color' => [
 			'color' => 'rgba(125, 125, 125, 0.5)',
-		],
+		]
 	]),
 	'responsive' => true
 ]);
@@ -193,7 +193,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 		'style' => 'solid',
 		'color' => [
 			'color' => 'rgba(125, 125, 125, 0.5)',
-		],
+		]
 	]),
 	'responsive' => true
 ]);

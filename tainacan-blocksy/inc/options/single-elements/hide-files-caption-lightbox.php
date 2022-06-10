@@ -15,6 +15,6 @@ $options = [
 		'desc' => __( 'Toggle to hide the attachments and document caption on the lightbox.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix,
-		]),
+		])
 	]
 ];

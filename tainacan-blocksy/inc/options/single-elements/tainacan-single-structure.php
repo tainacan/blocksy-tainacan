@@ -15,34 +15,34 @@ $options = [
 		'choices' => [
 			'type-dam' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-dam.svg' ),
-				'title' => __( 'Document, Attachments, Metadata', 'tainacan-blocksy' ),
+				'title' => __( 'Document, Attachments, Metadata', 'tainacan-blocksy' )
             ],
             
             'type-dma' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-dma.svg' ),
-				'title' => __( 'Document, Metadata, Attachments', 'tainacan-blocksy' ),
+				'title' => __( 'Document, Metadata, Attachments', 'tainacan-blocksy' )
             ],
             
             'type-mda' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-mda.svg' ),
-				'title' => __( 'Metadata, Document, Attachments', 'tainacan-blocksy' ),
+				'title' => __( 'Metadata, Document, Attachments', 'tainacan-blocksy' )
             ],
             
             'type-gm' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-gm.svg' ),
-				'title' => __( 'Metadata to the right', 'tainacan-blocksy' ),
+				'title' => __( 'Metadata to the right', 'tainacan-blocksy' )
 			],
 
             'type-mg' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'type-mg.svg' ),
-				'title' => __( 'Metadata to the left', 'tainacan-blocksy' ),
+				'title' => __( 'Metadata to the left', 'tainacan-blocksy' )
 			],
 
             // 'type-gtm' => [
 			// 	'src'   => tainacan_blocksy_image_picker_url( 'type-gtm.svg' ),
 			// 	'title' => __( 'Document and Attachments above Title', 'tainacan-blocksy' ),
-			// ],
+			// ]
         ],
         'sync' => ''
-	],
+	]
 ];

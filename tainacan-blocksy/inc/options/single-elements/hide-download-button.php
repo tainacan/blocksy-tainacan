@@ -16,6 +16,6 @@ $options = [
 		'desc' => __( 'Toggle to never display a "Download" button when hovering the document.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix,
-		]),
+		])
 	]
 ];

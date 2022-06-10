@@ -27,8 +27,8 @@ $options = [
                 'view' => 'text',
                 'choices' => [
                     'simple' => __('Simple', 'blocksy'),
-                    'boxed' => __('Boxed', 'blocksy'),
-                ],
+                    'boxed' => __('Boxed', 'blocksy')
+                ]
             ],
             blocksy_rand_md5() => [
                 'type' => 'ct-condition',
@@ -79,8 +79,8 @@ $options = [
                         
                         'desc' => __( 'Display the filters button inside the search control bar instead of floating aside.', 'tainacan-blocksy' ),
                         'sync' => ''
-                    ],
-                ],
+                    ]
+                ]
             ],
             $prefix . 'filters_fixed_on_scroll' => [
                 'label' => __( 'Filters fixed on scroll', 'tainacan-blocksy' ),
@@ -96,6 +96,6 @@ $options = [
                 'desc' => __( 'Display the filters panel as a full screen modal instead of aside, even on desktop.', 'tainacan-blocksy' ),
                 'sync' => ''
             ]
-		],
-	],
+		]
+	]
 ];

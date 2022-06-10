@@ -29,8 +29,8 @@ $options = [
                 'view' => 'text',
                 'choices' => [
                     'simple' => __('Simple', 'blocksy'),
-                    'boxed' => __('Boxed', 'blocksy'),
-                ],
+                    'boxed' => __('Boxed', 'blocksy')
+                ]
             ],
             $prefix . 'hero_elements' => [
                 'label' => __('Elements', 'blocksy'),
@@ -63,8 +63,8 @@ $options = [
                                             'h5' => 'H5',
                                             'h6' => 'H6',
                                         ]
-                                    ),
-                                ],
+                                    )
+                                ]
                             ],
 
                             'hero_item_spacing' => [
@@ -76,12 +76,12 @@ $options = [
                                 'responsive' => true,
                                 'sync' => [
                                     'id' => $prefix . 'hero_elements_spacing',
-                                ],
-                            ],
-                        ],
+                                ]
+                            ]
+                        ]
                     ]
                 ]
-            ],
-		],
-	],
+            ]
+		]
+	]
 ];
