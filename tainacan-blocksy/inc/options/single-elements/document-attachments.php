@@ -25,6 +25,9 @@ $options = [
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-attachments-columns.php', [
                         'prefix' => $prefix
                     ], false),
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-attachments-affix.php', [
+                        'prefix' => $prefix
+                    ], false),
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-download-button.php', [
                         'prefix' => $prefix,
                         'enabled' => 'no'

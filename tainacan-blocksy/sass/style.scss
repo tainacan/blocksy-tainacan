@@ -16,6 +16,9 @@
     --tainacan-block-gray4: var(--color, rgba(44, 62, 80, 0.9));
     --tainacan-block-gray5: var(--headingColor, rgba(44, 62, 80, 1));
     --background-color: var(--paletteColor7);
+
+    // Previous Blocksy variables
+    --maxSiteWidth: var(--normal-container-max-width);
  }
 
 // Grid mixin for display: grid compatibility

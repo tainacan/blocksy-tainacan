@@ -329,7 +329,7 @@ body:not(.tainacan-admin-page) {
 
 .page.has-page-header-style-boxed {
     .theme-items-list:not(.is-fullscreen) {
-        grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
+        grid-template-columns: 1fr minmax(auto, var(--maxSiteWidth,1300px)) 1fr;
     }
     .tainacan-collection-header .tainacan-collection-header__box {
         width: var(--maxSiteWidth, 1290px);

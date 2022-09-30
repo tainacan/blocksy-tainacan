@@ -133,7 +133,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_supported_list') ) {
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
 			return array_filter( $potential_post_types, function($post_type) {
-				return !in_array($post_type, [ 'tainacan-metadatum', 'tainacan-filter' ]);
+				return !in_array($post_type, [ 'tainacan-metadatum', 'tainacan-filter', 'tainacan-metasection' ]);
 			});
 		}
 		return $potential_post_types;

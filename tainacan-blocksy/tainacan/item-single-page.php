@@ -21,10 +21,12 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
     $column_metadata_width = 100 - $column_documents_attachments_width;
 
     if ($page_structure_type == 'type-gm') {
-        $template_columns_style = 'grid-template-columns: ' . $column_documents_attachments_width . '% calc(' . $column_metadata_width . '% - 48px)';
+        $template_columns_style = 'grid-template-columns: ' . $column_documents_attachments_width . '% calc(' . $column_metadata_width . '% - 48px);';
     } else {
-        $template_columns_style = 'grid-template-columns: ' . $column_metadata_width . '% calc(' . $column_documents_attachments_width . '% - 48px)';
+        $template_columns_style = 'grid-template-columns: ' . $column_metadata_width . '% calc(' . $column_documents_attachments_width . '% - 48px);';
     }
+
+    $column_documents_attachments_affix = get_theme_mod( $prefix . '_document_attachments_affix', 'no') === 'yes';
 }
 
 do_action( 'tainacan-blocksy-single-item-top' ); 
@@ -51,6 +53,9 @@ add_action( 'blocksy:hero:before', function() use ( $page_structure_type, $prefi
             $extra_classes = 'has-content-style-' . $content_style;
         }
 
+        if ( $column_documents_attachments_affix )
+            $extra_classes .= ' has-column-affix';
+
         $media_component_style = '';
         $media_component_color_palette = get_theme_mod($prefix . '_document_attachments_colors',
         [
@@ -74,7 +79,7 @@ add_action( 'blocksy:hero:before', function() use ( $page_structure_type, $prefi
 });
 ?>
 
-<div class="<?php echo esc_attr('tainacan-item-single tainacan-item-single--layout-'. $page_structure_type) ?>" style="<?php echo esc_attr($template_columns_style) ?>">
+<div class="<?php echo esc_attr('tainacan-item-single tainacan-item-single--layout-'. $page_structure_type . ($column_documents_attachments_affix ? ' tainacan-item-single--affix-column' : '')) ?>" style="<?php echo esc_attr($template_columns_style) ?>">
 <?php
     if ($page_structure_type !== 'type-gtm') {
         tainacan_blocksy_get_template_part( 'template-parts/tainacan-item-single-document' );

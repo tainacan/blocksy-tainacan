@@ -7,7 +7,7 @@
         max-width: var(--block-max-width);
         align-self: flex-start;
         align-self: start;
-        margin-bottom: 2.25rem;
+        margin-bottom: 2.5rem;
     }
 
     .tainacan-item-single {
@@ -209,7 +209,7 @@
                     display: block;
                     max-height: 1px;
                     width: 45%;
-                    background: #e0e5eb;
+                    background: var(--formBorderInitialColor, #e0e5eb);
                     content: none;
                     color: transparent;
                     margin: 0.875rem auto;
@@ -217,8 +217,9 @@
             }
             .tainacan-compound-group {
                 padding-top: 0.5em;
+                margin-bottom: .75rem;
                 padding-left: 1.5rem;
-                border-left: 1px solid #e0e5eb;
+                border-left: 1px solid var(--formBorderInitialColor, #e0e5eb);
 
                 .label {
                     margin: 0;
@@ -273,7 +274,7 @@
                     display: block;
                     max-height: 1px;
                     width: calc(100% - 40px);
-                    background: #e0e5eb;
+                    background: var(--formBorderInitialColor, #e0e5eb);
                     content: none;
                     color: transparent;
                     margin: 0.5em 0 0.5em 40px;
@@ -349,7 +350,7 @@
                 transition: border 0.3s ease;
             }
 
-            .swiper-slide-metadata {
+            .swiper-slide-metadata__name {
                 display: block;
                 margin-top: 0.5rem;
                 font-family: var(--fontFamily);
@@ -385,6 +386,12 @@
         .tainacan-item-section {
             margin: 0 auto;
         }
+    }
+
+    // Document and attachments fixed column
+    .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {
+        position: sticky;
+        top: 2rem;
     }
 
     // Document Download button -------------------------------------
