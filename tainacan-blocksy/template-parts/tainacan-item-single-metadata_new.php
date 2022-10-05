@@ -1,5 +1,14 @@
 <?php 
-    $prefix = blocksy_manager()->screen->get_prefix(); 
+    $prefix = blocksy_manager()->screen->get_prefix();
+    
+    $section_layout = get_theme_mod($prefix . '_metadata_sections_layout_type', 'metadata-section-type-1');
+    $exclude_title_metadata = get_theme_mod($prefix . '_show_title_metadata', 'yes') === 'no';
+    $show_thumbnail_with_metadata = get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes';
+    $metadata_list_structure_type = get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1');
+    $display_section_labels = get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes';
+    $show_default_section_separated =
+        in_array($section_layout, ['metadata-section-type-2', 'metadata-section-type-3', 'metadata-section-type-4']) &&
+        get_theme_mod($prefix . '_metadata_sections_separate_default_section', 'no') === 'yes';
 
     /** 
      * The new metadata sections function makes it a bit more complicated to add
@@ -8,7 +17,7 @@
      * The following uses a filter to add it right above the first metadatum in the first section.
      **/
 
-    if ( has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ) {
+    if ( has_post_thumbnail() && $show_thumbnail_with_metadata ) {
 
         // Gets collection so we can obtain firtst metadatum
         $collection = tainacan_get_collection();
@@ -29,7 +38,7 @@
                         $first_metadatum_id = $metadatum['id'];
 
                         // IF we are not displaying the title here, we must look for the second metadata
-                        if ( get_theme_mod($prefix . '_show_title_metadata', 'yes') === 'no' ) {
+                        if ( $exclude_title_metadata ) {
 
                             $Tainacan_Metadata = \Tainacan\Repositories\Metadata::get_instance();
                             $metadatum_object = $Tainacan_Metadata->fetch($first_metadatum_id);
@@ -75,11 +84,26 @@
         'after_title' => '</h3>',
         'before_value' => '<p class="tainacan-metadata-value">',
         'after_value' => '</p>',
-        'exclude_title' => (get_theme_mod($prefix . '_show_title_metadata', 'yes') === 'no')
+        'exclude_title' => $exclude_title_metadata
     );
 
-
-    $section_layout = get_theme_mod($prefix . '_metadata_sections_layout_type', 'metadata-section-type-1');
+    if ( $show_default_section_separated ) {
+        $sections_args = array(
+            'metadata_sections__in' => [ \Tainacan\Entities\Metadata_Section::$default_section_slug ],
+            'before' => '<section class="tainacan-item-section tainacan-item-section--metadata">',
+            'after' => '</section>',
+            'before_name' => '<h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
+            'after_name' => '</h2>',
+            'hide_name' => !$display_section_labels,
+            'before_metadata_list' => do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '<div class="tainacan-item-section__metadata ' . $metadata_list_structure_type . '">',
+            'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ),
+            'metadata_list_args' => $metadata_args
+        );
+        
+        echo '<div class="tainacan-metadata-sections-container">';
+        tainacan_the_metadata_sections( $sections_args );
+        echo '</div>';
+    }
     
     if ( $section_layout == 'metadata-section-type-2') {
 
@@ -87,7 +111,8 @@
             return str_replace('<input', '<input checked="checked"', $before);
         }, 10, 2);
 
-        $args = array(
+        $sections_args = array(
+            'metadata_sections__not_in' => $show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
             'before' => '',
             'after' => '',
             'before_name' => '<input name="tabs" type="radio" id="tab-section-$id" />
@@ -96,13 +121,13 @@
             'after_name' => '</h2>
                         </label>',
             'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' . do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '
-                    <div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '" aria-labelledby="metadata-section-$slug">',
+                    <div class="tainacan-item-section__metadata ' . $metadata_list_structure_type . '" aria-labelledby="metadata-section-$slug">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ) . '</section>',
             'metadata_list_args' => $metadata_args
         );
         
         echo '<div class="tainacan-metadata-sections-container metadata-section-layout--tabs">';
-        tainacan_the_metadata_sections( $args );
+        tainacan_the_metadata_sections( $sections_args );
         echo '</div>';
 
     } else  if ( $section_layout == 'metadata-section-type-3') {
@@ -111,7 +136,8 @@
             return str_replace('<input', '<input checked="checked"', $before);
         }, 10, 2);
 
-        $args = array(
+        $sections_args = array(
+            'metadata_sections__not_in' => $show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
             'before' => '',
             'after' => '',
             'before_name' => '<input name="collapses" type="checkbox" id="collapse-section-$id"/>
@@ -121,13 +147,13 @@
             'after_name' => '</h2>
                         </label>',
             'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' . do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '
-                <div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '" aria-labelledby="metadata-section-$slug">',
+                <div class="tainacan-item-section__metadata ' . $metadata_list_structure_type . '" aria-labelledby="metadata-section-$slug">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ) . '</section>',
             'metadata_list_args' => $metadata_args
         );
 
         echo '<div class="tainacan-metadata-sections-container metadata-section-layout--collapses">';
-        tainacan_the_metadata_sections( $args );
+        tainacan_the_metadata_sections( $sections_args );
         echo '</div>';
 
     } else if ( $section_layout == 'metadata-section-type-4') {
@@ -136,7 +162,8 @@
             return str_replace('<input', '<input checked="checked"', $before);
         }, 10, 2);
 
-        $args = array(
+        $sections_args = array(
+            'metadata_sections__not_in' => $show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
             'before' => '',
             'after' => '',
             'before_name' => '<input name="accordion" type="radio" id="accordion-section-$id"/>
@@ -146,29 +173,30 @@
             'after_name' => '</h2>
                         </label>',
             'before_metadata_list' => '<section class="tainacan-item-section tainacan-item-section--metadata">' . do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '
-                <div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '" aria-labelledby="metadata-section-$slug">',
+                <div class="tainacan-item-section__metadata ' . $metadata_list_structure_type . '" aria-labelledby="metadata-section-$slug">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ) . '</section>',
             'metadata_list_args' => $metadata_args
         );
 
         echo '<div class="tainacan-metadata-sections-container metadata-section-layout--accordion">';
-        tainacan_the_metadata_sections( $args );
+        tainacan_the_metadata_sections( $sections_args );
         echo '</div>';
 
     } else {
-        $args = array(
+        $sections_args = array(
+            'metadata_sections__not_in' => $show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
             'before' => '<section class="tainacan-item-section tainacan-item-section--metadata">',
             'after' => '</section>',
             'before_name' => '<h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
             'after_name' => '</h2>',
-            'hide_name' => !get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes',
-            'before_metadata_list' => do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '<div class="tainacan-item-section__metadata ' . get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') . '">',
+            'hide_name' => !$display_section_labels,
+            'before_metadata_list' => do_action( 'tainacan-blocksy-single-item-metadata-begin' ) . '<div class="tainacan-item-section__metadata ' . $metadata_list_structure_type . '">',
             'after_metadata_list' => '</div>' . do_action( 'tainacan-blocksy-single-item-metadata-end' ),
             'metadata_list_args' => $metadata_args
         );
         
         echo '<div class="tainacan-metadata-sections-container">';
-        tainacan_the_metadata_sections( $args );
+        tainacan_the_metadata_sections( $sections_args );
         echo '</div>';
     }
 ?>

@@ -851,7 +851,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--tabs .tainacan-item-section {
   width: 100%;
   display: none;
-  padding: 2rem 4.16667vw 1rem 4.16667vw;
+  padding: 2rem 42px 1rem 42px;
   border-top: 1px solid var(--formBorderInitialColor, #e0e5eb);
 }
 
@@ -903,7 +903,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--collapses .tainacan-item-section, .tainacan-item-single-page .tainacan-metadata-sections-container.metadata-section-layout--accordion .tainacan-item-section {
   width: 100%;
   display: none;
-  padding: 2rem 4.16667vw 1rem 4.16667vw;
+  padding: 2rem 42px 1rem 42px;
   border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
   margin-bottom: 0;
 }

@@ -42,7 +42,19 @@ if ( function_exists('tainacan_get_the_metadata_sections') ) {
         [
             blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-sections.php', [
                 'prefix' => $prefix
-            ], false)
+            ], false),
+            blocksy_rand_md5() => [
+                'type' => 'ct-condition',
+                'condition' => [
+                    $prefix . 'metadata_sections_layout_type' => 'metadata-section-type-2|metadata-section-type-3|metadata-section-type-4',
+                ],
+                'options' => [
+                    blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-sections-default.php', [
+                        'prefix' => $prefix,
+                        'enabled' => 'no'
+                    ], false)
+                ]
+            ]
         ]
     );
 }
