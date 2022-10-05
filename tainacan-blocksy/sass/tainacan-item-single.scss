@@ -21,7 +21,8 @@
         .tainacan-item-section--document,
         .tainacan-item-section--gallery { grid-area: document }
         .tainacan-item-section--attachments { grid-area: attachments }
-        .tainacan-item-section--metadata { grid-area: metadata }
+        .tainacan-item-section--metadata,
+        .tainacan-item-section--metadata-sections { grid-area: metadata }
         .tainacan-item-section--items-related-to-this { grid-area: related }
         
         &.tainacan-item-single--layout-type-dam {
@@ -458,8 +459,8 @@
     }
 
     /* Metadata section layouts */
-    .tainacan-metadata-sections-container {
-        &.metadata-section-layout--tabs {
+    .tainacan-item-section--metadata-sections {
+        .metadata-section-layout--tabs {
             display: flex;
             flex-wrap: wrap;
             box-sizing: border-box;
@@ -507,8 +508,8 @@
                 }
             } 
         }
-        &.metadata-section-layout--collapses,
-        &.metadata-section-layout--accordion {
+        .metadata-section-layout--collapses,
+        .metadata-section-layout--accordion {
             box-sizing: border-box;
             
             .tainacan-item-section {
