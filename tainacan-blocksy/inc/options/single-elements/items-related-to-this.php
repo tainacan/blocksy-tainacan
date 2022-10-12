@@ -67,7 +67,7 @@ $options = [
                     $prefix . 'items_related_to_this_layout'  => 'grid | list'
                 ],
                 'options' => [
-					$prefix . 'items_related_to_this_max_column_count' => [
+					$prefix . 'items_related_to_this_max_columns_count' => [
 						'label' => __( 'Max amount of items columns', 'blocksy' ),
 						'type' => 'ct-number',
 						'design' => 'inline',
