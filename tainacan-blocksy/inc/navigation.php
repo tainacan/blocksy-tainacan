@@ -61,23 +61,23 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 				$next_thumb = get_the_post_thumbnail_url( get_next_post(), 'tainacan-medium' );
 			}
 
-			$previous_post_image_output = blocksy_simple_image(
+			$previous_post_image_output = $previous_thumb ? blocksy_simple_image(
 				$previous_thumb,
 				[
 					'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="0,7.5 5.5,13 6.4,12.1 2.4,8.1 20,8.1 20,6.9 2.4,6.9 6.4,2.9 5.5,2 "/></svg>',
 					'ratio' => '1/1',
 					'tag_name' => 'figure'
 				]
-			);
+			) : '';
 
-			$next_post_image_output = blocksy_simple_image(
+			$next_post_image_output = $next_thumb ? blocksy_simple_image(
 				$next_thumb,
 				[
 					'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="14.5,2 13.6,2.9 17.6,6.9 0,6.9 0,8.1 17.6,8.1 13.6,12.1 14.5,13 20,7.5 "/></svg>',
 					'ratio' => '1/1',
 					'tag_name' => 'figure'
 				]
-			);
+			) : '';
 				
 		}
 
@@ -99,7 +99,7 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 				'</div>' .
 				($has_thumb ? $next_post_image_output : '') .
 			'</a>');
-
+		
 		return ['next' => $next, 'previous' => $previous];
 	}
 }
@@ -187,7 +187,6 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 		ob_start();
 
 		?>
-
 			<nav class="<?php echo esc_attr( $container_class ); ?>">
 				<?php if ($next_post): ?>
 					<a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="nav-item-prev">
@@ -268,31 +267,30 @@ if ( !function_exists('tainacan_blocksy_item_navigation') ) {
 	
 		if (get_theme_mod( $prefix . '_has_post_nav', $prefix === 'single_blog_post' ? 'yes' : 'no' ) === 'yes') {
 		
-		$container_class = 'post-navigation';
-	
-		$container_class .= ' ' . blocksy_visibility_classes(get_theme_mod(
-			$prefix . '_post_nav_visibility',
-			[
-				'desktop' => true,
-				'tablet' => true,
-				'mobile' => true,
-			]
-		));
-	
-		$has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
+			$container_class = 'post-navigation';
 		
-		if ($has_thumb)
-			$container_class .= ' has-thumbnails';
+			$container_class .= ' ' . blocksy_visibility_classes(get_theme_mod(
+				$prefix . '_post_nav_visibility',
+				[
+					'desktop' => true,
+					'tablet' => true,
+					'mobile' => true,
+				]
+			));
+		
+			$has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
 			
-		$adjacent_links = [
-			'next' => '',
-			'previous' => ''
-		];
-		
-		$adjacent_links = tainacan_blocksy_get_adjacent_item_links();
-	
-		$previous = $adjacent_links['previous'];
-		$next = $adjacent_links['next'];
+			if ($has_thumb)
+				$container_class .= ' has-thumbnails';
+				
+			$adjacent_links = [
+				'next' => '',
+				'previous' => ''
+			];
+			
+			$adjacent_links = tainacan_blocksy_get_adjacent_item_links();
+			$previous = $adjacent_links['previous'];
+			$next = $adjacent_links['next'];
 		}
 		
 
