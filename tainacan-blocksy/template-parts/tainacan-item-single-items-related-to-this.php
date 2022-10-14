@@ -20,6 +20,7 @@
                 tainacan_the_related_items_carousel([
                     'items_list_layout' => $items_related_to_this_layout,
                     'collection_heading_tag' => 'h3',
+                    'order' => 'asc',
                     'dynamic_items_args' => [
                         'max_columns_count' => $max_columns_count
                     ],
