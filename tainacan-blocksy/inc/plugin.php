@@ -1,4 +1,21 @@
 <?php
+/**
+ * add support for elasticpress in searches used by blocksy
+ */
+add_filter('pre_get_posts', function ($query) {
+    if (class_exists('\Tainacan\Elastic_Press')) {
+        $tainacan_Elastic_press = \Tainacan\Elastic_Press::get_instance();
+        if (
+            isset($tainacan_Elastic_press) &&
+            $tainacan_Elastic_press->is_active() &&
+            $query->is_search &&
+            (is_search() || wp_doing_ajax())
+        ) {
+            $query->set('ep_integrate', true);
+        }
+    }
+    return $query;
+});
 
 /**
  * Uses Template redirect for setting the proper template to items
