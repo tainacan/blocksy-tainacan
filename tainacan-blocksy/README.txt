@@ -3,9 +3,9 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blocksy
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 0.1.18
+Stable tag: 0.1.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,8 +58,16 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 == Changelog ==
 
+= 0.1.20 =
+* Sorts related items by title
+* Small css improvements
+
+= 0.1.19 =
+* Better ElasticPress compatibility on search modal.
+
 = 0.1.18 =
 * Fixes compatibility with Metadata Sections
+* Adds option to separate default section from metadata sections layout
 
 = 0.1.17 =
 * Makes document gallery compatible with latest features from Tainacan 0.19

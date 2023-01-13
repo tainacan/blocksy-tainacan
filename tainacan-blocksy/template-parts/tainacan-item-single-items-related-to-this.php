@@ -21,6 +21,7 @@
                     'items_list_layout' => $items_related_to_this_layout,
                     'collection_heading_tag' => 'h3',
                     'order' => 'asc',
+                    'orderby' => 'title',
                     'dynamic_items_args' => [
                         'max_columns_count' => $max_columns_count
                     ],
