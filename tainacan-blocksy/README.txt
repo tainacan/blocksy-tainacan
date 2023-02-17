@@ -5,7 +5,7 @@ Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blo
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 0.1.20
+Stable tag: 0.1.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,12 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.1.21 =
+* Fixes breadcrumb hierarchy when inside taxonomy archives
+* Disables Tainacan single Item archive as it is not necessary to get the content twice
+* Adapts some Blocksy css variables
+* Small css improvements to geo coordinate metadatum
 
 = 0.1.20 =
 * Sorts related items by title

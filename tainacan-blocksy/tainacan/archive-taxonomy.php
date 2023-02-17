@@ -15,14 +15,16 @@ $background_color_palette = get_theme_mod($terms_items_prefix . '_items_list_bac
     'color1' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
     'color2' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
     'color3' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
-    'color4' => [ 'color' => 'var(--formBackgroundInitialColor, #ffffff)' ],
-    'color5' => [ 'color' => 'var(--background-color, #f8f9fb)' ]
+    'color4' => [ 'color' => 'var(--form-field-initial-background, #ffffff)' ],
+    'color5' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
+    'color6' => [ 'color' => 'var(--form-field-border-initial-color, #e0e5eb)' ]
 ]);
 $page_container_style .= '--tainacan-background-color:' . $background_color_palette['color1']['color'] . ';';
 $page_container_style .= '--tainacan-item-background-color:' . $background_color_palette['color2']['color'] . ';';
-$page_container_style .= '--tainacan-item-background-hover-color:' . $background_color_palette['color3']['color'] . ';';
+$page_container_style .= '--tainacan-item-hover-background-color:' . $background_color_palette['color3']['color'] . ';';
 $page_container_style .= '--tainacan-input-background-color:' . $background_color_palette['color4']['color'] . ';';
-$page_container_style .= '--tainacan-primary-color:' . $background_color_palette['color5']['color'] . ';';
+$page_container_style .= '--tainacan-primary:' . $background_color_palette['color5']['color'] . ';';
+$page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
 
 $text_color_palette = get_theme_mod($terms_items_prefix . '_items_list_text_palette',
 [

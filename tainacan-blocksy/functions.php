@@ -4,7 +4,7 @@ Plugin Name: Tainacan Support for Blocksy
 Plugin URI: https://tainacan.org/
 Description: Tainacan plugin support for Blocksy theme
 Author: tainacan
-Version: 0.1.20
+Version: 0.1.21
 Text Domain: tainacan-blocksy
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,8 +15,11 @@ if (! defined('WP_DEBUG') ) {
 }
 
 /** Theme/plugin version */
-const TAINACAN_BLOCKSY_VERSION = '0.1.20';
+const TAINACAN_BLOCKSY_VERSION = '0.1.21';
 const TAINACAN_BLOCKSY_IS_CHILD_THEME = false;
+
+/* Disables Tainacan Theme Helper the_content filter, which is used to build a custom item template. */
+define('TAINACAN_DISABLE_ITEM_THE_CONTENT_FILTER', true);
 
 /* Tools to define our next constants */
 require 'utils.php';

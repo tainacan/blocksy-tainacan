@@ -125,14 +125,17 @@
                 page-break-inside: avoid;
                 break-inside: avoid;
                 display: inline-block;
-                width: 100%;
+                
                 &:last-child {
                     -webkit-column-break-inside: auto;
                     page-break-inside: auto;
                     break-inside: auto;
                     display: inline-block;
-                    width: 100%;
                 }
+            }
+            &>div,
+            .tainacan-metadatum {
+                width: 100%;
             }
             @media only screen and (min-width: 768px) {
                 -moz-column-gap: 0;
@@ -204,13 +207,16 @@
             .hierarchy-separator {
                 color: #cbcbcb;  
             }
+            .metadata-type-geocoordinate>div {
+                width: 100%;
+            }
             .metadata-type-compound,
             .metadata-type-textarea {
                 .multivalue-separator {
                     display: block;
                     max-height: 1px;
                     width: 45%;
-                    background: var(--formBorderInitialColor, #e0e5eb);
+                    background: var(--form-field-border-initial-color, #e0e5eb);
                     content: none;
                     color: transparent;
                     margin: 0.875rem auto;
@@ -220,7 +226,7 @@
                 padding-top: 0.5em;
                 margin-bottom: .75rem;
                 padding-left: 1.5rem;
-                border-left: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                border-left: 1px solid var(--form-field-border-initial-color, #e0e5eb);
 
                 .label {
                     margin: 0;
@@ -275,7 +281,7 @@
                     display: block;
                     max-height: 1px;
                     width: calc(100% - 40px);
-                    background: var(--formBorderInitialColor, #e0e5eb);
+                    background: var(--form-field-border-initial-color, #e0e5eb);
                     content: none;
                     color: transparent;
                     margin: 0.5em 0 0.5em 40px;
@@ -369,7 +375,7 @@
 
     // Tainacan Gallery above title
     .tainacan-gallery-above-title {
-        background-color: var(--tainacan-media-background-color, var(--paletteColor6));
+        background-color: var(--tainacan-media-background-color, var(--paletteColor7));
         margin-top: calc(-1 * var(--content-vertical-spacing));
         margin-bottom: var(--content-vertical-spacing);
         margin-left: var(--has-boxed, calc(-1 * var(--boxed-content-spacing)));
@@ -378,7 +384,7 @@
         padding-bottom: calc(var(--content-vertical-spacing)/2);
 
         .tainacan-media-component {
-            --tainacan-media-background: var(--tainacan-media-background-color, var(--paletteColor6));
+            --tainacan-media-background: var(--tainacan-media-background-color, var(--paletteColor7));
             --swiper-navigation-color: var(--tainacan-media-accent-color, --paletteColor1);
             --swiper-theme-color: var(--tainacan-media-accent-color, --paletteColor1);
             --tainacan-label-color: var(--tainacan-media-color, --tainacan-label-color);
@@ -469,7 +475,7 @@
                 width: 100%;
                 display: none;
                 padding: 2rem 42px 1rem 42px;
-                border-top: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                border-top: 1px solid var(--form-field-border-initial-color, #e0e5eb);
             }
             label {
                 width: 100%;
@@ -516,7 +522,7 @@
                 width: 100%;
                 display: none;
                 padding: 2rem 42px 1rem 42px;
-                border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                border-bottom: 1px solid var(--form-field-border-initial-color, #e0e5eb);
                 margin-bottom: 0;
             }
             label {
@@ -526,7 +532,7 @@
                 margin: 0;
                 cursor: pointer;
                 opacity: 0.85;
-                border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                border-bottom: 1px solid var(--form-field-border-initial-color, #e0e5eb);
                 transition: opacity 0.2s ease;
 
                 .tainacan-single-item-section {
@@ -543,7 +549,7 @@
                 }
                 &:hover {
                     opacity: 1.0;
-                    border-bottom: 1px solid var(--formBorderInitialColor, #e0e5eb);
+                    border-bottom: 1px solid var(--form-field-border-initial-color, #e0e5eb);
                 }
             }
             input {

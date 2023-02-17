@@ -391,8 +391,33 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 			$post_type = get_post_type();
 
+			// Check if we're inside a taxonomy archive
+			if ( in_array($post_type, $collections_post_types) && is_tax() ) {
+				
+				$collection_archive_link_index = -1;
+				for ($i = 0; $i < count($array); $i++) {
+					if ( isset($array[$i]['url']) && $array[$i]['url'] == get_post_type_archive_link($post_type) ) {
+						$collection_archive_link_index = $i;
+						break;
+					}
+				}
+				
+				if ( $collection_archive_link_index ) {
+					$term = get_queried_object();
+					if ( $term ) {
+						$taxonomy = get_taxonomy( $term->taxonomy );
+						if ( $taxonomy && $taxonomy->labels )
+							$array[$collection_archive_link_index] = [ "name" => $taxonomy->labels->singular_name ];
+							$array[] = [ "name" => __('Items', 'blocksy-tainacan') ];
+					}
+				}
+			}
+			// Check if we're inside a collection archive.
+			else if ( in_array($post_type, $collections_post_types) && is_archive() ) {
+				$array[] = [ "name" => __('Items', 'blocksy-tainacan') ];
+			}
 			// Check if we're inside the main loop in a single Post.
-			if (in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			else if ( in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
 				$args = $_GET;
 
 				for ($i = 0; $i < count($array); $i++) {
