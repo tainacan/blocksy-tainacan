@@ -37,6 +37,7 @@ $options = [
                 'type' => 'ct-layers',
                 'attr' => [ 'data-layers' => 'title-elements' ],
                 'design' => 'block',
+				'manageable' => false,
                 'value' => $default_hero_elements,
                 'sync' => '',
     

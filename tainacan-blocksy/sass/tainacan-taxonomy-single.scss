@@ -1,0 +1,35 @@
+#tainacan-taxonomy-terms-list-form {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin: 1rem 0 1.5rem;
+
+    @media screen and (min-width: 1024px) {
+        #tainacan-taxonomy-sorting-field {
+            &>.wp-block-group {
+                flex-wrap: nowrap !important;
+            }
+        }   
+    }
+}
+.tainacan-taxonomy-terms-list-container {
+
+    .entries[data-archive="default"] .entry-card.entry-card {
+        .term-name {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .term-hierarchy-path {
+            margin-top: 0px;
+            margin-bottom: -0.25rem;
+        }
+    }
+    
+    .entries:not([data-layout="grid"]) article > .ct-image-container {
+        @media (min-width: 690px) {
+            max-width: 20%;
+        }
+    }
+}

@@ -62,6 +62,28 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
 						$item_extra_options
 					);
 				}
+			} else if ( $post_type == 'tainacan-taxonomy' ) {
+
+				// Change the section title in the customizer
+				$options['title'] = sprintf(
+					$options['title'] . ' ' . __('(terms list)', 'tainacan-blocksy'),
+					$post_type_object->labels->name
+				);
+
+				// Extra options to the single taxonomy (terms list) template
+				$item_extra_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/posts/tainacan-taxonomy-single.php', [
+					'post_type' => $post_type_object,
+					'is_general_cpt' => true
+				], false);
+				
+				if ( is_array($item_extra_options) ) {
+					array_splice(
+						$options['options'][$post_type . '_single_section_options']['inner-options'][0],
+						1,
+						0,
+						$item_extra_options
+					);
+				}
 			}
 				
 		}
@@ -149,13 +171,21 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 	
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
-			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-			$post_type = get_post_type();
+			
+			if ( !is_single() || !is_singular() || !in_the_loop() || !is_main_query() )
+				return $content;
 
-			// Check if we're inside the main loop in a single Post.
-			if ( in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+			$post_type = get_post_type();
+			
+			// Checks if we're in the taxonomy single (aka, terms archive)
+			if ( $post_type == 'tainacan-taxonomy' )
+				return tainacan_blocksy_get_template_part( 'tainacan/archive-terms' );
+			
+			// Checks if we're in the collection item single
+			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+			if ( in_array($post_type, $collections_post_types) )
 				return tainacan_blocksy_get_template_part( 'tainacan/item-single-page' );
-			}
+
 		}	
 	
 		return $content;

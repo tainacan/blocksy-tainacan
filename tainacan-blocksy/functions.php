@@ -18,9 +18,6 @@ if (! defined('WP_DEBUG') ) {
 const TAINACAN_BLOCKSY_VERSION = '0.1.21';
 const TAINACAN_BLOCKSY_IS_CHILD_THEME = false;
 
-/* Disables Tainacan Theme Helper the_content filter, which is used to build a custom item template. */
-define('TAINACAN_DISABLE_ITEM_THE_CONTENT_FILTER', true);
-
 /* Tools to define our next constants */
 require 'utils.php';
 
@@ -44,6 +41,11 @@ if ( TAINACAN_BLOCKSY_IS_CHILD_THEME || ( TAINACAN_BLOCKSY_IS_BLOCKSY_ACTIVATED 
 
 	/* Template redirection necessary only if in a plugin */
 	if ( !TAINACAN_BLOCKSY_IS_CHILD_THEME ) {
+		
+		/* Disables Tainacan Theme Helper the_content filter, which is used to build a custom item and taxonomy (terms list) template. */
+		define('TAINACAN_DISABLE_ITEM_THE_CONTENT_FILTER', true);
+		define('TAINACAN_DISABLE_TAXONOMY_THE_CONTENT_FILTER', true);
+
 		require TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/plugin.php';
 	}
 

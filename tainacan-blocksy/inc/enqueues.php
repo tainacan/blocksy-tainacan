@@ -51,6 +51,13 @@ if ( TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION !== NULL && ( version_compare(TAINAC
 					'chunk' => 'global',
 					'forced_call' => true
 				], $args));
+			} else if ( $post_type ==  'tainacan-taxonomy' ) {
+				blocksy_theme_get_dynamic_styles(array_merge([
+					'name' => 'global/posts-listing',
+					'chunk' => 'global',
+					'forced_call' => true,
+					'prefixes' => blocksy_manager()->screen->get_single_prefixes()
+				], $args));
 			}
 		}
 	}, 10, 3);
