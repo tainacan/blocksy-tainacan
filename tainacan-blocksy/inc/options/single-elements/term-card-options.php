@@ -85,7 +85,7 @@ $options = [
 				$prefix . 'archive_order' => apply_filters('blocksy:options:posts-listing-archive-order', [
 					'label' => __('Card Elements', 'blocksy'),
 					'type' => $has_card_matching_template ? 'hidden' : 'ct-layers',
-
+					'disableDrag' => true,
 					'sync' => '',
 
 					'value' => [
