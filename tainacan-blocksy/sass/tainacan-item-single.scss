@@ -124,12 +124,8 @@
                 -webkit-column-break-inside: avoid;
                 page-break-inside: avoid;
                 break-inside: avoid;
-                display: inline-block;
                 
-                &:last-child {
-                    -webkit-column-break-inside: auto;
-                    page-break-inside: auto;
-                    break-inside: auto;
+                &:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum) {
                     display: inline-block;
                 }
             }
@@ -156,6 +152,7 @@
             h3 {
                 padding-right: 1rem;
                 margin-bottom: 0.25rem;
+                margin-top: 0.5rem;
                 width: 100%;
                 &:first-of-type:last-of-type {
                     display: inline-block;
@@ -171,6 +168,9 @@
             }
             p {
                 word-wrap: break-word;
+            }
+            iframe {
+                border: none;
             }
             .tainacan-metadata-label {
                 text-align: var(--metadata-label-alignment, left);
@@ -264,7 +264,7 @@
                         }
                     }
                     .tainacan-metadatum {
-                        margin-left: 40px;
+                        padding-left: 40px;
                         .label {
                             font-size: 1em;
                             line-height: 1em;
