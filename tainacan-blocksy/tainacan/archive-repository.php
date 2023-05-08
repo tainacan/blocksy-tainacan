@@ -116,6 +116,7 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
                     'show_fullscreen_with_view_modes' => get_theme_mod($repository_items_prefix . '_show_fullscreen_with_view_modes', 'no') == 'yes',
                     'hide_exposers_button' => get_theme_mod($repository_items_prefix . '_show_exposers_button', 'yes') == 'no',
                     'hide_pagination_area' => get_theme_mod($repository_items_prefix . '_has_pagination', 'yes') == 'no',
+                    'default_view_mode' => get_theme_mod($repository_items_prefix . '_default_view_mode', 'masonry')
                 ]); 
             ?>
         </div>

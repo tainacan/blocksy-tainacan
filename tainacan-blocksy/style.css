@@ -25,6 +25,7 @@
   --tainacan-base-font-size: var(--fontSize, 1em);
   --tainacan-item-hover-background-color: var(--tainacan-item-background-color, white);
   --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
+  --tainacan-input-border-color: var(--form-field-border-initial-color, #e0e5eb);
   --tainacan-skeleton-color: var(--tainacan-item-background-color, white);
   /* Search control */
   /* Advanced Search */

@@ -74,7 +74,16 @@ $options = [
             blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [
-                    $prefix !== 'tainacan-terms-items_archive_'
+                    $prefix !== 'tainacan-terms-items_archive_',
+                ],
+                'options' => blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/default-view-mode.php' , [
+                    'prefix' => $prefix
+                ], false)
+            ],
+            blocksy_rand_md5() => [
+                'type' => 'ct-condition',
+                'condition' => [
+                    $prefix !== 'tainacan-repository-items_archive_',
                 ],
                 'options' => blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/default-view-mode.php' , [
                     'prefix' => $prefix
