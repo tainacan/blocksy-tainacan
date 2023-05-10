@@ -5,6 +5,17 @@
     $items_related_to_this_layout = get_theme_mod( $prefix . '_items_related_to_this_layout', 'carousel' );
     $max_columns_count            = get_theme_mod( $prefix . '_items_related_to_this_max_columns_count', 4 );
     $max_items_per_screen         = get_theme_mod( $prefix . '_items_related_to_this_max_items_per_screen', 6 );
+    $order_option                 = get_theme_mod( $prefix . '_items_related_to_this_order', 'title_asc' );
+
+    $order_option_split = explode( '_', $order_option ); 
+    $order_by = $order_option_split[0] ? $order_option_split[0] : 'title';
+    $order = $order_option_split[1] ? $order_option_split[1] : 'asc';
+
+    if ( !in_array($order_by, [ 'title', 'date', 'modified' ]) )
+        $order_by = 'title';
+
+    if ( !in_array($order, [ 'asc', 'desc' ]) )
+        $order = 'asc';
 
     if ( function_exists('tainacan_the_related_items_carousel') && (get_theme_mod( $prefix . '_display_items_related_to_this', 'no' ) === 'yes') && tainacan_has_related_items() ) : ?>
     
@@ -20,8 +31,8 @@
                 tainacan_the_related_items_carousel([
                     'items_list_layout' => $items_related_to_this_layout,
                     'collection_heading_tag' => 'h3',
-                    'order' => 'asc',
-                    'orderby' => 'title',
+                    'order' => $order,
+                    'orderby' => $order_by,
                     'dynamic_items_args' => [
                         'max_columns_count' => $max_columns_count
                     ],

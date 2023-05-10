@@ -10,6 +10,8 @@ if (! isset($enabled)) {
 	$enabled = 'yes';
 }
 
+$order_options = tainacan_get_default_order_choices();
+
 $options = [
 	$prefix . 'display_items_related_to_this' => [
 		'label' => __( 'Display "Items related to this"', 'tainacan-blocksy' ),
@@ -51,7 +53,7 @@ $options = [
                 ],
                 'options' => [
 					$prefix . 'items_related_to_this_max_items_per_screen' => [
-						'label' => __( 'Max amount of items per slide', 'blocksy' ),
+						'label' => __( 'Max amount of items per slide', 'tainacan-blocksy' ),
 						'type' => 'ct-number',
 						'design' => 'inline',
 						'value' => 6,
@@ -68,7 +70,7 @@ $options = [
                 ],
                 'options' => [
 					$prefix . 'items_related_to_this_max_columns_count' => [
-						'label' => __( 'Max amount of items columns', 'blocksy' ),
+						'label' => __( 'Max amount of items columns', 'tainacan-blocksy' ),
 						'type' => 'ct-number',
 						'design' => 'inline',
 						'value' => 4,
@@ -77,6 +79,17 @@ $options = [
 						'sync' => ''
 					]
 				]
+			],
+			$prefix . 'items_related_to_this_order' => [
+				'label' => __('Order by', 'blocksy'),
+				'type' => 'ct-select',
+				'value' => 'title_asc',
+				'view' => 'text',
+				'design' => 'inline',
+				'sync' => '',
+				'choices' => blocksy_ordered_keys(
+					$order_options
+				)
 			]
         ]
     ]

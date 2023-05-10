@@ -133,15 +133,34 @@ if ( !function_exists('tainacan_get_default_view_mode_choices') ) {
         } else {
             $default_view_mode = 'masonry';
             $enabled_view_modes = [
-                'masonry' => __('Masonry', 'tainacan-interface'),
-                'cards' => __('Cards', 'tainacan-interface'),
-                'table' => __('Table', 'tainacan-interface'),
-                'grid' => __('Grid', 'tainacan-interface')
+                'masonry' => __('Masonry', 'tainacan-blocksy'),
+                'cards' => __('Cards', 'tainacan-blocksy'),
+                'table' => __('Table', 'tainacan-blocksy'),
+                'grid' => __('Grid', 'tainacan-blocksy')
             ];
         }
         return [
             'default_view_mode' => $default_view_mode,
             'enabled_view_modes' => $enabled_view_modes
+        ];
+    }
+}
+
+
+/**
+ * Retrieves possible orderby and order options to offer as default
+ * 
+ * @return array An associative array with orderby and order options
+ */
+if ( !function_exists('tainacan_get_default_order_choices') ) {
+    function tainacan_get_default_order_choices() {
+        return [
+            'title_asc' => __( 'Title A-Z', 'tainacan-blocksy'),
+            'title_desc' => __( 'Title Z-A', 'tainacan-blocksy'),
+            'date_asc' => __( 'Latest created last', 'tainacan-blocksy'),
+            'date_desc' => __( 'Latest created first', 'tainacan-blocksy'),
+            'modified_asc' => __( 'Latest modified last', 'tainacan-blocksy'),
+            'modified_desc' => __( 'Latest modified first', 'tainacan-blocksy'),
         ];
     }
 }
