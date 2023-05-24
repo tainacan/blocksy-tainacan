@@ -35,8 +35,8 @@ $inner_options = [
 				'id' => 'palette-2',
 
 				'color1' => [ 'color' => 'var(--paletteColor3, #415161)' ],
-				'color2' => [ 'color' => 'var(--paletteColor7, #f8f9fb)' ],
-				'color3' => [ 'color' => 'var(--paletteColor2, #33a370)' ]
+				'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
+				'color3' => [ 'color' => 'var(--paletteColor6, #edeff2)' ]
 
 			]
 		],

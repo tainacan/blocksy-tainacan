@@ -38,10 +38,10 @@ $options = [
 				'title' => __( 'Metadata to the left', 'tainacan-blocksy' )
 			],
 
-            // 'type-gtm' => [
-			// 	'src'   => tainacan_blocksy_image_picker_url( 'type-gtm.svg' ),
-			// 	'title' => __( 'Document and Attachments above Title', 'tainacan-blocksy' ),
-			// ]
+            'type-gtm' => [
+				'src'   => tainacan_blocksy_image_picker_url( 'type-gtm.svg' ),
+				'title' => __( 'Document and Attachments above Title', 'tainacan-blocksy' ),
+			]
         ],
         'sync' => ''
 	]
