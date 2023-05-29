@@ -1028,7 +1028,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 @media (min-width: 690px) {
-  .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) article > .ct-image-container {
+  .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) article > .ct-media-container {
     max-width: 20%;
   }
 }

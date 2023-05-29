@@ -27,7 +27,7 @@
         }
     }
     
-    .entries:not([data-layout="grid"]) article > .ct-image-container {
+    .entries:not([data-layout="grid"]) article > .ct-media-container {
         @media (min-width: 690px) {
             max-width: 20%;
         }
