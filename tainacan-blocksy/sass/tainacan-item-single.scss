@@ -488,10 +488,12 @@
         }
     }
 
-    // Document and attachments fixed column
-    .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {
-        position: sticky;
-        top: 2rem;
+    @media screen and (min-width: 960px) {
+        // Document and attachments fixed column
+        .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {
+            position: sticky;
+            top: 2rem;
+        }   
     }
 
     // Document Download button -------------------------------------

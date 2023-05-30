@@ -904,10 +904,12 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   text-decoration: var(--textDecoration);
 }
 
-.tainacan-item-single-page .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery,
-.tainacan-gallery-above-title .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {
-  position: sticky;
-  top: 2rem;
+@media screen and (min-width: 960px) {
+  .tainacan-item-single-page .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery,
+  .tainacan-gallery-above-title .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {
+    position: sticky;
+    top: 2rem;
+  }
 }
 
 .tainacan-item-single-page .tainacan-item-file-download,

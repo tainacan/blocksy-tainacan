@@ -3,7 +3,7 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blocksy
 Requires at least: 5.0
-Tested up to: 6.1
+Tested up to: 6.2.2
 Requires PHP: 5.6
 Stable tag: 0.2.0
 License: GPLv2 or later
@@ -44,7 +44,7 @@ Also, this plugin will only work with [Blocksy theme](https://wordpress.org/them
 
 == Copyright ==
 
-Tainacan Support for Blocksy, Copyright 2022 Tainacan.org
+Tainacan Support for Blocksy, Copyright 2023 Tainacan.org
 Tainacan Support for Blocksy plugin is distributed under the terms of the GNU GPLv3
 License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENSE
 
@@ -60,6 +60,10 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 = 0.2.0 =
 * Adds Taxonomy Single (Terms list) page functionality (requires Tainacan 0.20.1)
+* New layout for the Item Page: Media Gallery above page title
+* Option to set default order by for Repository Items list
+* Fixes to item thumbnail display inside sections
+* Compatibility with Blocksy 2.0.0
 
 = 0.1.21 =
 * Fixes breadcrumb hierarchy when inside taxonomy archives
