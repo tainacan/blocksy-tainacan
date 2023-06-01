@@ -6,6 +6,8 @@
     $max_columns_count            = get_theme_mod( $prefix . '_items_related_to_this_max_columns_count', 4 );
     $max_items_per_screen         = get_theme_mod( $prefix . '_items_related_to_this_max_items_per_screen', 6 );
     $order_option                 = get_theme_mod( $prefix . '_items_related_to_this_order', 'title_asc' );
+    
+    $image_size = get_theme_mod($prefix . '_items_related_to_this_image_size', 'tainacan-medium');
 
     $order_option_split = explode( '_', $order_option ); 
     $order_by = $order_option_split[0] ? $order_option_split[0] : 'title';
@@ -34,10 +36,12 @@
                     'order' => $order,
                     'orderby' => $order_by,
                     'dynamic_items_args' => [
-                        'max_columns_count' => $max_columns_count
+                        'max_columns_count' => $max_columns_count,
+                        'image_size' => $image_size
                     ],
                     'carousel_args' => [
-                        'max_items_per_screen' => $max_items_per_screen
+                        'max_items_per_screen' => $max_items_per_screen,
+                        'image_size' => $image_size
                     ]
                 ]);
             ?>

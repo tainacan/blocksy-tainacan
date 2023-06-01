@@ -90,7 +90,18 @@ $options = [
 				'choices' => blocksy_ordered_keys(
 					$order_options
 				)
-			]
+			],
+			$prefix . 'items_related_to_this_image_size' => [
+				'label' => __('Image size', 'blocksy'),
+				'type' => 'ct-select',
+				'value' => 'tainacan-medium',
+				'view' => 'text',
+				'design' => 'inline',
+				'sync' => '',
+				'choices' => blocksy_ordered_keys(
+					blocksy_get_all_image_sizes()
+				),
+			],
         ]
     ]
 ];
