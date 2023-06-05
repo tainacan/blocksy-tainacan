@@ -5,8 +5,9 @@
     $items_related_to_this_layout = get_theme_mod( $prefix . '_items_related_to_this_layout', 'carousel' );
     $max_columns_count            = get_theme_mod( $prefix . '_items_related_to_this_max_columns_count', 4 );
     $max_items_per_screen         = get_theme_mod( $prefix . '_items_related_to_this_max_items_per_screen', 6 );
+    $max_items_number             = get_theme_mod( $prefix . '_items_related_to_this_max_items_number', 12 );
     $order_option                 = get_theme_mod( $prefix . '_items_related_to_this_order', 'title_asc' );
-    
+
     $image_size = get_theme_mod($prefix . '_items_related_to_this_image_size', 'tainacan-medium');
 
     $order_option_split = explode( '_', $order_option ); 
@@ -35,6 +36,7 @@
                     'collection_heading_tag' => 'h3',
                     'order' => $order,
                     'orderby' => $order_by,
+                    'max_items_number' => $max_items_number,
                     'dynamic_items_args' => [
                         'max_columns_count' => $max_columns_count,
                         'image_size' => $image_size

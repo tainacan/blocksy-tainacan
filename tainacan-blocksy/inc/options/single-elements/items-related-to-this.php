@@ -80,6 +80,15 @@ $options = [
 					]
 				]
 			],
+			$prefix . 'items_related_to_this_max_items_number' => [
+				'label' => __( 'Max amount of items to fetch', 'tainacan-blocksy' ),
+				'type' => 'ct-number',
+				'design' => 'inline',
+				'value' => 12,
+				'min' => 1,
+				'max' => 96,
+				'sync' => ''
+			],
 			$prefix . 'items_related_to_this_order' => [
 				'label' => __('Order by', 'blocksy'),
 				'type' => 'ct-select',
