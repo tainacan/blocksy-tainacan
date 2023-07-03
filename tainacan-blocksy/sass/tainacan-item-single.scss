@@ -93,21 +93,27 @@
         // Headings and spacing ----------------------------
         h1 {
             --fontSize: 30px;
+            --theme-font-size: 30px;
         }
         h2:not(.tainacan-single-item-section) {
             --fontSize: 22px;
+            --theme-font-size: 22px;
         }
         h3:not(.tainacan-metadata-label) {
             --fontSize: 20px;
+            --theme-font-size: 20px;
         }
         h4 {
             --fontSize: 18px;
+            --theme-font-size: 18px;
         }
         h5 {
             --fontSize: 16px;
+            --theme-font-size: 16px;
         }
         h6 {
             --fontSize: 14px;
+            --theme-font-size: 14px;
         }
         .tainacan-single-item-section {
             text-align: var(--section-alignment, left);
@@ -177,21 +183,21 @@
             }
             .tainacan-metadata-value {
                 text-align: var(--metadata-value-alignment, left);
-                font-family: var(--fontFamily);
-                font-size: var(--fontSize);
-                font-weight: var(--fontWeight);
-                font-style: var(--fontStyle, inherit);
-                line-height: var(--lineHeight);
-                letter-spacing: var(--letterSpacing);
-                text-transform: var(--textTransform);
-                -webkit-text-decoration: var(--textDecoration);
-                text-decoration: var(--textDecoration);
+                font-family: var(--theme-font-family, var(--fontFamily));
+                font-size: var(--theme-font-size, var(--fontSize));
+                font-weight: var(--theme-font-weight, var(--fontWeight));
+                font-style: var(--theme-font-style, var(--fontStyle, inherit));
+                line-height: var(--theme-line-height, var(--lineHeight));
+                letter-spacing: var(--theme-letter-spacing, var(--letterSpacing));
+                text-transform: var(--theme-text-transform, var(--textTransform));
+                -webkit-text-decoration: var(--theme-text-decoration, var(--textDecoration));
+                text-decoration: var(--theme-text-decoration, var(--textDecoration));
                 margin-bottom: 0.75rem;
                 padding-bottom: 0.75rem;
                 border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
             }
             .tainacan-item-section__metadata-thumbnail img {
-                border-radius: var(--borderRadius, 3px);
+                border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
             }
 
             p:empty {
@@ -201,11 +207,11 @@
 
             // Metadata type textarea has different separator
             .multivalue-separator {
-                color: #cbcbcb;
+                color: #a5a5a5;
                 margin: 0 8px;    
             }
             .hierarchy-separator {
-                color: #cbcbcb;  
+                color: #a5a5a5;  
             }
             .metadata-type-geocoordinate>div {
                 width: 100%;
@@ -216,7 +222,7 @@
                     display: block;
                     max-height: 1px;
                     width: 45%;
-                    background: var(--form-field-border-initial-color, #e0e5eb);
+                    background: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
                     content: none;
                     color: transparent;
                     margin: 0.875rem auto;
@@ -226,7 +232,7 @@
                 padding-top: 0.5em;
                 margin-bottom: .75rem;
                 padding-left: 1.5rem;
-                border-left: 1px solid var(--form-field-border-initial-color, #e0e5eb);
+                border-left: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
 
                 .label {
                     margin: 0;
@@ -281,7 +287,7 @@
                     display: block;
                     max-height: 1px;
                     width: calc(100% - 40px);
-                    background: var(--form-field-border-initial-color, #e0e5eb);
+                    background: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
                     content: none;
                     color: transparent;
                     margin: 0.5em 0 0.5em 40px;
@@ -331,7 +337,7 @@
                 width: 100%;
                 display: none;
                 padding: 2rem 42px 1rem 42px;
-                border-top: 1px solid var(--form-field-border-initial-color, #e0e5eb);
+                border-top: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
             }
             label {
                 width: 100%;
@@ -356,7 +362,7 @@
             }
             input:checked+label {
                 opacity: 1.0;
-                border-bottom-color: var(--paletteColor1, #3eaf7c);
+                border-bottom-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
             }
             input:checked+label+.tainacan-item-section {
                 display: block;
@@ -378,7 +384,7 @@
                 width: 100%;
                 display: none;
                 padding: 2rem 42px 1rem 42px;
-                border-bottom: 1px solid var(--form-field-border-initial-color, #e0e5eb);
+                border-bottom: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
                 margin-bottom: 0;
             }
             label {
@@ -388,14 +394,14 @@
                 margin: 0;
                 cursor: pointer;
                 opacity: 0.85;
-                border-bottom: 1px solid var(--form-field-border-initial-color, #e0e5eb);
+                border-bottom: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
                 transition: opacity 0.2s ease;
 
                 .tainacan-single-item-section {
                     margin: 0.75rem;
                 }
                 .tainacan-icon {
-                    color: var(--paletteColor1, #3eaf7c);
+                    color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
                     transform: rotate(0deg);
                     transition: transform 0.2s ease;
 
@@ -405,7 +411,7 @@
                 }
                 &:hover {
                     opacity: 1.0;
-                    border-bottom: 1px solid var(--form-field-border-initial-color, #e0e5eb);
+                    border-bottom: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
                 }
             }
             input {
@@ -437,8 +443,8 @@
 
     // Tainacan Media Component (attachments gallery)
     .tainacan-media-component {
-        --swiper-theme-color: var(--paletteColor1, #3eaf7c);
-        --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
+        --swiper-theme-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
+        --swiper-navigation-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
         --swiper-navigation-size: 2.5rem;
         --tainacan-media-background: var(--background-color, #ffffff);
         --tainacan-media-main-carousel-height: var(--document-height, 60vh);
@@ -450,15 +456,15 @@
             .swiper-slide-metadata__name,
             .swiper-slide-metadata__caption,
             .swiper-slide-metadata__description {
-                font-family: var(--fontFamily);
-                font-size: var(--fontSize);
-                font-weight: var(--fontWeight);
-                font-style: var(--fontStyle, inherit);
-                line-height: var(--lineHeight);
-                letter-spacing: var(--letterSpacing);
-                text-transform: var(--textTransform);
-                -webkit-text-decoration: var(--textDecoration);
-                text-decoration: var(--textDecoration);
+                font-family: var(--theme-font-family, var(--fontFamily));
+                font-size: var(--theme-font-size, var(--fontSize));
+                font-weight: var(--theme-font-weight, var(--fontWeight));
+                font-style: var(--theme-font-style, var(--fontStyle, inherit));
+                line-height: var(--theme-line-height, var(--lineHeight));
+                letter-spacing: var(--theme-letter-spacing, var(--letterSpacing));
+                text-transform: var(--theme-text-transform, var(--textTransform));
+                -webkit-text-decoration: var(--theme-text-decoration, var(--textDecoration));
+                text-decoration: var(--theme-text-decoration, var(--textDecoration));
             }
         }
         .tainacan-media-component__swiper-thumbs {
@@ -466,7 +472,7 @@
             transition: font-weight 0.3s ease;
 
             img {
-                border-radius: var(--borderRadius, 3px);
+                border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
                 border-bottom: 4px solid transparent;
                 margin-bottom: 4px;
                 transition: border 0.3s ease;
@@ -475,15 +481,15 @@
             .swiper-slide-metadata__name {
                 display: block;
                 margin-top: 0.5rem;
-                font-family: var(--fontFamily);
-                font-size: var(--fontSize);
-                font-weight: var(--fontWeight);
-                font-style: var(--fontStyle, inherit);
-                line-height: var(--lineHeight);
-                letter-spacing: var(--letterSpacing);
-                text-transform: var(--textTransform);
-                -webkit-text-decoration: var(--textDecoration);
-                text-decoration: var(--textDecoration);
+                font-family: var(--theme-font-family, var(--fontFamily));
+                font-size: var(--theme-font-size, var(--fontSize));
+                font-weight: var(--theme-font-weight, var(--fontWeight));
+                font-style: var(--theme-font-style, var(--fontStyle, inherit));
+                line-height: var(--theme-line-height, var(--lineHeight));
+                letter-spacing: var(--theme-letter-spacing, var(--letterSpacing));
+                text-transform: var(--theme-text-transform, var(--textTransform));
+                -webkit-text-decoration: var(--theme-text-decoration, var(--textDecoration));
+                text-decoration: var(--theme-text-decoration, var(--textDecoration));
             }
         }
     }
@@ -508,7 +514,7 @@
         right: calc(50% - 18px);
         cursor: pointer;
         font-size: 0;
-        background-color: var(--paletteColor1, #3eaf7c);
+        background-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
         color: white;
         transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 
@@ -562,7 +568,7 @@
 
 // Tainacan Gallery above title
 .tainacan-gallery-above-title {
-    background-color: var(--tainacan-media-background-color, var(--paletteColor7));
+    background-color: var(--tainacan-media-background-color, var(--theme-palette-color-7, var(--paletteColor7)));
     margin-top: calc(-1 * var(--content-vertical-spacing));
     margin-bottom: var(--content-vertical-spacing);
     margin-left: var(--has-boxed, calc(-1 * var(--boxed-content-spacing)));
@@ -571,9 +577,9 @@
     padding-bottom: calc(var(--content-vertical-spacing)/2);
 
     .tainacan-media-component {
-        --tainacan-media-background: var(--tainacan-media-background-color, var(--paletteColor7));
-        --swiper-navigation-color: var(--tainacan-media-accent-color, --paletteColor1);
-        --swiper-theme-color: var(--tainacan-media-accent-color, --paletteColor1);
+        --tainacan-media-background: var(--tainacan-media-background-color, var(--theme-palette-color-7, var(--paletteColor7)));
+        --swiper-navigation-color: var(--tainacan-media-accent-color, var(--theme-palette-color-1, var(--paletteColor1)));
+        --swiper-theme-color: var(--tainacan-media-accent-color, var(--theme-palette-color-1, var(--paletteColor1)));
         --tainacan-label-color: var(--tainacan-media-color, --tainacan-label-color);
         --tainacan-info-color: var(--tainacan-media-color, --tainacan-info-color);
     }

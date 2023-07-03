@@ -8,17 +8,17 @@
 
  /* Tainacan Gutenberg Blocks colors */
  :root {
-    --tainacan-block-primary: var(--paletteColor1, #3eaf7c);
+    --tainacan-block-primary: var(--theme-palette-color-1 var(--paletteColor1, #3eaf7c));
     --tainacan-block-gray0: var(--backgroundColor, #f8f9fb);
     --tainacan-block-gray1: var(--backgroundColor, #f8f9fb);
-    --tainacan-block-gray2: var(--form-field-border-initial-color, #e0e5eb);
-    --tainacan-block-gray3: var(--form-field-border-initial-color, #e0e5eb);
-    --tainacan-block-gray4: var(--color, rgba(44, 62, 80, 0.9));
-    --tainacan-block-gray5: var(--headingColor, rgba(44, 62, 80, 1));
-    --background-color: var(--paletteColor7);
+    --tainacan-block-gray2: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
+    --tainacan-block-gray3: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
+    --tainacan-block-gray4: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
+    --tainacan-block-gray5: var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)));
+    --background-color: var(--theme-palette-color-7, var(--paletteColor7));
 
     // Previous Blocksy variables
-    --maxSiteWidth: var(--normal-container-max-width);
+    --maxSiteWidth: var(--theme-normal-container-max-width, var(--normal-container-max-width));
  }
 
 // Grid mixin for display: grid compatibility

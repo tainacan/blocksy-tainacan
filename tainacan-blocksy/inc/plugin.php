@@ -195,9 +195,9 @@ function tainacan_blocksy_render_media_gallery_above_title() {
         $media_component_style = '';
         $media_component_color_palette = get_theme_mod($prefix . '_document_attachments_colors',
         [
-            'color1' => [ 'color' => 'var(--paletteColor6, #edeff2)' ],
-			'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
-			'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ]
+            'color1' => [ 'color' => 'var(--theme-palette-color-6, var(--paletteColor6, #edeff2))' ],
+			'color2' => [ 'color' => 'var(--theme-palette-color-4, var(--paletteColor4, #2c3e50))' ],
+			'color3' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ]
         ]);
         
         $media_component_style .= '--tainacan-media-background-color:' . $media_component_color_palette['color1']['color'] . ';';

@@ -29,9 +29,9 @@ $options = [
 			'color1' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
 			'color2' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
 			'color3' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
-			'color4' => [ 'color' => 'var(--form-field-initial-background, #ffffff)' ],
-			'color5' => [ 'color' => 'var(--form-field-border-initial-color, #e0e5eb)' ],
-			'color6' => [ 'color' => 'var(--form-field-border-initial-color, #e0e5eb)' ],
+			'color4' => [ 'color' => 'var(--theme-form-field-background-initial-color, var(--form-field-background-initial-color, #ffffff))' ],
+			'color5' => [ 'color' => 'var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb))' ],
+			'color6' => [ 'color' => 'var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb))' ],
 
 			'current_palette' => 'palette-1',
 		],
@@ -42,9 +42,9 @@ $options = [
 				'color1' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
 				'color2' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
 				'color3' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
-				'color4' => [ 'color' => 'var(--form-field-initial-background, #ffffff)' ],
-				'color5' => [ 'color' => 'var(--form-field-border-initial-color, #e0e5eb)' ],
-				'color6' => [ 'color' => 'var(--form-field-border-initial-color, #e0e5eb)' ],
+				'color4' => [ 'color' => 'var(--theme-form-field-background-initial-color, var(--form-field-background-initial-color, #ffffff))' ],
+				'color5' => [ 'color' => 'var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb))' ],
+				'color6' => [ 'color' => 'var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb))' ],
 
 			],
 
@@ -91,21 +91,21 @@ $options = [
 			'data-label' => 'heading-label'
 		],
 		'value' => [
-			'color1' => [ 'color' => 'var(--paletteColor1,#3eaf7c)' ],
-			'color2' => [ 'color' => 'var(--headingColor, rgba(44, 62, 80, 1))' ],
-			'color3' => [ 'color' => 'var(--color, #454647)' ],
-			'color4' => [ 'color' => '#555758' ],
-			'color5' => [ 'color' => 'var(--formTextInitialColor, #454647)' ],
+			'color1' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ],
+			'color2' => [ 'color' => 'var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)))' ],
+			'color3' => [ 'color' => 'var(--theme-text-color, var(--color, #373839))' ],
+			'color4' => [ 'color' => '#505253' ],
+			'color5' => [ 'color' => 'var(--theme-form-text-initial-color, var(--formTextInitialColor, #373839))' ],
 			'current_palette' => 'palette-1'
 		],
 		'palettes' => [
 			[
 				'id' => 'palette-1',
-				'color1' => [ 'color' => 'var(--paletteColor1,#3eaf7c)' ],
-				'color2' => [ 'color' => 'var(--headingColor, rgba(44, 62, 80, 1))' ],
-				'color3' => [ 'color' => 'var(--color, #454647)' ],
-				'color4' => [ 'color' => '#555758' ],
-				'color5' => [ 'color' => 'var(--formTextInitialColor, #454647)' ]
+				'color1' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ],
+				'color2' => [ 'color' => 'var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)))' ],
+				'color3' => [ 'color' => 'var(--theme-text-color, var(--color, #373839))' ],
+				'color4' => [ 'color' => '#505253' ],
+				'color5' => [ 'color' => 'var(--theme-form-text-initial-color, var(--formTextInitialColor, #373839))' ]
 
 			],
 
@@ -136,7 +136,8 @@ $options = [
 ];
 
 /* Backwards compatibility with previous palette settings */
-if ( wp_get_theme()->get('Version') <= '1.9' ) {
+$blocksy_theme_version = is_child_theme() ? wp_get_theme()->parent()->get( 'Version' ) : wp_get_theme()->get( 'Version' );
+if ( $blocksy_theme_version <= '1.9' ) {
 	
 	$options[$prefix . 'items_list_background_palette']['value']['palettes'] = $options[$prefix . 'items_list_background_palette']['palettes'];
 	unset($options[$prefix . 'items_list_background_palette']['palettes']);

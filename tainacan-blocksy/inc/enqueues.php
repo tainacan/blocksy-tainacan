@@ -17,6 +17,15 @@ function tainacan_blocksy_enqueue_scripts() {
 		TAINACAN_BLOCKSY_VERSION
 	);
 
+	/* Enqueues compatibility stylesheet due to variables renaming on Blocksy 2.0.0 */
+	$blocksy_theme_version = is_child_theme() ? wp_get_theme()->parent()->get( 'Version' ) : wp_get_theme()->get( 'Version' );
+	if ( $blocksy_theme_version > '1.9' ) {
+		wp_enqueue_style( 'tainacan-blocksy-compatibility-style',
+			TAINACAN_BLOCKSY_PLUGIN_URL_PATH . '/compat.min.css',
+			TAINACAN_BLOCKSY_VERSION
+		);
+	}
+
 	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
 
@@ -150,9 +159,9 @@ add_action( 'wp_head', 'tainacan_blocksy_gallery_light_color_scheme');
 function tainacan_blocksy_add_background_color_variable($args) {
 	
 	$site_background_fallback = array(
-		'desktop' => 'var(--paletteColor7, #ffffff)',
-		'tablet'  => 'var(--paletteColor7, #ffffff)',
-		'mobile'  => 'var(--paletteColor7, #ffffff)'
+		'desktop' => 'var(--theme-palette-color-7, var(--paletteColor7, #ffffff))',
+		'tablet'  => 'var(--theme-palette-color-7, var(--paletteColor7, #ffffff))',
+		'mobile'  => 'var(--theme-palette-color-7, var(--paletteColor7, #ffffff))'
 	);
 	$site_background = get_theme_mod( 'site_background', $site_background_fallback );
 	

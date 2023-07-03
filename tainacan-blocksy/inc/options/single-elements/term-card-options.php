@@ -467,27 +467,27 @@ $options = [
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
 									'inherit' => [
-										'var(--heading-1-color, var(--headings-color))' => [
+										'var(--theme-heading-1-color, var(--theme-headings-color, var(--headings-color)))' => [
 											$prefix . 'archive_order:array-ids:title:heading_tag' => 'h1'
 										],
 
-										'var(--heading-2-color, var(--headings-color))' => [
+										'var(--theme-heading-2-color, var(--theme-headings-color, var(--headings-color)))' => [
 											$prefix . 'archive_order:array-ids:title:heading_tag' => 'h2'
 										],
 
-										'var(--heading-3-color, var(--headings-color))' => [
+										'var(--theme-heading-3-color, var(--theme-headings-color, var(--headings-color)))' => [
 											$prefix . 'archive_order:array-ids:title:heading_tag' => 'h3'
 										],
 
-										'var(--heading-4-color, var(--headings-color))' => [
+										'var(--theme-heading-4-color, var(--theme-headings-color, var(--headings-color)))' => [
 											$prefix . 'archive_order:array-ids:title:heading_tag' => 'h4'
 										],
 
-										'var(--heading-5-color, var(--headings-color))' => [
+										'var(--theme-heading-5-color, var(--theme-headings-color, var(--headings-color)))' => [
 											$prefix . 'archive_order:array-ids:title:heading_tag' => 'h5'
 										],
 
-										'var(--heading-6-color, var(--headings-color))' => [
+										'var(--theme-heading-6-color, var(--theme-headings-color, var(--headings-color)))' => [
 											$prefix . 'archive_order:array-ids:title:heading_tag' => 'h6'
 										]
 									]
@@ -496,7 +496,7 @@ $options = [
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--linkHoverColor)'
+									'inherit' => 'var(--theme-link-hover-color, var(--link-hover-color))'
 								],
 							],
 						],
@@ -526,7 +526,7 @@ $options = [
 							'label' => __( 'Excerpt Color', 'blocksy' ),
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
-							'noColor' => [ 'background' => 'var(--color)'],
+							'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
 							'sync' => 'live',
 							'value' => [
 								'default' => [
@@ -538,7 +538,7 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--color)'
+									'inherit' => 'var(--theme-text-color, var(--color))'
 								],
 							],
 						],
@@ -569,7 +569,7 @@ $options = [
 					'label' => __( 'Meta Font Color', 'blocksy' ),
 					'type'  => 'ct-color-picker',
 					'design' => 'inline',
-					'noColor' => [ 'background' => 'var(--color)'],
+					'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
 					'sync' => 'live',
 					'value' => [
 						'default' => [
@@ -585,13 +585,13 @@ $options = [
 						[
 							'title' => __( 'Initial', 'blocksy' ),
 							'id' => 'default',
-							'inherit' => 'var(--color)'
+							'inherit' => 'var(--theme-text-color, var(--color))'
 						],
 
 						[
 							'title' => __( 'Hover', 'blocksy' ),
 							'id' => 'hover',
-							'inherit' => 'var(--linkHoverColor)'
+							'inherit' => 'var(--theme-link-hover-color, var(--link-hover-color))'
 						],
 					],
 				],
@@ -605,7 +605,7 @@ $options = [
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
 							'divider' => 'top',
-							'noColor' => [ 'background' => 'var(--color)'],
+							'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
 							'sync' => 'live',
 							'value' => [
 								'default' => [
@@ -621,13 +621,13 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--buttonTextInitialColor)'
+									'inherit' => 'var(--theme-button-text-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--buttonTextHoverColor)'
+									'inherit' => 'var(--theme-button-text-hover-color, var(--buttonHoverColor))'
 								],
 							],
 						],
@@ -636,7 +636,7 @@ $options = [
 							'label' => __( 'Meta Button Background', 'blocksy' ),
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
-							'noColor' => [ 'background' => 'var(--color)'],
+							'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
 							'sync' => 'live',
 							'value' => [
 								'default' => [
@@ -652,13 +652,13 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--buttonInitialColor)'
+									'inherit' => 'var(--theme-button-background-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--buttonHoverColor)'
+									'inherit' => 'var(--theme-button-background-hover-color, var(--buttonHoverColor))'
 								],
 							],
 						],
@@ -697,13 +697,13 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--linkInitialColor)'
+									'inherit' => 'var(--theme-link-initial-color, var(--linkInitialColor))'
 								],
 
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--linkHoverColor)'
+									'inherit' => 'var(--theme-link-hover-color, var(--linkHoverColor))'
 								],
 							],
 						],
@@ -743,13 +743,13 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--buttonTextInitialColor)'
+									'inherit' => 'var(--theme-button-text-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--buttonTextHoverColor)'
+									'inherit' => 'var(--theme-button-text-hover-color, var(--buttonHoverColor))'
 								],
 							],
 						],
@@ -789,13 +789,12 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--linkInitialColor)'
+									'inherit' => 'var(--theme-link-initial-color, var(--linkInitialColor))'
 								],
-
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--linkHoverColor)'
+									'inherit' => 'var(--theme-link-hover-color, var(--linkHoverColor))'
 								],
 							],
 						],
@@ -831,13 +830,13 @@ $options = [
 								[
 									'title' => __( 'Initial', 'blocksy' ),
 									'id' => 'default',
-									'inherit' => 'var(--buttonInitialColor)'
+									'inherit' => 'var(--theme-button-background-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
 									'title' => __( 'Hover', 'blocksy' ),
 									'id' => 'hover',
-									'inherit' => 'var(--buttonHoverColor)'
+									'inherit' => 'var(--theme-button-background-hover-color, var(--buttonHoverColor))'
 								],
 							],
 						],
@@ -1004,7 +1003,7 @@ $options = [
 						'value' => blocksy_background_default_value([
 							'backgroundColor' => [
 								'default' => [
-									'color' => 'var(--paletteColor8)',
+									'color' => 'var(--theme-palette-color-8, var(--paletteColor8))',
 								],
 							],
 						]),

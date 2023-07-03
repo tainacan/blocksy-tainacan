@@ -15,9 +15,9 @@ $inner_options = [
 			'data-label' => 'media-component-colors'
 		],
 		'value' => [
-			'color1' => [ 'color' => 'var(--paletteColor6, #edeff2)' ],
-			'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
-			'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ],
+			'color1' => [ 'color' => 'var(--theme-palette-color-6, var(--paletteColor6, #edeff2))' ],
+			'color2' => [ 'color' => 'var(--theme-palette-color-4, var(--paletteColor4, 2c3e50))' ],
+			'color3' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ],
 
 			'current_palette' => 'palette-1',
 		],
@@ -25,18 +25,18 @@ $inner_options = [
 			[
 				'id' => 'palette-1',
 
-				'color1' => [ 'color' => 'var(--paletteColor6, #edeff2)' ],
-				'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
-				'color3' => [ 'color' => 'var(--paletteColor1, #3eaf7c)' ]
+				'color1' => [ 'color' => 'var(--theme-palette-color-6, var(--paletteColor6, #edeff2))' ],
+				'color2' => [ 'color' => 'var(--theme-palette-color-4, var(--paletteColor4, 2c3e50))' ],
+				'color3' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ]
 
 			],
 
 			[
 				'id' => 'palette-2',
 
-				'color1' => [ 'color' => 'var(--paletteColor3, #415161)' ],
-				'color2' => [ 'color' => 'var(--paletteColor4, #2c3e50)' ],
-				'color3' => [ 'color' => 'var(--paletteColor6, #edeff2)' ]
+				'color1' => [ 'color' => 'var(--theme-palette-color-3, var(--paletteColor3, #415161))' ],
+				'color2' => [ 'color' => 'var(--theme-palette-color-4, var(--paletteColor4, 2c3e50))' ],
+				'color3' => [ 'color' => 'var(--theme-palette-color-6, var(--paletteColor6, #edeff2))' ]
 
 			]
 		],
