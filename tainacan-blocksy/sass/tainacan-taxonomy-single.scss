@@ -17,6 +17,8 @@
 .tainacan-taxonomy-terms-list-container {
 
     .entries[data-archive="default"] .entry-card.entry-card {
+        align-items: center;
+
         .term-name {
             margin-top: 0.25rem;
             margin-bottom: 0.25rem;
@@ -27,9 +29,16 @@
         }
     }
     
+    .entries:not([data-layout="grid"]) .ct-image-container img,
+    .entries:not([data-layout="grid"]) .ct-media-container img {
+        aspect-ratio: 4/3;
+    }
+    .entries:not([data-layout="grid"]) article > .ct-image-container,
     .entries:not([data-layout="grid"]) article > .ct-media-container {
         @media (min-width: 690px) {
-            max-width: 20%;
+            max-width: 25%;
+            flex-shrink: 0;
+            margin-inline-end: 0;
         }
     }
 }

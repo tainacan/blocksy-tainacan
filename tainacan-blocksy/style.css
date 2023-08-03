@@ -1029,6 +1029,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   }
 }
 
+.tainacan-taxonomy-terms-list-container .entries[data-archive="default"] .entry-card.entry-card {
+  align-items: center;
+}
+
 .tainacan-taxonomy-terms-list-container .entries[data-archive="default"] .entry-card.entry-card .term-name {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -1039,9 +1043,17 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   margin-bottom: -0.25rem;
 }
 
+.tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) .ct-image-container img,
+.tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) .ct-media-container img {
+  aspect-ratio: 4/3;
+}
+
 @media (min-width: 690px) {
+  .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) article > .ct-image-container,
   .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) article > .ct-media-container {
-    max-width: 20%;
+    max-width: 25%;
+    flex-shrink: 0;
+    margin-inline-end: 0;
   }
 }
 

@@ -196,7 +196,7 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                         'after_term_children_link' => '</li>',
                         'before_term_items_link' => '<li class="meta-date term-items-link">',
                         'after_term_items_link' => '</li>',
-                        'before_term_thumbnail' => '<figure class="term-thumbnail ct-media-container ' . ( $is_image_boundless ? 'boundless-image' : '' ) .'">',
+                        'before_term_thumbnail' => '<figure class="term-thumbnail ct-image-container ct-media-container' . ( $is_image_boundless ? 'boundless-image' : '' ) .'">',
 		                'after_term_thumbnail' => '</figure>',
                         'hide_term_children_count' => $hide_term_children_count,
                         'hide_term_items_count' => $hide_term_items_count,
