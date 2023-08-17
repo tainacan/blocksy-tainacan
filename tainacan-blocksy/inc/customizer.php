@@ -178,13 +178,23 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 			$post_type = get_post_type();
 			
 			// Checks if we're in the taxonomy single (aka, terms archive)
-			if ( $post_type == 'tainacan-taxonomy' )
-				return tainacan_blocksy_get_template_part( 'tainacan/archive-terms' );
+			if ( $post_type == 'tainacan-taxonomy' ) {
+				ob_start();
+				tainacan_blocksy_get_template_part( 'tainacan/archive-terms' );
+				$new_content = ob_get_contents();
+				ob_end_clean();
+				return $new_content;
+			}
 			
 			// Checks if we're in the collection item single
 			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-			if ( in_array($post_type, $collections_post_types) )
-				return tainacan_blocksy_get_template_part( 'tainacan/item-single-page' );
+			if ( in_array($post_type, $collections_post_types) ) { 
+				ob_start();
+				tainacan_blocksy_get_template_part( 'tainacan/item-single-page' );
+				$new_content = ob_get_contents();
+				ob_end_clean();
+				return $new_content;
+			}
 
 		}	
 	
