@@ -27,5 +27,39 @@ $options = [
         'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])
+	],
+	blocksy_rand_md5() => [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'document_attachments_structure' => 'gallery-type-2'
+		],
+		'options' => [
+			$prefix . 'document_attachments_position' => [
+				'label' => __( 'Thumbnails position', 'tainacan-blocksy' ),
+				'type' => 'ct-radio',
+				'value' => 'below',
+				'view' => 'text',
+				'design' => 'block',
+				'sync' => '',
+				'choices' => [
+					'left' => __( 'Left', 'tainacan-blocksy' ),
+					'below' => __( 'Below', 'tainacan-blocksy' ),
+					'right' => __( 'Right', 'tainacan-blocksy' ),
+				],
+			]
+		]
+	],
+	$prefix . 'document_attachments_spacing' => [
+		'label' => __( 'Inner spacing', 'tainacan-blocksy' ),
+		'desc' => __( 'Prefer using minimum only if your gallery contains mostly images which can be croped withour loss of information', 'tainacan-blocksy' ),
+		'type' => 'ct-radio',
+		'value' => 'default',
+		'view' => 'text',
+		'design' => 'block',
+		'sync' => '',
+		'choices' => [
+			'default' => __( 'Default', 'tainacan-blocksy' ),
+			'minimum' => __( 'Minimum', 'tainacan-blocksy' ),
+		],
 	]
 ];

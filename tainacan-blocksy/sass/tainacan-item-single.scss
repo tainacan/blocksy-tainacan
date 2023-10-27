@@ -131,7 +131,7 @@
                 page-break-inside: avoid;
                 break-inside: avoid;
                 
-                &:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum) {
+                &:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) {
                     display: inline-block;
                 }
             }
@@ -576,6 +576,11 @@
     padding-top: calc(var(--content-vertical-spacing)/2);
     padding-bottom: calc(var(--content-vertical-spacing)/2);
 
+    &:empty {
+        display: none;
+        visibility: hidden;
+    }
+
     .tainacan-media-component {
         --tainacan-media-background: var(--tainacan-media-background-color, var(--theme-palette-color-7, var(--paletteColor7)));
         --swiper-navigation-color: var(--tainacan-media-accent-color, var(--theme-palette-color-1, var(--paletteColor1)));
@@ -585,5 +590,166 @@
     }
     .tainacan-item-section {
         margin: 0 auto;
+    }
+}
+
+/* Media gallery with minimum spacing */
+.tainacan-media-component-wrapper-spacing--minimum {
+    --theme-border-radius: 0px;
+
+    .tainacan-media-component {
+        gap: 0px;
+
+        .tainacan-media-component__swiper-main {
+            ul.swiper-wrapper { 
+                max-height: var(--tainacan-media-main-carousel-height, 60vh);
+            }
+            li.swiper-slide {
+                padding: 0;
+            }
+            .swiper-slide-content {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+
+                a:first-of-type,
+                p:first-of-type {
+                    padding: 0;
+                    flex-grow: 1;
+                }
+                img {
+                    width: auto;
+                    height: 100%;
+                    max-width: unset;
+                    object-fit: cover;
+                    object-position: center;
+                }
+                @media (min-aspect-ratio: 1/1) {
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                video,
+                audio {
+                    margin: calc( 1.5 * var(--swiper-navigation-size) );
+                }
+            }
+            li.swiper-slide .swiper-slide-metadata {
+                background-color: var(--tainacan-media-background-color,var(--theme-palette-color-7,var(--paletteColor7)));
+                border-radius: 2px;
+                padding: 0.5rem 1rem;
+                margin: 1rem;
+                bottom: 0;
+                position: absolute;
+                z-index: 99;
+                left: calc( 1.5 * var(--swiper-navigation-size) );
+            }
+            .swiper-button-prev,
+            .swiper-button-next {
+                border-radius: 100em;
+                padding: 1.5em;
+                width: var(--swiper-navigation-size);
+                background: rgba(255,255,255,0.0);
+                transition: background-color 0.2s ease;
+            }
+            &:hover,
+            &:focus {
+                .swiper-button-prev,
+                .swiper-button-next {
+                    background: var(--tainacan-media-background-color,var(--theme-palette-color-7,var(--paletteColor7)));
+                }
+            }
+        }
+        .tainacan-media-component__swiper-thumbs {
+            ul.swiper-wrapper {
+                max-width: 100%;
+                margin: 0;
+            }
+            li.swiper-slide {
+                max-width: var(--tainacan-media-thumbs-carousel-item-size, 136px);
+            }
+        }
+    }
+}
+
+/* Media gallery with thumbnails to the left or right */
+@media only screen and (min-width: 961px) {
+    .tainacan-media-component-wrapper-thumbnails-at--right,
+    .tainacan-media-component-wrapper-thumbnails-at--left {
+        .tainacan-media-component {
+            display: flex;
+            flex-direction: row;
+            gap: 0px;
+            max-height: var(--tainacan-media-main-carousel-height, 60vh);
+
+            .tainacan-media-component__swiper-main {
+                .swiper-slide-content {
+                    @media (min-aspect-ratio: 4/3) {
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+            
+            .tainacan-media-component__swiper-thumbs {
+                flex-basis: var(--tainacan-media-thumbs-carousel-item-size, 140px);
+                flex-shrink: 0;
+
+                .swiper-wrapper {
+                    max-height: var(--tainacan-media-main-carousel-height, 60vh);
+                    width: 100%;
+                    max-width: 100%;
+                    margin-left: 0px;
+                    margin-right: 0px;
+
+                    .swiper-slide {
+                        height: auto;
+
+                        img {
+                            margin: 0;
+                            border-bottom: none;
+                        }
+                    }
+                }
+
+                .swiper-start-border {
+                    background-image: linear-gradient(180deg, var(--tainacan-media-background, #ffffff) 25%, transparent);
+                    width: 100%;
+                    height: calc(32px + var(--swiper-navigation-size, 44px));
+                }
+                .swiper-end-border {
+                    background-image: linear-gradient(0deg, var(--tainacan-media-background, #ffffff) 25%, transparent);
+                    width: 100%;
+                    height: calc(32px + var(--swiper-navigation-size, 44px));
+                    bottom: 0px;
+                    top: unset;
+                }
+            }
+        }
+    }
+
+    .tainacan-media-component-wrapper-thumbnails-at--left {
+        .tainacan-media-component__swiper-thumbs {
+            margin-right: 0px;
+        }
+        .tainacan-media-component__swiper-main {
+            margin-left: 0px;
+        }
+        .tainacan-media-component {
+            flex-direction: row-reverse;
+        }
+    }
+    .tainacan-media-component-wrapper-thumbnails-at--right {
+        .tainacan-media-component__swiper-thumbs {
+            margin-left: 0px;
+        }
+        .tainacan-media-component__swiper-main {
+            margin-right: 0px;
+        }
     }
 }

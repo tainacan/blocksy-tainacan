@@ -34,6 +34,10 @@ $default_hero_elements[] = [
 	]
 ];
 
+add_filter( 'blocksy:options:page-title:archives-have-hero', function() use ($prefix) {
+    return str_contains($prefix, 'tnc_col_') || $prefix === 'tainacan-terms-items_archive_';
+});
+
 $options = [
 	$prefix . 'page-header-panel' => [
 		'label' => __( 'Page header', 'tainacan-blocksy' ),
@@ -44,12 +48,26 @@ $options = [
 		'inner-options' => [
             $prefix . 'page_header_background_style' => [
                 'label' => __('Header style', 'tainacan-blocksy'),
-                'type' => 'ct-radio',
+                'type' => 'ct-image-picker',
                 'value' => 'boxed',
-                'view' => 'text',
+                'design' => 'block',
                 'choices' => [
-                    'simple' => __('Simple', 'blocksy'),
-                    'boxed' => __('Boxed', 'blocksy')
+                    'type-1' => [
+                        'title' => __('Classic', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-type-1.svg'),
+                    ],
+                    'type-2' => [
+                        'title' => __('Banner', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-type-2.svg'),
+                    ],
+                    'simple' => [
+                        'title' => __('Gradient', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-simple.svg'),
+                    ],
+                    'boxed' => [
+                        'title' => __('Boxed', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-boxed.svg')
+                    ],
                 ]
             ],
             $prefix . 'hero_elements' => [
@@ -114,7 +132,7 @@ $options = [
                                     'has_category_label' => [
                                         'label' => __('Category Label', 'blocksy'),
                                         'type' => 'ct-switch',
-                                        'value' => 'yes',
+                                        'value' => $prefix === 'tainacan-terms-items_archive_' ? 'yes' : 'no',
                                     ]
                                 ]
                             ],

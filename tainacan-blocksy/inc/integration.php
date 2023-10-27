@@ -144,3 +144,20 @@ function tainacan_blocksy_render_media_gallery_above_title() {
 }
 add_action( 'blocksy:hero:before', 'tainacan_blocksy_render_media_gallery_above_title');
 
+/**
+ * Adds extra class to help styling tainacan single items templates.
+ */
+if ( !function_exists('tainacan_blocksy_post_class') ) {
+    function tainacan_blocksy_post_class($classes) {
+        
+        $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+        $current_post_type = get_post_type();
+            
+        if (in_array($current_post_type, $collections_post_types)) {
+            $classes[] = 'tainacan-item-single-page';
+        }
+
+        return $classes;
+    }
+}
+add_filter('post_class', 'tainacan_blocksy_post_class');

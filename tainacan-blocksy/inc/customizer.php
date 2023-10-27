@@ -7,7 +7,8 @@
 if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_panel') ) {
 	function tainacan_blocksy_add_repository_and_terms_items_options_panel($options) {
 
-		$options['tainacan_repository_items_list'] = blc_call_fnc(
+		/* Repository Items List */
+		$repository_items_extra_options = blc_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
@@ -16,7 +17,36 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 			[], false
 		);
 
-		$options['tainacan_terms_items_list'] = blc_call_fnc(
+		$repository_items_prefix = 'tainacan-repository-items_archive';
+
+		$items_extra_title_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header-simpler.php', [
+			'prefix' => $repository_items_prefix,
+			'is_general_cpt' => true
+		], false);
+
+		$default_title_options = blocksy_get_options('general/page-title', [
+			'prefix' => $repository_items_prefix,
+			'is_cpt' => true,
+			'is_archive' => true,
+			'enabled_label' => sprintf(
+				__('%s Title', 'blocksy'),
+				__('Items', 'tainacan-blocksy')
+			),
+		]);
+		
+		$default_title_options_keys = array_keys($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options']);
+
+		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['choices'] = array_merge($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['choices'], $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_page_header_background_style']['choices']);
+		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['value'] = $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_page_header_background_style']['choices'];
+		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['sync'] = '';
+		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$repository_items_prefix . '_hero_elements'] = $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_hero_elements'];
+		
+		$options['tainacan_repository_items_list'] = $repository_items_extra_options;
+
+		$options['tainacan_repository_items_list']['options']['tainacan_repository_items_list_section_options']['inner-options'][0] = $default_title_options;
+
+		/* Term Items List */
+		$term_items_extra_options = blc_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
@@ -24,11 +54,39 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 			TAINACAN_BLOCKSY_PLUGIN_DIR_PATH  . '/inc/options/archives/tainacan-terms-items.php',
 			[], false
 		);
+
+		$term_items_prefix = 'tainacan-terms-items_archive';
+
+		$items_extra_title_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header.php', [
+			'prefix' => $term_items_prefix,
+			'is_general_cpt' => true
+		], false);
+
+		$default_title_options = blocksy_get_options('general/page-title', [
+			'prefix' => $term_items_prefix,
+			'is_cpt' => true,
+			'is_archive' => true,
+			'enabled_label' => sprintf(
+				__('%s Title', 'blocksy'),
+				__('Items', 'tainacan-blocksy')
+			),
+		]);
+		
+		$default_title_options_keys = array_keys($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options']);
+
+		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['choices'] = array_merge($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['choices'], $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_page_header_background_style']['choices']);
+		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['value'] = $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_page_header_background_style']['value'];
+		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['sync'] = '';
+		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$term_items_prefix . '_hero_elements'] = $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_hero_elements'];
+		
+		$options['tainacan_term_items_list'] = $term_items_extra_options;
+
+		$options['tainacan_term_items_list']['options']['tainacan_terms_items_list_section_options']['inner-options'][0] = $default_title_options;
+
 		return $options;
 	}
 }
-add_filter( 'blocksy_extensions_customizer_options', 'tainacan_blocksy_add_repository_and_terms_items_options_panel' );
-
+add_filter( 'blocksy_extensions_customizer_options', 'tainacan_blocksy_add_repository_and_terms_items_options_panel', 10, 1 );
 
 /**
  * Adds extra customizer options to items single page template
@@ -41,7 +99,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
 			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 
 			if ( in_array($post_type, $collections_post_types) ) {
-				
+
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
 					__('Item from %s', 'tainacan-blocksy'),
@@ -117,9 +175,25 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 					'prefix' => $post_type_object->name,
 					'is_general_cpt' => true
 				], false);
+
+				$items_extra_title_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header.php', [
+					'prefix' => $post_type_object->name,
+					'is_general_cpt' => true
+				], false);
 				
 				if ( is_array($items_extra_options) ) {
+					$default_title_options = $options['options'][$post_type . '_section_options']['inner-options'][1];
+					$default_title_options_keys = array_keys($default_title_options[$post_type . '_archive_hero_enabled']['inner-options']);
+
+					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['choices'] = array_merge($default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['choices'], $items_extra_title_options[$post_type . '_page-header-panel']['inner-options'][$post_type . '_page_header_background_style']['choices']);
+					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['value'] = $items_extra_title_options[$post_type . '_page-header-panel']['inner-options'][$post_type . '_page_header_background_style']['value'];
+					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['sync'] = '';
+					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$post_type . '_archive_hero_elements'] = $items_extra_title_options[$post_type . '_page-header-panel']['inner-options'][$post_type . '_hero_elements'];
+					
 					$options['options'][$post_type . '_section_options']['inner-options'] = $items_extra_options;
+
+					$options['options'][$post_type . '_section_options']['inner-options'][0] = $default_title_options;
+					
 				}
 
 			// We also do some changes on the Collections
@@ -168,7 +242,6 @@ add_filter( 'blocksy:custom_post_types:supported_list', 'tainacan_blocksy_custom
  */
 if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 	function tainacan_blocksy_the_content_for_items( $content ) {
-	
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
 			
@@ -203,4 +276,15 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 }
 add_filter( 'the_content', 'tainacan_blocksy_the_content_for_items', 11);
 
-?>
+/**
+ * New filter from Blocksy 2.0.0 to allow using the page title styles
+ * in the Repository and Terms items list.
+ */
+add_filter(
+	'blocksy:hero:dynamic-styles:prefixes',
+	function ($prefixes) {
+		$prefixes[] = 'tainacan-repository-items_archive';
+		$prefixes[] = 'tainacan-terms-items_archive';
+		return $prefixes;
+	}
+);

@@ -2,10 +2,10 @@
 Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blocksy
-Requires at least: 5.0
-Tested up to: 6.2.2
-Requires PHP: 5.6
-Stable tag: 0.2.0
+Requires at least: 5.9
+Tested up to: 6.4
+Requires PHP: 7.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,12 +58,26 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 == Changelog ==
 
+= 0.3.0 =
+* Adds page title default Blocksy banner options for Collection Items templates
+* Adds page title section options to Repository and Taxonomy Term Items level templates
+* Adds container size option to all Items list templates
+* Adds thumbnail carousel positioning option for item single gallery (requires Tainacan 0.20.5)
+* Adds inner spacing option for media gallery on item single gallery
+* More improvements to compatibility with Blcoksy 2.0.0
+* Improves post navigation markup to use latest filters
+* Bug fix: label "Document" and "Documents" not displaying in the correct situations
+* Bug fix: translation issues in breadcrumbs
+* Bug fix: moves tainacan_blocksy_post_class() to integration for its classes to also work on child themes
+* Bug fix: positioning of relationship metadata thumbnail
+* Bug fix: thumbnail not being found in items navigation leading to a warning
+
 = 0.2.0 =
 * Adds Taxonomy Single (Terms list) page functionality (requires Tainacan 0.20.1)
 * New layout for the Item Page: Media Gallery above page title
 * Option to set default order by for Repository Items list
 * Fixes to item thumbnail display inside sections
-* Compatibility with Blocksy 2.0.0
+* Initial compatibility with Blocksy 2.0.0
 
 = 0.1.21 =
 * Fixes breadcrumb hierarchy when inside taxonomy archives
@@ -72,7 +86,7 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 * Small css improvements to geo coordinate metadatum
 
 = 0.1.20 =
-* Sorts related items by title
+* Sorting related items by title
 * Small css improvements
 
 = 0.1.19 =

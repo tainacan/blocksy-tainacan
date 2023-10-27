@@ -54,7 +54,7 @@ $options = [
                 'type' => 'ct-condition',
                 'condition' => [
                     $prefix . 'document_attachments_structure' => 'gallery-type-1',
-                    $prefix . 'page_structure_type' => 'type-dam | type-dma | type-mda | type-gm | type mg',
+                    $prefix . 'page_structure_type' => 'type-dam | type-dma | type-mda | type-gm | type-mg',
 				],
 				'options' => [
 					$prefix . 'section_document_label' => [
@@ -90,8 +90,8 @@ $options = [
 			blocksy_rand_md5() => [
                 'type' => 'ct-condition',
                 'condition' => [
-                    $prefix . 'document_attachments_structure' => 'gallery-type-1',
-					$prefix . 'page_structure_type' => 'type-dam | type-dma | type-mda | type-gm | type mg'
+                    $prefix . 'document_attachments_structure' => 'gallery-type-2',
+					$prefix . 'page_structure_type' => 'type-dam | type-dma | type-mda | type-gm | type-mg'
 				],
 				'options' => [
 					$prefix . 'section_documents_label' => [

@@ -17,7 +17,7 @@ $options = [
 			[
 				'unit' => 'px',
 				'min' => 42,
-				'max' => 200,
+				'max' => 300,
 			]
 		]),
 		'responsive' => true,

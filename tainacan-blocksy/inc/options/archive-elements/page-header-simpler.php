@@ -13,6 +13,10 @@ $default_hero_elements[] = [
 	'enabled' => true,
 	'heading_tag' => 'h1'
 ];
+$default_hero_elements[] = [
+    'id' => 'breadcrumbs',
+    'enabled' => false
+];
 
 $options = [
 	$prefix . 'page-header-panel' => [
@@ -24,12 +28,26 @@ $options = [
 		'inner-options' => [
             $prefix . 'page_header_background_style' => [
                 'label' => __('Header style', 'tainacan-blocksy'),
-                'type' => 'ct-radio',
+                'type' => 'ct-image-picker',
                 'value' => 'boxed',
-                'view' => 'text',
+                'design' => 'block',
                 'choices' => [
-                    'simple' => __('Simple', 'blocksy'),
-                    'boxed' => __('Boxed', 'blocksy')
+                    'type-1' => [
+                        'title' => __('Classic', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-type-1.svg'),
+                    ],
+                    'type-2' => [
+                        'title' => __('Banner', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-type-2.svg'),
+                    ],
+                    'simple' => [
+                        'title' => __('Gradient', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-simple.svg'),
+                    ],
+                    'boxed' => [
+                        'title' => __('Boxed', 'tainacan-blocksy'),
+                        'src' => tainacan_blocksy_image_picker_url('header-boxed.svg')
+                    ],
                 ]
             ],
             $prefix . 'hero_elements' => [
@@ -80,7 +98,23 @@ $options = [
                                 ]
                             ]
                         ]
-                    ]
+                    ],
+                    'breadcrumbs' => [
+                        'label' => __('Breadcrumbs', 'blocksy'),
+                        'options' => [
+                            'hero_item_spacing' => [
+                                'label' => __( 'Top Spacing', 'blocksy' ),
+                                'type' => 'ct-slider',
+                                'value' => 20,
+                                'min' => 0,
+                                'max' => 100,
+                                'responsive' => true,
+                                'sync' => [
+                                    'id' => $prefix . 'hero_elements_spacing',
+                                ]
+                            ]
+                        ]
+                    ],
                 ]
             ]
 		]

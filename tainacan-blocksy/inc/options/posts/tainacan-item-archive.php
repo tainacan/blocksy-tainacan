@@ -1,13 +1,6 @@
 <?php
 
 $options = [
-	[
-		blocksy_rand_md5() => [
-			'type' => 'ct-title',
-			'label' => __( 'Page Elements', 'blocksy' )
-		]
-	],
-
 	blocksy_get_options(
 		(
 			$prefix !== 'tainacan-repository-items' ?
@@ -16,7 +9,6 @@ $options = [
 		), [
 		'prefix' => $prefix . '_archive'
 	], false),
-
 	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/search-control.php', [
 		'prefix' => $prefix . '_archive'
 	], false),
@@ -33,5 +25,17 @@ $options = [
 
 	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/color-palettes.php', [
 		'prefix' => $prefix . '_archive'
-	], false)
+	], false),
+	$prefix . '_archive_container-width' => [
+		'label' => __( 'Container Width', 'blocksy' ),
+		'type' => 'ct-radio',
+		'value' => 'fluid',
+		'view' => 'text',
+		'design' => 'block',
+		'sync' => '',
+		'choices' => [
+			'fixed' => __( 'Default', 'blocksy' ),
+			'fluid' => __( 'Full Width', 'blocksy' ),
+		],
+	],
 ];

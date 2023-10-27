@@ -49,10 +49,10 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 			$next_thumb = '';
 
 			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
-				if ($adjacent_items['next']) {
+				if ($adjacent_items['next'] && $adjacent_items['next']['thumbnail'] && $adjacent_items['next']['thumbnail']['tainacan-medium']) {
 					$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-medium'][0];
 				}
-				if ($adjacent_items['previous']) {
+				if ($adjacent_items['previous'] && $adjacent_items['previous']['thumbnail'] && $adjacent_items['previous']['thumbnail']['tainacan-medium']) {
 					$previous_thumb = $adjacent_items['previous']['thumbnail']['tainacan-medium'][0];
 				}
 			} else {
@@ -110,6 +110,8 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
  */
 if ( !function_exists('blocksy_default_post_navigation') ) {
 	function blocksy_default_post_navigation() {
+		$prefix = blocksy_manager()->screen->get_prefix();
+
 		$next_post = apply_filters(
 			'blocksy:post-navigation:next-post',
 			get_adjacent_post(false, '', true)
@@ -120,11 +122,57 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 			get_adjacent_post(false, '', false)
 		);
 
+		$post_nav_criteria = blocksy_get_theme_mod($prefix . '_post_nav_criteria', 'default');
+
+		if ($post_nav_criteria !== 'default') {
+			$post_type = get_post_type();
+			$post_nav_taxonomy_default = array_keys(blocksy_get_taxonomies_for_cpt(
+				$post_type
+			))[0];
+	
+			$post_nav_taxonomy = blocksy_get_theme_mod(
+				$prefix . '_post_nav_taxonomy',
+				$post_nav_taxonomy_default
+			);
+	
+			$next_post = apply_filters(
+				'blocksy:post-navigation:next-post',
+				get_adjacent_post(true, '', true, $post_nav_taxonomy)
+			);
+	
+			$previous_post = apply_filters(
+				'blocksy:post-navigation:previous-post',
+				get_adjacent_post(true, '', false, $post_nav_taxonomy)
+			);
+		}
+
 		if (! $next_post && ! $previous_post) {
 			return '';
 		}
 
-		$prefix = blocksy_manager()->screen->get_prefix();
+		$title_class = 'item-title';
+
+		$title_class .= ' ' . blocksy_visibility_classes(blocksy_get_theme_mod(
+			$prefix . '_post_nav_title_visibility',
+			[
+				'desktop' => true,
+				'tablet' => true,
+				'mobile' => false,
+			]
+		));
+
+		$thumb_size = blocksy_get_theme_mod($prefix . '_post_nav_thumb_size', 'medium');
+
+		$thumb_class = '';
+
+		$thumb_class .= ' ' . blocksy_visibility_classes(blocksy_get_theme_mod(
+			$prefix . '_post_nav_thumb_visibility',
+			[
+				'desktop' => true,
+				'tablet' => true,
+				'mobile' => true,
+			]
+		));
 
 		$container_class = 'post-navigation';
 
@@ -137,7 +185,7 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 			]
 		));
 
-		$post_slug = get_post_type() === 'post' ? __( 'Post', 'blocksy' ) : get_post_type_object( get_post_type() )->labels->singular_name;
+		$post_slug = get_post_type_object(get_post_type())->labels->singular_name;
 		$post_slug = '<span>' . $post_slug . '</span>';
 
 		$has_thumb = get_theme_mod($prefix . '_has_post_nav_thumb', 'yes') === 'yes';
@@ -150,44 +198,75 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 		if ($next_post) {
 			$next_title = '';
 
-			if ($has_title) {
-				$next_title = $next_post->post_title;
-			}
+			$next_title = get_the_title($next_post);
 
 			if ($has_thumb && get_post_thumbnail_id($next_post)) {
-				$next_post_image_output = blocksy_image(
-					[
-						'attachment_id' => get_post_thumbnail_id( $next_post ),
-						'ratio' => '1/1',
-						'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="0,7.5 5.5,13 6.4,12.1 2.4,8.1 20,8.1 20,6.9 2.4,6.9 6.4,2.9 5.5,2 "/></svg>',
-						'tag_name' => 'figure'
-					]
-				);
+
+				if ( function_exists('blocksy_image') ) {
+					$next_post_image_output = blocksy_image(
+						[
+							'attachment_id' => get_post_thumbnail_id( $next_post ),
+							'ratio' => '1/1',
+							'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="0,7.5 5.5,13 6.4,12.1 2.4,8.1 20,8.1 20,6.9 2.4,6.9 6.4,2.9 5.5,2 "/></svg>',
+							'tag_name' => 'figure'
+						]
+					);
+				} else if ( function_exists('blocksy_media') ) {
+					$next_post_image_output = blocksy_media(
+						[
+							'attachment_id' => get_post_thumbnail_id($next_post),
+							'post_id' => $next_post->ID,
+							'ratio' => '1/1',
+							'size' => $thumb_size,
+							'class' => $thumb_class,
+							'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15" fill="#ffffff"><polygon points="0,7.5 5.5,13 6.4,12.1 2.4,8.1 20,8.1 20,6.9 2.4,6.9 6.4,2.9 5.5,2 "/></svg>',
+							'tag_name' => 'figure'
+						]
+					);
+				}
 			}
 		}
 
 		if ($previous_post) {
 			$previous_title = '';
-			if ( $has_title ) {
-				$previous_title = $previous_post->post_title;
-			}
+
+			$previous_title = get_the_title($previous_post);
 
 			if ($has_thumb && get_post_thumbnail_id($previous_post)) {
-				$previous_post_image_output = blocksy_image(
-					[
-						'attachment_id' => get_post_thumbnail_id( $previous_post ),
-						'ratio' => '1/1',
-						'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="14.5,2 13.6,2.9 17.6,6.9 0,6.9 0,8.1 17.6,8.1 13.6,12.1 14.5,13 20,7.5 "/></svg>',
-						'tag_name' => 'figure'
-					]
-				);
+				if ( function_exists('blocksy_image') ) {
+					$previous_post_image_output = blocksy_image(
+						[
+							'attachment_id' => get_post_thumbnail_id( $previous_post ),
+							'ratio' => '1/1',
+							'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15"><polygon points="14.5,2 13.6,2.9 17.6,6.9 0,6.9 0,8.1 17.6,8.1 13.6,12.1 14.5,13 20,7.5 "/></svg>',
+							'tag_name' => 'figure'
+						]
+					);
+				} else if ( function_exists('blocksy_media') ) {
+					$previous_post_image_output = blocksy_media(
+						[
+							'attachment_id' => get_post_thumbnail_id($previous_post),
+							'post_id' => $previous_post->ID,
+							'ratio' => '1/1',
+							'size' => $thumb_size,
+							'class' => $thumb_class,
+							'inner_content' => '<svg width="20px" height="15px" viewBox="0 0 20 15" fill="#ffffff"><polygon points="14.5,2 13.6,2.9 17.6,6.9 0,6.9 0,8.1 17.6,8.1 13.6,12.1 14.5,13 20,7.5 "/></svg>',
+							'tag_name' => 'figure'
+						]
+					);
+				}
 			}
 		}
+
+		$deep_link_args = [
+			'prefix' => $prefix,
+			'suffix' => $prefix . '_has_post_nav'
+		];
 
 		ob_start();
 
 		?>
-			<nav class="<?php echo esc_attr( $container_class ); ?>">
+			<nav class="<?php echo esc_attr( $container_class ); ?>" <?php if (function_exists('blocksy_generic_get_deep_link') ) echo blocksy_generic_get_deep_link($deep_link_args); ?>>
 				<?php if ($next_post): ?>
 					<a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="nav-item-prev">
 						<?php if ($has_thumb): ?>
@@ -201,15 +280,18 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 							<span class="item-label">
 								<?php
 									echo wp_kses_post(sprintf(
-										// translators: post title
-										__( 'Previous %s', 'blocksy' ),
+										apply_filters(
+											'blocksy:post-navigation:previous-post:label',
+											// translators: post title
+											__('Previous %s', 'blocksy')
+										),
 										$post_slug
 									));
 								?>
 							</span>
 
 							<?php if ( ! empty( $next_title ) ): ?>
-								<span class="item-title">
+								<span class="<?php echo esc_attr( $title_class ); ?>">
 									<?php echo wp_kses_post($next_title); ?>
 								</span>
 							<?php endif; ?>
@@ -226,15 +308,18 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 							<span class="item-label">
 								<?php
 									echo wp_kses_post(sprintf(
-										// translators: post title
-										__( 'Next %s', 'blocksy' ),
+										apply_filters(
+											'blocksy:post-navigation:next-post:label',
+											// translators: post title
+											__('Next %s', 'blocksy')
+										),
 										$post_slug
 									));
 								?>
 							</span>
 
 							<?php if ( ! empty( $previous_title ) ) : ?>
-								<span class="item-title">
+								<span class="<?php echo esc_attr( $title_class ); ?>">
 									<?php echo wp_kses_post($previous_title); ?>
 								</span>
 							<?php endif; ?>
@@ -408,13 +493,13 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 						$taxonomy = get_taxonomy( $term->taxonomy );
 						if ( $taxonomy && $taxonomy->labels )
 							$array[$collection_archive_link_index] = [ "name" => $taxonomy->labels->singular_name ];
-							$array[] = [ "name" => __('Items', 'blocksy-tainacan') ];
+							$array[] = [ "name" => __('Items', 'tainacan-blocksy') ];
 					}
 				}
 			}
 			// Check if we're inside a collection archive.
 			else if ( in_array($post_type, $collections_post_types) && is_archive() ) {
-				$array[] = [ "name" => __('Items', 'blocksy-tainacan') ];
+				$array[] = [ "name" => __('Items', 'tainacan-blocksy') ];
 			}
 			// Check if we're inside the main loop in a single Post.
 			else if ( in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {

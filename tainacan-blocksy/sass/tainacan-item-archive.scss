@@ -11,7 +11,7 @@
 //    --tainacan-input-color: var(--theme-text-color, rgba(44, 62, 80, 0.9));
 //    --tainacan-input-background-color: var(--theme-form-field-background-initial-color, white);
     --tainacan-input-border-color: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
-//    --tainacan-heading-color: var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)));
+//    --tainacan-heading-color: var(--theme-heading-color, var(--theme-heading-color, rgba(44, 62, 80, 1)));
 //    --tainacan-label-color: var(--theme-text-color, rgba(44, 62, 80, 0.9));
 //    --tainacan-info-color: var(--theme-text-color, rgba(44, 62, 80, 0.9));
     --tainacan-skeleton-color: var(--tainacan-item-background-color, white);
@@ -19,7 +19,6 @@
     &:not(.is-fullscreen) {
         justify-content: center;
         background: transparent !important;
-        padding: 6px 18px;
         @include display-grid;
         grid-template-columns: 0fr 100% 1fr;
         grid-template-rows: auto 1fr;
@@ -32,8 +31,8 @@
     .search-control {
         grid-area: searchcontrol;
         border-radius: 0 0 var(--theme-border-radius, var(--borderRadius, 3px)) var(--theme-border-radius, var(--borderRadius, 3px));
-        padding: 20px 20px 6px 20px !important;
         margin: 5px 0px;
+        padding: 20px 0px 6px 0px !important;
 
         .search-control-item {
             margin-bottom: 20px !important;
@@ -62,16 +61,16 @@
         width: 100%;
 
         .modal-content {
-            padding: 16px 10px !important;
+            padding: 16px 10px 16px 0px !important;
 
             @media screen and (max-width: 768px){
                 padding: 16px 10px 16px 12vw;
-                background-color: var(--tainacan-item-background-color,#fff);
+                background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
             }
 
             #filters-items-list {
-                background-color: var(--backgroundColor, #f8f9fb);
-                padding: 20px;
+                background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
+                padding: 3px;
                 margin: -3px;
 
                 .filters-components-list {
@@ -98,9 +97,9 @@
             .table-container {
                 min-width: 100%;
                 padding-top: 0px;
-                padding-left: 10px;
+                padding-left: 0px;
                 padding-bottom: 14px;
-                padding-right: 10px;
+                padding-right: 0px;
             }
             
             /* Tainacan items list view modes */
@@ -186,7 +185,7 @@
                         font-size: 14px;
                         font-weight: 600;
                         color: var(--theme-text-color, var(--color));
-                        --linkInitialColor: var(--theme-text-color, var(--color));
+                        --theme-link-initial-color: var(--theme-text-color, var(--color));
                         --theme-link-initial-color: var(--theme-text-color, var(--color));
                         transition: color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), background 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955),border-color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
@@ -234,16 +233,35 @@
     }
 }
 
-:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen) {
+.entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) {
+    padding: 6px 18px;
+
+    .search-control {
+        padding: 20px 20px 6px 20px !important;
+    }
+
+    .table-container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #filters-modal .modal-content {
+        padding: 16px 10px;
+    }
+}
+
+.page:not(.has-page-header-style-classic)>header+.entry-content:not(.wp-block-tainacan-faceted-search)>.theme-items-list:not(.is-fullscreen) {
     top: -52px !important;
 }
 
 /* Extra classes applied from customizer */
-.page {
-    &.has-filters-panel-style-boxed #filters-modal .modal-content #filters-items-list {
+.page.has-filters-panel-style-boxed  {
+
+    #filters-modal .modal-content #filters-items-list {
         border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
         background-color: var(--tainacan-item-background-color, white);
         box-shadow: var(--theme-box-shadow, var(--boxShadow , 0px 12px 18px -6px rgba(34, 56, 101, 0.04)));
+        padding: 20px;
     }
 }
 
@@ -256,13 +274,13 @@ body:not(.tainacan-admin-page) {
         --tainacan-base-font-size: var(--theme-font-size, var(--fontSize, 1em));
         --tainacan-secondary: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
         --tainacan-primary: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
-        --tainacan-background-color: var(--backgroundColor, #f8f9fb);
+        --tainacan-background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
         --tainacan-input-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
         --tainacan-input-background-color: var(--theme-form-field-background-initial-color, var(--form-field-background-initial, white));
         --tainacan-input-border-color: var(--theme-form-field-border-initial-color, #e0e5eb);
         --tainacan-label-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
         --tainacan-info-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
-        --tainacan-heading-color: var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)));
+        --tainacan-heading-color: var(--theme-heading-color, var(--theme-heading-color, rgba(44, 62, 80, 1)));
     }
 
     .tainacan-modal-content {
@@ -283,6 +301,49 @@ body:not(.tainacan-admin-page) {
 }
 
 /* Collection Items List */
+
+// This affects all header types
+body[class*=' post-type-archive-tnc_col_'],
+body[class*=' tax-tnc_'],
+body[data-prefix="tainacan-repository-items_archive"],
+body[data-prefix="tainacan-terms-items_archive"] {
+    .hero-section[data-type="type-1"] {
+        padding-top: var(--theme-content-vertical-spacing);
+    }
+    .hero-section.has-thumbnail-enabled > [class*="ct-container"] {
+        display: block; // Only here the float will work
+    }
+    .hero-section.has-thumbnail-enabled {
+        .page-title {
+            margin-top: 0px;
+            margin-bottom: 4px;
+            display: block;
+            clear: none;
+        }
+        .page-description ,
+        .page-description p {
+            display: block !important;
+            clear: none;
+        }
+    }
+    
+    .ct-title-label {
+        font-weight: normal;
+        &::after {
+            content: ': ';
+        }
+    }
+    .collection-thumbnail {
+        max-width: calc(var(--thumbnail-size, 20%) - 24px);
+        float: left;
+        margin-right: 24px;
+
+        img {
+            border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
+        }
+    }
+}
+// This affects only tainacan special header types (gradient and boxed)
 .tainacan-collection-header {
     display: flex;
     padding: 36px 18px 28px 18px;
@@ -292,42 +353,13 @@ body:not(.tainacan-admin-page) {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    --headingColor: var(--tainacan-heading-color, rgba(44, 62, 80, 1));
-    --color: var(--tainacan-label-color, #454647);
-    --linkInitialColor: var(--tainacan-secondary, #3eaf7c);
-    --theme-heading-color: var(--tainacan-heading-color, rgba(44, 62, 80, 1));
-    --theme-text-color: var(--tainacan-label-color, #373839);
-    --theme-link-initial-color: var(--tainacan-secondary, #3eaf7c);
 
     .tainacan-collection-header__box {
         width: 100%;
         padding: 20px;
 
-        .page-title {
+        >.collection-thumbnail+* {
             margin-top: 0px;
-            margin-bottom: 4px;
-            display: block;
-            clear: none;
-        }
-        .ct-title-label {
-            font-weight: normal;
-            &::after {
-                content: ': ';
-            }
-        }
-        .collection-thumbnail {
-            max-width: calc(var(--thumbnail-size, 20%) - 24px);
-            float: left;
-            margin-right: 24px;
-
-            img {
-                border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
-            }
-        }
-        .page-description ,
-        .page-description p {
-            display: block !important;
-            clear: none;
         }
     }
 }
@@ -348,6 +380,7 @@ body:not(.tainacan-admin-page) {
     .search-control {
         background-color: var(--tainacan-item-background-color, white);
         box-shadow: var(--theme-box-shadow, var(--boxShadow , 0px 12px 18px -6px rgba(34, 56, 101, 0.04)));
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
 }
-
