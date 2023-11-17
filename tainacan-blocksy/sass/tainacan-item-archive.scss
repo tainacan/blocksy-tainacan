@@ -2,19 +2,12 @@
 .theme-items-list {
     --tainacan-font-family: var(--theme-font-family, var(--fontFamily, inherit));
     --tainacan-base-font-size: var(--theme-font-size, var(--fontSize, 1em));
-//    --tainacan-secondary: var(--theme-palette-color-1, #3eaf7c);
-//    --tainacan-primary: var(--theme-form-field-border-initial-color, #e0e5eb);
-//    --tainacan-background-color: var(--backgroundColor, #f8f9fb);
-//--tainacan-item-background-color: var(--cardBackground, white);
     --tainacan-item-hover-background-color: var(--tainacan-item-background-color, white);
     --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
-//    --tainacan-input-color: var(--theme-text-color, rgba(44, 62, 80, 0.9));
-//    --tainacan-input-background-color: var(--theme-form-field-background-initial-color, white);
     --tainacan-input-border-color: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
-//    --tainacan-heading-color: var(--theme-heading-color, var(--theme-heading-color, rgba(44, 62, 80, 1)));
-//    --tainacan-label-color: var(--theme-text-color, rgba(44, 62, 80, 0.9));
-//    --tainacan-info-color: var(--theme-text-color, rgba(44, 62, 80, 0.9));
     --tainacan-skeleton-color: var(--tainacan-item-background-color, white);
+    --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
+    --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
     
     &:not(.is-fullscreen) {
         justify-content: center;
@@ -231,6 +224,9 @@
         border-radius: var(--theme-border-radius, var(--borderRadius, 3px)) !important;
         border: 1px solid var(--tainacan-input-border-color);
     }
+    .tainacan-form.tainacan-dialog footer .button {
+        min-height: var(--theme-button-min-height, 40px);
+    }
 }
 
 .entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) {
@@ -269,7 +265,8 @@
 body:not(.tainacan-admin-page) {
 
     .tooltip,
-    .tainacan-modal-content {
+    .tainacan-modal-content,
+    .tainacan-dialog {
         --tainacan-font-family: var(--theme-font-family, var(--fontFamily, inherit));
         --tainacan-base-font-size: var(--theme-font-size, var(--fontSize, 1em));
         --tainacan-secondary: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
@@ -281,9 +278,12 @@ body:not(.tainacan-admin-page) {
         --tainacan-label-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
         --tainacan-info-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
         --tainacan-heading-color: var(--theme-heading-color, var(--theme-heading-color, rgba(44, 62, 80, 1)));
+        --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
+        --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
     }
 
-    .tainacan-modal-content {
+    .tainacan-modal-content,
+    .tainacan-dialog {
         border-radius: var(--theme-border-radius, var(--borderRadius, 6px));
 
         .tainacan-modal-title {
@@ -296,6 +296,9 @@ body:not(.tainacan-admin-page) {
         }
         .modal-card-body {
             background-color: var(--tainacan-item-background-color, white);
+        }
+        footer .button {
+            min-height: var(--theme-button-min-height, 40px);
         }
     }
 }

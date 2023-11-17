@@ -27,6 +27,8 @@
   --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
   --tainacan-input-border-color: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
   --tainacan-skeleton-color: var(--tainacan-item-background-color, white);
+  --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
+  --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
   /* Search control */
   /* Advanced Search */
   /* Filters panel */
@@ -263,6 +265,10 @@
   border: 1px solid var(--tainacan-input-border-color);
 }
 
+.theme-items-list .tainacan-form.tainacan-dialog footer .button {
+  min-height: var(--theme-button-min-height, 40px);
+}
+
 .entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) {
   padding: 6px 18px;
 }
@@ -294,7 +300,8 @@
 
 /* Tooltips and Modals are outside of the items list div */
 body:not(.tainacan-admin-page) .tooltip,
-body:not(.tainacan-admin-page) .tainacan-modal-content {
+body:not(.tainacan-admin-page) .tainacan-modal-content,
+body:not(.tainacan-admin-page) .tainacan-dialog {
   --tainacan-font-family: var(--theme-font-family, var(--fontFamily, inherit));
   --tainacan-base-font-size: var(--theme-font-size, var(--fontSize, 1em));
   --tainacan-secondary: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
@@ -306,22 +313,33 @@ body:not(.tainacan-admin-page) .tainacan-modal-content {
   --tainacan-label-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
   --tainacan-info-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
   --tainacan-heading-color: var(--theme-heading-color, var(--theme-heading-color, rgba(44, 62, 80, 1)));
+  --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
+  --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
 }
 
-body:not(.tainacan-admin-page) .tainacan-modal-content {
+body:not(.tainacan-admin-page) .tainacan-modal-content,
+body:not(.tainacan-admin-page) .tainacan-dialog {
   border-radius: var(--theme-border-radius, var(--borderRadius, 6px));
 }
 
-body:not(.tainacan-admin-page) .tainacan-modal-content .tainacan-modal-title hr {
+body:not(.tainacan-admin-page) .tainacan-modal-content .tainacan-modal-title hr,
+body:not(.tainacan-admin-page) .tainacan-dialog .tainacan-modal-title hr {
   display: none;
 }
 
-body:not(.tainacan-admin-page) .tainacan-modal-content .tabs li {
+body:not(.tainacan-admin-page) .tainacan-modal-content .tabs li,
+body:not(.tainacan-admin-page) .tainacan-dialog .tabs li {
   margin-bottom: 0px;
 }
 
-body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
+body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body,
+body:not(.tainacan-admin-page) .tainacan-dialog .modal-card-body {
   background-color: var(--tainacan-item-background-color, white);
+}
+
+body:not(.tainacan-admin-page) .tainacan-modal-content footer .button,
+body:not(.tainacan-admin-page) .tainacan-dialog footer .button {
+  min-height: var(--theme-button-min-height, 40px);
 }
 
 /* Collection Items List */

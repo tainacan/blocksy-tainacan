@@ -64,7 +64,8 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 * Adds container size option to all Items list templates
 * Adds thumbnail carousel positioning option for item single gallery (requires Tainacan 0.20.5)
 * Adds inner spacing option for media gallery on item single gallery
-* More improvements to compatibility with Blcoksy 2.0.0
+* Uses Blocksy's button min-height, button border radius and input border radius settings on the items lists
+* More improvements to compatibility with Blocksy 2.0.0
 * Improves post navigation markup to use latest filters
 * Bug fix: label "Document" and "Documents" not displaying in the correct situations
 * Bug fix: translation issues in breadcrumbs
