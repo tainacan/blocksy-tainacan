@@ -221,14 +221,19 @@ if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
 		$page_container_style .= '--tainacan-label-color:' . $text_color_palette['color3']['color'] . ';';
 		$page_container_style .= '--tainacan-info-color:' . $text_color_palette['color4']['color'] . ';';
 		$page_container_style .= '--tainacan-input-color:' . $text_color_palette['color5']['color'] . ';';
-
-		$page_container_style .= 'background-color: var(--tainacan-background-color, #f8f9fb);';
 			
 		$css = '	
 			body:not(.tainacan-admin-page) .tooltip,
 			body:not(.tainacan-admin-page) .tainacan-modal,
 			body:not(.tainacan-admin-page) .tainacan-dialog {
 				' . $page_container_style . '
+			}
+			body:not(.tainacan-admin-page) .tainacan-modal .tainacan-modal-content,
+			body:not(.tainacan-admin-page) .tainacan-dialog .modal-card {
+				background-color: var(--tainacan-background-color, #f8f9fb);
+			}
+			body:not(.tainacan-admin-page) .tooltip {
+				color: var(--tainacan-primary);
 			}
 		';
 		echo '<style type="text/css" id="tainacan-tooltip-and-modal-styles">' . $css . '</style>';

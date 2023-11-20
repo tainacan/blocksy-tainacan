@@ -101,9 +101,9 @@ if ( !function_exists('tainacan_get_default_order_choices') ) {
 function tainacan_blocksy_render_media_gallery_above_title() {
 
     $prefix = blocksy_manager()->screen->get_prefix();
-    $page_structure_type = get_theme_mod( $prefix . '_page_structure_type', 'type-dam');
 
-    if ($page_structure_type === 'type-gtm') {
+    $page_structure_type = get_theme_mod( $prefix . '_page_structure_type', 'type-dam');
+    if ( $page_structure_type === 'type-gtm' ) {
         
         $content_style = get_theme_mod($prefix . '_content_style', 'wide');
         $extra_classes = '';
