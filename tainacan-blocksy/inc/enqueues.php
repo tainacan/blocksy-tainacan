@@ -153,6 +153,89 @@ if ( !function_exists('tainacan_blocksy_gallery_light_color_scheme') ) {
 }
 add_action( 'wp_head', 'tainacan_blocksy_gallery_light_color_scheme');
 
+if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
+	function tainacan_blocksy_tooltip_and_modal_styles() {
+		global $wp_query;
+
+		if ( is_admin() || !defined ('TAINACAN_VERSION') )
+			return;
+
+		$prefix = '';
+
+		if (is_post_type_archive()) {
+		
+			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+			$current_post_type = get_post_type();
+			
+			if (in_array($current_post_type, $collections_post_types))
+				$prefix = blocksy_manager()->screen->get_prefix();
+			
+		} else if ( is_tax() ) {
+			$term = get_queried_object();
+				
+			if ( isset($term->taxonomy) && \Tainacan\Theme_Helper::get_instance()->is_taxonomy_a_tainacan_tax($term->taxonomy)) 
+				$prefix = 'tainacan-terms-items_archive';
+			
+		} else if ( $wp_query->get( 'tainacan_repository_archive' ) == 1 ) {
+			$prefix = 'tainacan-repository-items_archive';
+		}
+
+		if ( empty($prefix) )
+			return;
+
+		$page_hero_section_style = get_theme_mod($prefix . '_hero_section' , get_theme_mod($prefix . '_page_header_background_style', 'boxed'));
+
+		$page_container_classes = 'page type-page hentry singular';
+		$page_container_classes = $page_container_classes . ' has-filters-panel-style-' . get_theme_mod($prefix . '_filters_panel_background_style', 'boxed');
+		$page_container_classes = $page_container_classes . ' has-page-header-style-' . $page_hero_section_style;
+
+		$filters_panel_size = get_theme_mod($prefix . '_filters_panel_size', '20%');
+		$page_container_style = '--tainacan-filter-menu-width-theme:' . $filters_panel_size . ';';
+
+		$background_color_palette = get_theme_mod($prefix . '_items_list_background_palette',
+		[
+			'color1' => [ 'color' => 'var(--background-color, #f8f9fb)' ],
+			'color2' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
+			'color3' => [ 'color' => 'var(--cardBackground, #ffffff)' ],
+			'color4' => [ 'color' => 'var(--theme-form-field-background-initial-color, var(--form-field-initial-background, #ffffff))' ],
+			'color5' => [ 'color' => 'var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb))' ],
+			'color6' => [ 'color' => 'var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb))' ]
+		]);
+		$page_container_style .= '--tainacan-background-color:' . $background_color_palette['color1']['color'] . ';';
+		$page_container_style .= '--tainacan-item-background-color:' . $background_color_palette['color2']['color'] . ';';
+		$page_container_style .= '--tainacan-item-hover-background-color:' . $background_color_palette['color3']['color'] . ';';
+		$page_container_style .= '--tainacan-input-background-color:' . $background_color_palette['color4']['color'] . ';';
+		$page_container_style .= '--tainacan-primary:' . $background_color_palette['color5']['color'] . ';';
+		$page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
+
+		$text_color_palette = get_theme_mod($prefix . '_items_list_text_palette',
+		[
+			'color1' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ],
+			'color2' => [ 'color' => 'var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1))' ],
+			'color3' => [ 'color' => 'var(--theme-text-color, var(--color, #373839))' ],
+			'color4' => [ 'color' => '#505253' ],
+			'color5' => [ 'color' => 'var(--theme-form-text-initial-color, var(--formTextInitialColor, #373839))' ]
+		]);
+		$page_container_style .= '--tainacan-secondary:' . $text_color_palette['color1']['color'] . ';';
+		$page_container_style .= '--tainacan-heading-color:' . $text_color_palette['color2']['color'] . ';';
+		$page_container_style .= '--tainacan-label-color:' . $text_color_palette['color3']['color'] . ';';
+		$page_container_style .= '--tainacan-info-color:' . $text_color_palette['color4']['color'] . ';';
+		$page_container_style .= '--tainacan-input-color:' . $text_color_palette['color5']['color'] . ';';
+
+		$page_container_style .= 'background-color: var(--tainacan-background-color, #f8f9fb);';
+			
+		$css = '	
+			body:not(.tainacan-admin-page) .tooltip,
+			body:not(.tainacan-admin-page) .tainacan-modal,
+			body:not(.tainacan-admin-page) .tainacan-dialog {
+				' . $page_container_style . '
+			}
+		';
+		echo '<style type="text/css" id="tainacan-tooltip-and-modal-styles">' . $css . '</style>';
+	}
+}
+add_action( 'wp_head', 'tainacan_blocksy_tooltip_and_modal_styles');
+
 /**
  * Adds --background-color css variable, based on current background color
  */
@@ -202,4 +285,4 @@ function tainacan_blocksy_add_background_color_variable($args) {
 	
 }
 add_action( 'blocksy:global-dynamic-css:enqueue', 'tainacan_blocksy_add_background_color_variable' );
-?>
+

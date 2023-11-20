@@ -171,9 +171,9 @@
                         display: inline-flex;
                         align-items: center;
                         justify-content: center;
-                        height: 40px;
+                        height: var(--theme-button-min-height, 40px);
                         width: 42px;
-                        border-radius: 4px;
+                        border-radius: var(--tainacan-button-border-radius, 4px);
                         border: 2px solid transparent;
                         font-size: 14px;
                         font-weight: 600;
@@ -265,7 +265,7 @@
 body:not(.tainacan-admin-page) {
 
     .tooltip,
-    .tainacan-modal-content,
+    .tainacan-modal,
     .tainacan-dialog {
         --tainacan-font-family: var(--theme-font-family, var(--fontFamily, inherit));
         --tainacan-base-font-size: var(--theme-font-size, var(--fontSize, 1em));
