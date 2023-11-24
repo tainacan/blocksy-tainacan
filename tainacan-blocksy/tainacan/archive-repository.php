@@ -76,9 +76,15 @@ foreach ($hero_elements as $index => $single_hero_element) {
             );
         }
 
+        ob_start();
         do_action('blocksy:hero:title:before');
-        $elements[] = $title;
+        $before_hero_title = ob_get_clean();
+
+        ob_start();
         do_action('blocksy:hero:title:after');
+        $after_hero_title = ob_get_clean();
+        
+        $elements[] = $before_hero_title . $title . $after_hero_title;
         
     } else if ( isset($single_hero_element['id']) && $single_hero_element['id'] == 'breadcrumbs' && $single_hero_element['enabled']) {
         if ( class_exists('Blocksy_Breadcrumbs_Builder') )

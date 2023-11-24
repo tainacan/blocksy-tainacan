@@ -135,9 +135,15 @@ foreach ($hero_elements as $index => $single_hero_element) {
             );
         }
 
+        ob_start();
         do_action('blocksy:hero:title:before');
-        $elements[] = $title;
+        $before_hero_title = ob_get_clean();
+
+        ob_start();
         do_action('blocksy:hero:title:after');
+        $after_hero_title = ob_get_clean();
+        
+        $elements[] = $before_hero_title . $title . $after_hero_title;
         
     } else if ($single_hero_element['id'] == 'custom_description' && $single_hero_element['enabled'] && get_the_archive_description()) {
         $description_class = 'page-description';

@@ -3,7 +3,6 @@
 /**
  * Adds Tainacan repository and term items list to settings on customizer.
  */
-
 if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_panel') ) {
 	function tainacan_blocksy_add_repository_and_terms_items_options_panel($options) {
 
@@ -153,7 +152,7 @@ add_filter( 'blocksy:custom_post_types:single-options', 'tainacan_blocksy_custom
 
 
 /**
- * Adds extra customizer options to items single page template
+ * Adds extra customizer options to items archive template
  */
 if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 	function tainacan_blocksy_custom_post_types_archive_options( $options, $post_type, $post_type_object ) {
@@ -221,7 +220,7 @@ add_filter( 'blocksy:custom_post_types:archive-options', 'tainacan_blocksy_custo
 
 
 /**
- * Removes tainacan metadatum and filters from the custom metadata options in the customizer controller.
+ * Removes tainacan metadatum, metadata section and filters from the custom metadata options in the customizer controller.
  */
 if ( !function_exists('tainacan_blocksy_custom_post_types_supported_list') ) {
 	function tainacan_blocksy_custom_post_types_supported_list( $potential_post_types ) {
@@ -238,7 +237,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_supported_list') ) {
 add_filter( 'blocksy:custom_post_types:supported_list', 'tainacan_blocksy_custom_post_types_supported_list', 10 );
 
 /**
- * Renders the single item page with a custom template that will use most of Blocksy features
+ * Renders the single item page and single taxonomy with a custom template that will use most of Blocksy features
  */
 if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 	function tainacan_blocksy_the_content_for_items( $content ) {
@@ -280,11 +279,9 @@ add_filter( 'the_content', 'tainacan_blocksy_the_content_for_items', 11);
  * New filter from Blocksy 2.0.0 to allow using the page title styles
  * in the Repository and Terms items list.
  */
-add_filter(
-	'blocksy:hero:dynamic-styles:prefixes',
-	function ($prefixes) {
-		$prefixes[] = 'tainacan-repository-items_archive';
-		$prefixes[] = 'tainacan-terms-items_archive';
-		return $prefixes;
-	}
-);
+function tainacan_blocksy_page_title_styles($prefixes) {
+	$prefixes[] = 'tainacan-repository-items_archive';
+	$prefixes[] = 'tainacan-terms-items_archive';
+	return $prefixes;
+}
+add_filter( 'blocksy:hero:dynamic-styles:prefixes', 'tainacan_blocksy_page_title_styles', 10, 1 );
