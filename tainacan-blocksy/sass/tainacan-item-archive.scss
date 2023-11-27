@@ -295,7 +295,7 @@ body:not(.tainacan-admin-page) {
             margin-bottom: 0px;
         }
         .modal-card-body {
-            background-color: var(--tainacan-item-background-color, white);
+            background-color: var(--tainacan-background-color, white);
         }
         footer .button {
             min-height: var(--theme-button-min-height, 40px);
