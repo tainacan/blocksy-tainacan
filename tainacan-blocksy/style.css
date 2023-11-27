@@ -86,7 +86,7 @@
 
 @media screen and (max-width: 768px) {
   .theme-items-list #filters-modal .modal-content {
-    padding: 16px 10px 16px 12vw;
+    padding: 16px 16px 16px 6vw !important;
     background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
   }
 }

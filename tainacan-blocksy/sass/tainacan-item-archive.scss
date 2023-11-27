@@ -57,7 +57,7 @@
             padding: 16px 10px 16px 0px !important;
 
             @media screen and (max-width: 768px){
-                padding: 16px 10px 16px 12vw;
+                padding: 16px 16px 16px 6vw !important;
                 background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
             }
 

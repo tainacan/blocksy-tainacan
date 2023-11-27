@@ -3,7 +3,7 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, libraries, archives, GLAM, collections, repository, tainacan, blocksy
 Requires at least: 5.9
-Tested up to: 6.4
+Tested up to: 6.4.1
 Requires PHP: 7.0
 Stable tag: 0.3.0
 License: GPLv2 or later
