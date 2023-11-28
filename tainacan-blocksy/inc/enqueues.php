@@ -77,6 +77,9 @@ if ( TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION !== NULL && ( version_compare(TAINAC
  */
 if ( !function_exists('tainacan_blocksy_items_page_filters_fixed_on_scroll_output') ) {
 	function tainacan_blocksy_items_page_filters_fixed_on_scroll_output() {
+		if ( !function_exists('blocksy_manager') )
+			return;
+
 		$prefix = blocksy_manager()->screen->get_prefix();
 
 		$should_use_fixed_filters_logic = (version_compare(TAINACAN_VERSION, '0.17') >= 0) && get_theme_mod( $prefix . '_filters_fixed_on_scroll', 'no' ) == 'yes';
@@ -119,6 +122,9 @@ add_action( 'wp_head', 'tainacan_blocksy_items_page_filters_fixed_on_scroll_outp
  */
 if ( !function_exists('tainacan_blocksy_gallery_light_color_scheme') ) {
 	function tainacan_blocksy_gallery_light_color_scheme() {
+		if ( !function_exists('blocksy_manager') )
+			return;
+
 		$prefix = blocksy_manager()->screen->get_prefix();
 
 		$has_light_dark_color_scheme = get_theme_mod( $prefix . '_gallery_color_scheme', 'dark' ) == 'light';
@@ -156,6 +162,9 @@ add_action( 'wp_head', 'tainacan_blocksy_gallery_light_color_scheme');
 if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
 	function tainacan_blocksy_tooltip_and_modal_styles() {
 		global $wp_query;
+
+		if ( !function_exists('blocksy_manager') )
+			return;
 
 		if ( is_admin() || !defined ('TAINACAN_VERSION') )
 			return;

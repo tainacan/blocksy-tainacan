@@ -334,7 +334,7 @@ body:not(.tainacan-admin-page) .tainacan-dialog .tabs li {
 
 body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body,
 body:not(.tainacan-admin-page) .tainacan-dialog .modal-card-body {
-  background-color: var(--tainacan-item-background-color, white);
+  background-color: var(--tainacan-background-color, white);
 }
 
 body:not(.tainacan-admin-page) .tainacan-modal-content footer .button,
