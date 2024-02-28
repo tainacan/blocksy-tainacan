@@ -33,13 +33,13 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 			),
 		]);
 		
-		$default_title_options_keys = array_keys($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options']);
-
-		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['choices'] = array_merge($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['choices'], $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_page_header_background_style']['choices']);
-		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['value'] = $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_page_header_background_style']['choices'];
-		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['sync'] = '';
-		$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$repository_items_prefix . '_hero_elements'] = $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_hero_elements'];
-		
+		if ( $default_title_options && isset($default_title_options[$repository_items_prefix . '_hero_enabled']) && isset($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options']) ) {
+			$default_title_options_keys = array_keys($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options']);
+			$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['choices'] = array_merge($default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['choices'], $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_page_header_background_style']['choices']);
+			$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['value'] = $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_page_header_background_style']['choices'];
+			$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$repository_items_prefix . '_hero_section']['sync'] = '';
+			$default_title_options[$repository_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$repository_items_prefix . '_hero_elements'] = $items_extra_title_options[$repository_items_prefix . '_page-header-panel']['inner-options'][$repository_items_prefix . '_hero_elements'];
+		}
 		$options['tainacan_repository_items_list'] = $repository_items_extra_options;
 
 		$options['tainacan_repository_items_list']['options']['tainacan_repository_items_list_section_options']['inner-options'][0] = $default_title_options;
@@ -71,13 +71,13 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 			),
 		]);
 		
-		$default_title_options_keys = array_keys($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options']);
-
-		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['choices'] = array_merge($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['choices'], $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_page_header_background_style']['choices']);
-		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['value'] = $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_page_header_background_style']['value'];
-		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['sync'] = '';
-		$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$term_items_prefix . '_hero_elements'] = $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_hero_elements'];
-		
+		if ( $default_title_options && isset($default_title_options[$term_items_prefix . '_hero_enabled']) && isset($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options']) ) {
+			$default_title_options_keys = array_keys($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options']);
+			$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['choices'] = array_merge($default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['choices'], $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_page_header_background_style']['choices']);
+			$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['value'] = $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_page_header_background_style']['value'];
+			$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$term_items_prefix . '_hero_section']['sync'] = '';
+			$default_title_options[$term_items_prefix . '_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$term_items_prefix . '_hero_elements'] = $items_extra_title_options[$term_items_prefix . '_page-header-panel']['inner-options'][$term_items_prefix . '_hero_elements'];
+		}
 		$options['tainacan_term_items_list'] = $term_items_extra_options;
 
 		$options['tainacan_term_items_list']['options']['tainacan_terms_items_list_section_options']['inner-options'][0] = $default_title_options;
@@ -179,9 +179,20 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 					'prefix' => $post_type_object->name,
 					'is_general_cpt' => true
 				], false);
-				
+
 				if ( is_array($items_extra_options) ) {
-					$default_title_options = $options['options'][$post_type . '_section_options']['inner-options'][1];
+					
+					$archive_options_key = '';
+					
+					if ( isset($options['options'][$post_type . '_post_type_section_options']) )
+						$archive_options_key = $post_type . '_post_type_section_options';
+					else if ( isset($options['options'][$post_type . '_section_options']) )
+						$archive_options_key = $post_type . '_section_options';
+
+					if ( empty($archive_options_key ) )
+						return $options;
+
+					$default_title_options = $options['options'][$archive_options_key]['inner-options'][1];
 					$default_title_options_keys = array_keys($default_title_options[$post_type . '_archive_hero_enabled']['inner-options']);
 
 					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['choices'] = array_merge($default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['choices'], $items_extra_title_options[$post_type . '_page-header-panel']['inner-options'][$post_type . '_page_header_background_style']['choices']);
@@ -189,9 +200,9 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][0][$post_type .'_archive_hero_section']['sync'] = '';
 					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$post_type . '_archive_hero_elements'] = $items_extra_title_options[$post_type . '_page-header-panel']['inner-options'][$post_type . '_hero_elements'];
 					
-					$options['options'][$post_type . '_section_options']['inner-options'] = $items_extra_options;
+					$options['options'][$archive_options_key]['inner-options'] = $items_extra_options;
 
-					$options['options'][$post_type . '_section_options']['inner-options'][0] = $default_title_options;
+					$options['options'][$archive_options_key]['inner-options'][0] = $default_title_options;
 					
 				}
 
