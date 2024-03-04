@@ -133,7 +133,7 @@ function tainacan_blocksy_render_media_gallery_above_title() {
         $media_component_style .= '--tainacan-media-color:' . $media_component_color_palette['color2']['color'] . ';';
         $media_component_style .= '--tainacan-media-accent-color:' . $media_component_color_palette['color3']['color'] . ';';
         
-        echo '<div class="tainacan-gallery-above-title ' . $extra_classes . '" style="' . $media_component_style . '">';
+        echo '<div class="tainacan-gallery-above-title ' . esc_attr($extra_classes) . '" style="' . esc_attr($media_component_style) . '">';
             tainacan_blocksy_get_template_part( 'template-parts/tainacan-item-single-document' );
             do_action( 'tainacan-blocksy-single-item-after-document' );  
 

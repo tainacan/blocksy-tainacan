@@ -22,6 +22,7 @@ function tainacan_blocksy_enqueue_scripts() {
 	if ( $blocksy_theme_version > '1.9' ) {
 		wp_enqueue_style( 'tainacan-blocksy-compatibility-style',
 			TAINACAN_BLOCKSY_PLUGIN_URL_PATH . '/compat.min.css',
+			array(),
 			TAINACAN_BLOCKSY_VERSION
 		);
 	}

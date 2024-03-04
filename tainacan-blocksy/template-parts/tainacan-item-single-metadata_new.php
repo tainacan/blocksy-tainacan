@@ -24,7 +24,7 @@
             ob_start();
             ?>
                 <div class="tainacan-item-section__metadata-thumbnail">
-                    <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'tainacan-blocksy' ); ?></h3>
+                    <h3 class="tainacan-metadata-label"><?php esc_html_e( 'Thumbnail', 'tainacan-blocksy' ); ?></h3>
                     <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
                 </div>
             <?php

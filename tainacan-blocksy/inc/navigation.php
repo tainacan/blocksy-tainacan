@@ -266,7 +266,7 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 		ob_start();
 
 		?>
-			<nav class="<?php echo esc_attr( $container_class ); ?>" <?php if (function_exists('blocksy_generic_get_deep_link') ) echo blocksy_generic_get_deep_link($deep_link_args); ?>>
+			<nav class="<?php echo esc_attr( $container_class ); ?>" <?php if (function_exists('blocksy_generic_get_deep_link') ) echo esc_attr(blocksy_generic_get_deep_link($deep_link_args)); ?>>
 				<?php if ($next_post): ?>
 					<a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="nav-item-prev">
 						<?php if ($has_thumb): ?>
@@ -513,7 +513,7 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 						isset($args['ref']) &&
 						substr($array[$i]['url'], -strlen($args['ref']))===$args['ref']
 					) {
-						$ref = $args['ref'];
+						$ref = esc_js($args['ref']);
 						unset($args['pos']);
 						unset($args['ref']);
 						unset($args['source_list']);

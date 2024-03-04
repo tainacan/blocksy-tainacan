@@ -30,7 +30,7 @@
     global $post;
 
     if ( tainacan_has_document() && !$is_gallery_mode ) : ?>
-        <section class="tainacan-item-section tainacan-item-section--document <?php echo ' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ?>">
+        <section class="tainacan-item-section tainacan-item-section--document <?php echo esc_attr(' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ) ?>">
             <?php if ( $page_structure_type !== 'type-gtm' && get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan-blocksy' )) != '' ) : ?>
                 <h2 class="tainacan-single-item-section" id="tainacan-item-document-label">
                     <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan-blocksy' ) ) ); ?>

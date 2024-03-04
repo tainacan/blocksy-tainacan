@@ -48,7 +48,7 @@
     
     if ( function_exists('tainacan_the_media_component') && ( !empty( $attachments ) || ( $is_gallery_mode && tainacan_has_document() ) ) ) {
     ?>
-        <section class="tainacan-item-section tainacan-item-section--<?php echo ( !$is_gallery_mode ? 'attachments' : ( 'gallery tainacan-media-component-wrapper-thumbnails-at--' . $gallery_position . ' tainacan-media-component-wrapper-spacing--' . $gallery_spacing) ) ?>">
+        <section class="tainacan-item-section tainacan-item-section--<?php echo esc_attr( !$is_gallery_mode ? 'attachments' : ( 'gallery tainacan-media-component-wrapper-thumbnails-at--' . $gallery_position . ' tainacan-media-component-wrapper-spacing--' . $gallery_spacing) ) ?>">
             
             <?php if ( $page_structure_type !== 'type-gtm' && (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan-blocksy' )) != '' ) : ?>
                 <h2 class="tainacan-single-item-section" id="tainacan-item-attachments-label">
