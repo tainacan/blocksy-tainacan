@@ -506,6 +506,18 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 				$args = $_GET;
 
 				for ($i = 0; $i < count($array); $i++) {
+
+					if ( isset( $array[$i]['url'] ) && $array[$i]['url'] == get_post_type_archive_link($post_type) ) {
+						$collection = tainacan_get_collection();
+
+						if ( $collection->is_cover_page_enabled() ) {
+							$cover_page_id = $collection->get_cover_page_id();
+							$cover_page_url = get_permalink($cover_page_id);
+
+							$array[$i]['url'] = $cover_page_url;
+						}
+						continue;
+					}
 					
 					// Check if the current thumbnail links to the collection, then enriches its URL  
 					if (
