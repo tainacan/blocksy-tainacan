@@ -1277,6 +1277,14 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   margin-bottom: -0.25rem;
 }
 
+.tainacan-taxonomy-terms-list-container .term-description {
+  word-break: break-word;
+}
+
+.tainacan-taxonomy-terms-list-container .term-information {
+  width: 100%;
+}
+
 .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) .ct-image-container img,
 .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) .ct-media-container img {
   aspect-ratio: 4/3;

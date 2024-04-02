@@ -28,6 +28,13 @@
             margin-bottom: -0.25rem;
         }
     }
+
+    .term-description {
+        word-break: break-word;
+    }
+    .term-information {
+        width: 100%;
+    }
     
     .entries:not([data-layout="grid"]) .ct-image-container img,
     .entries:not([data-layout="grid"]) .ct-media-container img {
