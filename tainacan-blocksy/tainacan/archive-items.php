@@ -30,7 +30,7 @@ $page_container_style .= '--tainacan-input-border-color:' . $background_color_pa
 $text_color_palette = get_theme_mod($prefix . '_items_list_text_palette',
 [
     'color1' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ],
-    'color2' => [ 'color' => 'var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1))' ],
+    'color2' => [ 'color' => 'var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)))' ],
     'color3' => [ 'color' => 'var(--theme-text-color, var(--color, #373839))' ],
     'color4' => [ 'color' => '#505253' ],
     'color5' => [ 'color' => 'var(--theme-form-text-initial-color, var(--formTextInitialColor, #373839))' ]
