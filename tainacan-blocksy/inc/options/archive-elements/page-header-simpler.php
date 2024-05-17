@@ -83,6 +83,14 @@ $options = [
                                             'h6' => 'H6',
                                         ]
                                     )
+                                ],
+                                'repository_items_title' => [
+                                    'label' => __( 'Repository items page title', 'tainacan-blocksy' ),
+                                    'type' => 'text',
+                                    'value' => __( 'All items in repository', 'tainacan' ),
+                                    'sync' => [
+                                        'id' => $prefix . 'hero_elements_heading_tag',
+                                    ]
                                 ]
                             ],
 

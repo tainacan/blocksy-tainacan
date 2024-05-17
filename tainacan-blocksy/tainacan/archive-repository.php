@@ -62,7 +62,7 @@ $hero_elements = get_theme_mod(
 $elements = [];
 foreach ($hero_elements as $index => $single_hero_element) {
     if ( isset($single_hero_element['id']) && $single_hero_element['id'] == 'custom_title' && $single_hero_element['enabled']) {
-        $title = wp_strip_all_tags(get_the_archive_title());
+        $title = wp_strip_all_tags(blocksy_akg('repository_items_title', $single_hero_element, __( 'All items in repository', 'tainacan' )));
 
         if (! empty($title)) {
             $title = blocksy_html_tag(
