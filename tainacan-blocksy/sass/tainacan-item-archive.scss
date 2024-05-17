@@ -58,11 +58,11 @@
 
             @media screen and (max-width: 768px){
                 padding: 16px 16px 16px 6vw !important;
-                background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
+                background-color: var(--tainacan-background-color, var(--backgroundColor, #f8f9fb));
             }
 
             #filters-items-list {
-                background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
+                background-color: var(--tainacan-background-color, var(--backgroundColor, #f8f9fb));
                 padding: 3px;
                 margin: -3px;
 

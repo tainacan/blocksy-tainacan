@@ -7,20 +7,37 @@
  */
 
  /* Tainacan Gutenberg Blocks colors */
- :root {
-    --tainacan-block-primary: var(--theme-palette-color-1 var(--paletteColor1, #3eaf7c));
-    --tainacan-block-gray0: var(--backgroundColor, #f8f9fb);
-    --tainacan-block-gray1: var(--backgroundColor, #f8f9fb);
-    --tainacan-block-gray2: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
-    --tainacan-block-gray3: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
-    --tainacan-block-gray4: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
-    --tainacan-block-gray5: var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)));
-    --background-color: var(--theme-palette-color-7, var(--paletteColor7));
+:root {
+   --tainacan-block-primary: var(--theme-palette-color-1 var(--paletteColor1, #3eaf7c));
+   --tainacan-block-gray0: var(--backgroundColor, #f8f9fb);
+   --tainacan-block-gray1: var(--backgroundColor, #f8f9fb);
+   --tainacan-block-gray2: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
+   --tainacan-block-gray3: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
+   --tainacan-block-gray4: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
+   --tainacan-block-gray5: var(--theme-heading-color, var(--headingColor, rgba(44, 62, 80, 1)));
+   --background-color: var(--theme-palette-color-7, var(--paletteColor7));
 
-    // Previous Blocksy variables
-    --maxSiteWidth: var(--theme-normal-container-max-width, var(--normal-container-max-width));
- }
+   // Previous Blocksy variables
+   --maxSiteWidth: var(--theme-normal-container-max-width, var(--normal-container-max-width));
+}
 
+
+/** Dynamic items list block has styling for tainacan item view modes */
+.items-list.items-layout-tainacan-view-modes {
+   --tainacan-font-family: var(--theme-font-family, var(--fontFamily, inherit));
+   --tainacan-base-font-size: var(--theme-font-size, var(--fontSize, 1em));
+   --tainacan-secondary: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
+   --tainacan-primary: var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
+   --tainacan-background-color: var(--background-color, var(--backgroundColor, #f8f9fb));
+   --tainacan-input-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
+   --tainacan-input-background-color: var(--theme-form-field-background-initial-color, var(--form-field-background-initial, white));
+   --tainacan-input-border-color: var(--theme-form-field-border-initial-color, #e0e5eb);
+   --tainacan-label-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
+   --tainacan-info-color: var(--theme-text-color, var(--color, rgba(44, 62, 80, 0.9)));
+   --tainacan-heading-color: var(--theme-heading-color, var(--theme-heading-color, rgba(44, 62, 80, 1)));
+   --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
+   --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
+}
 // Grid mixin for display: grid compatibility
 @mixin display-grid {
    flex-wrap: wrap;

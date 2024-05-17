@@ -7,6 +7,9 @@
     $max_items_per_screen         = get_theme_mod( $prefix . '_items_related_to_this_max_items_per_screen', 6 );
     $max_items_number             = get_theme_mod( $prefix . '_items_related_to_this_max_items_number', 12 );
     $order_option                 = get_theme_mod( $prefix . '_items_related_to_this_order', 'title_asc' );
+    $hide_collection_heading      = get_theme_mod( $prefix . '_items_related_to_this_hide_collection_heading', 'no' ) === 'yes';
+    $hide_metadata_label          = get_theme_mod( $prefix . '_items_related_to_this_hide_metadata_label', 'no' ) === 'yes';
+    $tainacan_view_mode           = get_theme_mod( $prefix . '_items_related_to_this_tainacan_view_mode', 'records' );
 
     $image_size = get_theme_mod($prefix . '_items_related_to_this_image_size', 'tainacan-medium');
 
@@ -37,9 +40,12 @@
                     'order' => $order,
                     'orderby' => $order_by,
                     'max_items_number' => $max_items_number,
+                    'hide_collection_heading' => $hide_collection_heading,
+                    'hide_metadata_label' => $hide_metadata_label,
                     'dynamic_items_args' => [
                         'max_columns_count' => $max_columns_count,
-                        'image_size' => $image_size
+                        'image_size' => $image_size,
+                        'tainacan_view_mode' => $tainacan_view_mode,
                     ],
                     'carousel_args' => [
                         'max_items_per_screen' => $max_items_per_screen,
