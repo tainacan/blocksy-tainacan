@@ -5,6 +5,17 @@ if (! isset($prefix)) {
 }
 
 $options = [	
+	$prefix . 'thumbnails_image_size' => [
+		'label' => __('Thumbnails image size', 'blocksy'),
+		'type' => 'ct-select',
+		'value' => 'tainacan-medium',
+		'view' => 'text',
+		'design' => 'inline',
+		'sync' => '',
+		'choices' => blocksy_ordered_keys(
+			blocksy_get_all_image_sizes()
+		),
+	],
 	$prefix . 'attachments_size' => [
 		'label' => __( 'Attachments size on carousel', 'tainacan-blocksy' ),
 		'type' => 'ct-slider',
