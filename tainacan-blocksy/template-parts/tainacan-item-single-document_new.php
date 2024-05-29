@@ -16,6 +16,7 @@
     $hide_file_description_lightbox = get_theme_mod( $prefix . '_hide_files_description_lightbox', 'no') == 'yes';
     $has_light_dark_color_scheme    = get_theme_mod( $prefix . '_gallery_color_scheme', 'dark' ) == 'light';
     $thumbnails_image_size          = get_theme_mod( $prefix . '_thumbnails_image_size', 'tainacan-medium' );
+    $thumbs_have_fixed_height       = get_theme_mod( $prefix . '_thumbs_have_fixed_height', 'no' ) == 'yes';
 
     if ( $gallery_spacing === 'minimum' ) {
         add_filter( 'tainacan-swiper-thumbs-options', function($options) {
@@ -56,7 +57,8 @@
                     'hideFileDescriptionLightbox'   => $hide_file_description_lightbox,
                     'openLightboxOnClick'           => $is_gallery_mode ? !$disable_gallery_lightbox : true,
                     'lightboxHasLightBackground'    => $has_light_dark_color_scheme ,
-                    'thumbnailsSize'                => $thumbnails_image_size
+                    'thumbnailsSize'                => $thumbnails_image_size,
+                    'thumbsHaveFixedHeight'         => $thumbs_have_fixed_height
                 ]);
             ?>
         </section>

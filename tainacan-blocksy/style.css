@@ -1188,7 +1188,7 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   margin: 0;
 }
 
-.tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-thumbs li.swiper-slide {
+.tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-thumbs li.swiper-slide:not(.has-fixed-height) {
   max-width: var(--tainacan-media-thumbs-carousel-item-size, 136px);
 }
 

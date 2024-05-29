@@ -664,7 +664,7 @@
                 max-width: 100%;
                 margin: 0;
             }
-            li.swiper-slide {
+            li.swiper-slide:not(.has-fixed-height) {
                 max-width: var(--tainacan-media-thumbs-carousel-item-size, 136px);
             }
         }

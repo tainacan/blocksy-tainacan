@@ -35,5 +35,15 @@ $options = [
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])
-	]
+	],
+	$prefix . 'thumbs_have_fixed_height' => [
+		'label' => __( 'Thumbnails have fixed height', 'tainacan-blocksy' ),
+		'type' => 'ct-switch',
+		'value' => 'no',
+		'desc' => __( 'If checked, the thumbnails will have fixed the attachment size height, otherwise they will have fixed the attachment size width.', 'tainacan-blocksy' ),
+		'sync' => blocksy_sync_single_post_container([
+			'prefix' => $prefix
+		])
+	],
+
 ];

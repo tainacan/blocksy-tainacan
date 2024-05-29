@@ -29,7 +29,7 @@ $layout_choices = [
 	]
 ];
 
-if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.3' ) > 0  ) {
+if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) >= 0  ) {
 	$layout_choices['tainacan-view-modes'] = [
 		'src'   => tainacan_blocksy_image_picker_url( 'items-records.svg' ),
 		'title' => __( 'Tainacan View Modes', 'tainacan-blocksy' )
@@ -44,9 +44,7 @@ $inner_options = [
 		'design' => 'block',
 		'setting' => [ 'transport' => 'postMessage' ],
 		'choices' => $layout_choices,
-		'sync' => blocksy_sync_single_post_container([
-			'prefix' => $prefix
-		])
+		'sync' => '',
 	],
 	blocksy_rand_md5() => [
 		'type' => 'ct-condition',
@@ -142,7 +140,7 @@ $inner_options = [
 	]
 ];
 
-if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.3' ) > 0  ) {
+if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) >= 0  ) {
 	$inner_options[ $prefix . 'items_related_to_this_hide_collection_heading' ] = [
 		'label' => __( 'Hide collection heading', 'tainacan-blocksy' ),
 		'type' => 'ct-switch',

@@ -5,7 +5,7 @@ Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 5.9
 Tested up to: 6.5
 Requires PHP: 7.0
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 Requires Plugins: tainacan
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,10 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.3.2 =
+* Adds Tainacan View Modes as a layout option for "Items related to this" section (requires Tainacan 0.21.5)
+* Adds media gallery thumbnails height and image size option (requires Tainacan 0.21.5)
 
 = 0.3.1 =
 * Fixes customizer errors due to Blocksy changes in version 2.0.27
