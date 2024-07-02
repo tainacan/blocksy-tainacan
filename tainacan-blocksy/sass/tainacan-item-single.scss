@@ -176,6 +176,7 @@
             }
             .tainacan-metadata-label {
                 text-align: var(--metadata-label-alignment, left);
+                border-bottom: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
             }
             .tainacan-metadata-value {
                 text-align: var(--metadata-value-alignment, left);
@@ -291,13 +292,14 @@
             }
 
             &.metadata-type-2 {
-                .tainacan-item-section__metadatum {
+                .tainacan-item-section__metadatum:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) {
                     display: flex;
                     flex-wrap: nowrap;
                     
                     .tainacan-metadata-label {
                         flex-basis: 40%;
                         margin-bottom: .75rem;
+                        border-bottom: none;
                         border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
                     }
                     .tainacan-metadata-value {

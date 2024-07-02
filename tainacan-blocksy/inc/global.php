@@ -169,7 +169,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
-	'selector' => blocksy_prefix_selector('.tainacan-item-section__metadata', $prefix),
+	'selector' => blocksy_prefix_selector('.tainacan-metadata-label', $prefix),
 	'variableName' => 'metadata-label-border',
 	'value' => get_theme_mod( $prefix . '_metadata_label_border', [
 		'width' => 0,
@@ -178,6 +178,13 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 			'color' => 'rgba(125, 125, 125, 0.5)',
 		]
 	]),
+	'default' => [
+		'width' => 0,
+		'style' => 'solid',
+		'color' => [
+			'color' => 'rgba(125, 125, 125, 0.5)',
+		]
+	],
 	'responsive' => true
 ]);
 
@@ -186,7 +193,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
-	'selector' => blocksy_prefix_selector('.tainacan-item-section__metadata', $prefix),
+	'selector' => blocksy_prefix_selector('.tainacan-metadata-value', $prefix),
 	'variableName' => 'metadata-value-border',
 	'value' => get_theme_mod( $prefix . '_metadata_value_border', [
 		'width' => 0,
@@ -195,6 +202,13 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 			'color' => 'rgba(125, 125, 125, 0.5)',
 		]
 	]),
+	'default' => [
+		'width' => 0,
+		'style' => 'solid',
+		'color' => [
+			'color' => 'rgba(125, 125, 125, 0.5)',
+		]
+	],
 	'responsive' => true
 ]);
 
@@ -245,6 +259,31 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => '',
 	'selector' => blocksy_prefix_selector('.tainacan-metadata-value', $prefix),
 	'value' => get_theme_mod($prefix . '_tainacan_metadata_value_alignment', 'left')
+]);
+
+
+
+blc_call_fnc(['fnc' => 'blocksy_output_border'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.filter-item-forms .label', $prefix),
+	'variableName' => 'filter-label-border',
+	'value' => get_theme_mod( $prefix . '_filter_label_border', [
+		'width' => 0,
+		'style' => 'solid',
+		'color' => [
+			'color' => 'rgba(125, 125, 125, 0.5)',
+		]
+	]),
+	'default' => [
+		'width' => 0,
+		'style' => 'solid',
+		'color' => [
+			'color' => 'rgba(125, 125, 125, 0.5)',
+		]
+	],
+	'responsive' => true
 ]);
 
 ?>

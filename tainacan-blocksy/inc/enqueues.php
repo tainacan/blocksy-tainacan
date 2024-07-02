@@ -198,9 +198,15 @@ if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
 		$page_container_classes = 'page type-page hentry singular';
 		$page_container_classes = $page_container_classes . ' has-filters-panel-style-' . get_theme_mod($prefix . '_filters_panel_background_style', 'boxed');
 		$page_container_classes = $page_container_classes . ' has-page-header-style-' . $page_hero_section_style;
+		
+		if ( get_theme_mod( $prefix . '_hide_filters_area_header', 'no' ) === 'yes' )
+			$page_container_classes .= ' has-filters-area-header-hidden';
 
 		$filters_panel_size = get_theme_mod($prefix . '_filters_panel_size', '20%');
 		$page_container_style = '--tainacan-filter-menu-width-theme:' . $filters_panel_size . ';';
+
+		$filters_inline_size = get_theme_mod($prefix . '_filters_inline_size', '272px');
+		$page_container_style .= '--tainacan-filters-inline-width:' . $filters_inline_size . ';';
 
 		$background_color_palette = get_theme_mod($prefix . '_items_list_background_palette',
 		[

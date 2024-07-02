@@ -5,7 +5,7 @@ Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 5.9
 Tested up to: 6.5
 Requires PHP: 7.0
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 Requires Plugins: tainacan
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,10 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.3.3 =
+* Adds support for horizontal filters options
+* Basic styles for mosaic view mode
 
 = 0.3.2 =
 * Adds Tainacan View Modes as a layout option for "Items related to this" section (requires Tainacan 0.21.5)

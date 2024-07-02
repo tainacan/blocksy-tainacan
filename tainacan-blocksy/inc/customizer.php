@@ -114,7 +114,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
 				if ( is_array($item_extra_options) ) {
 					array_splice(
 						$options['options'][$post_type . '_single_section_options']['inner-options'][0],
-						1,
+						0,
 						0,
 						$item_extra_options
 					);

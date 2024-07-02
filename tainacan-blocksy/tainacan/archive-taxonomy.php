@@ -9,8 +9,14 @@ $page_container_classes = 'page type-page hentry singular';
 $page_container_classes = $page_container_classes . ' has-filters-panel-style-' . get_theme_mod($term_items_prefix . '_filters_panel_background_style', 'boxed');
 $page_container_classes = $page_container_classes . ' has-page-header-style-' . $page_hero_section_style;
 
+if ( get_theme_mod( $term_items_prefix . '_hide_filters_area_header', 'no' ) === 'yes' )
+    $page_container_classes .= ' has-filters-area-header-hidden';
+
 $filters_panel_size = get_theme_mod($term_items_prefix . '_filters_panel_size', '20%');
 $page_container_style = '--tainacan-filter-menu-width-theme:' . $filters_panel_size . ';';
+
+$filters_inline_size = get_theme_mod($term_items_prefix . '_filters_inline_size', '272px');
+$page_container_style .= '--tainacan-filters-inline-width:' . $filters_inline_size . ';';
 
 $background_color_palette = get_theme_mod($term_items_prefix . '_items_list_background_palette',
 [
@@ -190,7 +196,7 @@ get_header();
 
 if ( $page_hero_section_style === 'type-2' ) {
 
-    if ( blocksy_akg_or_customizer('page_title_bg_type', blocksy_get_page_title_source()) === 'featured_image' ) {
+    if ( blocksy_akg_or_customizer('page_title_bg_type', blocksy_get_page_title_source(), 'featured_image') === 'featured_image' ) {
         add_filter( 'blocksy:hero:type-2:image:attachment_id', function() use($image) {
             return $image;
         }, 10 );
@@ -238,7 +244,10 @@ if ( $page_hero_section_style === 'type-2' ) {
                     'show_fullscreen_with_view_modes' => get_theme_mod($term_items_prefix . '_show_fullscreen_with_view_modes', 'no') == 'yes',
                     'hide_exposers_button' => get_theme_mod($term_items_prefix . '_show_exposers_button', 'yes') == 'no',
                     'hide_pagination_area' => get_theme_mod($term_items_prefix . '_has_pagination', 'yes') == 'no',
-                    'default_view_mode' => get_theme_mod($term_items_prefix . '_default_view_mode', 'masonry')
+                    'default_view_mode' => get_theme_mod($term_items_prefix . '_default_view_mode', 'masonry'),
+                    'should_not_hide_filters_on_mobile' => get_theme_mod($term_items_prefix . '_should_not_hide_filters_on_mobile', 'no') == 'yes',
+                    'display_filters_horizontally' => get_theme_mod($term_items_prefix . '_display_filters_horizontally', 'no') == 'yes',
+                    'hide_filter_collapses' => get_theme_mod($term_items_prefix . '_hide_filter_collapses', 'no') == 'yes',
                 ]); 
             ?>
         </div>

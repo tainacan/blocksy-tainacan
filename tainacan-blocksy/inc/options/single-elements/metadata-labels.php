@@ -44,7 +44,6 @@ $options = [
         'label' => __( 'Separator', 'blocksy' ),
         'type' => 'ct-border',
         'design' => 'block',
-        'responsive' => true,
         'setting' => [ 'transport' => 'postMessage' ],
         'value' => [
             'width' => 0,
