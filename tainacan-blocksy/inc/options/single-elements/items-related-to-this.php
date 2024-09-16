@@ -49,23 +49,6 @@ $inner_options = [
 	blocksy_rand_md5() => [
 		'type' => 'ct-condition',
 		'condition' => [
-			$prefix . 'items_related_to_this_layout'  => 'carousel'
-		],
-		'options' => [
-			$prefix . 'items_related_to_this_max_items_per_screen' => [
-				'label' => __( 'Max amount of items per slide', 'tainacan-blocksy' ),
-				'type' => 'ct-number',
-				'design' => 'inline',
-				'value' => 6,
-				'min' => 1,
-				'max' => 10,
-				'sync' => ''
-			]
-		]
-	],
-	blocksy_rand_md5() => [
-		'type' => 'ct-condition',
-		'condition' => [
 			$prefix . 'items_related_to_this_layout'  => 'grid | list'
 		],
 		'options' => [
@@ -154,6 +137,60 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) 
 		'value' => 'no',
 		'desc' => __( 'Toggle to hide the relationship metadata label.', 'tainacan-blocksy' ),
 		'sync' => ''
+	];
+}
+
+if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.8' ) >= 0 ) {
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'carousel',
+			$prefix . 'items_related_to_this_variable_items_width' => 'no',
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_max_items_per_screen' => [
+				'label' => __( 'Max amount of items per slide', 'tainacan-blocksy' ),
+				'type' => 'ct-number',
+				'design' => 'inline',
+				'value' => 6,
+				'min' => 1,
+				'max' => 10,
+				'sync' => ''
+			]
+		]
+	];
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'carousel'
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_variable_items_width' => [
+				'label' => __( 'Variable items width', 'tainacan-blocksy' ),
+				'type' => 'ct-switch',
+				'value' => 'no',
+				'desc' => __( 'Toggle to define each slide size based on its content natural width.', 'tainacan-blocksy' ),
+				'sync' => ''
+			]
+		]
+	];
+} else {
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'carousel',
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_max_items_per_screen' => [
+				'label' => __( 'Max amount of items per slide', 'tainacan-blocksy' ),
+				'type' => 'ct-number',
+				'design' => 'inline',
+				'value' => 6,
+				'min' => 1,
+				'max' => 10,
+				'sync' => ''
+			]
+		]
 	];
 }
 
