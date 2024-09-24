@@ -33,6 +33,7 @@ $page_container_style .= '--tainacan-item-hover-background-color:' . $background
 $page_container_style .= '--tainacan-input-background-color:' . $background_color_palette['color4']['color'] . ';';
 $page_container_style .= '--tainacan-primary:' . $background_color_palette['color5']['color'] . ';';
 $page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
+$page_container_style .= '--theme-form-field-border-initial-color:' . $background_color_palette['color6']['color'] . ';';
 
 $text_color_palette = get_theme_mod($repository_items_prefix . '_items_list_text_palette',
 [
