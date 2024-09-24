@@ -78,13 +78,6 @@
         align-self: normal;
         width: 100%;
 
-        @media screen and (max-width: 768px) {
-            &.modal .modal-content {
-                padding: 16px 16px 16px 6vw !important;
-                background-color: var(--tainacan-background-color, var(--backgroundColor, #f8f9fb));
-            }
-        }
-
         .modal-content {
 
             #filters-items-list {
@@ -101,7 +94,7 @@
             }
         }
         &.modal .modal-content {
-            padding: 16px 10px 16px 0px !important;
+            padding: 16px 16px 16px 0px !important;
 
             #filters-items-list {
                 margin: -3px;
@@ -110,6 +103,13 @@
 
         &.tainacan-filter-list-fixed {
             left: 14px;
+        }
+
+        @media screen and (max-width: 768px) {
+            &.modal .modal-content {
+                padding: 16px 16px 16px 6vw !important;
+                background-color: var(--tainacan-background-color, var(--backgroundColor, #f8f9fb));
+            }
         }
     }
 
