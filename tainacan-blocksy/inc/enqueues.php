@@ -222,8 +222,11 @@ if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
 		$page_container_style .= '--tainacan-item-hover-background-color:' . $background_color_palette['color3']['color'] . ';';
 		$page_container_style .= '--tainacan-input-background-color:' . $background_color_palette['color4']['color'] . ';';
 		$page_container_style .= '--tainacan-primary:' . $background_color_palette['color5']['color'] . ';';
-		$page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
-
+		
+		if ( isset( $background_color_palette['color6'] ) ) {
+			$page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
+		}
+		
 		$text_color_palette = get_theme_mod($prefix . '_items_list_text_palette',
 		[
 			'color1' => [ 'color' => 'var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c))' ],
@@ -267,28 +270,37 @@ function tainacan_blocksy_add_background_color_variable($args) {
 		'tablet'  => 'var(--theme-palette-color-7, var(--paletteColor7, #ffffff))',
 		'mobile'  => 'var(--theme-palette-color-7, var(--paletteColor7, #ffffff))'
 	);
-	$site_background = get_theme_mod( 'site_background', $site_background_fallback );
-	
+	$site_background = blocksy_get_theme_mod(
+		'site_background',
+		blocksy_background_default_value([
+			'backgroundColor' => [
+				'default' => [
+					'color' => 'var(--theme-palette-color-7)'
+				],
+			],
+		])
+	);
+
+	$site_desktop_background = isset($site_background['desktop']) ? $site_background['desktop'] : $site_background;
 	$site_desktop_background = (
-		isset($site_background['desktop']) &&
-		isset($site_background['desktop']['backgroundColor']) &&
-		isset($site_background['desktop']['backgroundColor']['default']) &&
-		isset($site_background['desktop']['backgroundColor']['default']['color'])
-	) ? $site_background['desktop']['backgroundColor']['default']['color'] : false;
+		isset($site_desktop_background['backgroundColor']) &&
+		isset($site_desktop_background['backgroundColor']['default']) &&
+		isset($site_desktop_background['backgroundColor']['default']['color'])
+	) ? $site_desktop_background['backgroundColor']['default']['color'] : false;
 
+	$site_tablet_background = isset($site_background['tablet']) ? $site_background['tablet'] : $site_background;
 	$site_tablet_background = (
-		isset($site_background['tablet']) &&
-		isset($site_background['tablet']['backgroundColor']) &&
-		isset($site_background['tablet']['backgroundColor']['default']) &&
-		isset($site_background['tablet']['backgroundColor']['default']['color'])
-	) ? $site_background['tablet']['backgroundColor']['default']['color'] : false;
+		isset($site_tablet_background['backgroundColor']) &&
+		isset($site_tablet_background['backgroundColor']['default']) &&
+		isset($site_tablet_background['backgroundColor']['default']['color'])
+	) ? $site_tablet_background['backgroundColor']['default']['color'] : false;
 
+	$site_mobile_background = isset($site_background['mobile']) ? $site_background['mobile'] : $site_background;
 	$site_mobile_background = (
-		isset($site_background['mobile']) &&
-		isset($site_background['mobile']['backgroundColor']) &&
-		isset($site_background['mobile']['backgroundColor']['default']) &&
-		isset($site_background['mobile']['backgroundColor']['default']['color'])
-	) ? $site_background['mobile']['backgroundColor']['default']['color'] : false;
+		isset($site_mobile_background['backgroundColor']) &&
+		isset($site_mobile_background['backgroundColor']['default']) &&
+		isset($site_mobile_background['backgroundColor']['default']['color'])
+	) ? $site_mobile_background['backgroundColor']['default']['color'] : false;
 	
 	blocksy_output_css_vars([
 		'css' => $args['css'],
@@ -305,5 +317,5 @@ function tainacan_blocksy_add_background_color_variable($args) {
 	]);
 	
 }
-add_action( 'blocksy:global-dynamic-css:enqueue', 'tainacan_blocksy_add_background_color_variable' );
+add_action( 'blocksy:global-dynamic-css:enqueue:inline', 'tainacan_blocksy_add_background_color_variable' );
 

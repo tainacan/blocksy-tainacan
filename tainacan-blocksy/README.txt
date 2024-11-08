@@ -5,7 +5,7 @@ Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 5.9
 Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 0.3.4
+Stable tag: 0.3.6
 Requires Plugins: tainacan
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,13 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.3.6 =
+* Fixes background color issues with undefined variable in items archive
+
+= 0.3.5 =
+* Fixes background color issues in media gallery
+* Fixes spacing issues on next and previous links for recent versions of Blocksy.
 
 = 0.3.4 =
 * Adds support for variable items width in related items carousel

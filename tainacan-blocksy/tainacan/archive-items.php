@@ -31,8 +31,11 @@ $page_container_style .= '--tainacan-item-background-color:' . $background_color
 $page_container_style .= '--tainacan-item-hover-background-color:' . $background_color_palette['color3']['color'] . ';';
 $page_container_style .= '--tainacan-input-background-color:' . $background_color_palette['color4']['color'] . ';';
 $page_container_style .= '--tainacan-primary:' . $background_color_palette['color5']['color'] . ';';
-$page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
-$page_container_style .= '--theme-form-field-border-initial-color:' . $background_color_palette['color6']['color'] . ';';
+
+if ( isset( $background_color_palette['color6'] ) ) {
+    $page_container_style .= '--tainacan-input-border-color:' . $background_color_palette['color6']['color'] . ';';
+    $page_container_style .= '--theme-form-field-border-initial-color:' . $background_color_palette['color6']['color'] . ';';
+}
 
 $text_color_palette = get_theme_mod($prefix . '_items_list_text_palette',
 [
@@ -243,11 +246,13 @@ if ( $page_hero_section_style === 'type-2' ) {
                     'hide_advanced_search' => get_theme_mod($prefix . '_show_advanced_search', 'yes') == 'no',
                     'hide_sorting_area' => get_theme_mod($prefix . '_show_sorting_area', 'yes') == 'no',
                     'hide_sort_by_button' => get_theme_mod($prefix . '_show_sort_by_button', 'yes') == 'no',
-                    'hide_displayed_metadata_dropdown' => get_theme_mod($prefix . '_show_displayed_metadata_dropdown', 'yes') == 'no',
+                    'hide_displayed_metadata_button' => get_theme_mod($prefix . '_show_displayed_metadata_dropdown', 'yes') == 'no',
                     'show_inline_view_mode_options' => get_theme_mod($prefix . '_show_inline_view_mode_options', 'no') == 'yes',
                     'show_fullscreen_with_view_modes' => get_theme_mod($prefix . '_show_fullscreen_with_view_modes', 'no') == 'yes',
                     'hide_exposers_button' => get_theme_mod($prefix . '_show_exposers_button', 'yes') == 'no',
                     'hide_pagination_area' => get_theme_mod($prefix . '_has_pagination', 'yes') == 'no',
+                    'hide_items_per_page_button' => get_theme_mod($prefix . '_show_items_per_page_button', 'yes') == 'no',
+                    'hide_go_to_page_button' => get_theme_mod($prefix . '_show_go_to_page_button', 'yes') == 'no',
                     'should_not_hide_filters_on_mobile' => get_theme_mod($prefix . '_should_not_hide_filters_on_mobile', 'no') == 'yes',
                     'display_filters_horizontally' => get_theme_mod($prefix . '_display_filters_horizontally', 'no') == 'yes',
                     'hide_filter_collapses' => get_theme_mod($prefix . '_hide_filter_collapses', 'no') == 'yes',
