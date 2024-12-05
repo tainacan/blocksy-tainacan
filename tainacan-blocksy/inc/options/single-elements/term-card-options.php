@@ -274,7 +274,7 @@ $options = [
 							],
 						]
 					],
-				], trim($prefix, '_')),
+				], trim($prefix, '_'), false),
 
 			],
 
