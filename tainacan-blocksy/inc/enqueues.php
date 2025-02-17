@@ -51,11 +51,17 @@ if ( TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION !== NULL && ( version_compare(TAINAC
 	add_action('blocksy:global-dynamic-css:enqueue:inline', function ($args) {
 		if ( defined ('TAINACAN_VERSION') ) {	
 
-			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 			$post_type = get_post_type();
 
+			if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+				$is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+			} else {
+				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+				$is_collection = in_array($post_type, $collections_post_types);
+			}
+
 			// Check if we're inside the main loop in a single Post.
-			if ( in_array($post_type, $collections_post_types) ) {
+			if ( $is_collection ) {
 				blocksy_theme_get_dynamic_styles(array_merge([
 					'path' => TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/global.php',
 					'chunk' => 'global',
@@ -174,10 +180,16 @@ if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
 
 		if (is_post_type_archive()) {
 		
-			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-			$current_post_type = get_post_type();
+			$post_type = get_post_type();
+
+			if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+				$is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+			} else {
+				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+				$is_collection = in_array($post_type, $collections_post_types);
+			}
 			
-			if (in_array($current_post_type, $collections_post_types))
+			if ( $is_collection )
 				$prefix = blocksy_manager()->screen->get_prefix();
 			
 		} else if ( is_tax() ) {

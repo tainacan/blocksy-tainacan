@@ -31,7 +31,9 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
                 $wp_query->is_search() &&
                 !is_admin()
         ) {
-            $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+            if ( !method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) )
+                $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+            
             $searching_post_types = $wp_query->get( 'post_type' );
 
             if ( !is_array($searching_post_types) )
@@ -39,7 +41,14 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
 
             // If the search is going on post types other than Tainacan items...
             foreach($searching_post_types as $searching_post_type) {
-                if ( !in_array($searching_post_type, $collections_post_types) )
+
+				if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+					$is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($searching_post_type);
+				} else {
+					$is_collection = in_array($searching_post_type, $collections_post_types);
+				}
+
+                if ( !$is_collection )
                     return;
             }
             
@@ -54,10 +63,16 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
 
         if (is_post_type_archive()) {
             
-            $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-            $current_post_type = get_post_type();
+            $post_type = get_post_type();
+
+            if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+                $is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+            } else {
+                $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+                $is_collection = in_array($post_type, $collections_post_types);
+            }
             
-            if (in_array($current_post_type, $collections_post_types)) {
+            if ( $is_collection) {
                 include( TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/tainacan/archive-items.php' );
                 exit;
             }

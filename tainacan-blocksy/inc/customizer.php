@@ -95,9 +95,15 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
 
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
-			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 
-			if ( in_array($post_type, $collections_post_types) ) {
+			if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+				$is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+			} else {
+				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+				$is_collection = in_array($post_type, $collections_post_types);
+			}
+
+			if ( $is_collection ) {
 
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
@@ -159,9 +165,15 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
-			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 
-			if ( in_array($post_type, $collections_post_types) ) {
+			if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+				$is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+			} else {
+				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+				$is_collection = in_array($post_type, $collections_post_types);
+			}
+
+			if ( $is_collection ) {
 				
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
@@ -270,8 +282,14 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 			}
 			
 			// Checks if we're in the collection item single
-			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-			if ( in_array($post_type, $collections_post_types) ) { 
+			if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+				$is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+			} else {
+				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+				$is_collection = in_array($post_type, $collections_post_types);
+			}
+
+			if ( $is_collection ) { 
 				ob_start();
 				tainacan_blocksy_get_template_part( 'tainacan/item-single-page' );
 				$new_content = ob_get_contents();

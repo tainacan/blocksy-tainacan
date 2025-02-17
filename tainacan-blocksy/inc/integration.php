@@ -150,12 +150,17 @@ add_action( 'blocksy:hero:before', 'tainacan_blocksy_render_media_gallery_above_
 if ( !function_exists('tainacan_blocksy_post_class') ) {
     function tainacan_blocksy_post_class($classes) {
         
-        $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-        $current_post_type = get_post_type();
-            
-        if (in_array($current_post_type, $collections_post_types)) {
-            $classes[] = 'tainacan-item-single-page';
+        $post_type = get_post_type();
+
+        if ( method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) ) {
+            $is_collection = \Tainacan\Theme_Helper::get_instance()->is_post_type_a_collection($post_type);
+        } else {
+            $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+            $is_collection = in_array($post_type, $collections_post_types);
         }
+            
+        if ( $is_collection ) 
+            $classes[] = 'tainacan-item-single-page';
 
         return $classes;
     }
