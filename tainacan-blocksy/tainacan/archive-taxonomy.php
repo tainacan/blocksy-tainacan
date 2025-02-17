@@ -155,7 +155,7 @@ foreach ($hero_elements as $index => $single_hero_element) {
         
         $elements[] = $before_hero_title . $title . $after_hero_title;
         
-    } else if ($single_hero_element['id'] == 'custom_description' && $single_hero_element['enabled'] && get_the_archive_description()) {
+    } else if ($single_hero_element['id'] == 'custom_description' && $single_hero_element['enabled'] && tainacan_get_the_term_description()) {
         $description_class = 'page-description';
         $description_class .= ' ' . blocksy_visibility_classes(
             blocksy_akg(
@@ -168,7 +168,7 @@ foreach ($hero_elements as $index => $single_hero_element) {
                 ]
             )
         );
-        $elements[] = '<div class="' . $description_class . '">' . get_the_archive_description() . '</div>';
+        $elements[] = '<div class="' . $description_class . '">' . tainacan_get_the_term_description() . '</div>';
     } else if ($single_hero_element['id'] == 'breadcrumbs' && $single_hero_element['enabled']) {
         if ( class_exists('Blocksy_Breadcrumbs_Builder') )
             $breadcrumbs_builder = new Blocksy_Breadcrumbs_Builder();
