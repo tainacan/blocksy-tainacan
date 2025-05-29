@@ -4,9 +4,9 @@
   "description": "A Blocksy plugin/child theme compatible with Tainacan",
   "main": "index.js",
   "scripts": {
-    "compile-compat-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 sass/compat.scss compat.css",
+    "compile-compat-styles": "sass --source-map --embed-sources sass/compat.scss compat.css",
     "css-minify-compat": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output compat.min.css compat.css",
-    "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 sass/style.scss style.css",
+    "compile-styles": "sass --source-map --embed-sources sass/style.scss style.css",
     "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output style.min.css style.css",
     "build": "npm run compile-compat-styles && npm run css-minify-compat && npm run compile-styles && npm run css-minify"
   },
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/tainacan/blocksy-tainacan#readme",
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
-    "node-sass": "^4.14.1"
+    "sass": "1.58.3"
   },
   "dependencies": {}
 }
