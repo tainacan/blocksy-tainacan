@@ -492,6 +492,12 @@
         }
     }
 
+    // Some dedidcated CSS variables used when the gallery component is in related items
+    .wp-block-tainacan-related-items .tainacan-media-component {
+        --tainacan-media-main-carousel-height: var(--gallery-height, 60vh);
+        --tainacan-media-thumbs-carousel-item-size: var(--thumbnails-size, 140px);
+    }
+
     @media screen and (min-width: 960px) {
         // Document and attachments fixed column
         .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {

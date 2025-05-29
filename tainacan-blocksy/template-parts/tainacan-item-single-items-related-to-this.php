@@ -11,8 +11,11 @@
     $hide_collection_heading      = get_theme_mod( $prefix . '_items_related_to_this_hide_collection_heading', 'no' ) === 'yes';
     $hide_metadata_label          = get_theme_mod( $prefix . '_items_related_to_this_hide_metadata_label', 'no' ) === 'yes';
     $tainacan_view_mode           = get_theme_mod( $prefix . '_items_related_to_this_tainacan_view_mode', 'records' );
-
-    $image_size = get_theme_mod($prefix . '_items_related_to_this_image_size', 'tainacan-medium');
+    $image_size                   = get_theme_mod( $prefix . '_items_related_to_this_image_size', 'tainacan-medium');
+    $view_more_links_position     = get_theme_mod( $prefix . '_items_related_to_this_view_more_links_position', 'bottom-left' );
+    $view_more_links_style        = get_theme_mod( $prefix . '_items_related_to_this_view_more_links_style', 'button' );
+    $open_lightbox_on_click       = get_theme_mod( $prefix . '_items_related_to_this_enable_lightbox', 'yes' ) === 'yes';
+    $gallery_spacing              = get_theme_mod( $prefix . '_items_related_to_this_gallery_spacing', 'default' );
 
     $order_option_split = explode( '_', $order_option ); 
     $order_by = $order_option_split[0] ? $order_option_split[0] : 'title';
@@ -26,7 +29,7 @@
 
     if ( function_exists('tainacan_the_related_items_carousel') && (get_theme_mod( $prefix . '_display_items_related_to_this', 'no' ) === 'yes') && tainacan_has_related_items() ) : ?>
     
-    <section class="tainacan-item-section tainacan-item-section--items-related-to-this">
+    <section class="tainacan-item-section tainacan-item-section--items-related-to-this <?php echo esc_attr(' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ) ?>">
         
         <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && $section_label != '') : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-items-related-to-this-label">
@@ -35,6 +38,39 @@
         <?php endif; ?>
         <div class="tainacan-item-section__items-related-to-this">
             <?php 
+                $items_gallery_options = [];
+                if ( strpos($items_related_to_this_layout, 'gallery-') !== false) {
+
+                    $items_gallery_options = $items_related_to_this_layout == 'gallery-slider' ?
+                        array(
+                            'layoutElements' => array( 'main' => true, 'thumbnails' => true ),
+                            'hideItemTitleMain' => false,
+                            'thumbsHaveFixedHeight' => $variable_items_width,
+                            'thumbnailsSize' => $image_size,
+                            'openLightboxOnClick' => $open_lightbox_on_click,
+                        ) :
+                        array(
+                            'layoutElements' => array( 'main' => false, 'thumbnails' => true ),
+                            'hideItemTitleMain' => false,
+                            'thumbsHaveFixedHeight' => $variable_items_width,
+                            'thumbnailsSize' => $image_size,
+                            'openLightboxOnClick' => $open_lightbox_on_click,
+                        );                 
+
+                    $items_related_to_this_layout = 'gallery';
+
+                    if ( $gallery_spacing === 'minimum' ) {
+                        add_filter( 'tainacan-swiper-thumbs-options', function($options) {
+                            return array_merge(
+                                $options,
+                                array(
+                                    'spaceBetween' => 0
+                                )
+                            );
+                        }, 9 , 1);
+                    }
+                }
+
                 tainacan_the_related_items_carousel([
                     'items_list_layout' => $items_related_to_this_layout,
                     'collection_heading_tag' => 'h3',
@@ -43,6 +79,8 @@
                     'max_items_number' => $max_items_number,
                     'hide_collection_heading' => $hide_collection_heading,
                     'hide_metadata_label' => $hide_metadata_label,
+                    'view_more_link_position' => $view_more_links_position,
+                    'view_more_link_style' => $view_more_links_style,
                     'dynamic_items_args' => [
                         'max_columns_count' => $max_columns_count,
                         'image_size' => $image_size,
@@ -52,7 +90,8 @@
                         'max_items_per_screen' => $max_items_per_screen,
                         'image_size' => $image_size,
                         'variable_items_width' => $variable_items_width,
-                    ]
+                    ],
+                    'items_gallery_args' => $items_gallery_options
                 ]);
             ?>
         <div>

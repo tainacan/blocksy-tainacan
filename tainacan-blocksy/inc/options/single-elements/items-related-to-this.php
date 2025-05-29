@@ -36,6 +36,17 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) 
 	];
 }
 
+if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
+	$layout_choices['gallery-slider'] = [
+		'src'   => tainacan_blocksy_image_picker_url( 'items-gallery-slider.svg' ),
+		'title' => __( 'Gallery slider, documents with zoom and thumbnails', 'tainacan-blocksy' )
+	];
+	$layout_choices['gallery-thumbs'] = [
+		'src'   => tainacan_blocksy_image_picker_url( 'items-gallery-thumbs.svg' ),
+		'title' => __( 'Gallery carousel, thumbnails with zoom', 'tainacan-blocksy' )
+	];
+}
+
 $inner_options = [
 	$prefix . 'items_related_to_this_layout' => [
 		'label' => false,
@@ -44,7 +55,9 @@ $inner_options = [
 		'design' => 'block',
 		'setting' => [ 'transport' => 'postMessage' ],
 		'choices' => $layout_choices,
-		'sync' => '',
+		'sync' => blocksy_sync_whole_page([
+			'prefix' => $prefix,
+		]),
 	],
 	blocksy_rand_md5() => [
 		'type' => 'ct-condition',
@@ -83,44 +96,6 @@ $inner_options = [
 			$order_options
 		)
 	],
-	blocksy_rand_md5() => [
-		'type' => 'ct-condition',
-		'condition' => [
-			$prefix . 'items_related_to_this_layout'  => 'tainacan-view-modes'
-		],
-		'options' => [
-			$prefix . 'items_related_to_this_tainacan_view_mode' => [
-				'label' => __('Tainacan view mode', 'tainacan-blocksy'),
-				'type' => 'ct-select',
-				'value' => $view_modes['default_view_mode'],
-				'view' => 'text',
-				'design' => 'inline',
-				'sync' => '',
-				'choices' => blocksy_ordered_keys(
-					$view_modes['enabled_view_modes']
-				)
-			]
-		],
-	],
-	blocksy_rand_md5() => [
-		'type' => 'ct-condition',
-		'condition' => [
-			$prefix . 'items_related_to_this_layout'  => 'grid | list | carousel'
-		],
-		'options' => [
-			$prefix . 'items_related_to_this_image_size' => [
-				'label' => __('Image size', 'blocksy'),
-				'type' => 'ct-select',
-				'value' => 'tainacan-medium',
-				'view' => 'text',
-				'design' => 'inline',
-				'sync' => '',
-				'choices' => blocksy_ordered_keys(
-					blocksy_get_all_image_sizes()
-				),
-			],
-		]
-	]
 ];
 
 if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) >= 0  ) {
@@ -139,6 +114,76 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) 
 		'sync' => ''
 	];
 }
+
+if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
+	$inner_options[$prefix . 'items_related_to_this_view_more_links_position'] = [
+		'label' => __( '"View more" links position', 'tainacan-blocksy' ),
+		'type' => 'ct-select',
+		'value' => 'bottom-left',
+		'view' => 'text',
+		'design' => 'inline',
+		'sync' => '',
+		'choices' => [
+			'bottom-left' => __( 'Bottom left', 'tainacan-blocksy' ),
+			'bottom-right' => __( 'Bottom right', 'tainacan-blocksy' ),
+			'top-right' => __( 'Top right', 'tainacan-blocksy' ),
+		]
+	];
+	$inner_options[$prefix . 'items_related_to_this_view_more_links_style'] = [
+		'label' => __( '"View more" links style', 'tainacan-blocksy' ),
+		'type' => 'ct-radio',
+		'value' => 'button',
+		'view' => 'text',
+		'design' => 'block',
+		'sync' => '',
+		'choices' => [
+			'button' => __( 'Button', 'tainacan-blocksy' ),
+			'link' => __( 'Link', 'tainacan-blocksy' ),
+		],
+	];
+}
+
+$inner_options[blocksy_rand_md5()] = [
+	'type' => 'ct-divider',
+];
+$inner_options[blocksy_rand_md5()] = [
+	'type' => 'ct-condition',
+	'condition' => [
+		$prefix . 'items_related_to_this_layout'  => 'tainacan-view-modes'
+	],
+	'options' => [
+		$prefix . 'items_related_to_this_tainacan_view_mode' => [
+			'label' => __('Tainacan view mode', 'tainacan-blocksy'),
+			'type' => 'ct-select',
+			'value' => $view_modes['default_view_mode'],
+			'view' => 'text',
+			'design' => 'inline',
+			'sync' => '',
+			'choices' => blocksy_ordered_keys(
+				$view_modes['enabled_view_modes']
+			)
+		]
+	],
+];
+$inner_options[blocksy_rand_md5()] = [
+	'type' => 'ct-condition',
+	'condition' => [
+		$prefix . 'items_related_to_this_layout'  => 'grid | list | carousel | gallery-slider | gallery-thumbs'
+	],
+	'options' => [
+		$prefix . 'items_related_to_this_image_size' => [
+			'label' => __('Image size', 'blocksy'),
+			'type' => 'ct-select',
+			'value' => 'tainacan-medium',
+			'view' => 'text',
+			'design' => 'inline',
+			'sync' => '',
+			'choices' => blocksy_ordered_keys(
+				blocksy_get_all_image_sizes()
+			),
+		],
+	]
+];
 
 if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.8' ) >= 0 ) {
 	$inner_options[blocksy_rand_md5()] = [
@@ -162,7 +207,7 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.8' ) 
 	$inner_options[blocksy_rand_md5()] = [
 		'type' => 'ct-condition',
 		'condition' => [
-			$prefix . 'items_related_to_this_layout'  => 'carousel'
+			$prefix . 'items_related_to_this_layout'  => 'carousel | gallery-slider | gallery-thumbs',
 		],
 		'options' => [
 			$prefix . 'items_related_to_this_variable_items_width' => [
@@ -190,6 +235,81 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.8' ) 
 				'max' => 10,
 				'sync' => ''
 			]
+		]
+	];
+}
+
+if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs',
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_enable_lightbox' => [
+				'label' => __( 'Open lightbox on click', 'tainacan-blocksy' ),
+				'type' => 'ct-switch',
+				'value' => 'yes',
+				'sync' => ''
+			]
+		]
+	];
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'gallery-slider'
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_gallery_max_height' => [
+				'label' => __('Gallery main slider max height', 'tanacan-blocksy'),
+				'type' => 'ct-slider',
+				'value' => 60,
+				'min' => 10,
+				'max' => 140,
+				'unit' => 'vh',
+				'defaultUnit' => 'vh',
+				'responsive' => true,
+				'sync' => ''
+			],
+			$prefix . 'items_related_to_this_gallery_spacing' => [
+				'label' => __( 'Inner spacing', 'tainacan-blocksy' ),
+				'desc' => __( 'Prefer using minimum only if your gallery contains mostly images which can be croped withour loss of information', 'tainacan-blocksy' ),
+				'type' => 'ct-radio',
+				'value' => 'default',
+				'view' => 'text',
+				'design' => 'block',
+				'sync' => '',
+				'choices' => [
+					'default' => __( 'Default', 'tainacan-blocksy' ),
+					'minimum' => __( 'Minimum', 'tainacan-blocksy' ),
+				],
+			]
+		]
+	];
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs'
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_thumbs_size' => [
+				'label' => __( 'Thumbnails size gallery on carousel', 'tainacan-blocksy' ),
+				'type' => 'ct-slider',
+				'value' => [
+					'mobile' => '120px',
+					'tablet' => '130px',
+					'desktop' => '140px',
+				],
+				'units' => blocksy_units_config([
+					[
+						'unit' => 'px',
+						'min' => 42,
+						'max' => 300,
+					]
+				]),
+				'responsive' => true,
+				'sync' => ''
+			],
 		]
 	];
 }

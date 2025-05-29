@@ -61,8 +61,37 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
 	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
+	'variableName' => 'thumbnails-size',
+	'value' => get_theme_mod( $prefix . '_items_related_to_this_thumbs_size', [
+		'mobile' => '120px',
+		'tablet' => '130px',
+		'desktop' => '140px',
+	]),
+	'unit' => ''
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
 	'variableName' => 'document-height',
 	'value' => get_theme_mod( $prefix . '_document_height', [
+		'mobile' => '40',
+		'tablet' => '50',
+		'desktop' => '60',
+	]),
+	'unit' => 'vh',
+	'defaultUnit' => 'vh',
+]);
+
+blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
+	'variableName' => 'gallery-height',
+	'value' => get_theme_mod( $prefix . '_items_related_to_this_gallery_max_height', [
 		'mobile' => '40',
 		'tablet' => '50',
 		'desktop' => '60',

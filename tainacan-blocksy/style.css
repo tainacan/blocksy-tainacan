@@ -53,7 +53,6 @@
   /* Advanced Search */
   /* Inputs style */
 }
-
 .theme-items-list:not(.is-fullscreen) {
   justify-content: center;
   background: transparent !important;
@@ -65,16 +64,13 @@
   grid-template-rows: auto 1fr;
   grid-template-areas: ". searchcontrol ." "itemslist itemslist itemslist";
 }
-
 .theme-items-list:not(.is-fullscreen).has-horizontal-filters {
   grid-template-rows: auto auto 1fr;
   grid-template-areas: ". searchcontrol ." "filterspanel filterspanel filterspanel" "itemslist itemslist itemslist";
 }
-
 .theme-items-list:not(.is-fullscreen).has-horizontal-filters #filters-modal {
   grid-area: filterspanel;
 }
-
 @media screen and (max-width: 768px) {
   .theme-items-list:not(.is-fullscreen) {
     grid-template-rows: auto auto 1fr;
@@ -84,22 +80,18 @@
     grid-area: filterspanel;
   }
 }
-
 .theme-items-list .search-control {
   grid-area: searchcontrol;
   border-radius: 0 0 var(--theme-border-radius, var(--borderRadius, 3px)) var(--theme-border-radius, var(--borderRadius, 3px));
   margin: 5px 0px;
   padding: 20px 0px 6px 0px !important;
 }
-
 .theme-items-list .search-control .search-control-item {
   margin-bottom: 20px !important;
 }
-
 .theme-items-list .search-control .control.has-icons-right .icon .mdi-magnify::before {
   color: var(--tainacan-secondary, #3eaf7c);
 }
-
 .theme-items-list #advanced-search-container {
   max-width: 100%;
   width: var(--maxSiteWidth, 1290px);
@@ -108,59 +100,48 @@
   box-shadow: var(--theme-box-shadow, var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04)));
   border: none;
 }
-
 .theme-items-list #filters-modal {
   grid-area: itemslist;
   justify-self: start;
   align-self: normal;
   width: 100%;
 }
-
 .theme-items-list #filters-modal .modal-content #filters-items-list {
   background-color: var(--tainacan-background-color, var(--backgroundColor, #f8f9fb));
   padding: 3px;
 }
-
 .theme-items-list #filters-modal .modal-content #filters-items-list .filters-components-list {
   margin-bottom: 24px;
 }
-
 .theme-items-list #filters-modal .modal-content #filters-items-list .filters-components-list .filter-item-forms .label {
   border-bottom: var(--filter-label-border, none);
 }
-
 .theme-items-list #filters-modal.modal .modal-content {
   padding: 16px 16px 16px 0px !important;
 }
-
 .theme-items-list #filters-modal.modal .modal-content #filters-items-list {
   margin: -3px;
 }
-
 .theme-items-list #filters-modal.tainacan-filter-list-fixed {
   left: 14px;
 }
-
 @media screen and (max-width: 768px) {
   .theme-items-list #filters-modal.modal .modal-content {
     padding: 16px 16px 16px 6vw !important;
     background-color: var(--tainacan-background-color, var(--backgroundColor, #f8f9fb));
   }
 }
-
 .theme-items-list #items-list-area {
   grid-area: itemslist;
   justify-self: end;
   align-self: normal;
   width: 100%;
 }
-
 .theme-items-list #items-list-area #items-list-results {
   padding-top: 12px;
   /* Tainacan items list view modes */
   /* Pagination */
 }
-
 .theme-items-list #items-list-area #items-list-results .table-container {
   min-width: 100%;
   padding-top: 0px;
@@ -168,7 +149,6 @@
   padding-bottom: 14px;
   padding-right: 0px;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item,
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record,
 .theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card,
@@ -178,14 +158,12 @@
   border: var(--border, none);
   overflow: hidden;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-title p,
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .metadata-title p,
 .theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .metadata-title p,
 .theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list .metadata-title p {
   font-weight: 500;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-value,
 .theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-label,
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .metadata-value,
@@ -196,80 +174,64 @@
 .theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list .metadata-label {
   font-size: 0.8125em !important;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-mosaic-container .tainacan-mosaic-item {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
   box-shadow: var(--theme-box-shadow, var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04)));
   border: var(--border, none);
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-mosaic-container .tainacan-mosaic-item .metadata-title p {
   font-weight: 500;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-mosaic-container .tainacan-mosaic-item .metadata-value,
 .theme-items-list #items-list-area #items-list-results .tainacan-mosaic-container .tainacan-mosaic-item .metadata-label {
   font-size: 0.8125em !important;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record,
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record .list-metadata,
 .theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list {
   background-color: var(--tainacan-item-background-color, white) !important;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item {
   display: flex !important;
   flex-direction: column-reverse;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card {
   min-height: 215px;
   max-height: 215px;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .media .list-metadata {
   padding: 0.125em 1.375em !important;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card .media .list-metadata p.metadata-description {
   max-height: 12.75em !important;
   line-height: 1.25em;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-table {
   padding: 0 12px;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-table .column-main-content p {
   font-weight: 500;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-table td p {
   font-size: 0.725em !important;
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-slide-main-view iframe {
   border: none;
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
 }
-
 .theme-items-list #items-list-area #items-list-results .tainacan-slides-list .swiper-slide img {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
   padding-bottom: 0;
 }
-
 .theme-items-list #items-list-area #items-list-results .pagination-area {
   border-top: none;
   margin-left: 12px;
   margin-right: 12px;
 }
-
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination {
   font-weight: bold;
   --colorActive: #ffffff;
 }
-
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination .pagination-link {
   display: inline-flex;
   align-items: center;
@@ -285,44 +247,39 @@
   --theme-link-initial-color: var(--theme-text-color, var(--color));
   transition: color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), background 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination .pagination-link:hover {
   text-decoration: none;
   border-color: var(--theme-link-hover-color, var(--linkHoverColor));
   color: var(--theme-link-hover-color, var(--linkHoverColor));
 }
-
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination .pagination-link.is-current {
   color: var(--theme-text-colorActive, var(--colorActive)) !important;
   background: var(--theme-link-hover-color, var(--linkHoverColor));
 }
-
 .theme-items-list .advanced-search-criteria-title hr {
   display: none;
 }
-
 .theme-items-list input.input,
 .theme-items-list .input,
 .theme-items-list textarea.textarea,
 .theme-items-list .textarea,
-.theme-items-list input[type="color"].input,
-.theme-items-list input[type="date"].input,
-.theme-items-list input[type="datetime-local"].input,
-.theme-items-list input[type="datetime"].input,
-.theme-items-list input[type="email"].input,
-.theme-items-list input[type="number"].input,
-.theme-items-list input[type="month"].input,
-.theme-items-list input[type="password"].input,
-.theme-items-list input[type="search"].input,
-.theme-items-list input[type="tel"].input,
-.theme-items-list input[type="text"].input,
-.theme-items-list input[type="time"].input,
-.theme-items-list input[type="url"].input,
-.theme-items-list input[type="week"].input {
+.theme-items-list input[type=color].input,
+.theme-items-list input[type=date].input,
+.theme-items-list input[type=datetime-local].input,
+.theme-items-list input[type=datetime].input,
+.theme-items-list input[type=email].input,
+.theme-items-list input[type=number].input,
+.theme-items-list input[type=month].input,
+.theme-items-list input[type=password].input,
+.theme-items-list input[type=search].input,
+.theme-items-list input[type=tel].input,
+.theme-items-list input[type=text].input,
+.theme-items-list input[type=time].input,
+.theme-items-list input[type=url].input,
+.theme-items-list input[type=week].input {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px)) !important;
   border: 1px solid var(--tainacan-input-border-color);
 }
-
 .theme-items-list .tainacan-form.tainacan-dialog footer .button {
   min-height: var(--theme-button-min-height, 40px);
 }
@@ -330,16 +287,13 @@
 .entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) {
   padding: 6px 18px;
 }
-
 .entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) .search-control {
   padding: 20px 20px 6px 20px !important;
 }
-
 .entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) .table-container {
   padding-left: 10px !important;
   padding-right: 10px !important;
 }
-
 .entry-content:not(.ct-container) .theme-items-list:not(.is-fullscreen) #filters-modal .modal-content {
   padding: 16px 10px;
 }
@@ -388,96 +342,84 @@ body:not(.tainacan-admin-page) .tainacan-dialog {
   --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
   --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
 }
-
 body:not(.tainacan-admin-page) .tainacan-modal-content,
 body:not(.tainacan-admin-page) .tainacan-dialog {
   border-radius: var(--theme-border-radius, var(--borderRadius, 6px));
 }
-
 body:not(.tainacan-admin-page) .tainacan-modal-content .tainacan-modal-title hr,
 body:not(.tainacan-admin-page) .tainacan-dialog .tainacan-modal-title hr {
   display: none;
 }
-
 body:not(.tainacan-admin-page) .tainacan-modal-content .tabs li,
 body:not(.tainacan-admin-page) .tainacan-dialog .tabs li {
   margin-bottom: 0px;
 }
-
 body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body,
 body:not(.tainacan-admin-page) .tainacan-dialog .modal-card-body {
   background-color: var(--tainacan-background-color, white);
 }
-
 body:not(.tainacan-admin-page) .tainacan-modal-content footer .button,
 body:not(.tainacan-admin-page) .tainacan-dialog footer .button {
   min-height: var(--theme-button-min-height, 40px);
 }
 
 /* Collection Items List */
-body[class*=' post-type-archive-tnc_col_'] .hero-section[data-type="type-1"],
-body[class*=' tax-tnc_'] .hero-section[data-type="type-1"],
-body[data-prefix="tainacan-repository-items_archive"] .hero-section[data-type="type-1"],
-body[data-prefix="tainacan-terms-items_archive"] .hero-section[data-type="type-1"] {
+body[class*=" post-type-archive-tnc_col_"] .hero-section[data-type=type-1],
+body[class*=" tax-tnc_"] .hero-section[data-type=type-1],
+body[data-prefix=tainacan-repository-items_archive] .hero-section[data-type=type-1],
+body[data-prefix=tainacan-terms-items_archive] .hero-section[data-type=type-1] {
   padding-top: var(--theme-content-vertical-spacing);
 }
-
-body[class*=' post-type-archive-tnc_col_'] .hero-section.has-thumbnail-enabled > [class*="ct-container"],
-body[class*=' tax-tnc_'] .hero-section.has-thumbnail-enabled > [class*="ct-container"],
-body[data-prefix="tainacan-repository-items_archive"] .hero-section.has-thumbnail-enabled > [class*="ct-container"],
-body[data-prefix="tainacan-terms-items_archive"] .hero-section.has-thumbnail-enabled > [class*="ct-container"] {
+body[class*=" post-type-archive-tnc_col_"] .hero-section.has-thumbnail-enabled > [class*=ct-container],
+body[class*=" tax-tnc_"] .hero-section.has-thumbnail-enabled > [class*=ct-container],
+body[data-prefix=tainacan-repository-items_archive] .hero-section.has-thumbnail-enabled > [class*=ct-container],
+body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabled > [class*=ct-container] {
   display: block;
 }
-
-body[class*=' post-type-archive-tnc_col_'] .hero-section.has-thumbnail-enabled .page-title,
-body[class*=' tax-tnc_'] .hero-section.has-thumbnail-enabled .page-title,
-body[data-prefix="tainacan-repository-items_archive"] .hero-section.has-thumbnail-enabled .page-title,
-body[data-prefix="tainacan-terms-items_archive"] .hero-section.has-thumbnail-enabled .page-title {
+body[class*=" post-type-archive-tnc_col_"] .hero-section.has-thumbnail-enabled .page-title,
+body[class*=" tax-tnc_"] .hero-section.has-thumbnail-enabled .page-title,
+body[data-prefix=tainacan-repository-items_archive] .hero-section.has-thumbnail-enabled .page-title,
+body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabled .page-title {
   margin-top: 0px;
   margin-bottom: 4px;
   display: block;
   clear: none;
 }
-
-body[class*=' post-type-archive-tnc_col_'] .hero-section.has-thumbnail-enabled .page-description,
-body[class*=' post-type-archive-tnc_col_'] .hero-section.has-thumbnail-enabled .page-description p,
-body[class*=' tax-tnc_'] .hero-section.has-thumbnail-enabled .page-description,
-body[class*=' tax-tnc_'] .hero-section.has-thumbnail-enabled .page-description p,
-body[data-prefix="tainacan-repository-items_archive"] .hero-section.has-thumbnail-enabled .page-description,
-body[data-prefix="tainacan-repository-items_archive"] .hero-section.has-thumbnail-enabled .page-description p,
-body[data-prefix="tainacan-terms-items_archive"] .hero-section.has-thumbnail-enabled .page-description,
-body[data-prefix="tainacan-terms-items_archive"] .hero-section.has-thumbnail-enabled .page-description p {
+body[class*=" post-type-archive-tnc_col_"] .hero-section.has-thumbnail-enabled .page-description,
+body[class*=" post-type-archive-tnc_col_"] .hero-section.has-thumbnail-enabled .page-description p,
+body[class*=" tax-tnc_"] .hero-section.has-thumbnail-enabled .page-description,
+body[class*=" tax-tnc_"] .hero-section.has-thumbnail-enabled .page-description p,
+body[data-prefix=tainacan-repository-items_archive] .hero-section.has-thumbnail-enabled .page-description,
+body[data-prefix=tainacan-repository-items_archive] .hero-section.has-thumbnail-enabled .page-description p,
+body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabled .page-description,
+body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabled .page-description p {
   display: block !important;
   clear: none;
 }
-
-body[class*=' post-type-archive-tnc_col_'] .ct-title-label,
-body[class*=' tax-tnc_'] .ct-title-label,
-body[data-prefix="tainacan-repository-items_archive"] .ct-title-label,
-body[data-prefix="tainacan-terms-items_archive"] .ct-title-label {
+body[class*=" post-type-archive-tnc_col_"] .ct-title-label,
+body[class*=" tax-tnc_"] .ct-title-label,
+body[data-prefix=tainacan-repository-items_archive] .ct-title-label,
+body[data-prefix=tainacan-terms-items_archive] .ct-title-label {
   font-weight: normal;
 }
-
-body[class*=' post-type-archive-tnc_col_'] .ct-title-label::after,
-body[class*=' tax-tnc_'] .ct-title-label::after,
-body[data-prefix="tainacan-repository-items_archive"] .ct-title-label::after,
-body[data-prefix="tainacan-terms-items_archive"] .ct-title-label::after {
-  content: ': ';
+body[class*=" post-type-archive-tnc_col_"] .ct-title-label::after,
+body[class*=" tax-tnc_"] .ct-title-label::after,
+body[data-prefix=tainacan-repository-items_archive] .ct-title-label::after,
+body[data-prefix=tainacan-terms-items_archive] .ct-title-label::after {
+  content: ": ";
 }
-
-body[class*=' post-type-archive-tnc_col_'] .collection-thumbnail,
-body[class*=' tax-tnc_'] .collection-thumbnail,
-body[data-prefix="tainacan-repository-items_archive"] .collection-thumbnail,
-body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail {
+body[class*=" post-type-archive-tnc_col_"] .collection-thumbnail,
+body[class*=" tax-tnc_"] .collection-thumbnail,
+body[data-prefix=tainacan-repository-items_archive] .collection-thumbnail,
+body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail {
   max-width: calc(var(--thumbnail-size, 20%) - 24px);
   float: left;
   margin-right: 24px;
 }
-
-body[class*=' post-type-archive-tnc_col_'] .collection-thumbnail img,
-body[class*=' tax-tnc_'] .collection-thumbnail img,
-body[data-prefix="tainacan-repository-items_archive"] .collection-thumbnail img,
-body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
+body[class*=" post-type-archive-tnc_col_"] .collection-thumbnail img,
+body[class*=" tax-tnc_"] .collection-thumbnail img,
+body[data-prefix=tainacan-repository-items_archive] .collection-thumbnail img,
+body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
 }
 
@@ -491,12 +433,10 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 .tainacan-collection-header .tainacan-collection-header__box {
   width: 100%;
   padding: 20px;
 }
-
 .tainacan-collection-header .tainacan-collection-header__box > .collection-thumbnail + * {
   margin-top: 0px;
 }
@@ -504,18 +444,15 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
 .page.has-page-header-style-boxed .hero-section {
   margin-bottom: 0.125rem;
 }
-
 .page.has-page-header-style-boxed .theme-items-list:not(.is-fullscreen) {
   grid-template-columns: 1fr minmax(auto, var(--maxSiteWidth, 1300px)) 1fr;
 }
-
 .page.has-page-header-style-boxed .tainacan-collection-header .tainacan-collection-header__box {
   width: var(--maxSiteWidth, 1290px);
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px)) var(--theme-border-radius, var(--borderRadius, 3px)) 0 0;
   background-color: var(--tainacan-item-background-color, #fff);
   box-shadow: var(--theme-box-shadow, var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04)));
 }
-
 .page.has-page-header-style-boxed .search-control {
   background-color: var(--tainacan-item-background-color, white);
   box-shadow: var(--theme-box-shadow, var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04)));
@@ -528,14 +465,12 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   /* Metadata section layouts */
   /* Items related to this section */
 }
-
 .tainacan-item-single-page .tainacan-item-section {
   max-width: var(--block-max-width);
   align-self: flex-start;
   align-self: start;
   margin-bottom: 2.5rem;
 }
-
 .tainacan-item-single-page .tainacan-item-single {
   flex-wrap: wrap;
   display: flex;
@@ -545,125 +480,101 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   grid-column-gap: 48px;
   column-gap: 48px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section--document,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section--gallery {
   grid-area: document;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section--attachments {
   grid-area: attachments;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section--metadata,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section--metadata-sections {
   grid-area: metadata;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section--items-related-to-this {
   grid-area: related;
 }
-
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-dam {
-  grid-template-areas: 'document' 'attachments' 'metadata' 'related';
+  grid-template-areas: "document" "attachments" "metadata" "related";
   grid-template-columns: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-dma {
-  grid-template-areas: 'document' 'metadata' 'attachments' 'related';
+  grid-template-areas: "document" "metadata" "attachments" "related";
   grid-template-columns: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-mda {
-  grid-template-areas: 'metadata' 'document' 'attachments' 'related';
+  grid-template-areas: "metadata" "document" "attachments" "related";
   grid-template-columns: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-mg {
-  grid-template-areas: 'metadata document'  'metadata related' 'metadata .';
+  grid-template-areas: "metadata document" "metadata related" "metadata .";
   grid-template-columns: 60% 40%;
 }
-
 @media only screen and (max-width: 960px) {
   .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-mg {
-    grid-template-areas: 'metadata' 'document' 'related';
+    grid-template-areas: "metadata" "document" "related";
     grid-template-columns: 100% !important;
   }
 }
-
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-gm {
-  grid-template-areas: 'document metadata'  'related metadata' '. metadata';
+  grid-template-areas: "document metadata" "related metadata" ". metadata";
   grid-template-columns: 60% 40%;
 }
-
 @media only screen and (max-width: 960px) {
   .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-gm {
-    grid-template-areas: 'document' 'metadata' 'related';
+    grid-template-areas: "document" "metadata" "related";
     grid-template-columns: 100% !important;
   }
 }
-
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-gtm {
-  grid-template-areas: 'metadata' 'related';
+  grid-template-areas: "metadata" "related";
   grid-template-columns: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single h1 {
   --fontSize: 30px;
   --theme-font-size: 30px;
 }
-
 .tainacan-item-single-page .tainacan-item-single h2:not(.tainacan-single-item-section) {
   --fontSize: 22px;
   --theme-font-size: 22px;
 }
-
 .tainacan-item-single-page .tainacan-item-single h3:not(.tainacan-metadata-label) {
   --fontSize: 20px;
   --theme-font-size: 20px;
 }
-
 .tainacan-item-single-page .tainacan-item-single h4 {
   --fontSize: 18px;
   --theme-font-size: 18px;
 }
-
 .tainacan-item-single-page .tainacan-item-single h5 {
   --fontSize: 16px;
   --theme-font-size: 16px;
 }
-
 .tainacan-item-single-page .tainacan-item-single h6 {
   --fontSize: 14px;
   --theme-font-size: 14px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-single-item-section {
   text-align: var(--section-alignment, left);
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata {
   height: 100%;
   -moz-column-width: var(--metadata-column-width, 400px);
   -webkit-column-width: var(--metadata-column-width, 400px);
   column-width: var(--metadata-column-width, 400px);
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata div {
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
   break-inside: avoid;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata div:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) {
   display: inline-block;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata > div,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadatum {
   width: 100%;
 }
-
 @media only screen and (min-width: 768px) {
   .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata {
     -moz-column-gap: 0;
@@ -674,7 +585,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     column-rule: none;
   }
 }
-
 @media only screen and (min-width: 1366px) {
   .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata {
     -moz-column-gap: 7rem;
@@ -685,42 +595,34 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     column-rule: none;
   }
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata h3 {
   padding-right: 1rem;
   margin-bottom: 0.25rem;
   margin-top: 0.5rem;
   width: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata h3:first-of-type:last-of-type {
   display: inline-block;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata h4,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata label {
   padding-right: 0.875rem;
   width: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata h4:first-of-type:last-of-type,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata label:first-of-type:last-of-type {
   display: inline-block;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p {
   word-wrap: break-word;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata iframe {
   border: none;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-label {
   text-align: var(--metadata-label-alignment, left);
   border-bottom: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value {
   text-align: var(--metadata-value-alignment, left);
   font-family: var(--theme-font-family, var(--fontFamily));
@@ -736,29 +638,23 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   padding-bottom: 0.75rem;
   border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-item-section__metadata-thumbnail img {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p:empty {
   display: none;
   visibility: hidden;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .multivalue-separator {
   color: #a5a5a5;
   margin: 0 8px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .hierarchy-separator {
   color: #a5a5a5;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .metadata-type-geocoordinate > div {
   width: 100%;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .metadata-type-compound .multivalue-separator,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .metadata-type-textarea .multivalue-separator {
   display: block;
@@ -769,41 +665,34 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   color: transparent;
   margin: 0.875rem auto;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group {
   padding-top: 0.5em;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
   padding-left: 1.5rem;
   border-left: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group .label {
   margin: 0;
   padding: 0;
   font-style: normal;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group p {
   margin-top: 0rem;
   margin-bottom: 0.5rem;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-compound-group > .multivalue-separator {
   margin: 1em auto 1.5em -1.5em;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-relationship-metadatum-header {
   display: flex;
   align-items: center;
   margin-bottom: 0.5em;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-relationship-metadatum-header img {
   margin-right: 12px;
   max-width: 28px;
   max-height: 28px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-relationship-metadatum-header .label {
   font-weight: normal;
   font-style: normal;
@@ -813,23 +702,19 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   margin-right: 0;
   padding: 0;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-metadatum {
   padding-left: 40px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-metadatum .label {
   font-size: 1em;
   line-height: 1em;
   margin-top: 0px;
   margin-bottom: 2px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group .tainacan-relationship-metadatum .tainacan-metadatum p {
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-relationship-group > .multivalue-separator {
   display: block;
   max-height: 1px;
@@ -839,24 +724,20 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   color: transparent;
   margin: 0.5em 0 0.5em 40px;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) {
   display: flex;
   flex-wrap: nowrap;
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) .tainacan-metadata-label {
   flex-basis: 40%;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
   border-bottom: none;
   border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
 }
-
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) .tainacan-metadata-value {
   flex-basis: 60%;
   padding-left: 1rem;
 }
-
 @media only screen and (max-width: 767px) {
   .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata.metadata-type-2 .tainacan-item-section__metadatum:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) {
     flex-wrap: wrap;
@@ -870,20 +751,17 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     padding-left: 0;
   }
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs .tainacan-item-section {
   width: 100%;
   display: none;
   padding: 2rem 42px 1rem 42px;
   border-top: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs label {
   width: 100%;
   text-align: center;
@@ -893,29 +771,23 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   border-bottom: 3px solid transparent;
   transition: border-bottom 0.2s ease;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs label .tainacan-single-item-section {
   margin: 0.75rem 1.5rem;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs label:hover {
-  opacity: 1.0;
+  opacity: 1;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs input {
   position: absolute;
   opacity: 0;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs input:checked + label {
-  opacity: 1.0;
+  opacity: 1;
   border-bottom-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs input:checked + label + .tainacan-item-section {
   display: block;
 }
-
 @media screen and (min-width: 768px) {
   .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs label {
     width: auto;
@@ -924,12 +796,10 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     order: 99;
   }
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion {
   box-sizing: border-box;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses .tainacan-item-section,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion .tainacan-item-section {
   width: 100%;
@@ -938,7 +808,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   border-bottom: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
   margin-bottom: 0;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses label,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion label {
   display: flex;
@@ -950,51 +819,42 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   border-bottom: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
   transition: opacity 0.2s ease;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses label .tainacan-single-item-section,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion label .tainacan-single-item-section {
   margin: 0.75rem;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses label .tainacan-icon,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion label .tainacan-icon {
   color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
   transform: rotate(0deg);
   transition: transform 0.2s ease;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses label .tainacan-icon::before,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion label .tainacan-icon::before {
   font-size: 1.75em;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses label:hover,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion label:hover {
-  opacity: 1.0;
+  opacity: 1;
   border-bottom: 1px solid var(--theme-form-field-border-initial-color, var(--form-field-border-initial-color, #e0e5eb));
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input {
   position: absolute;
   opacity: 0;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input:checked + label,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input:checked + label {
-  opacity: 1.0;
+  opacity: 1;
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input:checked + label .tainacan-icon,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input:checked + label .tainacan-icon {
   transform: rotate(90deg);
 }
-
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input:checked + label + .tainacan-item-section,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input:checked + label + .tainacan-item-section {
   display: block;
 }
-
 .tainacan-item-single-page .tainacan-item-section--items-related-to-this .wp-block-tainacan-dynamic-items-list {
   margin-top: 0.25em;
   margin-bottom: 0.5em;
@@ -1011,7 +871,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   --tainacan-media-thumbs-carousel-width: var(--attachments-carousel-width, 100%);
   --tainacan-media-thumbs-carousel-item-size: var(--attachments-size, 140px);
 }
-
 .tainacan-item-single-page .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-metadata__name,
 .tainacan-item-single-page .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-metadata__caption,
 .tainacan-item-single-page .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-metadata__description,
@@ -1028,13 +887,11 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   -webkit-text-decoration: var(--theme-text-decoration, var(--textDecoration));
   text-decoration: var(--theme-text-decoration, var(--textDecoration));
 }
-
 .tainacan-item-single-page .tainacan-media-component .tainacan-media-component__swiper-thumbs,
 .tainacan-gallery-above-title .tainacan-media-component .tainacan-media-component__swiper-thumbs {
   font-weight: normal;
   transition: font-weight 0.3s ease;
 }
-
 .tainacan-item-single-page .tainacan-media-component .tainacan-media-component__swiper-thumbs img,
 .tainacan-gallery-above-title .tainacan-media-component .tainacan-media-component__swiper-thumbs img {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
@@ -1042,7 +899,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   margin-bottom: 4px;
   transition: border 0.3s ease;
 }
-
 .tainacan-item-single-page .tainacan-media-component .tainacan-media-component__swiper-thumbs .swiper-slide-metadata__name,
 .tainacan-gallery-above-title .tainacan-media-component .tainacan-media-component__swiper-thumbs .swiper-slide-metadata__name {
   display: block;
@@ -1057,7 +913,11 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   -webkit-text-decoration: var(--theme-text-decoration, var(--textDecoration));
   text-decoration: var(--theme-text-decoration, var(--textDecoration));
 }
-
+.tainacan-item-single-page .wp-block-tainacan-related-items .tainacan-media-component,
+.tainacan-gallery-above-title .wp-block-tainacan-related-items .tainacan-media-component {
+  --tainacan-media-main-carousel-height: var(--gallery-height, 60vh);
+  --tainacan-media-thumbs-carousel-item-size: var(--thumbnails-size, 140px);
+}
 @media screen and (min-width: 960px) {
   .tainacan-item-single-page .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery,
   .tainacan-gallery-above-title .tainacan-item-single--affix-column .tainacan-item-section.tainacan-item-section--gallery {
@@ -1065,7 +925,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     top: 2rem;
   }
 }
-
 .tainacan-item-single-page .tainacan-item-file-download,
 .tainacan-gallery-above-title .tainacan-item-file-download {
   position: absolute;
@@ -1082,7 +941,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   color: white;
   transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 }
-
 .tainacan-item-single-page .tainacan-item-file-download a,
 .tainacan-gallery-above-title .tainacan-item-file-download a {
   height: 38px;
@@ -1093,7 +951,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   background: transparent !important;
   padding: 0px !important;
 }
-
 .tainacan-item-single-page .tainacan-item-file-download::after,
 .tainacan-gallery-above-title .tainacan-item-file-download::after {
   position: relative;
@@ -1109,25 +966,21 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   font-size: 1.25em;
   text-transform: none !important;
   letter-spacing: normal !important;
-  content: 'download';
+  content: "download";
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .tainacan-item-single-page .tainacan-item-section__document,
 .tainacan-gallery-above-title .tainacan-item-section__document {
   position: relative;
 }
-
-.tainacan-item-single-page .tainacan-item-section__document > .twitter-tweet,
-.tainacan-item-single-page .tainacan-item-section__document > iframe.wp-embedded-content,
+.tainacan-item-single-page .tainacan-item-section__document > .twitter-tweet, .tainacan-item-single-page .tainacan-item-section__document > iframe.wp-embedded-content,
 .tainacan-gallery-above-title .tainacan-item-section__document > .twitter-tweet,
 .tainacan-gallery-above-title .tainacan-item-section__document > iframe.wp-embedded-content {
   margin-left: auto;
   margin-right: auto;
 }
-
 .tainacan-item-single-page .tainacan-media-component__swiper-main:hover .tainacan-item-file-download,
 .tainacan-item-single-page .tainacan-item-section__document:hover .tainacan-item-file-download,
 .tainacan-gallery-above-title .tainacan-media-component__swiper-main:hover .tainacan-item-file-download,
@@ -1142,15 +995,13 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   margin-bottom: var(--content-vertical-spacing);
   margin-left: var(--has-boxed, calc(-1 * var(--boxed-content-spacing)));
   margin-right: var(--has-boxed, calc(-1 * var(--boxed-content-spacing)));
-  padding-top: calc(var(--content-vertical-spacing)/2);
-  padding-bottom: calc(var(--content-vertical-spacing)/2);
+  padding-top: calc(var(--content-vertical-spacing) / 2);
+  padding-bottom: calc(var(--content-vertical-spacing) / 2);
 }
-
 .tainacan-gallery-above-title:empty {
   display: none;
   visibility: hidden;
 }
-
 .tainacan-gallery-above-title .tainacan-media-component {
   --tainacan-media-background: var(--tainacan-media-background-color, var(--theme-palette-color-7, var(--paletteColor7)));
   --swiper-navigation-color: var(--tainacan-media-accent-color, var(--theme-palette-color-1, var(--paletteColor1)));
@@ -1158,7 +1009,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   --tainacan-label-color: var(--tainacan-media-color, --tainacan-label-color);
   --tainacan-info-color: var(--tainacan-media-color, --tainacan-info-color);
 }
-
 .tainacan-gallery-above-title .tainacan-item-section {
   margin: 0 auto;
 }
@@ -1167,19 +1017,15 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
 .tainacan-media-component-wrapper-spacing--minimum {
   --theme-border-radius: 0px;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component {
   gap: 0px;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main ul.swiper-wrapper {
   max-height: var(--tainacan-media-main-carousel-height, 60vh);
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main li.swiper-slide {
   padding: 0;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content {
   text-align: center;
   display: flex;
@@ -1187,13 +1033,11 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   justify-content: center;
   overflow: hidden;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content a:first-of-type,
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content p:first-of-type {
   padding: 0;
   flex-grow: 1;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content img {
   width: auto;
   height: 100%;
@@ -1201,19 +1045,16 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   object-fit: cover;
   object-position: center;
 }
-
-@media (min-aspect-ratio: 1 / 1) {
+@media (min-aspect-ratio: 1/1) {
   .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content img {
     width: 100%;
     height: auto;
   }
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content video,
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content audio {
-  margin: calc( 1.5 * var(--swiper-navigation-size));
+  margin: calc(1.5 * var(--swiper-navigation-size));
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main li.swiper-slide .swiper-slide-metadata {
   background-color: var(--tainacan-media-background-color, var(--theme-palette-color-7, var(--paletteColor7)));
   border-radius: 2px;
@@ -1222,9 +1063,8 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   bottom: 0;
   position: absolute;
   z-index: 99;
-  left: calc( 1.5 * var(--swiper-navigation-size));
+  left: calc(1.5 * var(--swiper-navigation-size));
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-button-prev,
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main .swiper-button-next {
   border-radius: 100em;
@@ -1233,18 +1073,15 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   background: rgba(255, 255, 255, 0);
   transition: background-color 0.2s ease;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main:hover .swiper-button-prev,
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main:hover .swiper-button-next, .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main:focus .swiper-button-prev,
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-main:focus .swiper-button-next {
   background: var(--tainacan-media-background-color, var(--theme-palette-color-7, var(--paletteColor7)));
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-thumbs ul.swiper-wrapper {
   max-width: 100%;
   margin: 0;
 }
-
 .tainacan-media-component-wrapper-spacing--minimum .tainacan-media-component .tainacan-media-component__swiper-thumbs li.swiper-slide:not(.has-fixed-height) {
   max-width: var(--tainacan-media-thumbs-carousel-item-size, 136px);
 }
@@ -1259,15 +1096,13 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     max-height: var(--tainacan-media-main-carousel-height, 60vh);
   }
 }
-
-@media only screen and (min-width: 961px) and (min-aspect-ratio: 4 / 3) {
+@media only screen and (min-width: 961px) and (min-aspect-ratio: 4/3) {
   .tainacan-media-component-wrapper-thumbnails-at--right .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content img,
   .tainacan-media-component-wrapper-thumbnails-at--left .tainacan-media-component .tainacan-media-component__swiper-main .swiper-slide-content img {
     width: 100%;
     height: auto;
   }
 }
-
 @media only screen and (min-width: 961px) {
   .tainacan-media-component-wrapper-thumbnails-at--right .tainacan-media-component .tainacan-media-component__swiper-thumbs,
   .tainacan-media-component-wrapper-thumbnails-at--left .tainacan-media-component .tainacan-media-component__swiper-thumbs {
@@ -1305,6 +1140,8 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     bottom: 0px;
     top: unset;
   }
+}
+@media only screen and (min-width: 961px) {
   .tainacan-media-component-wrapper-thumbnails-at--left .tainacan-media-component__swiper-thumbs {
     margin-right: 0px;
   }
@@ -1314,6 +1151,8 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   .tainacan-media-component-wrapper-thumbnails-at--left .tainacan-media-component {
     flex-direction: row-reverse;
   }
+}
+@media only screen and (min-width: 961px) {
   .tainacan-media-component-wrapper-thumbnails-at--right .tainacan-media-component__swiper-thumbs {
     margin-left: 0px;
   }
@@ -1321,7 +1160,6 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
     margin-right: 0px;
   }
 }
-
 #tainacan-taxonomy-terms-list-form {
   display: flex;
   flex-wrap: nowrap;
@@ -1330,43 +1168,36 @@ body[data-prefix="tainacan-terms-items_archive"] .collection-thumbnail img {
   align-items: end;
   margin: 1rem 0 1.5rem;
 }
-
 @media screen and (min-width: 1024px) {
   #tainacan-taxonomy-terms-list-form #tainacan-taxonomy-sorting-field > .wp-block-group {
     flex-wrap: nowrap !important;
   }
 }
 
-.tainacan-taxonomy-terms-list-container .entries[data-archive="default"] .entry-card.entry-card {
+.tainacan-taxonomy-terms-list-container .entries[data-archive=default] .entry-card.entry-card {
   align-items: center;
 }
-
-.tainacan-taxonomy-terms-list-container .entries[data-archive="default"] .entry-card.entry-card .term-name {
+.tainacan-taxonomy-terms-list-container .entries[data-archive=default] .entry-card.entry-card .term-name {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
-
-.tainacan-taxonomy-terms-list-container .entries[data-archive="default"] .entry-card.entry-card .term-hierarchy-path {
+.tainacan-taxonomy-terms-list-container .entries[data-archive=default] .entry-card.entry-card .term-hierarchy-path {
   margin-top: 0px;
   margin-bottom: -0.25rem;
 }
-
 .tainacan-taxonomy-terms-list-container .term-description {
   word-break: break-word;
 }
-
 .tainacan-taxonomy-terms-list-container .term-information {
   width: 100%;
 }
-
-.tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) .ct-image-container img,
-.tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) .ct-media-container img {
+.tainacan-taxonomy-terms-list-container .entries:not([data-layout=grid]) .ct-image-container img,
+.tainacan-taxonomy-terms-list-container .entries:not([data-layout=grid]) .ct-media-container img {
   aspect-ratio: 4/3;
 }
-
 @media (min-width: 690px) {
-  .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) article > .ct-image-container,
-  .tainacan-taxonomy-terms-list-container .entries:not([data-layout="grid"]) article > .ct-media-container {
+  .tainacan-taxonomy-terms-list-container .entries:not([data-layout=grid]) article > .ct-image-container,
+  .tainacan-taxonomy-terms-list-container .entries:not([data-layout=grid]) article > .ct-media-container {
     max-width: 25%;
     flex-shrink: 0;
     margin-inline-end: 0;
