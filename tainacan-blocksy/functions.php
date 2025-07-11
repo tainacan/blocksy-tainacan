@@ -4,7 +4,7 @@ Plugin Name: Tainacan Support for Blocksy
 Plugin URI: https://tainacan.org/
 Description: Tainacan plugin support for Blocksy theme
 Author: tainacan
-Version: 0.3.7
+Version: 0.4.0
 Text Domain: tainacan-blocksy
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,11 +15,11 @@ if (! defined('WP_DEBUG') ) {
 }
 
 /** Theme/plugin version */
-const TAINACAN_BLOCKSY_VERSION = '0.3.7';
+const TAINACAN_BLOCKSY_VERSION = '0.4.0';
 const TAINACAN_BLOCKSY_IS_CHILD_THEME = false;
 
 /* Tools to define our next constants */
-require 'utils.php';
+require_once 'utils.php';
 
 $plugin_root_url = tainacan_blocksy_get_plugin_dir_url();
 define('TAINACAN_BLOCKSY_PLUGIN_URL_PATH', $plugin_root_url);
@@ -37,7 +37,10 @@ define('TAINACAN_BLOCKSY_BLOCKSY_THEME_VERSION', $tainacan_blocksy_theme_version
 if ( TAINACAN_BLOCKSY_IS_CHILD_THEME || ( TAINACAN_BLOCKSY_IS_BLOCKSY_ACTIVATED && !TAINACAN_BLOCKSY_IS_CHILD_THEME ) ) {
 
 	/* Basic styles and script enqueues */
-	require TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/enqueues.php';
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/enqueues.php';
+
+	/* Singleton trait used by some classes */
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/singleton.php';
 
 	/* Template redirection necessary only if in a plugin */
 	if ( !TAINACAN_BLOCKSY_IS_CHILD_THEME ) {
@@ -49,11 +52,12 @@ if ( TAINACAN_BLOCKSY_IS_CHILD_THEME || ( TAINACAN_BLOCKSY_IS_BLOCKSY_ACTIVATED 
 		if ( !defined('TAINACAN_DISABLE_TAXONOMY_THE_CONTENT_FILTER') )
 			define('TAINACAN_DISABLE_TAXONOMY_THE_CONTENT_FILTER', true);
 
-		require TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/plugin.php';
+		require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/plugin.php';
 	}
 
 	/* Requires several settings, functions and helpers */
-	require TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/integration.php';
-	require TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/customizer.php';
-	require TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/navigation.php';
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/integration.php';
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/class-tainacan-blocksy-customizer.php';
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/navigation.php';
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/class-tainacan-blocksy-collection-hooks.php';
 }

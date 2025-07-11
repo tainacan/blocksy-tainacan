@@ -1,10 +1,32 @@
 <?php
 
 /**
- * Adds Tainacan repository and term items list to settings on customizer.
+ * This class holds logic for adding Tainacan custom post types to Blocksy customizer.
  */
-if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_panel') ) {
-	function tainacan_blocksy_add_repository_and_terms_items_options_panel($options) {
+class Tainacan_Blocksy_Customizer {
+
+	use Tainacan_Blocksy\Singleton;
+
+	private $collections_that_use_default_item_customizations = [];
+
+	/**
+	 * Initializes the customizer options for Tainacan.
+	 */
+	protected function init() {
+		add_action( 'init', array( $this, 'fetch_collections_that_use_default_item_customizations' ) );
+		add_filter( 'blocksy_extensions_customizer_options', array( $this, 'add_repository_and_terms_items_options_panel'), 10, 1 );
+		add_filter( 'blocksy:custom_post_types:single-options', array( $this, 'custom_post_types_single_options'), 10, 3 );
+		add_filter( 'blocksy:custom_post_types:archive-options', array( $this, 'custom_post_types_archive_options'), 10, 3 );
+		add_filter( 'blocksy:custom_post_types:supported_list', array( $this, 'custom_post_types_supported_list'), 10 );
+		add_filter( 'blocksy:custom_post_types:current_post_type:compute', array( $this, 'custom_post_types_current_post_type'), 10, 1 );
+		add_filter( 'the_content', array( $this, 'the_content_for_items'), 11);
+		add_filter( 'blocksy:hero:dynamic-styles:prefixes', array( $this, 'page_title_styles'), 10, 1 );
+	}
+
+	/**
+	 * Adds Tainacan repository and term items list to settings on customizer.
+	 */
+	function add_repository_and_terms_items_options_panel($options) {
 
 		/* Repository Items List */
 		$repository_items_extra_options = blc_call_fnc(
@@ -84,14 +106,11 @@ if ( !function_exists('tainacan_blocksy_add_repository_and_terms_items_options_p
 
 		return $options;
 	}
-}
-add_filter( 'blocksy_extensions_customizer_options', 'tainacan_blocksy_add_repository_and_terms_items_options_panel', 10, 1 );
 
-/**
- * Adds extra customizer options to items single page template
- */
-if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
-	function tainacan_blocksy_custom_post_types_single_options( $options, $post_type, $post_type_object ) {
+	/**
+	 * Adds extra customizer options to items single page template
+	 */
+	function custom_post_types_single_options( $options, $post_type, $post_type_object ) {
 
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
@@ -103,7 +122,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
 				$is_collection = in_array($post_type, $collections_post_types);
 			}
 
-			if ( $is_collection ) {
+			if ( ( $is_collection || $post_type == 'tnc_blocksy_item' ) && !in_array($post_type, $this->collections_that_use_default_item_customizations ) ) {
 
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
@@ -153,15 +172,11 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_single_options') ) {
 
 		return $options;
 	}
-}
-add_filter( 'blocksy:custom_post_types:single-options', 'tainacan_blocksy_custom_post_types_single_options', 10, 3 );
 
-
-/**
- * Adds extra customizer options to items archive template
- */
-if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
-	function tainacan_blocksy_custom_post_types_archive_options( $options, $post_type, $post_type_object ) {
+	/**
+	 * Adds extra customizer options to items archive template
+	 */
+	function custom_post_types_archive_options( $options, $post_type, $post_type_object ) {
 
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
@@ -172,19 +187,19 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 				$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
 				$is_collection = in_array($post_type, $collections_post_types);
 			}
-
-			if ( $is_collection ) {
+			
+			if ( ( $is_collection || $post_type == 'tnc_blocksy_item' ) && !in_array($post_type, $this->collections_that_use_default_item_customizations ) ) {
 				
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
-					__('Items list from %s', 'tainacan-blocksy'),
+					__('Items list from %s', 'tainacan-blocksy-item'),
 					$post_type_object->labels->name
 				);
 				
 				// Extra options to the archive items list
 				$items_extra_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/posts/tainacan-item-archive.php', [
 					'prefix' => $post_type_object->name,
-					'is_general_cpt' => true
+					'is_general_cpt' => true,
 				], false);
 
 				$items_extra_title_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/archive-elements/page-header.php', [
@@ -213,9 +228,7 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 					$default_title_options[$post_type . '_archive_hero_enabled']['inner-options'][$default_title_options_keys[0]]['options'][1][$post_type . '_archive_hero_elements'] = $items_extra_title_options[$post_type . '_page-header-panel']['inner-options'][$post_type . '_hero_elements'];
 					
 					$options['options'][$archive_options_key]['inner-options'] = $items_extra_options;
-
 					$options['options'][$archive_options_key]['inner-options'][0] = $default_title_options;
-					
 				}
 
 			// We also do some changes on the Collections
@@ -238,32 +251,46 @@ if ( !function_exists('tainacan_blocksy_custom_post_types_archive_options') ) {
 		
 		return $options;
 	}
-}
-add_filter( 'blocksy:custom_post_types:archive-options', 'tainacan_blocksy_custom_post_types_archive_options', 10, 3 );
 
-
-/**
- * Removes tainacan metadatum, metadata section and filters from the custom metadata options in the customizer controller.
- */
-if ( !function_exists('tainacan_blocksy_custom_post_types_supported_list') ) {
-	function tainacan_blocksy_custom_post_types_supported_list( $potential_post_types ) {
+	/**
+	 * Removes tainacan metadatum, metadata section and filters from the custom metadata options in the customizer controller.
+	 */
+	function custom_post_types_supported_list( $potential_post_types ) {
 		
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
 			return array_filter( $potential_post_types, function($post_type) {
-				return !in_array($post_type, [ 'tainacan-metadatum', 'tainacan-filter', 'tainacan-metasection' ]);
+				return !in_array(
+					$post_type, 
+					array_merge(
+						[ 'tainacan-metadatum', 'tainacan-filter', 'tainacan-metasection' ],
+						$this->collections_that_use_default_item_customizations
+					)
+				);
 			});
 		}
 		return $potential_post_types;
 	}
-}
-add_filter( 'blocksy:custom_post_types:supported_list', 'tainacan_blocksy_custom_post_types_supported_list', 10 );
 
-/**
- * Renders the single item page and single taxonomy with a custom template that will use most of Blocksy features
- */
-if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
-	function tainacan_blocksy_the_content_for_items( $content ) {
+	/**
+	 * Changes the current post type to the tnc_blocksy_item post type when the current collection item does not have custom options
+	 * This allows us to tweak in a single cpt multiple collection items options
+	 */
+	function custom_post_types_current_post_type( $post_type ) {
+		// This should only happen if we have Tainacan plugin installed
+		if ( defined ('TAINACAN_VERSION') ) {
+
+			// If the current post type is an item, we return the Tainacan item post type
+			if ( in_array($post_type, $this->collections_that_use_default_item_customizations ) )
+				return 'tnc_blocksy_item';
+		}
+		return $post_type;
+	}
+
+	/**
+	 * Renders the single item page and single taxonomy with a custom template that will use most of Blocksy features
+	 */
+	function the_content_for_items( $content ) {
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
 			
@@ -301,16 +328,34 @@ if ( !function_exists('tainacan_blocksy_the_content_for_items') ) {
 	
 		return $content;
 	}
-}
-add_filter( 'the_content', 'tainacan_blocksy_the_content_for_items', 11);
 
-/**
- * New filter from Blocksy 2.0.0 to allow using the page title styles
- * in the Repository and Terms items list.
- */
-function tainacan_blocksy_page_title_styles($prefixes) {
-	$prefixes[] = 'tainacan-repository-items_archive';
-	$prefixes[] = 'tainacan-terms-items_archive';
-	return $prefixes;
+	/**
+	 * New filter from Blocksy 2.0.0 to allow using the page title styles
+	 * in the Repository and Terms items list.
+	 */
+	function page_title_styles($prefixes) {
+		$prefixes[] = 'tainacan-repository-items_archive';
+		$prefixes[] = 'tainacan-terms-items_archive';
+		return $prefixes;
+	}
+
+	/**
+	 * Fetches all collections that use the default item customizations
+	 */
+	function fetch_collections_that_use_default_item_customizations() {
+		$args = [
+			'posts_per_page' => -1,
+			'nopaging' => true,
+			'meta_query' => [
+				[
+					'key'   => 'tainacan_blocksy_use_default_item_customizations',
+					'value' => 'yes'
+				],
+			]
+		];
+		$collections = \Tainacan\Repositories\Collections::get_instance()->fetch($args, 'OBJECT');
+
+		$this->collections_that_use_default_item_customizations = array_map( function($collection) { return 'tnc_col_' . $collection->get_id() . '_item'; }, $collections );
+	}
 }
-add_filter( 'blocksy:hero:dynamic-styles:prefixes', 'tainacan_blocksy_page_title_styles', 10, 1 );
+Tainacan_Blocksy_Customizer::get_instance();

@@ -76,11 +76,11 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'mobile_css' => $mobile_css,
 	'selector' => blocksy_prefix_selector('.tainacan-media-component', $prefix),
 	'variableName' => 'document-height',
-	'value' => get_theme_mod( $prefix . '_document_height', [
+	'value' => get_theme_mod( $prefix . '_document_height', get_theme_mod( 'tnc_blocksy_item_single_document_height', [
 		'mobile' => '40',
 		'tablet' => '50',
 		'desktop' => '60',
-	]),
+	])),
 	'unit' => 'vh',
 	'defaultUnit' => 'vh',
 ]);
