@@ -4,7 +4,7 @@ $options = [
 	$prefix . '_notification' => [
 			'type' => 'ct-notification',
 			'attr' => [ 'data-type' => 'background:white' ],
-			'text' => '<strong>' . __('This customizations are usually overridden by the collection item single page options.', 'tainacan-blocksy') . '</strong> ' . __('If you wish this options to have impact on a collection, go to it\'s settings page in the Tainacan Admin and change the value for hte "Source of the appearence options" to allow usage of general options inherited from here.', 'tainacan-blocksy')
+			'text' => '<strong>' . __('This customizations are usually overridden by the collection item single page options.', 'tainacan-blocksy') . '</strong> ' . __('If you wish this options to have impact on a collection, go to it\'s settings page in the Tainacan Admin and change the value for the "Source of the appearence options" to allow usage of general options inherited from here.', 'tainacan-blocksy')
 		],
 	
 	blocksy_get_options(
