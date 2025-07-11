@@ -5,7 +5,7 @@ Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 5.9
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 0.3.7
+Stable tag: 0.4.0
 Requires Plugins: tainacan
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,12 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.4.0 =
+* Creates new "Tainacan item" sections in the customizer to allow defining options for multiple collections
+* Adds form hook to collection settings to allow choosing between global settings or per-collection template section.
+* Adds options for tweaking the Items related to this with the new Gallery layout.
+* Shows links from inside term and collection descriptions in archive headers
 
 = 0.3.7 =
 * Fixes terms card fatal error being fired when Blocksy Companion Premimum is installed

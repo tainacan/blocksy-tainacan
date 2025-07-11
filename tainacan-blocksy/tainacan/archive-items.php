@@ -218,6 +218,7 @@ if ( $page_hero_section_style === 'type-2' ) {
                 'elements' => $html_elements
             ]);
         }
+        
         if ( get_theme_mod($prefix . '_hero_enabled', 'yes') === 'yes' && $page_hero_section_style !== 'type-1' && $page_hero_section_style !== 'type-2' ): ?>
             <header 
                 class="tainacan-collection-header entry-header" 

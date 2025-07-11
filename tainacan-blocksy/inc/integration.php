@@ -166,3 +166,19 @@ if ( !function_exists('tainacan_blocksy_post_class') ) {
     }
 }
 add_filter('post_class', 'tainacan_blocksy_post_class');
+
+/**
+ * Registers a 'tainacan-blocksy-item' post type to be used as fallback for a generic configuration of collection items
+ */
+if ( !function_exists('tainacan_blocksy_register_tainacan_item_post_type') ) {
+    function tainacan_blocksy_register_tainacan_item_post_type() {
+        register_post_type('tnc_blocksy_item', [
+            'label' => __('Tainacan', 'tainacan-blocksy'),
+            'public' => true,
+            'show_ui' => false,
+            'show_in_menu' => false,
+            'show_in_rest' => false
+        ]);
+    }
+}
+add_action('init', 'tainacan_blocksy_register_tainacan_item_post_type', 8);
