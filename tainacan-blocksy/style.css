@@ -507,22 +507,22 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
   grid-template-columns: 100%;
 }
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-mg {
-  grid-template-areas: "metadata document" "metadata related" "metadata .";
+  grid-template-areas: "metadata document" "metadata attachments" "metadata related" "metadata .";
   grid-template-columns: 60% 40%;
 }
 @media only screen and (max-width: 960px) {
   .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-mg {
-    grid-template-areas: "metadata" "document" "related";
+    grid-template-areas: "metadata" "document" "attachments" "related";
     grid-template-columns: 100% !important;
   }
 }
 .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-gm {
-  grid-template-areas: "document metadata" "related metadata" ". metadata";
+  grid-template-areas: "document metadata" "attachments metadata" "related metadata" ". metadata";
   grid-template-columns: 60% 40%;
 }
 @media only screen and (max-width: 960px) {
   .tainacan-item-single-page .tainacan-item-single.tainacan-item-single--layout-type-gm {
-    grid-template-areas: "document" "metadata" "related";
+    grid-template-areas: "document" "attachments" "metadata" "related";
     grid-template-columns: 100% !important;
   }
 }
