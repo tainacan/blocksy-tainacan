@@ -94,6 +94,8 @@
 
         } else  if ( $section_layout == 'metadata-section-type-3') {
 
+            wp_enqueue_style( 'tainacan-icons' );
+
             add_filter('tainacan-get-metadata-section-as-html-before-name--index-0', function($before, $item_metadatum) {
                 return str_replace('<input', '<input checked="checked"', $before);
             }, 10, 2);
@@ -119,6 +121,8 @@
             echo '</div>';
 
         } else if ( $section_layout == 'metadata-section-type-4') {
+
+            wp_enqueue_style( 'tainacan-icons' );
 
             add_filter('tainacan-get-metadata-section-as-html-before-name--index-0', function($before, $item_metadatum) {
                 return str_replace('<input', '<input checked="checked"', $before);

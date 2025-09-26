@@ -29,8 +29,13 @@ function tainacan_blocksy_enqueue_scripts() {
 
 	// This should only happen if we have Tainacan plugin installed
 	if ( defined ('TAINACAN_VERSION') ) {
-
 		wp_enqueue_script( 'tainacan-blocksy-scripts', TAINACAN_BLOCKSY_PLUGIN_URL_PATH . '/js/scripts.js', array(), TAINACAN_BLOCKSY_VERSION, true );
+		wp_register_style(
+			'tainacan-icons',
+			TAINACAN_BLOCKSY_PLUGIN_URL_PATH . '/static/css/tainacan-icons.css',
+			array(),
+			TAINACAN_BLOCKSY_VERSION
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'tainacan_blocksy_enqueue_scripts' );
