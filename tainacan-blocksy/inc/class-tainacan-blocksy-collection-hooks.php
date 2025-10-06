@@ -83,11 +83,15 @@ class Tainacan_Blocksy_Collection_Hooks {
                     <label class="label"><?php _e( 'Customizer shortcuts', 'tainacan-blocksy' ); ?></label>
                     <ul style="font-size: 0.875em; padding: 0.125em;">
                         <li>
-                            <a href="<?php echo admin_url('/customize.php?autofocus[section]=post_type_archive_tnc_col_item&ct_autofocus=general:layout_panel');?>" target="_blank">
+                            <a href="<?php echo admin_url('/customize.php?autofocus[section]=post_type_archive_tnc_blocksy_item&ct_autofocus=post_types:post_type_archive_tnc_blocksy_item');?>" target="_blank">
                                 <?php _e('Collection items list', 'tainacan-blocksy'); ?> ↗
                             </a>
                         </li>
-                        <li><a><?php _e('Single item page', 'tainacan-blocksy'); ?> ↗</a></li>
+                        <li>
+							<a href="<?php echo admin_url('/customize.php?autofocus[section]=post_type_single_tnc_blocksy_item&ct_autofocus=post_type_single_tnc_blocksy_item');?>" target="_blank">
+								<?php _e('Single item page', 'tainacan-blocksy'); ?> ↗
+							</a>
+						</li>
                     </ul>
                 </div>
 			</div>
