@@ -10,7 +10,9 @@
     $order_option                 = get_theme_mod( $prefix . '_items_related_to_this_order', 'title_asc' );
     $hide_collection_heading      = get_theme_mod( $prefix . '_items_related_to_this_hide_collection_heading', 'no' ) === 'yes';
     $hide_metadata_label          = get_theme_mod( $prefix . '_items_related_to_this_hide_metadata_label', 'no' ) === 'yes';
-    $tainacan_view_mode           = get_theme_mod( $prefix . '_items_related_to_this_tainacan_view_mode', 'records' );
+    $view_modes = tainacan_get_default_view_mode_choices();
+    $default_fallback_view_mode = isset($view_modes['default_view_mode']) ? $view_modes['default_view_mode'] : 'masonry';
+    $tainacan_view_mode           = get_theme_mod( $prefix . '_items_related_to_this_tainacan_view_mode', $default_fallback_view_mode );
     $image_size                   = get_theme_mod( $prefix . '_items_related_to_this_image_size', 'tainacan-medium');
     $view_more_links_position     = get_theme_mod( $prefix . '_items_related_to_this_view_more_links_position', 'bottom-left' );
     $view_more_links_style        = get_theme_mod( $prefix . '_items_related_to_this_view_more_links_style', 'button' );
