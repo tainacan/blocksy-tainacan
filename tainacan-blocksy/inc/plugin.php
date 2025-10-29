@@ -54,11 +54,11 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
             
             // If the search is in a single collection, go there
             if ( count($searching_post_types) === 1 )
-                wp_redirect( get_post_type_archive_link( $searching_post_types[0] ) . '?search=' . $_GET['s'] );
+                wp_redirect( get_post_type_archive_link( $searching_post_types[0] ) . '?search=' . wp_unslash($_GET['s']) );
 
             // Otherwise, the Items Repository list should do the job
             else
-                wp_redirect( \Tainacan\Theme_Helper::get_instance()->get_items_list_slug() . '?search=' . $_GET['s'] );
+                wp_redirect( \Tainacan\Theme_Helper::get_instance()->get_items_list_slug() . '?search=' . wp_unslash($_GET['s']) );
         }
 
         if (is_post_type_archive()) {
