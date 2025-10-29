@@ -3,11 +3,11 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 5.9
-Tested up to: 6.8.1
+Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 Requires Plugins: tainacan
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
@@ -58,6 +58,12 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.4.2 =
+- Fixes customizer shortcut links
+- Redirects collection breadcrumb in case cover page is enabled
+- Checks default view mode value from global settings in items related to this.
+- Adds TainacanIcon font separately to prepare for Tainacan 1.0.0 way of using it.
 
 = 0.4.1 =
 * Fixes css error on Item template when sided layout is used and document and attachments are separated
