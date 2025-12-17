@@ -788,6 +788,12 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs input:checked + label + .tainacan-item-section {
   display: block;
 }
+.tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs input:focus-visible + label {
+  outline-width: 2px;
+  outline-offset: var(--outline-offset, 3px);
+  outline-color: var(--theme-palette-color-2);
+  outline-style: auto;
+}
 @media screen and (min-width: 768px) {
   .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--tabs label {
     width: auto;
@@ -850,6 +856,13 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input:checked + label .tainacan-icon,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input:checked + label .tainacan-icon {
   transform: rotate(90deg);
+}
+.tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input:focus-visible + label,
+.tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input:focus-visible + label {
+  outline-width: 2px;
+  outline-offset: var(--outline-offset, 3px);
+  outline-color: var(--theme-palette-color-2);
+  outline-style: auto;
 }
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--collapses input:checked + label + .tainacan-item-section,
 .tainacan-item-single-page .tainacan-item-section--metadata-sections .metadata-section-layout--accordion input:checked + label + .tainacan-item-section {

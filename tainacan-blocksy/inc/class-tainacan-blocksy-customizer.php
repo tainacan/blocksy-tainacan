@@ -111,7 +111,7 @@ class Tainacan_Blocksy_Customizer {
 	 * Adds extra customizer options to items single page template
 	 */
 	function custom_post_types_single_options( $options, $post_type, $post_type_object ) {
-
+		
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
 
@@ -130,6 +130,22 @@ class Tainacan_Blocksy_Customizer {
 					$post_type_object->labels->name
 				);
 
+				// Add a notification to the customizer about the special case of the tnc_blocksy_item post type
+				if ( $post_type == 'tnc_blocksy_item' ) {
+					array_splice(
+						$options['options'][$post_type . '_single_section_options']['inner-options'][0],
+						0,
+						0,
+						[ [
+							blocksy_rand_md5() => [
+								'type' => 'ct-notification',
+								'attr' => [ 'data-type' => 'background:white' ],
+								'text' => '<strong>' . __('This customizations are usually overridden by the collection item single page options.', 'tainacan-blocksy') . '</strong> ' . __('If you wish this options to have impact on a collection, go to it\'s settings page in the Tainacan Admin and change the value for the "Source of the appearence options" to allow usage of general options inherited from here.', 'tainacan-blocksy')
+							],
+						] ]
+					);
+				}
+
 				// Extra options to the single item template
 				$item_extra_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/posts/tainacan-item-single.php', [
 					'post_type' => $post_type_object,
@@ -138,12 +154,13 @@ class Tainacan_Blocksy_Customizer {
 
 				if ( is_array($item_extra_options) ) {
 					array_splice(
-						$options['options'][$post_type . '_single_section_options']['inner-options'][0],
+						$options['options'][$post_type . '_single_section_options']['inner-options'][2],
 						0,
 						0,
 						$item_extra_options
 					);
 				}
+
 			} else if ( $post_type == 'tainacan-taxonomy' ) {
 
 				// Change the section title in the customizer
@@ -195,7 +212,7 @@ class Tainacan_Blocksy_Customizer {
 					__('Items list from %s', 'tainacan-blocksy-item'),
 					$post_type_object->labels->name
 				);
-				
+
 				// Extra options to the archive items list
 				$items_extra_options = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/posts/tainacan-item-archive.php', [
 					'prefix' => $post_type_object->name,
@@ -229,6 +246,18 @@ class Tainacan_Blocksy_Customizer {
 					
 					$options['options'][$archive_options_key]['inner-options'] = $items_extra_options;
 					$options['options'][$archive_options_key]['inner-options'][0] = $default_title_options;
+
+					// Add a notification to the customizer about the special case of the tnc_blocksy_item post type
+					if ( $post_type == 'tnc_blocksy_item' ) {
+						$options['options'][$archive_options_key]['inner-options'][0][] =
+							[ [
+								blocksy_rand_md5() => [
+									'type' => 'ct-notification',
+									'attr' => [ 'data-type' => 'background:white' ],
+									'text' => '<strong>' . __('This customizations are usually overridden by the collection items list page options.', 'tainacan-blocksy') . '</strong> ' . __('If you wish this options to have impact on a collection, go to it\'s settings page in the Tainacan Admin and change the value for the "Source of the appearence options" to allow usage of general options inherited from here.', 'tainacan-blocksy')
+								],
+							] ];
+					}
 				}
 
 			// We also do some changes on the Collections
