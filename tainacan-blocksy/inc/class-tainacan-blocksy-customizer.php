@@ -372,19 +372,22 @@ class Tainacan_Blocksy_Customizer {
 	 * Fetches all collections that use the default item customizations
 	 */
 	function fetch_collections_that_use_default_item_customizations() {
-		$args = [
-			'posts_per_page' => -1,
-			'nopaging' => true,
-			'meta_query' => [
-				[
-					'key'   => 'tainacan_blocksy_use_default_item_customizations',
-					'value' => 'yes'
-				],
-			]
-		];
-		$collections = \Tainacan\Repositories\Collections::get_instance()->fetch($args, 'OBJECT');
+		// This should only happen if we have Tainacan plugin installed
+		if ( defined ('TAINACAN_VERSION') ) {
+			$args = [
+				'posts_per_page' => -1,
+				'nopaging' => true,
+				'meta_query' => [
+					[
+						'key'   => 'tainacan_blocksy_use_default_item_customizations',
+						'value' => 'yes'
+					],
+				]
+			];
+			$collections = \Tainacan\Repositories\Collections::get_instance()->fetch($args, 'OBJECT');
 
-		$this->collections_that_use_default_item_customizations = array_map( function($collection) { return 'tnc_col_' . $collection->get_id() . '_item'; }, $collections );
+			$this->collections_that_use_default_item_customizations = array_map( function($collection) { return 'tnc_col_' . $collection->get_id() . '_item'; }, $collections );
+		}
 	}
 }
 Tainacan_Blocksy_Customizer::get_instance();
