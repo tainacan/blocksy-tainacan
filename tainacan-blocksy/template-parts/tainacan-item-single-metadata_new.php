@@ -40,7 +40,7 @@
 
     $metadata_args = array(
         'display_slug_as_class' => true,
-        'before' 				=> '<div class="tainacan-item-section__metadatum metadata-type-$type" id="$id">',
+        'before' 				=> '<div class="tainacan-item-section__metadatum metadata-type-$type" $id>',
 		'after' 				=> '</div>',
         'before_title' => '<h3 class="tainacan-metadata-label">',
         'after_title' => '</h3>',
@@ -106,7 +106,7 @@
                 'after' => '',
                 'before_name' => '<input name="collapses" type="checkbox" id="collapse-section-$id"/>
                             <label for="collapse-section-$id">
-                                <i class="tainacan-icon tainacan-icon-arrowright"></i>
+                                <i class="tainacan-icon tainacan-icon-arrowright" aria-hidden="true"></i>
                                 <h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
                 'after_name' => '</h2>
                             </label>',
@@ -134,7 +134,7 @@
                 'after' => '',
                 'before_name' => '<input name="accordion" type="radio" id="accordion-section-$id"/>
                             <label for="accordion-section-$id">
-                                <i class="tainacan-icon tainacan-icon-arrowright"></i>
+                                <i class="tainacan-icon tainacan-icon-arrowright" aria-hidden="true"></i>
                                 <h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
                 'after_name' => '</h2>
                             </label>',
