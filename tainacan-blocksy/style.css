@@ -980,6 +980,7 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
   text-transform: none !important;
   letter-spacing: normal !important;
   content: "download";
+  content: "download"/"";
   display: flex;
   justify-content: center;
   align-items: center;
