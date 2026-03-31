@@ -6,6 +6,12 @@
  * Text Domain: tainacan-blocksy
  */
 
+
+/* Remaining imports */
+@use './tainacan-item-archive.scss';
+@use './tainacan-item-single.scss';
+@use './tainacan-taxonomy-single.scss';
+
  /* Tainacan Gutenberg Blocks colors */
 :root {
    --tainacan-block-primary: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
@@ -38,23 +44,3 @@
    --tainacan-input-border-radius: var(--theme-form-field-border-radius, var(--form-field-border-radius, 3px));
    --tainacan-button-border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
 }
-// Grid mixin for display: grid compatibility
-@mixin display-grid {
-   flex-wrap: wrap;
-   display: flex;
-   display: -ms-grid;
-   display: grid;
-}
-@mixin grid-child ($col-start, $col-end, $row-start, $row-end) {
-   -ms-grid-column: $col-start;
-   -ms-grid-column-span: $col-end - $col-start;
-   -ms-grid-row: $row-start;
-   -ms-grid-row-span: $row-end - $row-start;
-   grid-column: #{$col-start}/#{$col-end};
-   grid-row: #{$row-start}/#{$row-end};
-}
-
-/* Remaining imports */
-@import './tainacan-item-archive.scss';
-@import './tainacan-item-single.scss';
-@import './tainacan-taxonomy-single.scss';

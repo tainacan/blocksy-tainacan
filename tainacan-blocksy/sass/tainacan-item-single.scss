@@ -13,7 +13,10 @@
     .tainacan-item-single {
         
         // Overall page layout structure -------------------
-        @include display-grid;
+        flex-wrap: wrap;
+        display: flex;
+        display: -ms-grid;
+        display: grid;
         align-items: start;
         grid-column-gap: 48px;
         column-gap: 48px;

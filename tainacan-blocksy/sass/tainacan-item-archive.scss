@@ -12,7 +12,10 @@
     &:not(.is-fullscreen) {
         justify-content: center;
         background: transparent !important;
-        @include display-grid;
+        flex-wrap: wrap;
+        display: flex;
+        display: -ms-grid;
+        display: grid;
         grid-template-columns: 0fr 100% 1fr;
         grid-template-rows: auto 1fr;
         grid-template-areas:

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "compile-compat-styles": "sass --source-map --embed-sources sass/compat.scss compat.css",
-    "css-minify-compat": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output compat.min.css compat.css",
+    "css-minify-compat": "cleancss --format breaksWith=lf --source-map --source-map-inline-sources --output compat.min.css compat.css",
     "compile-styles": "sass --source-map --embed-sources sass/style.scss style.css",
-    "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output style.min.css style.css",
+    "css-minify": "cleancss --format breaksWith=lf --source-map --source-map-inline-sources --output style.min.css style.css",
     "build": "npm run compile-compat-styles && npm run css-minify-compat && npm run compile-styles && npm run css-minify"
   },
   "repository": {
@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/tainacan/blocksy-tainacan#readme",
   "devDependencies": {
-    "clean-css-cli": "^4.3.0",
-    "sass": "1.58.3"
+    "clean-css-cli": "^5.6.3",
+    "sass": "1.94.3"
   },
   "dependencies": {}
 }
