@@ -6,12 +6,32 @@
     align-items: end;
     margin: 1rem 0 1.5rem;
 
+    .wp-block-search__inside-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.5em;
+    }
+    #tainacan-taxonomy-sorting-field {
+        &>.wp-block-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em 1em;
+        }
+    }   
     @media screen and (min-width: 1024px) {
         #tainacan-taxonomy-sorting-field {
             &>.wp-block-group {
                 flex-wrap: nowrap !important;
             }
         }   
+    }
+    @media screen and (max-width: 768px) {
+        & {
+            flex-wrap: wrap;
+        }  
+        #tainacan-taxonomy-search-field {
+            width: 100%;
+        }
     }
 }
 .tainacan-taxonomy-terms-list-container {

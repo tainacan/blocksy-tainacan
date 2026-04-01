@@ -25,7 +25,7 @@ if ( !have_posts() ) {
 	$section_class = 'class="ct-no-results"';
 }
 
-$card_elements = get_theme_mod($prefix . '_archive_order', []);
+$card_elements = blocksy_get_theme_mod($prefix . '_archive_order', []);
 
 $hierarchy_element = [ 'enabled' => false ];
 $name_element = [ 'enabled' => true, 'heading_tag' => 'h2' ];
@@ -67,24 +67,34 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
             tainacan_the_taxonomies_search( [ 'hide_label' => true ] );
             echo '</div>';
 
-            $args = [];
-
             $args = wp_parse_args(
-                $args,
+                [],
                 [
                     'query' => $wp_query,
                     'prefix' => $prefix,
-                    'has_pagination' => true
+                    'has_pagination' => true,
+                    'pagination_args' => [],
                 ]
             );
 
-            $blog_post_structure = get_theme_mod( $prefix . '_structure', 'simple');
-            if ( $blog_post_structure === 'type-4' )
-                $blog_post_structure = 'simple';
-
             if ($args['query']->have_posts()) {
 
-                $entries_open = '<div class="entries" ';
+                wp_enqueue_style('ct-entries-styles');
+
+                // Tainacan terms archive: keep prior behaviour (default `simple`, map type-4 → simple).
+                // Differs from blocksy_listing_page_structure(), which defaults to `grid`.
+                $blog_post_structure = blocksy_get_theme_mod(
+                    $args['prefix'] . '_structure',
+                    'simple'
+                );
+
+                if ($blog_post_structure === 'type-4') {
+                    $blog_post_structure = 'simple';
+                }
+
+                $entries_open = [
+                    'class' => 'entries',
+                ];
 
                 $container_output = apply_filters(
                     'blocksy:posts-listing:container:custom-output',
@@ -93,9 +103,9 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
 
                 $has_cards_type = true;
 
-                if ($container_output) {
-                    $hook_id = blc_get_content_block_that_matches([
-                        'template_type' => 'archive'
+                if ($container_output && function_exists('blocksy_companion_get_content_block_that_matches')) {
+                    $hook_id = blocksy_companion_get_content_block_that_matches([
+                        'template_type' => 'archive',
                     ]);
 
                     $atts = blocksy_get_post_options($hook_id);
@@ -108,27 +118,32 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                         $has_cards_type = false;
                     }
 
-                    $entries_open .= 'data-archive="custom"';
+                    $entries_open['data-archive'] = 'custom';
                 } else {
-                    $entries_open .= 'data-archive="default"';
+                    $entries_open['data-archive'] = 'default';
                 }
 
-                $entries_open .= ' data-layout="' . esc_attr($blog_post_structure) . '"';
+                $entries_open['data-layout'] = esc_attr($blog_post_structure);
 
                 if ($has_cards_type) {
                     $card_type = blocksy_get_listing_card_type([
-                        'prefix' => $prefix
+                        'prefix' => $args['prefix'],
                     ]);
 
                     if ($card_type) {
-                        $entries_open .= ' ' . 'data-cards="' . $card_type . '"';
+                        $entries_open['data-cards'] = $card_type;
                     }
                 }
-                
-                $entries_open .= ' ' . blocksy_schema_org_definitions('blog');
 
-                $archive_order = get_theme_mod(
-                    $prefix . '_archive_order',
+                $entries_open = array_merge(
+                    $entries_open,
+                    blocksy_schema_org_definitions('blog', [
+                        'array' => true,
+                    ])
+                );
+
+                $archive_order = blocksy_get_theme_mod(
+                    $args['prefix'] . '_archive_order',
                     []
                 );
 
@@ -136,53 +151,61 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                     if (! $archive_layer['enabled']) {
                         continue;
                     }
-    
+
                     if ($archive_layer['id'] === 'featured_image') {
                         $hover_effect = blocksy_akg(
                             'image_hover_effect',
                             $archive_layer,
                             'none'
                         );
-    
+
                         if ($hover_effect !== 'none') {
-                            $entries_open .= ' data-hover="' . $hover_effect . '"';
+                            $entries_open['data-hover'] = $hover_effect;
                         }
                     }
                 }
 
-                $entries_open .= ' ' . blocksy_generic_get_deep_link([
-                    'prefix' => $prefix
-                ]) . '>';
-    
+                $entries_open = array_merge(
+                    $entries_open,
+                    blocksy_generic_get_deep_link([
+                        'prefix' => $args['prefix'],
+                        'return' => 'array',
+                    ])
+                );
+
+                $entries_open_html = '<div ' . blocksy_attr_to_html($entries_open) . '>';
+
                 do_action('blocksy:loop:before');
 
                 $data_reveal_output = '';
 
-                if (get_theme_mod(
+                if (blocksy_get_theme_mod(
                     blocksy_manager()->screen->process_allowed_prefixes(
                         $args['prefix'],
                         [
                             'allowed_prefixes' => ['blog'],
-                            'default_prefix' => 'blog'
+                            'default_prefix' => 'blog',
                         ]
                     ) . '_has_posts_reveal',
                     'no'
                 ) === 'yes') {
                     $data_reveal_output = 'data-reveal="bottom:no"';
                 }
-        
-                $entry_open = '<article id="term-id-$id" class="entry-card tainacan-term post type-tainacan-term status-publish format-standard hentry"';
-                $entry_open .= ' ' . wp_kses_post($data_reveal_output);
-                $entry_open .= '>';
 
-                while (have_posts()) {
-                    the_post();
+                $before_term = '<article id="term-id-$id" class="entry-card tainacan-term post type-post type-tainacan-term status-publish format-standard hentry"';
+                if ($data_reveal_output !== '') {
+                    $before_term .= ' ' . $data_reveal_output;
+                }
+                $before_term .= '>';
+
+                while ($args['query']->have_posts()) {
+                    $args['query']->the_post();
                     global $post;
-                    
+
                     $taxonomy_terms_list = tainacan_get_single_taxonomy_content($post, array(
-                        'before_terms_list' => $entries_open,
+                        'before_terms_list' => $entries_open_html,
                         'after_term_list' => '</div>',
-                        'before_term' => '<article id="term-id-$id" class="entry-card post type-post status-publish format-standard hentry">',
+                        'before_term' => $before_term,
                         'after_term' => '</article>',
                         'before_term_name' => '<' . $name_element['heading_tag'] . ' class="term-name entry-title">',
 		                'after_term_name' => '</' . $name_element['heading_tag'] . '>',
@@ -196,7 +219,7 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                         'after_term_children_link' => '</li>',
                         'before_term_items_link' => '<li class="meta-date term-items-link">',
                         'after_term_items_link' => '</li>',
-                        'before_term_thumbnail' => '<figure class="term-thumbnail ct-image-container ct-media-container' . ( $is_image_boundless ? 'boundless-image' : '' ) .'">',
+                        'before_term_thumbnail' => '<figure class="term-thumbnail ct-image-container ct-media-container ' . ( $is_image_boundless ? 'boundless-image' : '' ) .'">',
 		                'after_term_thumbnail' => '</figure>',
                         'hide_term_children_count' => $hide_term_children_count,
                         'hide_term_items_count' => $hide_term_items_count,
@@ -224,10 +247,10 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                  * Function blocksy_display_posts_pagination() used here escapes the value properly.
                  */
                 if ($args['has_pagination']) {
-                    echo blocksy_display_posts_pagination([
-                        'query' => $args['query'],
-                        'prefix' => $prefix
-                    ]);
+                    $args['pagination_args']['query'] = $args['query'];
+                    $args['pagination_args']['prefix'] = $args['prefix'];
+
+                    echo blocksy_display_posts_pagination($args['pagination_args']);
                 }
 
             } else {
