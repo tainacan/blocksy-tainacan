@@ -115,7 +115,7 @@ class Tainacan_Blocksy_Textarea_Readmore {
 	 * @return string
 	 */
 	public function filter_textarea_value_as_html( $html, $item_metadata ) {
-		if ( is_admin() ) {
+		if ( ! is_single() ) {
 			return $html;
 		}
 
