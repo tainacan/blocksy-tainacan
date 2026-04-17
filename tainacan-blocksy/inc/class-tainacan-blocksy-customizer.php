@@ -382,7 +382,8 @@ class Tainacan_Blocksy_Customizer {
 						'key'   => 'tainacan_blocksy_use_default_item_customizations',
 						'value' => 'yes'
 					],
-				]
+				],
+				'post_status' => 'any'
 			];
 			$collections = \Tainacan\Repositories\Collections::get_instance()->fetch($args, 'OBJECT');
 
