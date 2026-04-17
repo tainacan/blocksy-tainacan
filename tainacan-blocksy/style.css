@@ -550,8 +550,12 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
   page-break-inside: avoid;
   break-inside: avoid;
 }
-.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata div:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header) {
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata div:not(.tainacan-content-embed__wrapper):not(.tainacan-compound-group):not(.tainacan-compound-metadatum):not(.tainacan-relationship-metadatum-header):not(.tainacan-blocksy-textarea-readmore):not(.tainacan-blocksy-textarea-readmore__preview):not(.tainacan-blocksy-textarea-readmore__full) {
   display: inline-block;
+}
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-blocksy-textarea-readmore__preview[hidden],
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-blocksy-textarea-readmore__full[hidden] {
+  display: none !important;
 }
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata > div,
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadatum {
