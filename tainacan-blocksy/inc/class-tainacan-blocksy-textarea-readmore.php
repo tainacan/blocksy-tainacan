@@ -159,9 +159,11 @@ class Tainacan_Blocksy_Textarea_Readmore {
 		}
 
 		$preview_html = $this->build_preview_html( $value, $limit );
-		$metadatum_id = $item_metadata->get_metadatum()->get_id();
+		$metadatum    = $item_metadata->get_metadatum();
+		$metadatum_id = (int) $metadatum->get_id();
+		$parent_id    = (int) $metadatum->get_parent();
 
-		return force_balance_tags( $this->wrap_readmore_widget( $preview_html, $html, $metadatum_id, 0 ) );
+		return force_balance_tags( $this->wrap_readmore_widget( $preview_html, $html, $metadatum_id, 0, $parent_id ) );
 	}
 
 	/**
@@ -176,8 +178,10 @@ class Tainacan_Blocksy_Textarea_Readmore {
 			return $html;
 		}
 
-		$html_formatting = $item_metadata->get_metadatum()->get_html_formatting();
-		$metadatum_id    = $item_metadata->get_metadatum()->get_id();
+		$metadatum       = $item_metadata->get_metadatum();
+		$html_formatting = $metadatum->get_html_formatting();
+		$metadatum_id    = (int) $metadatum->get_id();
+		$parent_id       = (int) $metadatum->get_parent();
 		$segment_index   = 0;
 
 		if ( $html_formatting === 'list' ) {
@@ -193,7 +197,7 @@ class Tainacan_Blocksy_Textarea_Readmore {
 				$full_html    = nl2br( self::make_clickable_links( $segment_value ) );
 				$preview_html = $this->build_preview_html( $segment_value, $limit );
 
-				return force_balance_tags( $this->wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $segment_index ) );
+				return force_balance_tags( $this->wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $segment_index, $parent_id ) );
 			}
 
 			$list_html = '<ul>';
@@ -201,7 +205,7 @@ class Tainacan_Blocksy_Textarea_Readmore {
 				if ( $this->segment_exceeds_limit( $segment_value, $limit ) ) {
 					$full_html    = nl2br( self::make_clickable_links( $segment_value ) );
 					$preview_html = $this->build_preview_html( $segment_value, $limit );
-					$list_html   .= '<li>' . $this->wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $segment_index ) . '</li>';
+					$list_html   .= '<li>' . $this->wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $segment_index, $parent_id ) . '</li>';
 				} else {
 					$list_html .= '<li>' . nl2br( self::make_clickable_links( $segment_value ) ) . '</li>';
 				}
@@ -223,7 +227,7 @@ class Tainacan_Blocksy_Textarea_Readmore {
 			if ( $this->segment_exceeds_limit( $segment_value, $limit ) ) {
 				$full_html    = nl2br( self::make_clickable_links( $segment_value ) );
 				$preview_html = $this->build_preview_html( $segment_value, $limit );
-				$output_html .= $prefix . $this->wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $segment_index ) . $suffix;
+				$output_html .= $prefix . $this->wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $segment_index, $parent_id ) . $suffix;
 			} else {
 				$output_html .= $prefix . nl2br( self::make_clickable_links( $segment_value ) ) . $suffix;
 			}
@@ -268,10 +272,14 @@ class Tainacan_Blocksy_Textarea_Readmore {
 	 * @param string $preview_html Already escaped HTML fragment.
 	 * @param string $full_html    Already escaped HTML fragment.
 	 */
-	private function wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $index ) {
+	private function wrap_readmore_widget( $preview_html, $full_html, $metadatum_id, $index, $parent_id = 0 ) {
 		$this->maybe_enqueue_readmore_assets();
 
-		$region_id = 'tainacan-blocksy-tm-readmore-full-' . (int) $metadatum_id . '-' . (int) $index;
+		$region_id = 'tainacan-blocksy-tm-readmore-full-';
+		if ( (int) $parent_id !== 0 ) {
+			$region_id .= (int) $parent_id . '-';
+		}
+		$region_id .= (int) $metadatum_id . '-' . (int) $index;
 
 		ob_start();
 		?>

@@ -5,12 +5,12 @@
 (function () {
 	'use strict';
 
-	var labels =
+	const labels =
 		typeof tainacanBlocksyTextareaReadmore !== 'undefined'
 			? tainacanBlocksyTextareaReadmore
 			: {};
-	var moreText = labels.moreText || 'Show more';
-	var lessText = labels.lessText || 'Show less';
+	const moreText = labels.moreText || 'Show more';
+	const lessText = labels.lessText || 'Show less';
 
 	function setToggleLabel(toggle, expanded) {
 		toggle.textContent = (expanded ? lessText : moreText);
@@ -25,19 +25,19 @@
 	}
 
 	function toggleReadmore(toggle) {
-		var root = toggle.closest('.tainacan-blocksy-textarea-readmore');
+		const root = toggle.closest('.tainacan-blocksy-textarea-readmore');
 		if (!root) {
 			return;
 		}
 
-		var preview = root.querySelector('.tainacan-blocksy-textarea-readmore__preview');
-		var fullId = toggle.getAttribute('aria-controls');
-		var full = fullId ? document.getElementById(fullId) : null;
+		const preview = root.querySelector('.tainacan-blocksy-textarea-readmore__preview');
+		const fullId = toggle.getAttribute('aria-controls');
+		const full = fullId ? document.getElementById(fullId) : null;
 		if (!preview || !full) {
 			return;
 		}
 
-		var expanded = toggle.getAttribute('aria-expanded') === 'true';
+		const expanded = toggle.getAttribute('aria-expanded') === 'true';
 
 		if (expanded) {
 			toggle.setAttribute('aria-expanded', 'false');
@@ -53,7 +53,7 @@
 	}
 
 	document.addEventListener('click', function (e) {
-		var toggle = e.target.closest('.tainacan-blocksy-textarea-readmore__toggle');
+		const toggle = e.target.closest('.tainacan-blocksy-textarea-readmore__toggle');
 		if (!toggle) {
 			return;
 		}
@@ -65,7 +65,7 @@
 		if (e.key !== ' ') {
 			return;
 		}
-		var toggle = e.target.closest('.tainacan-blocksy-textarea-readmore__toggle');
+		const toggle = e.target.closest('.tainacan-blocksy-textarea-readmore__toggle');
 		if (!toggle) {
 			return;
 		}
