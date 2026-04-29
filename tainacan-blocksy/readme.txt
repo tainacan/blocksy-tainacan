@@ -3,9 +3,9 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 0.4.3
+Stable tag: 0.4.4
 Requires Plugins: tainacan
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,13 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.4.4 =
+* Adds "Read more" functionality to textarea and core description metadata on the public item page
+* Fixes the way ID is passed to metadata value as html params
+* Adds hidden alt to download icon in media gallery for better a11y
+* Wraps some functions in checks to only run in case Tainacan is activated
+* Fixes compatibility with latest versions of Tainacan and Blocksy
 
 = 0.4.3 =
 * Better order and display of tainacan-related options in the customizer
