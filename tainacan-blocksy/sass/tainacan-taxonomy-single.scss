@@ -37,8 +37,6 @@
 .tainacan-taxonomy-terms-list-container {
 
     .entries[data-archive="default"] .entry-card.entry-card {
-        align-items: center;
-
         .term-name {
             margin-top: 0.25rem;
             margin-bottom: 0.25rem;
@@ -49,19 +47,29 @@
         }
     }
 
+    // Blocksy's simple loop already consumes this variable for responsive
+    // thumbnail sizing, so no custom max-width rule is needed for that layout.
+    .entries[data-archive="default"][data-layout="simple"] {
+        --card-media-max-width: 25%;
+
+        .entry-card.entry-card {
+            align-items: center;
+        }
+    }
+
     .term-description {
         word-break: break-word;
     }
     .term-information {
         width: 100%;
     }
-    
+
     .entries:not([data-layout="grid"]) .ct-image-container img,
     .entries:not([data-layout="grid"]) .ct-media-container img {
         aspect-ratio: 4/3;
     }
-    .entries:not([data-layout="grid"]) article > .ct-image-container,
-    .entries:not([data-layout="grid"]) article > .ct-media-container {
+    .entries:not([data-layout="grid"]):not([data-layout="simple"]) article > .ct-image-container,
+    .entries:not([data-layout="grid"]):not([data-layout="simple"]) article > .ct-media-container {
         @media (min-width: 690px) {
             max-width: 25%;
             flex-shrink: 0;

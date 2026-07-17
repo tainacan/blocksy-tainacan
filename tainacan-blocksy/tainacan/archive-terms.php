@@ -92,6 +92,8 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                     $blog_post_structure = 'simple';
                 }
 
+                $is_simple_layout = $blog_post_structure === 'simple';
+
                 $entries_open = [
                     'class' => 'entries',
                 ];
@@ -192,11 +194,30 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                     $data_reveal_output = 'data-reveal="bottom:no"';
                 }
 
-                $before_term = '<article id="term-id-$id" class="entry-card tainacan-term post type-post type-tainacan-term status-publish format-standard hentry"';
+                // Match Blocksy's own archive-card structure so its entries stylesheet and
+                // Customizer-generated card variables can style taxonomy terms as well.
+                $term_card_classes = get_post_class('entry-card tainacan-term');
+                if (!$is_simple_layout) {
+                    $term_card_classes[] = 'card-content';
+                    $term_card_classes[] = 'term-information';
+                }
+
+                $before_term = '<article id="term-id-$id" class="' . esc_attr(implode(' ', $term_card_classes)) . '"';
                 if ($data_reveal_output !== '') {
                     $before_term .= ' ' . $data_reveal_output;
                 }
                 $before_term .= '>';
+
+                $before_term_information = $is_simple_layout ? '<div class="card-content term-information">' : '';
+                $after_term_information = $is_simple_layout ? '</div>' : '';
+
+                $term_thumbnail_classes = ['term-thumbnail', 'ct-media-container'];
+                if ($is_image_boundless) {
+                    $term_thumbnail_classes[] = 'boundless-image';
+                }
+                if (isset($entries_open['data-hover'])) {
+                    $term_thumbnail_classes[] = 'has-hover-effect';
+                }
 
                 while ($args['query']->have_posts()) {
                     $args['query']->the_post();
@@ -211,15 +232,15 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
 		                'after_term_name' => '</' . $name_element['heading_tag'] . '>',
                         'before_term_description' => '<div class="term-description entry-excerpt"><p>',
                         'after_term_description' => '</p></div>',
-                        'before_term_information' => '<div class="card-content term-information">',
-                        'after_term_information' => '</div>',
+                        'before_term_information' => $before_term_information,
+                        'after_term_information' => $after_term_information,
                         'before_term_links' => '<ul class="entry-meta term-links">',
                         'after_term_links' => '</ul>',
                         'before_term_children_link' => '<li class="meta-author term-children-link">',
                         'after_term_children_link' => '</li>',
                         'before_term_items_link' => '<li class="meta-date term-items-link">',
                         'after_term_items_link' => '</li>',
-                        'before_term_thumbnail' => '<figure class="term-thumbnail ct-image-container ct-media-container ' . ( $is_image_boundless ? 'boundless-image' : '' ) .'">',
+                        'before_term_thumbnail' => '<figure class="' . esc_attr(implode(' ', $term_thumbnail_classes)) . '">',
 		                'after_term_thumbnail' => '</figure>',
                         'hide_term_children_count' => $hide_term_children_count,
                         'hide_term_items_count' => $hide_term_items_count,
