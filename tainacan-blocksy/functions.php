@@ -57,6 +57,7 @@ if ( TAINACAN_BLOCKSY_IS_CHILD_THEME || ( TAINACAN_BLOCKSY_IS_BLOCKSY_ACTIVATED 
 
 	/* Requires several settings, functions and helpers */
 	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/integration.php';
+	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/item-gallery.php';
 	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/class-tainacan-blocksy-customizer.php';
 	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/navigation.php';
 	require_once TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/class-tainacan-blocksy-collection-hooks.php';
