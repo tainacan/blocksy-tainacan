@@ -530,53 +530,62 @@
         }   
     }
 
-    // Document Download button -------------------------------------
-    .tainacan-item-file-download {
-        position: absolute;
-        opacity: 0;
-        transform: scale(0);
-        border-radius: 24px;
-        width: 36px;
-        height: 36px;
-        bottom: 0px;
-        right: calc(50% - 18px);
-        cursor: pointer;
-        font-size: 0;
-        background-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
-        color: white;
-        transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    // Legacy download overlay (older Tainacan without .tainacan-media-item-actions)
+    .tainacan-item-section:not([data-gallery-actions-behavior]) {
+        .tainacan-item-file-download {
+            position: absolute;
+            opacity: 0;
+            transform: scale(0);
+            border-radius: 24px;
+            width: 36px;
+            height: 36px;
+            bottom: 0px;
+            right: calc(50% - 18px);
+            cursor: pointer;
+            font-size: 0;
+            background-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
+            color: white;
+            transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 
-        a {
-            height: 38px;
-            width: 38px;
-            display: block;
-            position: relative;
-            z-index: 99;
-            background: transparent !important;
-            padding: 0px !important;
+            a {
+                height: 38px;
+                width: 38px;
+                display: block;
+                position: relative;
+                z-index: 99;
+                background: transparent !important;
+                padding: 0px !important;
+            }
+
+            &::after {
+                position: relative;
+                top: -38px;
+                display: inline-block;
+                font: normal normal normal 20px/1 "TainacanIcons";
+                font-size: 1.25rem !important;
+                line-height: 2.25rem;
+                text-rendering: auto;
+                vertical-align: middle;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-transform: none !important;
+                letter-spacing: normal !important;
+                content: 'download';
+                content: 'download' / '';
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
-
-        &::after {
-            position: relative;
-            top: -38px;
-            display: inline-block;
-            font: normal normal normal 20px/1 "TainacanIcons";
-            font-size: 1.25rem !important;
-            line-height: 2.25rem;
-            text-rendering: auto;
-            vertical-align: middle;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 1.25em;
-            text-transform: none !important;
-            letter-spacing: normal !important;
-            content: 'download';
-            content: 'download' / '';
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .tainacan-media-component__swiper-main,
+        .tainacan-item-section__document {
+            &:hover .tainacan-item-file-download {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     }
+
     .tainacan-item-section__document {
         position: relative;
 
@@ -586,11 +595,290 @@
             margin-right: auto;
         }
     }
-    .tainacan-media-component__swiper-main,
-    .tainacan-item-section__document {
-        &:hover .tainacan-item-file-download {
-            opacity: 1;
-            transform: scale(1);
+
+    // Media actions + metadata (requires .tainacan-media-item-actions from Tainacan)
+    .tainacan-item-section[data-gallery-actions-behavior] {
+        .tainacan-media-component__swiper-main .swiper-slide-content {
+            .swiper-slide-metadata {
+                text-align: var(--gallery-metadata-align, center);
+                align-items: var(--gallery-metadata-align, center);
+            }
+        }
+
+        &[data-gallery-metadata-align="left"] {
+            --gallery-metadata-align: left;
+        }
+        &[data-gallery-metadata-align="center"] {
+            --gallery-metadata-align: center;
+        }
+        &[data-gallery-metadata-align="right"] {
+            --gallery-metadata-align: right;
+        }
+
+        .tainacan-media-item-actions {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 0.75em;
+            width: 100%;
+            z-index: 99;
+            margin-top: 0.5em;
+            pointer-events: none;
+
+            .tainacan-media-item-expand,
+            .tainacan-item-file-download {
+                pointer-events: auto;
+                grid-row: 1;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tainacan-media-item-expand a,
+            .tainacan-item-file-download a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+            }
+        }
+
+        &[data-gallery-expand-align="left"] .tainacan-media-item-expand {
+            grid-column: 1;
+            justify-self: start;
+        }
+        &[data-gallery-expand-align="center"] .tainacan-media-item-expand {
+            grid-column: 2;
+            justify-self: center;
+        }
+        &[data-gallery-expand-align="right"] .tainacan-media-item-expand {
+            grid-column: 3;
+            justify-self: end;
+        }
+        &[data-gallery-download-align="left"] .tainacan-item-file-download {
+            grid-column: 1;
+            justify-self: start;
+        }
+        &[data-gallery-download-align="center"] .tainacan-item-file-download {
+            grid-column: 2;
+            justify-self: center;
+        }
+        &[data-gallery-download-align="right"] .tainacan-item-file-download {
+            grid-column: 3;
+            justify-self: end;
+        }
+
+        // Pair controls that share the same column
+        &[data-gallery-expand-align="left"][data-gallery-download-align="left"] .tainacan-media-item-actions,
+        &[data-gallery-expand-align="center"][data-gallery-download-align="center"] .tainacan-media-item-actions,
+        &[data-gallery-expand-align="right"][data-gallery-download-align="right"] .tainacan-media-item-actions {
+            display: flex;
+            flex-wrap: wrap;
+
+            .tainacan-media-item-expand,
+            .tainacan-item-file-download {
+                grid-column: unset;
+                justify-self: unset;
+            }
+        }
+        &[data-gallery-expand-align="left"][data-gallery-download-align="left"] .tainacan-media-item-actions {
+            justify-content: flex-start;
+        }
+        &[data-gallery-expand-align="center"][data-gallery-download-align="center"] .tainacan-media-item-actions {
+            justify-content: center;
+        }
+        &[data-gallery-expand-align="right"][data-gallery-download-align="right"] .tainacan-media-item-actions {
+            justify-content: flex-end;
+        }
+
+        // Appearance: icon-only (default, matches legacy overlay look)
+        &[data-gallery-actions-appearance="icon"] {
+            .tainacan-media-item-expand,
+            .tainacan-item-file-download {
+                border-radius: 24px;
+                width: 36px;
+                height: 36px;
+                font-size: 0;
+                background-color: var(--theme-palette-color-1, var(--paletteColor1, #3eaf7c));
+                color: white;
+                position: relative;
+
+                a {
+                    height: 38px;
+                    width: 38px;
+                    background: transparent !important;
+                    padding: 0 !important;
+                    border: 0 !important;
+                    box-shadow: none !important;
+                    color: inherit;
+                }
+
+                &::after {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font: normal normal normal 20px/1 "TainacanIcons";
+                    font-size: 1.25rem !important;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    text-transform: none !important;
+                    letter-spacing: normal !important;
+                    pointer-events: none;
+                    transition: transform 0.2s ease;
+                }
+            }
+            .tainacan-item-file-download::after {
+                content: 'download';
+                content: 'download' / '';
+            }
+            .tainacan-item-file-download:hover::after,
+            .tainacan-item-file-download:focus-within::after {
+                transform: translateY(2px);
+            }
+            // No fullscreen glyph in TainacanIcons — draw classic corner brackets
+            .tainacan-media-item-expand::after {
+                content: '';
+                content: '' / '';
+                font: unset;
+                background-color: currentColor;
+                -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3'/%3E%3C/svg%3E") center / 1.15rem no-repeat;
+                mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3'/%3E%3C/svg%3E") center / 1.15rem no-repeat;
+            }
+            .tainacan-media-item-expand:hover::after,
+            .tainacan-media-item-expand:focus-within::after {
+                transform: scale(1.18);
+            }
+        }
+
+        // Appearance: theme / core button classes (with variable fallback)
+        &[data-gallery-actions-appearance="button"] {
+            .tainacan-media-item-expand a,
+            .tainacan-item-file-download a {
+                min-height: var(--theme-button-min-height, 40px);
+                border-radius: var(--theme-button-border-radius, var(--button-border-radius, 5px));
+                padding: var(--theme-button-padding, 5px 20px);
+            }
+        }
+
+        // Appearance: plain links
+        &[data-gallery-actions-appearance="link"] {
+            .tainacan-media-item-expand a,
+            .tainacan-item-file-download a {
+                background: none !important;
+                border: 0 !important;
+                box-shadow: none !important;
+                padding: 0;
+                min-height: 0;
+                color: inherit;
+                text-decoration: underline;
+            }
+        }
+
+        // Behavior: hover overlay on the media
+        &[data-gallery-actions-behavior="hover"] {
+            .tainacan-media-component__swiper-main .swiper-slide-content,
+            &.tainacan-item-section--document .tainacan-media-component__swiper-main .swiper-slide-content {
+                position: relative;
+            }
+
+            .tainacan-media-item-actions {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0.5em;
+                margin-top: 0;
+                opacity: 0;
+                transform: scale(0.9);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .tainacan-media-component__swiper-main .swiper-slide-content:hover .tainacan-media-item-actions,
+            .tainacan-media-component__swiper-main .swiper-slide-content:focus-within .tainacan-media-item-actions {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        // Behavior: always visible, inline below media
+        &[data-gallery-actions-behavior="always"] {
+            .tainacan-media-item-actions {
+                position: relative;
+                opacity: 1;
+                transform: none;
+            }
+
+            // Same-row footer when metadata and an action sit on opposite sides (desktop/tablet only)
+            // Metadata gets ~2/3 of the row; actions keep ~1/3
+            @media screen and (min-width: 960px) {
+                &[data-gallery-metadata-align="left"]:is(
+                    [data-gallery-download-align="right"],
+                    [data-gallery-expand-align="right"]
+                ),
+                &[data-gallery-metadata-align="right"]:is(
+                    [data-gallery-download-align="left"],
+                    [data-gallery-expand-align="left"]
+                ) {
+                    .tainacan-media-component__swiper-main .swiper-slide-content:has(> .swiper-slide-metadata):has(> .tainacan-media-item-actions) {
+                        display: grid;
+                        column-gap: 1em;
+                        align-items: start;
+
+                        > :not(.swiper-slide-metadata):not(.tainacan-media-item-actions) {
+                            grid-column: 1 / -1;
+                        }
+
+                        > .swiper-slide-metadata {
+                            margin-top: 0.5em;
+                            min-width: 0;
+                            max-width: 100%;
+                            overflow-wrap: anywhere;
+                        }
+
+                        > .tainacan-media-item-actions {
+                            margin-top: 0.5em;
+                            min-width: 0;
+                            max-width: 100%;
+                        }
+                    }
+                }
+
+                &[data-gallery-metadata-align="left"]:is(
+                    [data-gallery-download-align="right"],
+                    [data-gallery-expand-align="right"]
+                ) {
+                    .tainacan-media-component__swiper-main .swiper-slide-content:has(> .swiper-slide-metadata):has(> .tainacan-media-item-actions) {
+                        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+                    }
+                    .swiper-slide-metadata {
+                        grid-column: 1;
+                        justify-self: start;
+                    }
+                    .tainacan-media-item-actions {
+                        grid-column: 2;
+                        justify-self: stretch;
+                    }
+                }
+
+                &[data-gallery-metadata-align="right"]:is(
+                    [data-gallery-download-align="left"],
+                    [data-gallery-expand-align="left"]
+                ) {
+                    .tainacan-media-component__swiper-main .swiper-slide-content:has(> .swiper-slide-metadata):has(> .tainacan-media-item-actions) {
+                        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+                    }
+                    .swiper-slide-metadata {
+                        grid-column: 2;
+                        justify-self: end;
+                    }
+                    .tainacan-media-item-actions {
+                        grid-column: 1;
+                        justify-self: stretch;
+                    }
+                }
+            }
         }
     }
 }
@@ -620,6 +908,11 @@
     .tainacan-item-section {
         margin: 0 auto;
     }
+
+    &:has(.tainacan-media-component-wrapper-spacing--minimum) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
 
 /* Media gallery with minimum spacing */
@@ -633,18 +926,39 @@
             ul.swiper-wrapper { 
                 max-height: var(--tainacan-media-main-carousel-height, 60vh);
             }
-            li.swiper-slide {
+            li.tainacan-media-item.swiper-slide {
+                padding: 0 calc(var(--swiper-navigation-size, 44px) + 1.5em);
+            }
+            // Zero padding only for framed media that get the crop/overlay treatment
+            li.tainacan-media-item.swiper-slide:has(> .swiper-slide-content:is(
+                [data-media-type^="image/"],
+                [data-media-type^="video/"],
+                [data-media-type="application/pdf"],
+                [data-media-source="document"]:has(iframe),
+                [data-media-source="document"][data-media-type="url"]:has(img)
+            )) {
                 padding: 0;
             }
-            .swiper-slide-content {
+
+            // Overlay crop + caption/actions only suit framed media (image, video, PDF),
+            // plus document URLs rendered as iframe (e.g. YouTube) or <img> (external images).
+            // Audio and other embeds keep normal flow — overlays sit poorly on them.
+            .swiper-slide-content:is(
+                [data-media-type^="image/"],
+                [data-media-type^="video/"],
+                [data-media-type="application/pdf"],
+                [data-media-source="document"]:has(iframe),
+                [data-media-source="document"][data-media-type="url"]:has(img)
+            ) {
                 text-align: center;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
+                min-height: 10rem; // avoid media so short that overlays hug the edge
 
-                a:first-of-type,
-                p:first-of-type {
+                > a:first-of-type,
+                > p:first-of-type {
                     padding: 0;
                     flex-grow: 1;
                 }
@@ -661,21 +975,76 @@
                         height: auto;
                     }
                 }
-                video,
-                audio {
-                    margin: calc( 1.5 * var(--swiper-navigation-size) );
+
+
+                .swiper-slide-metadata {
+                    background-color: var(--tainacan-media-background-color,var(--theme-palette-color-7,var(--paletteColor7)));
+                    border-radius: 2px;
+                    padding: 0.5rem 1rem;
+                    margin: 1rem;
+                    bottom: 0;
+                    position: absolute;
+                    z-index: 99;
+                    left: calc( 1.5 * var(--swiper-navigation-size) );
+                    max-width: calc(100% - 3 * var(--swiper-navigation-size));
+                    box-sizing: border-box;
+                    overflow-wrap: anywhere;
+                }
+
+                // Actions follow metadata: overlaid on the media
+                .tainacan-media-item-actions {
+                    margin: 1rem;
+                    bottom: 0;
+                    position: absolute !important;
+                    z-index: 99;
+                    left: auto;
+                    right: calc( 1.5 * var(--swiper-navigation-size) );
+                    width: auto;
+                    max-width: calc(100% - 3 * var(--swiper-navigation-size));
+                    opacity: 1 !important;
+                    transform: none !important;
+                    pointer-events: auto;
+                    box-sizing: border-box;
+                }
+
+                // Side-by-side with metadata: ~2/3 for captions, ~1/3 for actions
+                @media screen and (min-width: 960px) {
+                    &:has(.swiper-slide-metadata):has(.tainacan-media-item-actions) {
+                        .swiper-slide-metadata {
+                            max-width: calc(66.666% - 1.5 * var(--swiper-navigation-size) - 1rem);
+                        }
+                        .tainacan-media-item-actions {
+                            max-width: calc(33.333% - 1.5 * var(--swiper-navigation-size) - 1rem);
+                        }
+                    }
+                }
+
+                // Mobile: stack actions above metadata instead of a narrow split
+                @media screen and (max-width: 959px) {
+                    &:has(.swiper-slide-metadata):has(.tainacan-media-item-actions) {
+                        .swiper-slide-metadata {
+                            left: calc( 1.5 * var(--swiper-navigation-size) );
+                            right: calc( 1.5 * var(--swiper-navigation-size) );
+                            max-width: none;
+                            width: auto;
+                        }
+                        .tainacan-media-item-actions {
+                            left: calc( 1.5 * var(--swiper-navigation-size) );
+                            right: calc( 1.5 * var(--swiper-navigation-size) );
+                            max-width: none;
+                            bottom: auto;
+                            top: 0;
+                        }
+                    }
+                }
+
+                // No metadata: keep actions readable near the bottom of the crop
+                &:not(:has(.swiper-slide-metadata)) .tainacan-media-item-actions {
+                    left: calc( 1.5 * var(--swiper-navigation-size) );
+                    right: calc( 1.5 * var(--swiper-navigation-size) );
                 }
             }
-            li.swiper-slide .swiper-slide-metadata {
-                background-color: var(--tainacan-media-background-color,var(--theme-palette-color-7,var(--paletteColor7)));
-                border-radius: 2px;
-                padding: 0.5rem 1rem;
-                margin: 1rem;
-                bottom: 0;
-                position: absolute;
-                z-index: 99;
-                left: calc( 1.5 * var(--swiper-navigation-size) );
-            }
+
             .swiper-button-prev,
             .swiper-button-next {
                 border-radius: 100em;
@@ -700,6 +1069,21 @@
             li.swiper-slide:not(.has-fixed-height) {
                 max-width: var(--tainacan-media-thumbs-carousel-item-size, 136px);
             }
+        }
+    }
+
+    // Link chip only when actions are overlaid on framed media
+    &[data-gallery-actions-appearance="link"] {
+        .tainacan-media-component__swiper-main .swiper-slide-content:is(
+            [data-media-type^="image/"],
+            [data-media-type^="video/"],
+            [data-media-type="application/pdf"],
+            [data-media-source="document"]:has(iframe),
+            [data-media-source="document"][data-media-type="url"]:has(img)
+        ) .tainacan-media-item-actions {
+            background-color: var(--tainacan-media-background-color,var(--theme-palette-color-7,var(--paletteColor7)));
+            border-radius: 2px;
+            padding: 0.5rem 1rem;
         }
     }
 }

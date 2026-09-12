@@ -14,7 +14,6 @@ $options = [
 		'unit' => '%',
 		'defaultUnit' => '%',
 		'responsive' => true,
-		'divider' => 'top',
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix
 		])

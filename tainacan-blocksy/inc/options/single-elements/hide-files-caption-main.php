@@ -13,7 +13,7 @@ $options = [
 		'type' => 'ct-switch',
 		'value' => $enabled,
 		'setting' => [ 'transport' => 'postMessage' ],
-		'desc' => __( 'Toggle to hide the attachments and document caption on the main view.', 'tainacan-blocksy' ),
+		'desc' => __( 'Toggle to hide the attachments and document caption on the main slider.', 'tainacan-blocksy' ),
 		'sync' => blocksy_sync_single_post_container([
 			'prefix' => $prefix,
 		])
