@@ -6,7 +6,7 @@ Description: Tainacan plugin support for Blocksy theme
 Author: tainacan
 Version: 0.4.4
 Text Domain: tainacan-blocksy
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
