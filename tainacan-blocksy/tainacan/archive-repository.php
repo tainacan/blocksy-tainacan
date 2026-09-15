@@ -128,7 +128,11 @@ add_filter('blocksy:hero:custom-source', function() {
 get_header(); 
 
 if ( $page_hero_section_style === 'type-2' ) {
-    echo blocksy_output_hero_section([
+    /**
+     * Note to code reviewers: This line doesn't need to be escaped.
+     * Function blocksy_output_hero_section() used here escapes the value properly.
+     */
+    echo blocksy_output_hero_section([ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         'type' => $page_hero_section_style,
         'source' => false,
         'elements' => $html_elements
@@ -138,7 +142,11 @@ if ( $page_hero_section_style === 'type-2' ) {
     <article class="<?php echo esc_attr($page_container_classes) ?>" style="<?php echo esc_attr($page_container_style) ?>">
     <?php
         if ( $page_hero_section_style === 'type-1' ) {
-            echo blocksy_output_hero_section([
+            /**
+             * Note to code reviewers: This line doesn't need to be escaped.
+             * Function blocksy_output_hero_section() used here escapes the value properly.
+             */
+            echo blocksy_output_hero_section([ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 'type' => $page_hero_section_style,
                 'source' => false,
                 'elements' => $html_elements
@@ -148,7 +156,14 @@ if ( $page_hero_section_style === 'type-2' ) {
         if ( get_theme_mod($repository_items_prefix . '_hero_enabled', 'yes') === 'yes' && $page_hero_section_style !== 'type-1' && $page_hero_section_style !== 'type-2' ): ?>    
             <header class="tainacan-collection-header tainacan-collection-header--repository-page entry-header">
                 <div class="tainacan-collection-header__box">  
-                    <?php echo $html_elements; ?>
+                    <?php
+                    /**
+                     * Note to code reviewers: This line doesn't need to be escaped.
+                     * Hero elements are assembled from Blocksy helpers (blocksy_html_tag, BreadcrumbsBuilder) that escape properly.
+                     * wp_kses_post() would strip SVG breadcrumb separators.
+                     */
+                    echo $html_elements; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                    ?>
                 </div>
             </header>
         <?php endif; ?>

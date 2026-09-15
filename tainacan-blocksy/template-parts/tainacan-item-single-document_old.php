@@ -38,7 +38,7 @@
                         $media_items_main[] =
                             tainacan_get_the_media_component_slide(array(
                                 'after_slide_metadata' => (( !$hide_download_button && tainacan_the_item_document_download_link() != '' ) ?
-                                                                ('<span class="tainacan-item-file-download">' . tainacan_the_item_document_download_link() . '</span>')
+                                                                ('<span class="tainacan-item-file-download">' . wp_kses_post( tainacan_the_item_document_download_link() ) . '</span>')
                                                         : ''),
                                 'media_content' => tainacan_get_the_document(),
                                 'media_content_full' => $is_document_type_attachment ? tainacan_get_the_document(0, 'full') : ('<div class="attachment-without-image">' . tainacan_get_the_document(0, 'full') . '</div>'),
@@ -68,7 +68,7 @@
                 } else {
                     tainacan_the_document(); 
                     if ( !$hide_download_button && function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) {
-                        echo '<span class="tainacan-item-file-download">' . tainacan_the_item_document_download_link() . '</span>';
+                        echo '<span class="tainacan-item-file-download">' . wp_kses_post( tainacan_the_item_document_download_link() ) . '</span>';
                     }
                 } ?>
             </div>

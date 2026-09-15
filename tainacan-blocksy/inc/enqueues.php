@@ -123,7 +123,7 @@ if ( !function_exists('tainacan_blocksy_items_page_filters_fixed_on_scroll_outpu
 			bottom: 0;
 		}
 		';
-		echo '<style type="text/css" id="tainacan-fixed-filters-style">' . sprintf( $css ) . '</style>';
+		echo '<style type="text/css" id="tainacan-fixed-filters-style">' . wp_strip_all_tags( $css ) . '</style>';
 
 	}
 }
@@ -165,7 +165,7 @@ if ( !function_exists('tainacan_blocksy_gallery_light_color_scheme') ) {
 			border: 2px solid #000000 !important;
 		}
 		';
-		echo '<style type="text/css" id="tainacan-gallery-color-scheme">' . sprintf( $css ) . '</style>';
+		echo '<style type="text/css" id="tainacan-gallery-color-scheme">' . wp_strip_all_tags( $css ) . '</style>';
 
 	}
 }
@@ -272,7 +272,7 @@ if ( !function_exists('tainacan_blocksy_tooltip_and_modal_styles') ) {
 				color: var(--tainacan-primary);
 			}
 		';
-		echo '<style type="text/css" id="tainacan-tooltip-and-modal-styles">' . $css . '</style>';
+		echo '<style type="text/css" id="tainacan-tooltip-and-modal-styles">' . wp_strip_all_tags( $css ) . '</style>';
 	}
 }
 add_action( 'wp_head', 'tainacan_blocksy_tooltip_and_modal_styles');

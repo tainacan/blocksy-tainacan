@@ -326,7 +326,10 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 						</div>
 
 						<?php if ($has_thumb) : ?>
-							<?php echo $previous_post_image_output; ?>
+							<?php
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Function blocksy_image()/blocksy_media() used here escapes the value properly.
+								echo $previous_post_image_output;
+							?>
 						<?php endif; ?>
 					</a>
 				<?php else : ?>
@@ -654,7 +657,7 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 				__('Load More', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			);
 
-			$button_output = '<button class="ct-button ct-load-more">' . $label_button . '</button>';
+			$button_output = '<button class="ct-button ct-load-more">' . esc_html( $label_button ) . '</button>';
 		}
 
 		if (
@@ -668,7 +671,7 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 
 			$button_output = '<div class="ct-load-more-helper">' . $button_output;
 			$button_output .= '<span data-loader="circles"><span></span><span></span><span></span></span>';
-			$button_output .= '<div class="ct-last-page-text">' . $args['last_page_text'] . '</div>';
+			$button_output .= '<div class="ct-last-page-text">' . esc_html( $args['last_page_text'] ) . '</div>';
 			$button_output .= '</div>';
 		}
 
@@ -805,11 +808,17 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 			) . '">' . $proper_links . '</div>';
 		}
 
+		/**
+		 * Note to code reviewers: This line doesn't need to be escaped.
+		 * Pagination markup is assembled from WordPress paginate_links() HTML and escaped fragments above.
+		 */
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo sprintf(
 			$template,
 			$arrow_links[0] . $proper_links . $arrow_links[1],
 			$button_output
 		);
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 ?>

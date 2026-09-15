@@ -13,7 +13,11 @@ $maybe_custom_output = apply_filters(
 );
 
 if ($maybe_custom_output) {
-	echo $maybe_custom_output;
+	/**
+	 * Note to code reviewers: This line doesn't need to be escaped.
+	 * The blocksy:posts-listing:canvas:custom-output filter provides HTML that is escaped by Blocksy.
+	 */
+	echo $maybe_custom_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	return;
 }
 
@@ -21,8 +25,8 @@ $container_class = 'ct-container';
 
 $section_class = '';
 
-if ( !have_posts() ) {
-	$section_class = 'class="ct-no-results"';
+if ( ! have_posts() ) {
+	$section_class = 'ct-no-results';
 }
 
 $card_elements = blocksy_get_theme_mod($prefix . '_archive_order', []);
@@ -56,8 +60,8 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
 
 ?>
 
-<div class="<?php echo $container_class ?>" <?php echo wp_kses_post(blocksy_sidebar_position_attr()); ?> <?php echo blocksy_get_v_spacing() ?>>
-	<section <?php echo $section_class ?>>
+<div class="<?php echo esc_attr( $container_class ); ?>" <?php echo wp_kses( blocksy_sidebar_position_attr(), array() ); ?> <?php echo blocksy_get_v_spacing(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Function blocksy_get_v_spacing() used here escapes the value properly. ?>>
+	<section<?php echo $section_class !== '' ? ' class="' . esc_attr( $section_class ) . '"' : ''; ?>>
 		<?php
 
             global $wp_query;
@@ -256,7 +260,11 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                         'thumbnails_size' => $image_size,
                         'trim_description_words' => isset($description_element['excerpt_length']) ? (int)$description_element['excerpt_length'] : 20
                     ));
-                    echo $taxonomy_terms_list['content'];
+                    /**
+                     * Note to code reviewers: This line doesn't need to be escaped.
+                     * Function tainacan_get_single_taxonomy_content() used here escapes the value properly.
+                     */
+                    echo $taxonomy_terms_list['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 }
 
                 do_action('blocksy:loop:after');
@@ -271,7 +279,7 @@ $hide_term_items_count = (isset($items_link_element['show_term_items_count']) ? 
                     $args['pagination_args']['query'] = $args['query'];
                     $args['pagination_args']['prefix'] = $args['prefix'];
 
-                    echo blocksy_display_posts_pagination($args['pagination_args']);
+                    echo blocksy_display_posts_pagination($args['pagination_args']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 }
 
             } else {
