@@ -76,26 +76,97 @@ $inner_options = [
 			]
 		]
 	],
-	$prefix . 'items_related_to_this_max_items_number' => [
-		'label' => __( 'Max amount of items to fetch', 'tainacan-blocksy' ),
-		'type' => 'ct-number',
-		'design' => 'inline',
-		'value' => 12,
-		'min' => 1,
-		'max' => 96,
-		'sync' => ''
-	],
-	$prefix . 'items_related_to_this_order' => [
-		'label' => __('Order by', 'blocksy'),
-		'type' => 'ct-select',
-		'value' => 'title_asc',
-		'view' => 'text',
-		'design' => 'inline',
-		'sync' => '',
-		'choices' => blocksy_ordered_keys(
-			$order_options
-		)
-	],
+];
+
+if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) >= 0  ) {
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'tainacan-view-modes'
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_tainacan_view_mode' => [
+				'label' => __('Tainacan view mode', 'tainacan-blocksy'),
+				'type' => 'ct-select',
+				'value' => $view_modes['default_view_mode'],
+				'view' => 'text',
+				'design' => 'inline',
+				'sync' => '',
+				'choices' => blocksy_ordered_keys(
+					$view_modes['enabled_view_modes']
+				)
+			]
+		],
+	];
+}
+
+if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery')
+	&& function_exists( 'tainacan_blocksy_has_media_thumbs_layout' )
+	&& tainacan_blocksy_has_media_thumbs_layout() ) {
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs',
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_thumbs_layout' => [
+				'label' => __( 'Thumbnails layout', 'tainacan-blocksy' ),
+				'type' => 'ct-select',
+				'value' => 'carousel',
+				'view' => 'text',
+				'design' => 'inline',
+				'sync' => blocksy_sync_whole_page([
+					'prefix' => $prefix,
+				]),
+				'choices' => blocksy_ordered_keys(
+					[
+						'carousel' => __( 'Carousel', 'tainacan-blocksy' ),
+						'grid' => __( 'Grid', 'tainacan-blocksy' ),
+						'list' => __( 'List', 'tainacan-blocksy' ),
+					]
+				),
+			],
+		],
+	];
+	$inner_options[blocksy_rand_md5()] = [
+		'type' => 'ct-condition',
+		'condition' => [
+			$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs',
+			$prefix . 'items_related_to_this_thumbs_layout' => 'list',
+		],
+		'options' => [
+			$prefix . 'items_related_to_this_hide_image_thumbnails' => [
+				'label' => __( 'Hide thumbnail image', 'tainacan-blocksy' ),
+				'type' => 'ct-switch',
+				'value' => 'no',
+				'desc' => __( 'Toggle to hide the item thumbnail and show only the title.', 'tainacan-blocksy' ),
+				'sync' => blocksy_sync_whole_page([
+					'prefix' => $prefix,
+				]),
+			],
+		],
+	];
+}
+
+$inner_options[ $prefix . 'items_related_to_this_max_items_number' ] = [
+	'label' => __( 'Max amount of items to fetch', 'tainacan-blocksy' ),
+	'type' => 'ct-number',
+	'design' => 'inline',
+	'value' => 12,
+	'min' => 1,
+	'max' => 96,
+	'sync' => ''
+];
+$inner_options[ $prefix . 'items_related_to_this_order' ] = [
+	'label' => __('Order by', 'blocksy'),
+	'type' => 'ct-select',
+	'value' => 'title_asc',
+	'view' => 'text',
+	'design' => 'inline',
+	'sync' => '',
+	'choices' => blocksy_ordered_keys(
+		$order_options
+	)
 ];
 
 if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) >= 0  ) {
@@ -145,25 +216,6 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
 
 $inner_options[blocksy_rand_md5()] = [
 	'type' => 'ct-divider',
-];
-$inner_options[blocksy_rand_md5()] = [
-	'type' => 'ct-condition',
-	'condition' => [
-		$prefix . 'items_related_to_this_layout'  => 'tainacan-view-modes'
-	],
-	'options' => [
-		$prefix . 'items_related_to_this_tainacan_view_mode' => [
-			'label' => __('Tainacan view mode', 'tainacan-blocksy'),
-			'type' => 'ct-select',
-			'value' => $view_modes['default_view_mode'],
-			'view' => 'text',
-			'design' => 'inline',
-			'sync' => '',
-			'choices' => blocksy_ordered_keys(
-				$view_modes['enabled_view_modes']
-			)
-		]
-	],
 ];
 $inner_options[blocksy_rand_md5()] = [
 	'type' => 'ct-condition',
@@ -286,32 +338,55 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
 			]
 		]
 	];
-	$inner_options[blocksy_rand_md5()] = [
-		'type' => 'ct-condition',
-		'condition' => [
-			$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs'
-		],
-		'options' => [
-			$prefix . 'items_related_to_this_thumbs_size' => [
-				'label' => __( 'Thumbnails size gallery on carousel', 'tainacan-blocksy' ),
-				'type' => 'ct-slider',
-				'value' => [
-					'mobile' => '120px',
-					'tablet' => '130px',
-					'desktop' => '140px',
-				],
-				'units' => blocksy_units_config([
-					[
-						'unit' => 'px',
-						'min' => 42,
-						'max' => 300,
-					]
-				]),
-				'responsive' => true,
-				'sync' => ''
+	$gallery_thumbs_options = [
+		$prefix . 'items_related_to_this_thumbs_size' => [
+			'label' => __( 'Thumbnails size gallery on carousel', 'tainacan-blocksy' ),
+			'type' => 'ct-slider',
+			'value' => [
+				'mobile' => '120px',
+				'tablet' => '130px',
+				'desktop' => '140px',
 			],
-		]
+			'units' => blocksy_units_config([
+				[
+					'unit' => 'px',
+					'min' => 42,
+					'max' => 300,
+				]
+			]),
+			'responsive' => true,
+			'sync' => ''
+		],
 	];
+
+	if ( function_exists( 'tainacan_blocksy_has_media_thumbs_layout' )
+		&& tainacan_blocksy_has_media_thumbs_layout() ) {
+		$inner_options[blocksy_rand_md5()] = [
+			'type' => 'ct-condition',
+			'condition' => [
+				$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs',
+				$prefix . 'items_related_to_this_thumbs_layout' => '!list',
+			],
+			'options' => $gallery_thumbs_options,
+		];
+		$inner_options[blocksy_rand_md5()] = [
+			'type' => 'ct-condition',
+			'condition' => [
+				$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs',
+				$prefix . 'items_related_to_this_thumbs_layout' => 'list',
+				$prefix . 'items_related_to_this_hide_image_thumbnails' => '!yes',
+			],
+			'options' => $gallery_thumbs_options,
+		];
+	} else {
+		$inner_options[blocksy_rand_md5()] = [
+			'type' => 'ct-condition',
+			'condition' => [
+				$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs'
+			],
+			'options' => $gallery_thumbs_options,
+		];
+	}
 }
 
 $options = [

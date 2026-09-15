@@ -18,6 +18,23 @@
     $view_more_links_style        = get_theme_mod( $prefix . '_items_related_to_this_view_more_links_style', 'button' );
     $open_lightbox_on_click       = get_theme_mod( $prefix . '_items_related_to_this_enable_lightbox', 'yes' ) === 'yes';
     $gallery_spacing              = get_theme_mod( $prefix . '_items_related_to_this_gallery_spacing', 'default' );
+    $thumbs_layout                = 'carousel';
+    $hide_image_thumbnails        = false;
+
+    if ( function_exists( 'tainacan_blocksy_has_media_thumbs_layout' ) && tainacan_blocksy_has_media_thumbs_layout() ) {
+        $thumbs_layout = tainacan_sanitize_media_thumbs_layout(
+            get_theme_mod( $prefix . '_items_related_to_this_thumbs_layout', 'carousel' )
+        );
+        $hide_image_thumbnails = get_theme_mod( $prefix . '_items_related_to_this_hide_image_thumbnails', 'no' ) === 'yes';
+    }
+
+    $is_list_thumbs = $thumbs_layout === 'list';
+    $is_gallery_layout = strpos( $items_related_to_this_layout, 'gallery-' ) !== false;
+    $gallery_data_attributes = '';
+
+    if ( $is_gallery_layout && function_exists( 'tainacan_blocksy_get_item_gallery_data_attributes' ) ) {
+        $gallery_data_attributes = tainacan_blocksy_get_item_gallery_data_attributes( $prefix );
+    }
 
     $order_option_split = explode( '_', $order_option ); 
     $order_by = $order_option_split[0] ? $order_option_split[0] : 'title';
@@ -31,7 +48,7 @@
 
     if ( function_exists('tainacan_the_related_items_carousel') && (get_theme_mod( $prefix . '_display_items_related_to_this', 'no' ) === 'yes') && tainacan_has_related_items() ) : ?>
     
-    <section class="tainacan-item-section tainacan-item-section--items-related-to-this <?php echo esc_attr(' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ) ?>">
+    <section class="tainacan-item-section tainacan-item-section--items-related-to-this <?php echo esc_attr(' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ) ?>"<?php echo $gallery_data_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper ?>>
         
         <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && $section_label != '') : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-items-related-to-this-label">
@@ -41,27 +58,32 @@
         <div class="tainacan-item-section__items-related-to-this">
             <?php 
                 $items_gallery_options = [];
-                if ( strpos($items_related_to_this_layout, 'gallery-') !== false) {
+                if ( $is_gallery_layout ) {
 
                     $items_gallery_options = $items_related_to_this_layout == 'gallery-slider' ?
                         array(
                             'layoutElements' => array( 'main' => true, 'thumbnails' => true ),
                             'hideItemTitleMain' => false,
-                            'thumbsHaveFixedHeight' => $variable_items_width,
+                            'thumbsHaveFixedHeight' => ! $is_list_thumbs && $variable_items_width,
                             'thumbnailsSize' => $image_size,
                             'openLightboxOnClick' => $open_lightbox_on_click,
                         ) :
                         array(
                             'layoutElements' => array( 'main' => false, 'thumbnails' => true ),
                             'hideItemTitleMain' => false,
-                            'thumbsHaveFixedHeight' => $variable_items_width,
+                            'thumbsHaveFixedHeight' => ! $is_list_thumbs && $variable_items_width,
                             'thumbnailsSize' => $image_size,
                             'openLightboxOnClick' => $open_lightbox_on_click,
-                        );                 
+                        );
+
+                    if ( function_exists( 'tainacan_blocksy_has_media_thumbs_layout' ) && tainacan_blocksy_has_media_thumbs_layout() ) {
+                        $items_gallery_options['thumbsLayout'] = $thumbs_layout;
+                        $items_gallery_options['hideImageThumbnails'] = $is_list_thumbs && $hide_image_thumbnails;
+                    }
 
                     $items_related_to_this_layout = 'gallery';
 
-                    if ( $gallery_spacing === 'minimum' ) {
+                    if ( $gallery_spacing === 'minimum' && $thumbs_layout === 'carousel' ) {
                         add_filter( 'tainacan-swiper-thumbs-options', function($options) {
                             return array_merge(
                                 $options,

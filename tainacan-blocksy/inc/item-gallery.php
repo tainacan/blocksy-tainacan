@@ -14,6 +14,17 @@ if ( ! function_exists( 'tainacan_blocksy_has_media_item_actions' ) ) {
 	}
 }
 
+if ( ! function_exists( 'tainacan_blocksy_has_media_thumbs_layout' ) ) {
+	/**
+	 * Whether the current Tainacan ships thumbnail layout args for the item gallery.
+	 *
+	 * @return bool
+	 */
+	function tainacan_blocksy_has_media_thumbs_layout() {
+		return function_exists( 'tainacan_sanitize_media_thumbs_layout' );
+	}
+}
+
 if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_settings' ) ) {
 	/**
 	 * Theme mods used by the item document / attachments gallery templates.
@@ -26,10 +37,25 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_settings' ) ) {
 			$prefix = blocksy_manager()->screen->get_prefix();
 		}
 
+		$thumbs_layout = 'carousel';
+		$hide_image_thumbnails = false;
+
+		if ( tainacan_blocksy_has_media_thumbs_layout() ) {
+			$thumbs_layout = tainacan_sanitize_media_thumbs_layout(
+				get_theme_mod( $prefix . '_thumbs_layout', 'carousel' )
+			);
+			$hide_image_thumbnails = get_theme_mod( $prefix . '_hide_image_thumbnails', 'no' ) === 'yes';
+		}
+
+		$gallery_position = get_theme_mod( $prefix . '_document_attachments_position', 'below' );
+		if ( $thumbs_layout !== 'carousel' ) {
+			$gallery_position = 'below';
+		}
+
 		return array(
 			'page_structure_type'           => get_theme_mod( $prefix . '_page_structure_type', 'type-dam' ),
 			'is_gallery_mode'               => get_theme_mod( $prefix . '_document_attachments_structure', 'gallery-type-1' ) === 'gallery-type-2',
-			'gallery_position'              => get_theme_mod( $prefix . '_document_attachments_position', 'below' ),
+			'gallery_position'              => $gallery_position,
 			'gallery_spacing'               => get_theme_mod( $prefix . '_document_attachments_spacing', 'default' ),
 			'hide_file_name'                => get_theme_mod( $prefix . '_hide_files_name', 'no' ) === 'yes',
 			'hide_file_name_main'           => get_theme_mod( $prefix . '_hide_files_name_main', 'yes' ) === 'yes',
@@ -43,6 +69,8 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_settings' ) ) {
 			'has_light_dark_color_scheme'   => get_theme_mod( $prefix . '_gallery_color_scheme', 'dark' ) === 'light',
 			'thumbnails_image_size'         => get_theme_mod( $prefix . '_thumbnails_image_size', 'tainacan-medium' ),
 			'thumbs_have_fixed_height'      => get_theme_mod( $prefix . '_thumbs_have_fixed_height', 'no' ) === 'yes',
+			'thumbs_layout'                 => $thumbs_layout,
+			'hide_image_thumbnails'         => $hide_image_thumbnails,
 			'metadata_alignment'            => get_theme_mod( $prefix . '_gallery_metadata_alignment', 'center' ),
 			'actions_appearance'            => get_theme_mod( $prefix . '_gallery_media_actions_appearance', 'icon' ),
 			'actions_behavior'              => get_theme_mod( $prefix . '_gallery_media_actions_behavior', 'hover' ),
@@ -104,7 +132,10 @@ if ( ! function_exists( 'tainacan_blocksy_prepare_item_gallery_swiper' ) ) {
 		}
 		$prepared = true;
 
-		if ( ! empty( $settings['is_gallery_mode'] ) && ( $settings['gallery_position'] ?? 'below' ) !== 'below' ) {
+		$thumbs_layout = $settings['thumbs_layout'] ?? 'carousel';
+		$is_carousel_thumbs = $thumbs_layout === 'carousel';
+
+		if ( $is_carousel_thumbs && ! empty( $settings['is_gallery_mode'] ) && ( $settings['gallery_position'] ?? 'below' ) !== 'below' ) {
 			add_filter(
 				'tainacan-swiper-thumbs-options',
 				function( $options ) {
@@ -124,7 +155,7 @@ if ( ! function_exists( 'tainacan_blocksy_prepare_item_gallery_swiper' ) ) {
 			);
 		}
 
-		if ( ( $settings['gallery_spacing'] ?? 'default' ) === 'minimum' ) {
+		if ( $is_carousel_thumbs && ( $settings['gallery_spacing'] ?? 'default' ) === 'minimum' ) {
 			add_filter(
 				'tainacan-swiper-thumbs-options',
 				function( $options ) {
@@ -160,11 +191,14 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_args' ) ) {
 			$post_id = get_the_ID();
 		}
 
+		$thumbs_layout = $settings['thumbs_layout'] ?? 'carousel';
+		$is_list_thumbs = $thumbs_layout === 'list';
+
 		$shared = array(
 			'hideFileNameMain'              => $settings['hide_file_name_main'],
 			'hideFileCaptionMain'           => $settings['hide_file_caption_main'],
 			'hideFileDescriptionMain'       => $settings['hide_file_description_main'],
-			'hideFileNameThumbnails'        => $settings['hide_file_name'],
+			'hideFileNameThumbnails'        => ! $is_list_thumbs && $settings['hide_file_name'],
 			'hideFileCaptionThumbnails'     => true,
 			'hideFileDescriptionThumbnails' => true,
 			'showDownloadButtonMain'        => ! $settings['hide_download_button'],
@@ -174,8 +208,13 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_args' ) ) {
 			'hideFileDescriptionLightbox'   => $settings['hide_file_description_lightbox'],
 			'lightboxHasLightBackground'    => $settings['has_light_dark_color_scheme'],
 			'thumbnailsSize'                => $settings['thumbnails_image_size'],
-			'thumbsHaveFixedHeight'         => $settings['thumbs_have_fixed_height'],
+			'thumbsHaveFixedHeight'         => ! $is_list_thumbs && $settings['thumbs_have_fixed_height'],
 		);
+
+		if ( tainacan_blocksy_has_media_thumbs_layout() ) {
+			$shared['thumbsLayout'] = $thumbs_layout;
+			$shared['hideImageThumbnails'] = $is_list_thumbs && ! empty( $settings['hide_image_thumbnails'] );
+		}
 
 		if ( $context === 'document' ) {
 			return array_merge(
