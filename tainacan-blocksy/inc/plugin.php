@@ -2,6 +2,10 @@
 /**
  * add support for elasticpress in searches used by blocksy
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_filter('pre_get_posts', function ($query) {
     if (class_exists('\Tainacan\Elastic_Press')) {
         $tainacan_Elastic_press = \Tainacan\Elastic_Press::get_instance();
@@ -26,11 +30,13 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
         global $wp_query;
 
         if (
-                isset( $_GET['s'] ) &&
+                isset( $_GET['s'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public search query arg, not a form submission.
                 $wp_query->is_main_query() &&
                 $wp_query->is_search() &&
                 !is_admin()
         ) {
+            $search = sanitize_text_field( wp_unslash( $_GET['s'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public search query arg, not a form submission.
+
             if ( !method_exists( \Tainacan\Theme_Helper::get_instance(), 'is_post_type_a_collection' ) )
                 $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
             
@@ -53,12 +59,23 @@ if ( !function_exists('tainacan_blocksy_archive_templates_redirects') ) {
             }
             
             // If the search is in a single collection, go there
-            if ( count($searching_post_types) === 1 )
-                wp_redirect( get_post_type_archive_link( $searching_post_types[0] ) . '?search=' . wp_unslash($_GET['s']) );
-
-            // Otherwise, the Items Repository list should do the job
-            else
-                wp_redirect( \Tainacan\Theme_Helper::get_instance()->get_items_list_slug() . '?search=' . wp_unslash($_GET['s']) );
+            if ( count($searching_post_types) === 1 ) {
+                $archive_link = get_post_type_archive_link( $searching_post_types[0] );
+                if ( $archive_link ) {
+                    wp_safe_redirect( add_query_arg( 'search', $search, $archive_link ) );
+                    exit;
+                }
+            } else {
+                // Otherwise, the Items Repository list should do the job
+                wp_safe_redirect(
+                    add_query_arg(
+                        'search',
+                        $search,
+                        home_url( '/' . \Tainacan\Theme_Helper::get_instance()->get_items_list_slug() . '/' )
+                    )
+                );
+                exit;
+            }
         }
 
         if (is_post_type_archive()) {

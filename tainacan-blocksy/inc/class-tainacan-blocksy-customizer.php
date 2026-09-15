@@ -3,6 +3,12 @@
 /**
  * This class holds logic for adding Tainacan custom post types to Blocksy customizer.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invokes Blocksy theme hooks.
+
 class Tainacan_Blocksy_Customizer {
 
 	use Tainacan_Blocksy\Singleton;
@@ -29,7 +35,7 @@ class Tainacan_Blocksy_Customizer {
 	function add_repository_and_terms_items_options_panel($options) {
 
 		/* Repository Items List */
-		$repository_items_extra_options = blc_call_fnc(
+		$repository_items_extra_options = tainacan_blocksy_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
@@ -50,8 +56,9 @@ class Tainacan_Blocksy_Customizer {
 			'is_cpt' => true,
 			'is_archive' => true,
 			'enabled_label' => sprintf(
-				__('%s Title', 'blocksy'),
-				__('Items', 'tainacan-blocksy')
+				/* translators: %s: Entity name, e.g. Items. */
+				__('%s Title', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+				__('Items', 'tainacan') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			),
 		]);
 		
@@ -67,7 +74,7 @@ class Tainacan_Blocksy_Customizer {
 		$options['tainacan_repository_items_list']['options']['tainacan_repository_items_list_section_options']['inner-options'][0] = $default_title_options;
 
 		/* Term Items List */
-		$term_items_extra_options = blc_call_fnc(
+		$term_items_extra_options = tainacan_blocksy_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
@@ -88,8 +95,9 @@ class Tainacan_Blocksy_Customizer {
 			'is_cpt' => true,
 			'is_archive' => true,
 			'enabled_label' => sprintf(
-				__('%s Title', 'blocksy'),
-				__('Items', 'tainacan-blocksy')
+				/* translators: %s: Entity name, e.g. Items. */
+				__('%s Title', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+				__('Items', 'tainacan') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			),
 		]);
 		
@@ -126,6 +134,7 @@ class Tainacan_Blocksy_Customizer {
 
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
+					/* translators: %s: Collection name. */
 					__('Item from %s', 'tainacan-blocksy'),
 					$post_type_object->labels->name
 				);
@@ -209,7 +218,8 @@ class Tainacan_Blocksy_Customizer {
 				
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
-					__('Items list from %s', 'tainacan-blocksy-item'),
+					/* translators: %s: Collection name. */
+					__('Items list from %s', 'tainacan-blocksy'),
 					$post_type_object->labels->name
 				);
 

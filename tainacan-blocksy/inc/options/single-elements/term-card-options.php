@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($is_cpt)) {
 	$is_cpt = true;
 }
@@ -9,7 +15,7 @@ if (! isset($prefix)) {
 }
 
 if (! isset($title)) {
-	$title = __('Taxonomy', 'tainacan');
+	$title = __('Taxonomy', 'tainacan'); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 }
 
 $has_card_matching_template = (
@@ -24,7 +30,7 @@ $has_card_matching_template = (
 
 $options = [	
 	blocksy_rand_md5() => [
-		'title' => __('General', 'blocksy'),
+		'title' => __('General', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'type' => 'tab',
 		'options' => [
 			[
@@ -55,15 +61,15 @@ $options = [
 
 					'options' => [
 						$prefix . 'card_type' => [
-							'label' => __('Card Type', 'blocksy'),
+							'label' => __('Card Type', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type' => 'ct-radio',
 							'value' => 'boxed',
 							'view' => 'text',
 							'divider' => 'bottom:full',
 							'choices' => [
-								'simple' => __('Simple', 'blocksy'),
-								'boxed' => __('Boxed', 'blocksy'),
-								'cover' => __('Cover', 'blocksy'),
+								'simple' => __('Simple', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+								'boxed' => __('Boxed', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+								'cover' => __('Cover', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							],
 							'conditions' => [
 								'cover' => $has_card_matching_template ? [
@@ -83,7 +89,7 @@ $options = [
 
 			[
 				$prefix . 'archive_order' => apply_filters('blocksy:options:posts-listing-archive-order', [
-					'label' => __('Card Elements', 'blocksy'),
+					'label' => __('Card Elements', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 					'type' => $has_card_matching_template ? 'hidden' : 'ct-layers',
 					'disableDrag' => true,
 					'sync' => '',
@@ -128,7 +134,7 @@ $options = [
 					'settings' => [
 						
 						'hierarchy_path' => [
-							'label' => __('Hierarchy path', 'blocksy'),
+							'label' => __('Hierarchy path', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'sync' => blocksy_sync_whole_page([
 								'prefix' => $prefix,
 								'loader_selector' => '.entries > article[id]'
@@ -136,11 +142,11 @@ $options = [
 						],
 
 						'title' => [
-							'label' => __('Title', 'blocksy'),
+							'label' => __('Title', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'options' => [
 
 								'heading_tag' => [
-									'label' => __('Heading tag', 'blocksy'),
+									'label' => __('Heading tag', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'type' => 'ct-select',
 									'value' => 'h2',
 									'view' => 'text',
@@ -164,11 +170,11 @@ $options = [
 						],
 
 						'featured_image' => [
-							'label' => __('Featured Image', 'blocksy'),
+							'label' => __('Featured Image', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'options' => [
 
 								'image_hover_effect' => [
-									'label' => __( 'Hover Effect', 'blocksy' ),
+									'label' => __( 'Hover Effect', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'type' => 'ct-select',
 									'value' => 'none',
 									'view' => 'text',
@@ -176,15 +182,15 @@ $options = [
 									'setting' => [ 'transport' => 'postMessage' ],
 									'choices' => blocksy_ordered_keys(
 										[
-											'none' => __( 'None', 'blocksy' ),
-											'zoom-in' => __( 'Zoom In', 'blocksy' ),
-											'zoom-out' => __( 'Zoom Out', 'blocksy' ),
+											'none' => __( 'None', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+											'zoom-in' => __( 'Zoom In', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+											'zoom-out' => __( 'Zoom Out', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 										]
 									)
 								],
 
 								'image_size' => [
-									'label' => __('Size', 'blocksy'),
+									'label' => __('Size', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'type' => 'ct-select',
 									'value' => 'tainacan-large-full',
 									'view' => 'text',
@@ -225,7 +231,7 @@ $options = [
 									] : [],
 									'options' => [
 										'is_boundless' => [
-											'label' => __('Boundless Image', 'blocksy'),
+											'label' => __('Boundless Image', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 											'type' => 'ct-switch',
 											'sync' => [
 												'id' => $prefix . 'archive_order_skip',
@@ -239,10 +245,10 @@ $options = [
 						],
 
 						'excerpt' => [
-							'label' => __('Description', 'tainacan-blocksy'),
+							'label' => __('Description', 'tainacan'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 							'options' => [
 								'excerpt_length' => [
-									'label' => __('Length', 'blocksy'),
+									'label' => __('Length', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'type' => 'ct-number',
 									'design' => 'inline',
 									'value' => 40,
@@ -253,7 +259,7 @@ $options = [
 						],
 
 						'children_link' => [
-							'label' => __('Children link', 'blocksy'),
+							'label' => __('Children link', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'options' => [
 								'show_term_children_count' => [
 									'label' => __('Display children count', 'tainacan-blocksy'),
@@ -264,7 +270,7 @@ $options = [
 						],
 
 						'items_link' => [
-							'label' => __('Items link', 'blocksy'),
+							'label' => __('Items link', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'options' => [
 								'show_term_items_count' => [
 									'label' => __('Display items count', 'tainacan-blocksy'),
@@ -321,7 +327,7 @@ $options = [
 					] : []),
 					'options' => [
 						$prefix . 'card_min_height' => [
-							'label' => __( 'Card Min Height', 'blocksy' ),
+							'label' => __( 'Card Min Height', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type' => 'ct-slider',
 							'min' => 0,
 							'max' => 1000,
@@ -334,7 +340,7 @@ $options = [
 				],
 
 				$prefix . 'cardsGap' => [
-					'label' => __( 'Cards Gap', 'blocksy' ),
+					'label' => __( 'Cards Gap', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 					'type' => 'ct-slider',
 					'min' => 0,
 					'max' => 100,
@@ -344,7 +350,7 @@ $options = [
 				],
 
 				$prefix . 'card_spacing' => [
-					'label' => __( 'Card Inner Spacing', 'blocksy' ),
+					'label' => __( 'Card Inner Spacing', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 					'type' => 'ct-slider',
 					'min' => 0,
 					'max' => 100,
@@ -358,7 +364,7 @@ $options = [
 			$has_card_matching_template ? [] : [
 				$prefix . 'content_horizontal_alignment' => [
 					'type' => $has_card_matching_template ? 'hidden' : 'ct-radio',
-					'label' => __( 'Content Alignment', 'blocksy' ),
+					'label' => __( 'Content Alignment', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 					'view' => 'text',
 					'design' => 'block',
 					'divider' => 'top',
@@ -401,7 +407,7 @@ $options = [
 				'options' => $has_card_matching_template ? [] : [
 					$prefix . 'content_vertical_alignment' => [
 						'type' => 'ct-radio',
-						'label' => __( 'Vertical Alignment', 'blocksy' ),
+						'label' => __( 'Vertical Alignment', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 						'view' => 'text',
 						'design' => 'block',
 						'divider' => 'top',
@@ -422,7 +428,7 @@ $options = [
 	],
 
 	blocksy_rand_md5() => [
-		'title' => __( 'Design', 'blocksy' ),
+		'title' => __( 'Design', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'type' => 'tab',
 		'options' => apply_filters('blocksy:options:posts-listing:design', [
 			[
@@ -434,7 +440,7 @@ $options = [
 					'options' => [
 						$prefix . 'cardTitleFont' => [
 							'type' => 'ct-typography',
-							'label' => __( 'Title Font', 'blocksy' ),
+							'label' => __( 'Title Font', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'sync' => 'live',
 							'value' => blocksy_typography_default_values([
 								'size' => [
@@ -447,7 +453,7 @@ $options = [
 						],
 
 						$prefix . 'cardTitleColor' => [
-							'label' => __( 'Title Font Color', 'blocksy' ),
+							'label' => __( 'Title Font Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type'  => 'ct-color-picker',
 							'sync' => 'live',
 							'design' => 'inline',
@@ -464,7 +470,7 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => [
 										'var(--theme-heading-1-color, var(--theme-headings-color, var(--headings-color)))' => [
@@ -494,7 +500,7 @@ $options = [
 								],
 
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-link-hover-color, var(--link-hover-color))'
 								],
@@ -517,13 +523,13 @@ $options = [
 
 						$prefix . 'cardExcerptFont' => [
 							'type' => 'ct-typography',
-							'label' => __( 'Excerpt Font', 'blocksy' ),
+							'label' => __( 'Excerpt Font', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'sync' => 'live',
 							'value' => blocksy_typography_default_values([]),
 						],
 
 						$prefix . 'cardExcerptColor' => [
-							'label' => __( 'Excerpt Color', 'blocksy' ),
+							'label' => __( 'Excerpt Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
 							'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
@@ -536,7 +542,7 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-text-color, var(--color))'
 								],
@@ -552,7 +558,7 @@ $options = [
 
 				$prefix . 'cardMetaFont' => [
 					'type' => 'ct-typography',
-					'label' => __( 'Meta Font', 'blocksy' ),
+					'label' => __( 'Meta Font', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 					'sync' => 'live',
 					'value' => blocksy_typography_default_values([
 						'size' => [
@@ -566,7 +572,7 @@ $options = [
 				],
 
 				$prefix . 'cardMetaColor' => [
-					'label' => __( 'Meta Font Color', 'blocksy' ),
+					'label' => __( 'Meta Font Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 					'type'  => 'ct-color-picker',
 					'design' => 'inline',
 					'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
@@ -583,13 +589,13 @@ $options = [
 
 					'pickers' => [
 						[
-							'title' => __( 'Initial', 'blocksy' ),
+							'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'id' => 'default',
 							'inherit' => 'var(--theme-text-color, var(--color))'
 						],
 
 						[
-							'title' => __( 'Hover', 'blocksy' ),
+							'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'id' => 'hover',
 							'inherit' => 'var(--theme-link-hover-color, var(--link-hover-color))'
 						],
@@ -601,7 +607,7 @@ $options = [
 					'optionId' => $prefix . 'archive_order',
 					'options' => [
 						$prefix . 'card_meta_button_type_font_colors' => [
-							'label' => __( 'Meta Button Font', 'blocksy' ),
+							'label' => __( 'Meta Button Font', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
 							'divider' => 'top',
@@ -619,13 +625,13 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-button-text-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-button-text-hover-color, var(--buttonHoverColor))'
 								],
@@ -633,7 +639,7 @@ $options = [
 						],
 
 						$prefix . 'card_meta_button_type_background_colors' => [
-							'label' => __( 'Meta Button Background', 'blocksy' ),
+							'label' => __( 'Meta Button Background', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
 							'noColor' => [ 'background' => 'var(--theme-text-color, var(--color))'],
@@ -650,13 +656,13 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-button-background-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-button-background-hover-color, var(--buttonHoverColor))'
 								],
@@ -678,7 +684,7 @@ $options = [
 						],
 
 						$prefix . 'cardButtonSimpleTextColor' => [
-							'label' => __( 'Button Font Color', 'blocksy' ),
+							'label' => __( 'Button Font Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'sync' => 'live',
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
@@ -695,13 +701,13 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-link-initial-color, var(--linkInitialColor))'
 								],
 
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-link-hover-color, var(--linkHoverColor))'
 								],
@@ -724,7 +730,7 @@ $options = [
 						],
 
 						$prefix . 'cardButtonBackgroundTextColor' => [
-							'label' => __( 'Button Font Color', 'blocksy' ),
+							'label' => __( 'Button Font Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'sync' => 'live',
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
@@ -741,13 +747,13 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-button-text-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-button-text-hover-color, var(--buttonHoverColor))'
 								],
@@ -770,7 +776,7 @@ $options = [
 						],
 
 						$prefix . 'cardButtonOutlineTextColor' => [
-							'label' => __( 'Button Font Color', 'blocksy' ),
+							'label' => __( 'Button Font Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type'  => 'ct-color-picker',
 							'sync' => 'live',
 							'design' => 'inline',
@@ -787,12 +793,12 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-link-initial-color, var(--linkInitialColor))'
 								],
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-link-hover-color, var(--linkHoverColor))'
 								],
@@ -811,7 +817,7 @@ $options = [
 					'options' => [
 
 						$prefix . 'cardButtonColor' => [
-							'label' => __( 'Button Color', 'blocksy' ),
+							'label' => __( 'Button Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'sync' => 'live',
 							'type'  => 'ct-color-picker',
 							'design' => 'inline',
@@ -828,13 +834,13 @@ $options = [
 
 							'pickers' => [
 								[
-									'title' => __( 'Initial', 'blocksy' ),
+									'title' => __( 'Initial', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'default',
 									'inherit' => 'var(--theme-button-background-initial-color, var(--buttonInitialColor))'
 								],
 
 								[
-									'title' => __( 'Hover', 'blocksy' ),
+									'title' => __( 'Hover', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 									'id' => 'hover',
 									'inherit' => 'var(--theme-button-background-hover-color, var(--buttonHoverColor))'
 								],
@@ -857,7 +863,7 @@ $options = [
 						],
 
 						$prefix . 'cardThumbRadius' => [
-							'label' => __( 'Featured Image Radius', 'blocksy' ),
+							'label' => __( 'Featured Image Radius', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type' => 'ct-spacing',
 							'sync' => 'live',
 							'value' => blocksy_spacing_value([
@@ -867,7 +873,7 @@ $options = [
 						],
 
 						$prefix . 'cardDivider' => [
-							'label' => __( 'Card bottom divider', 'blocksy' ),
+							'label' => __( 'Card bottom divider', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type' => 'ct-border',
 							'sync' => 'live',
 							'design' => 'inline',
@@ -895,7 +901,7 @@ $options = [
 						],
 
 						$prefix . 'entryDivider' => [
-							'label' => __( 'Card Divider', 'blocksy' ),
+							'label' => __( 'Card Divider', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 							'type' => 'ct-border',
 							'sync' => 'live',
 							'design' => 'inline',
@@ -975,7 +981,7 @@ $options = [
 						'options' => [
 
 							$prefix . 'card_overlay_background' => [
-								'label' => __( 'Card Overlay Color', 'blocksy' ),
+								'label' => __( 'Card Overlay Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 								'type'  => 'ct-background',
 								'design' => 'block:right',
 								'responsive' => true,
@@ -994,7 +1000,7 @@ $options = [
 					],
 
 					$prefix . 'cardBackground' => [
-						'label' => __( 'Card Background Color', 'blocksy' ),
+						'label' => __( 'Card Background Color', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 						'type'  => 'ct-background',
 						'design' => 'block:right',
 						'responsive' => true,
@@ -1010,7 +1016,7 @@ $options = [
 					],
 
 					$prefix . 'cardBorder' => [
-						'label' => __( 'Card Border', 'blocksy' ),
+						'label' => __( 'Card Border', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 						'type' => 'ct-border',
 						'design' => 'block',
 						'sync' => 'live',
@@ -1026,7 +1032,7 @@ $options = [
 					],
 
 					$prefix . 'cardShadow' => [
-						'label' => __( 'Card Shadow', 'blocksy' ),
+						'label' => __( 'Card Shadow', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 						'type' => 'ct-box-shadow',
 						'sync' => 'live',
 						'responsive' => true,
@@ -1045,7 +1051,7 @@ $options = [
 					],
 
 					$prefix . 'cardRadius' => [
-						'label' => __( 'Border Radius', 'blocksy' ),
+						'label' => __( 'Border Radius', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 						'sync' => 'live',
 						'type' => 'ct-spacing',
 						'divider' => 'top',

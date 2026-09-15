@@ -3,8 +3,8 @@ Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 6.0
-Tested up to: 7.0
-Requires PHP: 7.0
+Tested up to: 7.1
+Requires PHP: 7.4
 Stable tag: 0.4.4
 Requires Plugins: tainacan
 License: GPLv3 or later

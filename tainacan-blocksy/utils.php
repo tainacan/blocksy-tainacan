@@ -3,6 +3,10 @@
 /**
  * Checks if the current activate theme is either blocksy, a child theme of blocksy or one of them in a customizer preview
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( !function_exists('tainacan_blocksy_is_blocksy_activated') ) {
     function tainacan_blocksy_is_blocksy_activated() {
         $theme = wp_get_theme();
@@ -12,9 +16,16 @@ if ( !function_exists('tainacan_blocksy_is_blocksy_activated') ) {
         if ($theme->parent() !== false)
             $is_child_theme_of_blocksy = strpos( $theme->get_template(), 'blocksy' ) !== false;
 
-        if ( isset($_SERVER['REQUEST_URI']) && strpos( $_SERVER['REQUEST_URI'], 'customize' ) !== false ) {
-            $preview_theme_slug = isset( $_REQUEST['theme'] ) ? strtolower($_REQUEST['theme']) : ( isset( $_REQUEST['customize_theme'] ) ? strtolower($_REQUEST['customize_theme']) : '');
-            
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Customizer preview query args WordPress itself uses; not a form submission.
+        $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+        if ( false !== strpos( $request_uri, 'customize' ) ) {
+            $preview_theme_slug = '';
+            if ( isset( $_REQUEST['theme'] ) ) {
+                $preview_theme_slug = sanitize_key( wp_unslash( $_REQUEST['theme'] ) );
+            } elseif ( isset( $_REQUEST['customize_theme'] ) ) {
+                $preview_theme_slug = sanitize_key( wp_unslash( $_REQUEST['customize_theme'] ) );
+            }
+
             $preview_theme = wp_get_theme($preview_theme_slug);
             $is_correct_theme = strpos( $preview_theme->get_stylesheet(), 'blocksy' ) !== false;
 
@@ -22,6 +33,7 @@ if ( !function_exists('tainacan_blocksy_is_blocksy_activated') ) {
             if ($preview_theme->parent() !== false)
                 $is_child_theme_of_blocksy = strpos( $preview_theme->get_template(), 'blocksy' ) !== false;
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
         
         return $is_correct_theme || $is_child_theme_of_blocksy;
     }

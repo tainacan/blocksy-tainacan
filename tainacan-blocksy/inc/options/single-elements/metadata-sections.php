@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
 	$prefix = '';
 }
@@ -14,7 +20,7 @@ $options = [
 		'choices' => [
 			'metadata-section-type-1' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'metadata-section-type-1.svg' ),
-				'title' => __( 'Default', 'tainacan-blocksy' )
+				'title' => __( 'Default', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
             ],
             'metadata-section-type-2' => [
 				'src'   => tainacan_blocksy_image_picker_url( 'metadata-section-type-2.svg' ),

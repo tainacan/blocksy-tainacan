@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
 	$prefix = '';
 }
@@ -12,8 +18,8 @@ $options = [
 		'view' => 'text',
 		'divider' => 'top',
 		'choices' => [
-			'dark' => __('Dark', 'blocksy'),
-			'light' => __('Light', 'blocksy')
+			'dark' => __('Dark', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+			'light' => __('Light', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		]
 	]
 ];

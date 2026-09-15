@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
 	$prefix = '';
 } else {
@@ -12,7 +18,7 @@ $general_main_view_options = [
 	[
 		blocksy_rand_md5() => [
 			'type' => 'ct-title',
-			'label' => __( 'Main slider', 'tainacan-blocksy' )
+			'label' => __( 'Main slider', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 		]
 	],
 	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-caption-main.php', [
@@ -58,7 +64,7 @@ $general_tab_options = array_merge(
 		[
 			blocksy_rand_md5() => [
 				'type' => 'ct-title',
-				'label' => __( 'Thumbnails', 'tainacan-blocksy' )
+				'label' => __( 'Thumbnails', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			]
 		],
 		blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-name.php', [
@@ -102,7 +108,7 @@ $design_main_options = [
 	[
 		blocksy_rand_md5() => [
 			'type' => 'ct-title',
-			'label' => __( 'Main slider', 'tainacan-blocksy' )
+			'label' => __( 'Main slider', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 		]
 	],
 	blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/document-height.php', [
@@ -131,7 +137,7 @@ $design_tab_options = array_merge(
 		[
 			blocksy_rand_md5() => [
 				'type' => 'ct-title',
-				'label' => __( 'Thumbnails', 'tainacan-blocksy' )
+				'label' => __( 'Thumbnails', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			]
 		],
 		blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/attachments-carousel-width.php', [
@@ -175,12 +181,12 @@ $options = [
 		]),
 		'inner-options' => [
 			blocksy_rand_md5() => [
-				'title' => __( 'General', 'blocksy' ),
+				'title' => __( 'General', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 				'type' => 'tab',
 				'options' => $general_tab_options
 			],
 			blocksy_rand_md5() => [
-				'title' => __( 'Design', 'blocksy' ),
+				'title' => __( 'Design', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 				'type' => 'tab',
 				'options' => $design_tab_options
 			]

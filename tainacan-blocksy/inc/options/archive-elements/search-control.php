@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
 	$prefix = '';
 } else {
@@ -42,7 +48,7 @@ $options = [
             ],
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'Sorting', 'tainacan-blocksy' )
+                'label' => __( 'Sorting', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
             ],
             $prefix . 'show_sorting_area' => [
                 'label' => __( 'Show sorting options', 'tainacan-blocksy' ),

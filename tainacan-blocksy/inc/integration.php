@@ -1,12 +1,18 @@
 <?php
 
 /**
- * This is a dummy copy of the blc_call_fn function used in the blocksy-companion plugin
- * Check their /framework/helpers/blocksy-integration.php file for more details
- * I renamed the usage from 'fn' to 'fnc' to avoid future conflicts
+ * Local copy of Blocksy Companion's blc_call_fn().
+ * See their /framework/helpers/blocksy-integration.php.
+ * Named tainacan_blocksy_call_fnc (not blc_call_fn) to avoid colliding with the companion plugin.
  */
-if (! function_exists('blc_call_fnc')) {
-	function blc_call_fnc($args = [], ...$params) {
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invokes Blocksy theme hooks.
+
+if (! function_exists('tainacan_blocksy_call_fnc')) {
+	function tainacan_blocksy_call_fnc($args = [], ...$params) {
 		$args = wp_parse_args(
 			$args,
 			[
@@ -62,10 +68,10 @@ if ( !function_exists('tainacan_get_default_view_mode_choices') ) {
         } else {
             $default_view_mode = 'masonry';
             $enabled_view_modes = [
-                'masonry' => __('Masonry', 'tainacan-blocksy'),
-                'cards' => __('Cards', 'tainacan-blocksy'),
-                'table' => __('Table', 'tainacan-blocksy'),
-                'grid' => __('Grid', 'tainacan-blocksy')
+                'masonry' => __('Masonry', 'tainacan'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+                'cards' => __('Cards', 'tainacan'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+                'table' => __('Table', 'tainacan'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+                'grid' => __('Grid', 'tainacan') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
             ];
         }
         return [
@@ -173,7 +179,7 @@ add_filter('post_class', 'tainacan_blocksy_post_class');
 if ( !function_exists('tainacan_blocksy_register_tainacan_item_post_type') ) {
     function tainacan_blocksy_register_tainacan_item_post_type() {
         register_post_type('tnc_blocksy_item', [
-            'label' => __('Tainacan', 'tainacan-blocksy'),
+            'label' => __('Tainacan', 'tainacan'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
             'public' => true,
             'show_ui' => false,
             'show_in_menu' => false,

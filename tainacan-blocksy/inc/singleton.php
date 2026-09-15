@@ -2,6 +2,10 @@
 
 namespace Tainacan_Blocksy;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 trait Singleton {
 
 	protected static $instance;

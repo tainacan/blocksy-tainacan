@@ -3,6 +3,10 @@
  * Item single gallery helpers (theme mods, section attrs, Swiper tweaks, media actions).
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! function_exists( 'tainacan_blocksy_has_media_item_actions' ) ) {
 	/**
 	 * Whether the current Tainacan ships the media item actions wrapper.

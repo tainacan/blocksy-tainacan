@@ -2,6 +2,10 @@
 /**
  * Optional “read more” preview length for Textarea and Core Description metadata on the public item page.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Tainacan_Blocksy_Textarea_Readmore {
 
 	/** @var string Post meta on the metadatum post (empty or positive integer = max chars before toggle). */
@@ -301,7 +305,7 @@ class Tainacan_Blocksy_Textarea_Readmore {
 				aria-expanded="false"
 				aria-controls="<?php echo esc_attr( $region_id ); ?>"
 			>
-				<?php echo esc_html__( 'Show more', 'tainacan-blocksy' ); ?>
+				<?php echo esc_html__( 'Show more', 'tainacan' ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation. ?>
 			</a>
 		</div>
 		<?php
@@ -326,7 +330,7 @@ class Tainacan_Blocksy_Textarea_Readmore {
 			'tainacan-blocksy-textarea-readmore',
 			'tainacanBlocksyTextareaReadmore',
 			array(
-				'moreText' => __( 'Show more', 'tainacan-blocksy' ),
+				'moreText' => __( 'Show more', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'lessText' => __( 'Show less', 'tainacan-blocksy' ),
 			)
 		);

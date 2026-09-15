@@ -1,31 +1,37 @@
-<?php 
-    $prefix = blocksy_manager()->screen->get_prefix(); 
+<?php
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+$tainacan_blocksy_prefix = blocksy_manager()->screen->get_prefix(); 
 ?>
 
 <section class="tainacan-item-section tainacan-item-section--metadata">
-    <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan-blocksy' )) != '' ) : ?>
+    <?php if ( get_theme_mod($tainacan_blocksy_prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($tainacan_blocksy_prefix . '_section_metadata_label', __( 'Metadata', 'tainacan' )) != '' ) : ?>
         <h2 class="tainacan-single-item-section" id="tainacan-item-metadata-label">
-            <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan-blocksy' ) ) ); ?>
+            <?php echo esc_html( get_theme_mod($tainacan_blocksy_prefix . '_section_metadata_label', __( 'Metadata', 'tainacan' ) ) ); ?>
         </h2>
     <?php endif; ?>
-    <div class="tainacan-item-section__metadata <?php echo get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') ?>">
-        <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
+    <div class="tainacan-item-section__metadata <?php echo esc_attr( get_theme_mod( $tainacan_blocksy_prefix . '_metadata_list_structure_type', 'metadata-type-1' ) ); ?>">
+        <?php if (has_post_thumbnail() && (get_theme_mod($tainacan_blocksy_prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">
-                <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'tainacan-blocksy' ); ?></h3>
+                <h3 class="tainacan-metadata-label"><?php esc_html_e( 'Thumbnail', 'tainacan' ); ?></h3>
                 <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
             </div>
         <?php endif; ?>
         <?php do_action( 'tainacan-blocksy-single-item-metadata-begin' ); ?>
         <?php
-            $args = array(
+            $tainacan_blocksy_args = array(
                 'display_slug_as_class' => true,
                 'before_title' => '<h3 class="tainacan-metadata-label">',
                 'after_title' => '</h3>',
                 'before_value' => '<p class="tainacan-metadata-value">',
                 'after_value' => '</p>',
-                'exclude_title' => (get_theme_mod($prefix . '_show_title_metadata', 'yes') === 'no')
+                'exclude_title' => (get_theme_mod($tainacan_blocksy_prefix . '_show_title_metadata', 'yes') === 'no')
             );
-            tainacan_the_metadata( $args );
+            tainacan_the_metadata( $tainacan_blocksy_args );
         ?>
         <?php do_action( 'tainacan-blocksy-single-item-metadata-end' ); ?>
     </div>

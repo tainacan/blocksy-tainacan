@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
     $initial_prefix = '';
 	$prefix = '';
@@ -14,13 +20,13 @@ if (! isset($enabled)) {
 
 $inner_options = [
     $prefix . 'filters_panel_background_style' => [
-        'label' => __('Panel style', 'blocksy'),
+        'label' => __('Panel style', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
         'type' => 'ct-radio',
         'value' => 'boxed',
         'view' => 'text',
         'choices' => [
-            'simple' => __('Simple', 'blocksy'),
-            'boxed' => __('Boxed', 'blocksy')
+            'simple' => __('Simple', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+            'boxed' => __('Boxed', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
         ]
     ],
     blocksy_rand_md5() => [
@@ -113,7 +119,7 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.7' ) 
         'label' => __( 'Hide filter collapses', 'tainacan-blocksy' ),
         'type' => 'ct-switch',
         'value' => 'no',
-        'desc' => __( 'Toggle to not display each filter label as a collapsable button. This is suggested when you have a small amount of filters.', 'tainacan-blocksy' ),
+        'desc' => __( 'Toggle to not display each filter label as a collapsable button. This is suggested when you have a small amount of filters.', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
         'sync' => ''
     ];
     $inner_options = array_merge(
@@ -126,17 +132,17 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.7' ) 
                 ],
                 'options' => [
                     $prefix . 'display_filters_horizontally' => [
-                        'label' => __( 'Display filters horizontally', 'tainacan-blocksy' ),
+                        'label' => __( 'Display filters horizontally', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
                         'type' => 'ct-switch',
                         'value' => 'no',
-                        'desc' => __( 'Toggle to show filters in an horizontal pane above the search control instead of a vertical sidebar. This layout fits better with select and textual input filters.', 'tainacan-blocksy' ),
+                        'desc' => __( 'Toggle to show filters in an horizontal pane above the search control instead of a vertical sidebar. This layout fits better with select and textual input filters.', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
                         'sync' => ''
                     ],
                     $prefix . 'should_not_hide_filters_on_mobile' => [
-                        'label' => __( 'Should not hide filters even on mobile', 'tainacan-blocksy' ),
+                        'label' => __( 'Should not hide filters even on mobile', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
                         'type' => 'ct-switch',
                         'value' => 'no',
-                        'desc' => __( 'Toggle to keep filters area visible even on small screen sizes.', 'tainacan-blocksy' ),
+                        'desc' => __( 'Toggle to keep filters area visible even on small screen sizes.', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
                         'sync' => ''
                     ],
                 ]
@@ -168,7 +174,7 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.7' ) 
                 ]
             ],
             $prefix . 'filter_label_border' => [
-                'label' => __( 'Filter label bottom border', 'blocksy' ),
+                'label' => __( 'Filter label bottom border', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                 'type' => 'ct-border',
                 'design' => 'block',
                 'responsive' => true,

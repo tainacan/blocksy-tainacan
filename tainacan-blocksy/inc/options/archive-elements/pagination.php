@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
 	$prefix = '';
 	$initial_prefix = '';
@@ -14,7 +20,7 @@ if (! isset($enabled)) {
 
 $options = [
 	$prefix . 'has_pagination' => [
-		'label' => __( 'Pagination', 'blocksy' ),
+		'label' => __( 'Pagination', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'type' => 'ct-panel',
 		'switch' => true,
 		'value' => $enabled,

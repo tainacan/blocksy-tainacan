@@ -1,5 +1,11 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 if (! isset($prefix)) {
 	$prefix = '';
 } else {
@@ -36,7 +42,7 @@ if ( function_exists('tainacan_get_the_metadata_sections') ) {
         [
             blocksy_rand_md5() => [
                 'type' => 'ct-title',
-                'label' => __( 'Metadata Sections', 'tainacan-blocksy' )
+                'label' => __( 'Metadata Sections', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
             ]
         ],
         [
@@ -69,13 +75,13 @@ $options = [
 		'inner-options' => [
 
             blocksy_rand_md5() => [
-                'title' => __( 'General', 'blocksy' ),
+                'title' => __( 'General', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                 'type' => 'tab',
                 'options' => $general_tab_options,
             ],
 
             blocksy_rand_md5() => [
-                'title' => __( 'Design', 'blocksy' ),
+                'title' => __( 'Design', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                 'type' => 'tab',
                 'options' => [
                     blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/metadata-labels.php', [

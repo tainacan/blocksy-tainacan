@@ -3,13 +3,19 @@
 /**
  * Retrieves an item adjacent link, either using WP strategy or Tainacan plugin tainacan_get_adjacent_items()
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invokes Blocksy theme hooks.
+
 if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 	function tainacan_blocksy_get_adjacent_item_links() {
 
 		$prefix = blocksy_manager()->screen->get_prefix();
 		
 		// We use Tainacan own method for obtaining previous and next item objects
-		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
+		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
 			$adjacent_items = tainacan_get_adjacent_items();
 
 			if (isset($adjacent_items['next'])) {
@@ -48,7 +54,7 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 			$previous_thumb = '';
 			$next_thumb = '';
 
-			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
+			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
 				if ($adjacent_items['next'] && $adjacent_items['next']['thumbnail'] && $adjacent_items['next']['thumbnail']['tainacan-medium']) {
 					$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-medium'][0];
 				}
@@ -105,11 +111,12 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 }
 
 /**
- * Copy of blocksy original post navigation function.
- * Check inc/template-tags.php post navigation file on the parent theme
+ * Copy of Blocksy's original post navigation, kept so we can call it after
+ * the Tainacan item-navigation override of blocksy_post_navigation().
+ * See inc/template-tags.php in the Blocksy parent theme.
  */
-if ( !function_exists('blocksy_default_post_navigation') ) {
-	function blocksy_default_post_navigation() {
+if ( ! function_exists( 'tainacan_blocksy_default_post_navigation' ) ) {
+	function tainacan_blocksy_default_post_navigation() {
 		$prefix = blocksy_manager()->screen->get_prefix();
 
 		$next_post = apply_filters(
@@ -283,7 +290,7 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 										apply_filters(
 											'blocksy:post-navigation:previous-post:label',
 											// translators: post title
-											__('Previous %s', 'blocksy')
+											__('Previous %s', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 										),
 										$post_slug
 									));
@@ -311,7 +318,7 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 										apply_filters(
 											'blocksy:post-navigation:next-post:label',
 											// translators: post title
-											__('Next %s', 'blocksy')
+											__('Next %s', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 										),
 										$post_slug
 									));
@@ -326,7 +333,10 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 						</div>
 
 						<?php if ($has_thumb) : ?>
-							<?php echo $previous_post_image_output; ?>
+							<?php
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Function blocksy_image()/blocksy_media() used here escapes the value properly.
+								echo $previous_post_image_output;
+							?>
 						<?php endif; ?>
 					</a>
 				<?php else : ?>
@@ -407,7 +417,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 		/**
 		 * Overrides parent theme blocksy post navigation logic to handle items navigation
 		 */
-		function blocksy_post_navigation() {
+		function blocksy_post_navigation() { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Replaces Blocksy theme pluggable function.
 		
 			// This should only happen if we have Tainacan plugin installed
 			if ( defined ('TAINACAN_VERSION') ) {
@@ -426,7 +436,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 					return tainacan_blocksy_item_navigation();
 				}
 			}
-			return blocksy_default_post_navigation();
+			return tainacan_blocksy_default_post_navigation();
 		}
 	}
 	add_action( 'plugins_loaded', 'tainacan_blocksy_after_theme_setup' );
@@ -434,7 +444,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 	/**
 	 * Overrides parent theme blocksy post navigation logic to handle items navigation
 	 */
-	function blocksy_post_navigation() {
+	function blocksy_post_navigation() { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Replaces Blocksy theme pluggable function.
 
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
@@ -453,7 +463,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 				return tainacan_blocksy_item_navigation();
 			}
 		}
-		return blocksy_default_post_navigation();
+		return tainacan_blocksy_default_post_navigation();
 	}
 }
 
@@ -521,7 +531,7 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 						$taxonomy = get_taxonomy( $term->taxonomy );
 						if ( $taxonomy && $taxonomy->labels )
 							$array[$collection_archive_link_index] = [ "name" => $taxonomy->labels->singular_name ];
-							$array[] = [ "name" => __('Items', 'tainacan-blocksy') ];
+							$array[] = [ "name" => __('Items', 'tainacan') ]; // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 					}
 				}
 			}
@@ -543,11 +553,11 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 					}
 				}
 
-				$array[] = [ "name" => __('Items', 'tainacan-blocksy') ];
+				$array[] = [ "name" => __('Items', 'tainacan') ]; // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			}
 			// Check if we're inside the main loop in a single Post.
 			else if ( $is_collection && is_singular() && in_the_loop() && is_main_query() ) {
-				$args = $_GET;
+				$args = wp_unslash( $_GET ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query args used to rebuild breadcrumb URLs.
 
 				for ($i = 0; $i < count($array); $i++) {
 
@@ -591,8 +601,8 @@ add_filter( 'blocksy:breadcrumbs:items-array', 'tainacan_blocksy_custom_breadcru
 /**
  * Retrieves an item adjacent link, either using WP strategy or Tainacan plugin tainacan_get_adjacent_items()
  */
-if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
-	function blocksy_tainacan_the_taxonomies_pagination($total_terms, $args = []) {
+if ( ! function_exists( 'tainacan_blocksy_the_taxonomies_pagination' ) ) {
+	function tainacan_blocksy_the_taxonomies_pagination($total_terms, $args = []) {
 
 		global $wp_query;
 
@@ -615,7 +625,7 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 				'has_pagination' => '__DEFAULT__',
 				'pagination_type' => '__DEFAULT__',
 
-				'last_page_text' => __('No more posts to load', 'blocksy'),
+				'last_page_text' => __('No more posts to load', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 				'total_pages' => null,
 				'current_page' => null,
 				'format' => null,
@@ -651,10 +661,10 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 		) {
 			$label_button = get_theme_mod(
 				$args['prefix'] . '_load_more_label',
-				__('Load More', 'blocksy')
+				__('Load More', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			);
 
-			$button_output = '<button class="ct-button ct-load-more">' . $label_button . '</button>';
+			$button_output = '<button class="ct-button ct-load-more">' . esc_html( $label_button ) . '</button>';
 		}
 
 		if (
@@ -668,7 +678,7 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 
 			$button_output = '<div class="ct-load-more-helper">' . $button_output;
 			$button_output .= '<span data-loader="circles"><span></span><span></span><span></span></span>';
-			$button_output .= '<div class="ct-last-page-text">' . $args['last_page_text'] . '</div>';
+			$button_output .= '<div class="ct-last-page-text">' . esc_html( $args['last_page_text'] ) . '</div>';
 			$button_output .= '</div>';
 		}
 
@@ -734,9 +744,9 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 			'mid_size' => 3,
 			'end_size' => 0,
 			'type' => 'array',
-			'prev_text' => '<svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M10.9,15c-0.2,0-0.4-0.1-0.6-0.2L3.6,8c-0.3-0.3-0.3-0.8,0-1.1l6.6-6.6c0.3-0.3,0.8-0.3,1.1,0c0.3,0.3,0.3,0.8,0,1.1L5.2,7.4l6.2,6.2c0.3,0.3,0.3,0.8,0,1.1C11.3,14.9,11.1,15,10.9,15z"/></svg>' . __('Prev', 'blocksy'),
+			'prev_text' => '<svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M10.9,15c-0.2,0-0.4-0.1-0.6-0.2L3.6,8c-0.3-0.3-0.3-0.8,0-1.1l6.6-6.6c0.3-0.3,0.8-0.3,1.1,0c0.3,0.3,0.3,0.8,0,1.1L5.2,7.4l6.2,6.2c0.3,0.3,0.3,0.8,0,1.1C11.3,14.9,11.1,15,10.9,15z"/></svg>' . __('Prev', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 
-			'next_text' => __('Next', 'blocksy') . ' <svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg>',
+			'next_text' => __('Next', 'blocksy') . ' <svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg>', // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		];
 
 		if ($args['base']) {
@@ -805,11 +815,17 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 			) . '">' . $proper_links . '</div>';
 		}
 
+		/**
+		 * Note to code reviewers: This line doesn't need to be escaped.
+		 * Pagination markup is assembled from WordPress paginate_links() HTML and escaped fragments above.
+		 */
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo sprintf(
 			$template,
 			$arrow_links[0] . $proper_links . $arrow_links[1],
 			$button_output
 		);
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 ?>

@@ -1,8 +1,14 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy dynamic CSS include ($css, $tablet_css, $mobile_css, $prefix).
+
 $prefix = blocksy_manager()->screen->get_prefix();
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -16,7 +22,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => ''
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -31,7 +37,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 ]);
 
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -42,7 +48,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'value' => get_theme_mod($prefix . '_tainacan_single_item_section_alignment', 'left')
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -56,7 +62,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => ''
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -70,7 +76,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => ''
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -85,7 +91,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'defaultUnit' => 'vh',
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -100,7 +106,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'defaultUnit' => 'vh',
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -115,7 +121,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'defaultUnit' => '%',
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -130,7 +136,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'defaultUnit' => '%',
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -144,7 +150,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'unit' => ''
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -157,7 +163,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	)
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -169,7 +175,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	)
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -181,7 +187,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	)
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -194,7 +200,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	)
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_border'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_border'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -218,7 +224,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 ]);
 
 
-blc_call_fnc(['fnc' => 'blocksy_output_border'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_border'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -242,7 +248,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_border'], [
 ]);
 
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -256,7 +262,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	)
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -268,7 +274,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_font_css'], [
 	)
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -279,7 +285,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'value' => get_theme_mod($prefix . '_tainacan_metadata_label_alignment', 'left')
 ]);
 
-blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
@@ -292,7 +298,7 @@ blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [
 
 
 
-blc_call_fnc(['fnc' => 'blocksy_output_border'], [
+tainacan_blocksy_call_fnc(['fnc' => 'blocksy_output_border'], [
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
