@@ -29,6 +29,12 @@
     }
 
     $is_list_thumbs = $thumbs_layout === 'list';
+    $is_gallery_layout = strpos( $items_related_to_this_layout, 'gallery-' ) !== false;
+    $gallery_data_attributes = '';
+
+    if ( $is_gallery_layout && function_exists( 'tainacan_blocksy_get_item_gallery_data_attributes' ) ) {
+        $gallery_data_attributes = tainacan_blocksy_get_item_gallery_data_attributes( $prefix );
+    }
 
     $order_option_split = explode( '_', $order_option ); 
     $order_by = $order_option_split[0] ? $order_option_split[0] : 'title';
@@ -42,7 +48,7 @@
 
     if ( function_exists('tainacan_the_related_items_carousel') && (get_theme_mod( $prefix . '_display_items_related_to_this', 'no' ) === 'yes') && tainacan_has_related_items() ) : ?>
     
-    <section class="tainacan-item-section tainacan-item-section--items-related-to-this <?php echo esc_attr(' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ) ?>">
+    <section class="tainacan-item-section tainacan-item-section--items-related-to-this <?php echo esc_attr(' tainacan-media-component-wrapper-spacing--' . $gallery_spacing ) ?>"<?php echo $gallery_data_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper ?>>
         
         <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && $section_label != '') : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-items-related-to-this-label">
@@ -52,7 +58,7 @@
         <div class="tainacan-item-section__items-related-to-this">
             <?php 
                 $items_gallery_options = [];
-                if ( strpos($items_related_to_this_layout, 'gallery-') !== false) {
+                if ( $is_gallery_layout ) {
 
                     $items_gallery_options = $items_related_to_this_layout == 'gallery-slider' ?
                         array(
