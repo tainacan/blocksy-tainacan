@@ -5,6 +5,10 @@
  * Check their /framework/helpers/blocksy-integration.php file for more details
  * I renamed the usage from 'fn' to 'fnc' to avoid future conflicts
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if (! function_exists('blc_call_fnc')) {
 	function blc_call_fnc($args = [], ...$params) {
 		$args = wp_parse_args(

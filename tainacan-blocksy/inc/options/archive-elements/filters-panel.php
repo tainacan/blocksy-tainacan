@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if (! isset($prefix)) {
     $initial_prefix = '';
 	$prefix = '';

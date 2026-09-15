@@ -3,6 +3,10 @@
 /**
  * Retrieves an item adjacent link, either using WP strategy or Tainacan plugin tainacan_get_adjacent_items()
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 	function tainacan_blocksy_get_adjacent_item_links() {
 

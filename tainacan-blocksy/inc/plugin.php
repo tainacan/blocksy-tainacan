@@ -2,6 +2,10 @@
 /**
  * add support for elasticpress in searches used by blocksy
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_filter('pre_get_posts', function ($query) {
     if (class_exists('\Tainacan\Elastic_Press')) {
         $tainacan_Elastic_press = \Tainacan\Elastic_Press::get_instance();

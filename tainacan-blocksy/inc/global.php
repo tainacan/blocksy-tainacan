@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $prefix = blocksy_manager()->screen->get_prefix();
 
 blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [

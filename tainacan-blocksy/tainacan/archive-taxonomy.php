@@ -1,5 +1,9 @@
 <?php 
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $term_items_prefix = 'tainacan-terms-items_archive';
 $_GET['blocksy_prefix'] = $term_items_prefix;
 

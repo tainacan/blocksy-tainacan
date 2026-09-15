@@ -2,6 +2,10 @@
 
 // phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $view_modes = tainacan_get_default_view_mode_choices();
 
 $options = [

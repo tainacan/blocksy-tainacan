@@ -3,6 +3,10 @@
 /**
  * Checks if the current activate theme is either blocksy, a child theme of blocksy or one of them in a customizer preview
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( !function_exists('tainacan_blocksy_is_blocksy_activated') ) {
     function tainacan_blocksy_is_blocksy_activated() {
         $theme = wp_get_theme();

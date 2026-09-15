@@ -1,5 +1,9 @@
 <?php 
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $prefix = blocksy_manager()->screen->get_prefix();
 
 $page_hero_section_style = get_theme_mod($prefix . '_hero_section' , get_theme_mod($prefix . '_page_header_background_style', 'boxed'));

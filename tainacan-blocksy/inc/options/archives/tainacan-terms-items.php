@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $options = [
 	'title' => __('Tainacan Terms Items', 'tainacan-blocksy'),
 	'container' => [ 'priority' => 8 ],

@@ -1,6 +1,10 @@
 <?php
 
 // phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
     $prefix = blocksy_manager()->screen->get_prefix();
     
     // Galley mode is a shortname for when documents and attachments are displayed merged in the same list

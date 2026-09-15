@@ -1,6 +1,10 @@
 <?php
 
 // phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 	$prefix = blocksy_manager()->screen->get_prefix();
 	$settings = tainacan_blocksy_get_item_gallery_settings( $prefix );
 

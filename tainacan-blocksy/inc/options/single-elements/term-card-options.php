@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if (! isset($is_cpt)) {
 	$is_cpt = true;
 }

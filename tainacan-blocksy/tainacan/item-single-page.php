@@ -7,6 +7,10 @@
  * @package BlocksyTainacan
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $prefix = blocksy_manager()->screen->get_prefix();
 
 $page_structure_type = get_theme_mod( $prefix . '_page_structure_type', 'type-dam');

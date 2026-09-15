@@ -3,6 +3,10 @@
 /**
  * This class uses Tainacan Form Hooks to add new fields to the collection form
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Tainacan_Blocksy_Collection_Hooks {
 
 	public $use_default_item_customizations = 'tainacan_blocksy_use_default_item_customizations';

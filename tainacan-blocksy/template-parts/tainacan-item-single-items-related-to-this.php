@@ -1,6 +1,10 @@
 <?php
 
 // phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
     $prefix = blocksy_manager()->screen->get_prefix();
     
     $section_label                = get_theme_mod( $prefix . '_section_items_related_to_this_label', __( 'Items related to this', 'tainacan' ) );

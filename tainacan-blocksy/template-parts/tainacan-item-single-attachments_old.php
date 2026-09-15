@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
     $attachments = tainacan_get_the_attachments();
     $prefix = blocksy_manager()->screen->get_prefix();
 

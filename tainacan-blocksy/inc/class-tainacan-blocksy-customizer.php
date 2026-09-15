@@ -3,6 +3,10 @@
 /**
  * This class holds logic for adding Tainacan custom post types to Blocksy customizer.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Tainacan_Blocksy_Customizer {
 
 	use Tainacan_Blocksy\Singleton;

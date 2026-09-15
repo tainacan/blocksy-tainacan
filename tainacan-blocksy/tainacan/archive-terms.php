@@ -1,5 +1,9 @@
 <?php 
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_filter('tainacan-default-taxonomy-terms-perpage', function() {
     $prefix = blocksy_manager()->screen->get_prefix();
     return get_theme_mod($prefix . '_archive_per_page', 12);

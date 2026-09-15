@@ -4,6 +4,10 @@
  * Enqueues styles and scripts
  * Some JS files here are only necessary for Tainacan Item pages
  */ 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 function tainacan_blocksy_enqueue_scripts() {
 
 	// First, we enqueue parent theme styles

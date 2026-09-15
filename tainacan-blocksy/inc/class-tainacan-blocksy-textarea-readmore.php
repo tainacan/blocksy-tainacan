@@ -2,6 +2,10 @@
 /**
  * Optional “read more” preview length for Textarea and Core Description metadata on the public item page.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Tainacan_Blocksy_Textarea_Readmore {
 
 	/** @var string Post meta on the metadatum post (empty or positive integer = max chars before toggle). */
