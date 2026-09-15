@@ -14,9 +14,9 @@ $options = [
 		'label' => __( 'Background color palette', 'tainacan-blocksy' ),
 		'type'  => 'ct-color-palettes-picker',
 		'design' => 'block',
-		// translators: The interpolations addes a html link around the word.
 		'desc' => sprintf(
-			__('Learn more about palettes and colors %shere%s.', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+			/* translators: 1: Opening HTML <a> tag. 2: Closing HTML </a> tag. */
+			__('Learn more about palettes and colors %1$shere%2$s.', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			'<a href="https://creativethemes.com/blocksy/docs/general-options/colors/" target="_blank">',
 			'</a>'
 		),
@@ -79,9 +79,9 @@ $options = [
 		'label' => __( 'Text color palette', 'tainacan-blocksy' ),
 		'type'  => 'ct-color-palettes-picker',
 		'design' => 'block',
-		// translators: The interpolations addes a html link around the word.
 		'desc' => sprintf(
-			__('Learn more about palettes and colors %shere%s.', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+			/* translators: 1: Opening HTML <a> tag. 2: Closing HTML </a> tag. */
+			__('Learn more about palettes and colors %1$shere%2$s.', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			'<a href="https://creativethemes.com/blocksy/docs/general-options/colors/" target="_blank">',
 			'</a>'
 		),
