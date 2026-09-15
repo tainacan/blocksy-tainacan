@@ -58,38 +58,38 @@ class Tainacan_Blocksy_Collection_Hooks {
 		?>
 		<div class="tainacan-blocksy-extra-fields"> 
 			<div class="field tainacan-collection--section-header">
-            <h4><?php _e( 'Integration of Tainacan into the Blocksy theme', 'tainacan-blocksy'); ?></h4>
+            <h4><?php esc_html_e( 'Integration of Tainacan into the Blocksy theme', 'tainacan-blocksy'); ?></h4>
             <hr>
             <p>
-                <?php _e( 'To customize the public appearence of your collection items list and single item you can visit the WordPress Customizer.', 'tainacan-blocksy'); ?>
+                <?php esc_html_e( 'To customize the public appearence of your collection items list and single item you can visit the WordPress Customizer.', 'tainacan-blocksy'); ?>
             </p>
             <br>
 			<div class="columns">
 				<div class="field column is-8">
-					<label class="label"><?php _e( 'Source of the appearence options', 'tainacan-blocksy' ); ?></label>
+					<label class="label"><?php esc_html_e( 'Source of the appearence options', 'tainacan-blocksy' ); ?></label>
 					<div class="control">
 						<span class="select is-fullwidth">
 							<select name="<?php echo esc_attr( $this->use_default_item_customizations ); ?>">
-								<option value="no"><?php _e('Custom appearence for this collection items', 'tainacan-blocksy'); ?></option>
-								<option value="yes"><?php _e('General options inherited from the "Tainacan Item" section.', 'tainacan-blocksy'); ?></option>
+								<option value="no"><?php esc_html_e('Custom appearence for this collection items', 'tainacan-blocksy'); ?></option>
+								<option value="yes"><?php esc_html_e('General options inherited from the "Tainacan Item" section.', 'tainacan-blocksy'); ?></option>
 							</select>
 						</span>
 					</div>
                     <p class="help">
-                        <?php _e( 'If you wish to customize most of your collection templates with the same appearence, set the source of above to the general "Tainacan item" section.', 'tainacan-blocksy'); ?>
+                        <?php esc_html_e( 'If you wish to customize most of your collection templates with the same appearence, set the source of above to the general "Tainacan item" section.', 'tainacan-blocksy'); ?>
                     </p>
 				</div>
                 <div class="column is-4">
-                    <label class="label"><?php _e( 'Customizer shortcuts', 'tainacan-blocksy' ); ?></label>
+                    <label class="label"><?php esc_html_e( 'Customizer shortcuts', 'tainacan-blocksy' ); ?></label>
                     <ul style="font-size: 0.875em; padding: 0.125em;">
                         <li>
                             <a href="<?php echo esc_url( admin_url( '/customize.php?autofocus[section]=post_type_archive_tnc_blocksy_item&ct_autofocus=post_types:post_type_archive_tnc_blocksy_item' ) ); ?>" target="_blank">
-                                <?php _e('Collection items list', 'tainacan-blocksy'); ?> ↗
+                                <?php esc_html_e('Collection items list', 'tainacan-blocksy'); ?> ↗
                             </a>
                         </li>
                         <li>
 							<a href="<?php echo esc_url( admin_url( '/customize.php?autofocus[section]=post_type_single_tnc_blocksy_item&ct_autofocus=post_type_single_tnc_blocksy_item' ) ); ?>" target="_blank">
-								<?php _e('Single item page', 'tainacan-blocksy'); ?> ↗
+								<?php esc_html_e('Single item page', 'tainacan-blocksy'); ?> ↗
 							</a>
 						</li>
                     </ul>

@@ -13,7 +13,7 @@
     <div class="tainacan-item-section__metadata <?php echo esc_attr( get_theme_mod( $prefix . '_metadata_list_structure_type', 'metadata-type-1' ) ); ?>">
         <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">
-                <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'tainacan' ); ?></h3>
+                <h3 class="tainacan-metadata-label"><?php esc_html_e( 'Thumbnail', 'tainacan' ); ?></h3>
                 <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
             </div>
         <?php endif; ?>
