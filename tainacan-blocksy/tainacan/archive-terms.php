@@ -275,7 +275,7 @@ $tainacan_blocksy_hide_term_items_count = (isset($tainacan_blocksy_items_link_el
 
                 do_action('blocksy:loop:after');
 
-                blocksy_tainacan_the_taxonomies_pagination($tainacan_blocksy_taxonomy_terms_list['total_terms']);
+                tainacan_blocksy_the_taxonomies_pagination($tainacan_blocksy_taxonomy_terms_list['total_terms']);
 
                 /**
                  * Note to code reviewers: This line doesn't need to be escaped.

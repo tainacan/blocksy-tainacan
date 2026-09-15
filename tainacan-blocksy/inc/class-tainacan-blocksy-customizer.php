@@ -35,7 +35,7 @@ class Tainacan_Blocksy_Customizer {
 	function add_repository_and_terms_items_options_panel($options) {
 
 		/* Repository Items List */
-		$repository_items_extra_options = blc_call_fnc(
+		$repository_items_extra_options = tainacan_blocksy_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
 				'default' => 'array'
@@ -74,7 +74,7 @@ class Tainacan_Blocksy_Customizer {
 		$options['tainacan_repository_items_list']['options']['tainacan_repository_items_list_section_options']['inner-options'][0] = $default_title_options;
 
 		/* Term Items List */
-		$term_items_extra_options = blc_call_fnc(
+		$term_items_extra_options = tainacan_blocksy_call_fnc(
 			[
 				'fnc' => 'blocksy_get_options',
 				'default' => 'array'

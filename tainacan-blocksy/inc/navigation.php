@@ -15,7 +15,7 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 		$prefix = blocksy_manager()->screen->get_prefix();
 		
 		// We use Tainacan own method for obtaining previous and next item objects
-		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
+		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
 			$adjacent_items = tainacan_get_adjacent_items();
 
 			if (isset($adjacent_items['next'])) {
@@ -54,7 +54,7 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 			$previous_thumb = '';
 			$next_thumb = '';
 
-			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
+			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
 				if ($adjacent_items['next'] && $adjacent_items['next']['thumbnail'] && $adjacent_items['next']['thumbnail']['tainacan-medium']) {
 					$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-medium'][0];
 				}
@@ -111,11 +111,12 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 }
 
 /**
- * Copy of blocksy original post navigation function.
- * Check inc/template-tags.php post navigation file on the parent theme
+ * Copy of Blocksy's original post navigation, kept so we can call it after
+ * the Tainacan item-navigation override of blocksy_post_navigation().
+ * See inc/template-tags.php in the Blocksy parent theme.
  */
-if ( !function_exists('blocksy_default_post_navigation') ) {
-	function blocksy_default_post_navigation() {
+if ( ! function_exists( 'tainacan_blocksy_default_post_navigation' ) ) {
+	function tainacan_blocksy_default_post_navigation() {
 		$prefix = blocksy_manager()->screen->get_prefix();
 
 		$next_post = apply_filters(
@@ -416,7 +417,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 		/**
 		 * Overrides parent theme blocksy post navigation logic to handle items navigation
 		 */
-		function blocksy_post_navigation() {
+		function blocksy_post_navigation() { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Replaces Blocksy theme pluggable function.
 		
 			// This should only happen if we have Tainacan plugin installed
 			if ( defined ('TAINACAN_VERSION') ) {
@@ -435,7 +436,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 					return tainacan_blocksy_item_navigation();
 				}
 			}
-			return blocksy_default_post_navigation();
+			return tainacan_blocksy_default_post_navigation();
 		}
 	}
 	add_action( 'plugins_loaded', 'tainacan_blocksy_after_theme_setup' );
@@ -443,7 +444,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 	/**
 	 * Overrides parent theme blocksy post navigation logic to handle items navigation
 	 */
-	function blocksy_post_navigation() {
+	function blocksy_post_navigation() { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Replaces Blocksy theme pluggable function.
 
 		// This should only happen if we have Tainacan plugin installed
 		if ( defined ('TAINACAN_VERSION') ) {
@@ -462,7 +463,7 @@ if (!TAINACAN_BLOCKSY_IS_CHILD_THEME) {
 				return tainacan_blocksy_item_navigation();
 			}
 		}
-		return blocksy_default_post_navigation();
+		return tainacan_blocksy_default_post_navigation();
 	}
 }
 
@@ -556,7 +557,7 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 			}
 			// Check if we're inside the main loop in a single Post.
 			else if ( $is_collection && is_singular() && in_the_loop() && is_main_query() ) {
-				$args = $_GET;
+				$args = wp_unslash( $_GET ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query args used to rebuild breadcrumb URLs.
 
 				for ($i = 0; $i < count($array); $i++) {
 
@@ -600,8 +601,8 @@ add_filter( 'blocksy:breadcrumbs:items-array', 'tainacan_blocksy_custom_breadcru
 /**
  * Retrieves an item adjacent link, either using WP strategy or Tainacan plugin tainacan_get_adjacent_items()
  */
-if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
-	function blocksy_tainacan_the_taxonomies_pagination($total_terms, $args = []) {
+if ( ! function_exists( 'tainacan_blocksy_the_taxonomies_pagination' ) ) {
+	function tainacan_blocksy_the_taxonomies_pagination($total_terms, $args = []) {
 
 		global $wp_query;
 

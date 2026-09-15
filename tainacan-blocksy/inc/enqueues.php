@@ -14,7 +14,7 @@ function tainacan_blocksy_enqueue_scripts() {
 
 	// First, we enqueue parent theme styles
 	if ( TAINACAN_BLOCKSY_IS_CHILD_THEME )
-		wp_enqueue_style( 'blocksy-parent-style', get_template_directory_uri() . '/style.css' );
+		wp_enqueue_style( 'blocksy-parent-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme( get_template() )->get( 'Version' ) );
 
 	// Then, this child plugin/theme styles
 	wp_enqueue_style( 'tainacan-blocksy-style',
