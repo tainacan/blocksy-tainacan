@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy dynamic CSS include ($css, $tablet_css, $mobile_css, $prefix).
+
 $prefix = blocksy_manager()->screen->get_prefix();
 
 blc_call_fnc(['fnc' => 'blocksy_output_responsive'], [

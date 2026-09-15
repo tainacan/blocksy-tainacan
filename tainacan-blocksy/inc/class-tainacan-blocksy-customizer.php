@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invokes Blocksy theme hooks.
+
 class Tainacan_Blocksy_Customizer {
 
 	use Tainacan_Blocksy\Singleton;

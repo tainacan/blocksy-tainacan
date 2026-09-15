@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invokes Blocksy theme hooks.
+
 if (! function_exists('blc_call_fnc')) {
 	function blc_call_fnc($args = [], ...$params) {
 		$args = wp_parse_args(

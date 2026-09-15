@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- Blocksy option include contract ($prefix, $options, $enabled).
+
 $options = [
 	'title' => __('Tainacan Repository Items', 'tainacan-blocksy'),
 	'container' => [ 'priority' => 8 ],

@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invokes Blocksy theme hooks.
+
 if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 	function tainacan_blocksy_get_adjacent_item_links() {
 
