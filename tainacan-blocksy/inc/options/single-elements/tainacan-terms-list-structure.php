@@ -19,7 +19,7 @@ $options = [
 		'choices' => [
 			'simple' => [
 				'src' => blocksy_image_picker_url('simple.svg'),
-				'title' => __('Simple', 'blocksy'),
+				'title' => __('Simple', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			],
 
 			// 'classic' => [
@@ -29,7 +29,7 @@ $options = [
 
 			'grid' => [
 				'src' => blocksy_image_picker_url('grid.svg'),
-				'title' => __('Grid', 'blocksy'),
+				'title' => __('Grid', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			],
 		]
 	],
@@ -40,7 +40,7 @@ $options = [
 		'options' => [
 
 			$prefix . 'archive_per_page' => [
-				'label' => __( 'Number of terms', 'tainacan-blocksy' ),
+				'label' => __( 'Number of terms', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'type' => 'ct-number',
 				'value' => get_option('posts_per_page', 12),
 				'min' => 1,
@@ -69,7 +69,7 @@ $options = [
 
 					$prefix . 'columns' => [
 						'label' => false,
-						'desc' => __( 'Number of columns', 'blocksy' ),
+						'desc' => __( 'Number of columns', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 						'type' => 'ct-number',
 						'value' => [
 							'desktop' => 3,
@@ -88,7 +88,7 @@ $options = [
 
 					$prefix . 'archive_per_page' => [
 						'label' => false,
-						'desc' => __( 'Number of terms', 'tainacan-blocksy' ),
+						'desc' => __( 'Number of terms', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 						'type' => 'ct-number',
 						'value' => get_option('posts_per_page', 12),
 						'min' => 1,
@@ -115,7 +115,7 @@ $options = [
 	],
 
 	$prefix . 'archive_listing_panel' => [
-		'label' => __('Cards Options', 'blocksy'),
+		'label' => __('Cards Options', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'type' => 'ct-panel',
 		'value' => 'yes',
 		'wrapperAttr' => ['data-panel' => 'only-arrow'],

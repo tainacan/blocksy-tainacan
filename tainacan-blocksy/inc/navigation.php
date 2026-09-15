@@ -283,7 +283,7 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 										apply_filters(
 											'blocksy:post-navigation:previous-post:label',
 											// translators: post title
-											__('Previous %s', 'blocksy')
+											__('Previous %s', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 										),
 										$post_slug
 									));
@@ -311,7 +311,7 @@ if ( !function_exists('blocksy_default_post_navigation') ) {
 										apply_filters(
 											'blocksy:post-navigation:next-post:label',
 											// translators: post title
-											__('Next %s', 'blocksy')
+											__('Next %s', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 										),
 										$post_slug
 									));
@@ -521,7 +521,7 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 						$taxonomy = get_taxonomy( $term->taxonomy );
 						if ( $taxonomy && $taxonomy->labels )
 							$array[$collection_archive_link_index] = [ "name" => $taxonomy->labels->singular_name ];
-							$array[] = [ "name" => __('Items', 'tainacan-blocksy') ];
+							$array[] = [ "name" => __('Items', 'tainacan') ]; // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 					}
 				}
 			}
@@ -543,7 +543,7 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 					}
 				}
 
-				$array[] = [ "name" => __('Items', 'tainacan-blocksy') ];
+				$array[] = [ "name" => __('Items', 'tainacan') ]; // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			}
 			// Check if we're inside the main loop in a single Post.
 			else if ( $is_collection && is_singular() && in_the_loop() && is_main_query() ) {
@@ -615,7 +615,7 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 				'has_pagination' => '__DEFAULT__',
 				'pagination_type' => '__DEFAULT__',
 
-				'last_page_text' => __('No more posts to load', 'blocksy'),
+				'last_page_text' => __('No more posts to load', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 				'total_pages' => null,
 				'current_page' => null,
 				'format' => null,
@@ -651,7 +651,7 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 		) {
 			$label_button = get_theme_mod(
 				$args['prefix'] . '_load_more_label',
-				__('Load More', 'blocksy')
+				__('Load More', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			);
 
 			$button_output = '<button class="ct-button ct-load-more">' . $label_button . '</button>';
@@ -734,9 +734,9 @@ if ( !function_exists('blocksy_tainacan_the_taxonomies_pagination') ) {
 			'mid_size' => 3,
 			'end_size' => 0,
 			'type' => 'array',
-			'prev_text' => '<svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M10.9,15c-0.2,0-0.4-0.1-0.6-0.2L3.6,8c-0.3-0.3-0.3-0.8,0-1.1l6.6-6.6c0.3-0.3,0.8-0.3,1.1,0c0.3,0.3,0.3,0.8,0,1.1L5.2,7.4l6.2,6.2c0.3,0.3,0.3,0.8,0,1.1C11.3,14.9,11.1,15,10.9,15z"/></svg>' . __('Prev', 'blocksy'),
+			'prev_text' => '<svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M10.9,15c-0.2,0-0.4-0.1-0.6-0.2L3.6,8c-0.3-0.3-0.3-0.8,0-1.1l6.6-6.6c0.3-0.3,0.8-0.3,1.1,0c0.3,0.3,0.3,0.8,0,1.1L5.2,7.4l6.2,6.2c0.3,0.3,0.3,0.8,0,1.1C11.3,14.9,11.1,15,10.9,15z"/></svg>' . __('Prev', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 
-			'next_text' => __('Next', 'blocksy') . ' <svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg>',
+			'next_text' => __('Next', 'blocksy') . ' <svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg>', // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		];
 
 		if ($args['base']) {

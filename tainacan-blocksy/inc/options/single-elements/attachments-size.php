@@ -6,7 +6,7 @@ if (! isset($prefix)) {
 
 $thumbnails_image_size_option = [
 	$prefix . 'thumbnails_image_size' => [
-		'label' => __('Thumbnails image size', 'blocksy'),
+		'label' => __('Thumbnails image size', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'type' => 'ct-select',
 		'value' => 'tainacan-medium',
 		'view' => 'text',
@@ -43,7 +43,7 @@ $attachments_size_option = [
 
 $thumbs_have_fixed_height_option = [
 	$prefix . 'thumbs_have_fixed_height' => [
-		'label' => __( 'Thumbnails have fixed height', 'tainacan-blocksy' ),
+		'label' => __( 'Thumbnails have fixed height', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 		'type' => 'ct-switch',
 		'value' => 'no',
 		'desc' => __( 'If checked, the thumbnails will have fixed the attachment size height, otherwise they will have fixed the attachment size width.', 'tainacan-blocksy' ),

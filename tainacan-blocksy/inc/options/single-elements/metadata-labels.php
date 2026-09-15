@@ -25,7 +25,7 @@ $options = [
 	],
 	$prefix . 'tainacan_metadata_label_alignment' => [
 		'type' => 'ct-radio',
-		'label' => __( 'Text alignment', 'blocksy' ),
+		'label' => __( 'Text alignment', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'value' => 'left',
 		'view' => 'text',
 		'attr' => [ 'data-type' => 'alignment' ],
@@ -41,7 +41,7 @@ $options = [
 		])
 	],
 	$prefix . 'metadata_label_border' => [
-        'label' => __( 'Separator', 'blocksy' ),
+        'label' => __( 'Separator', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
         'type' => 'ct-border',
         'design' => 'block',
         'setting' => [ 'transport' => 'postMessage' ],

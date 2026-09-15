@@ -22,7 +22,7 @@ $options = [
 		'inner-options' => [
 			$prefix . 'tainacan_single_item_section_font' => [
 				'type' => 'ct-typography',
-				'label' => __( 'Section labels font', 'blocksy' ),
+				'label' => __( 'Section labels font', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 				'value' => blocksy_typography_default_values([
 					'size' => '22px',
 					'variation' => 'n6',
@@ -34,7 +34,7 @@ $options = [
 			],
 			$prefix . 'tainacan_single_item_section_alignment' => [
 				'type' => 'ct-radio',
-				'label' => __( 'Section labels text alignment', 'blocksy' ),
+				'label' => __( 'Section labels text alignment', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 				'value' => 'left',
 				'view' => 'text',
 				'attr' => [ 'data-type' => 'alignment' ],
@@ -62,7 +62,7 @@ $options = [
 						'desc' => __( 'Leave it blank for not displaying any label.', 'tainacan-blocksy' ),
 						'type' => 'text',
 						'design' => 'block',
-						'value' => __( 'Document', 'tainacan-blocksy' ),
+						'value' => __( 'Document', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])
@@ -80,7 +80,7 @@ $options = [
 						'desc' => __( 'Leave it blank for not displaying any label.', 'tainacan-blocksy' ),
 						'type' => 'text',
 						'design' => 'block',
-						'value' => __( 'Attachments', 'tainacan-blocksy' ),
+						'value' => __( 'Attachments', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])
@@ -111,7 +111,7 @@ $options = [
 				'desc' => __( 'Leave it blank for not displaying any label.', 'tainacan-blocksy' ),
 				'type' => 'text',
 				'design' => 'block',
-				'value' => __( 'Metadata', 'tainacan-blocksy' ),
+				'value' => __( 'Metadata', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'sync' => blocksy_sync_single_post_container([
                     'prefix' => $prefix
                 ])
@@ -127,7 +127,7 @@ $options = [
 						'desc' => __( 'Leave it blank for not displaying any label.', 'tainacan-blocksy' ),
 						'type' => 'text',
 						'design' => 'block',
-						'value' => __( 'Items related to this', 'tainacan-blocksy' ),
+						'value' => __( 'Items related to this', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 						'sync' => blocksy_sync_single_post_container([
 							'prefix' => $prefix
 						])

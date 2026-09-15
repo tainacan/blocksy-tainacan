@@ -67,9 +67,9 @@ $options[ blocksy_rand_md5() ] = [
 			'design' => 'block',
 			'sync' => '',
 			'choices' => [
-				'left' => __( 'Left', 'tainacan-blocksy' ),
+				'left' => __( 'Left', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'below' => __( 'Below', 'tainacan-blocksy' ),
-				'right' => __( 'Right', 'tainacan-blocksy' ),
+				'right' => __( 'Right', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			],
 		]
 	]
@@ -84,7 +84,7 @@ $options[ $prefix . 'document_attachments_spacing' ] = [
 	'design' => 'block',
 	'sync' => '',
 	'choices' => [
-		'default' => __( 'Default', 'tainacan-blocksy' ),
-		'minimum' => __( 'Minimum', 'tainacan-blocksy' ),
+		'default' => __( 'Default', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+		'minimum' => __( 'Minimum', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 	],
 ];

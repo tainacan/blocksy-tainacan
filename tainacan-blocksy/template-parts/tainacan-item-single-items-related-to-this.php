@@ -1,7 +1,9 @@
-<?php 
+<?php
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
     $prefix = blocksy_manager()->screen->get_prefix();
     
-    $section_label                = get_theme_mod( $prefix . '_section_items_related_to_this_label', __( 'Items related to this', 'tainacan-blocksy' ) );
+    $section_label                = get_theme_mod( $prefix . '_section_items_related_to_this_label', __( 'Items related to this', 'tainacan' ) );
     $items_related_to_this_layout = get_theme_mod( $prefix . '_items_related_to_this_layout', 'carousel' );
     $max_columns_count            = get_theme_mod( $prefix . '_items_related_to_this_max_columns_count', 4 );
     $max_items_per_screen         = get_theme_mod( $prefix . '_items_related_to_this_max_items_per_screen', 6 );

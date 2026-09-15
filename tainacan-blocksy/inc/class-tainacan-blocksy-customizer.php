@@ -50,8 +50,8 @@ class Tainacan_Blocksy_Customizer {
 			'is_cpt' => true,
 			'is_archive' => true,
 			'enabled_label' => sprintf(
-				__('%s Title', 'blocksy'),
-				__('Items', 'tainacan-blocksy')
+				__('%s Title', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+				__('Items', 'tainacan') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			),
 		]);
 		
@@ -88,8 +88,8 @@ class Tainacan_Blocksy_Customizer {
 			'is_cpt' => true,
 			'is_archive' => true,
 			'enabled_label' => sprintf(
-				__('%s Title', 'blocksy'),
-				__('Items', 'tainacan-blocksy')
+				__('%s Title', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+				__('Items', 'tainacan') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 			),
 		]);
 		
@@ -209,7 +209,7 @@ class Tainacan_Blocksy_Customizer {
 				
 				// Change the section title in the customizer
 				$options['title'] = sprintf(
-					__('Items list from %s', 'tainacan-blocksy-item'),
+					__('Items list from %s', 'tainacan-blocksy'),
 					$post_type_object->labels->name
 				);
 

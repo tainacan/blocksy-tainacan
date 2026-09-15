@@ -17,22 +17,22 @@ $view_modes = tainacan_get_default_view_mode_choices();
 $layout_choices = [
 	'carousel' => [
 		'src'   => tainacan_blocksy_image_picker_url( 'items-carousel.svg' ),
-		'title' => __( 'Carousel', 'tainacan-blocksy' )
+		'title' => __( 'Carousel', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 	],
 	'grid' => [
 		'src'   => tainacan_blocksy_image_picker_url( 'items-grid.svg' ),
-		'title' => __( 'Grid', 'tainacan-blocksy' )
+		'title' => __( 'Grid', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 	],
 	'list' => [
 		'src'   => tainacan_blocksy_image_picker_url( 'items-list.svg' ),
-		'title' => __( 'List', 'tainacan-blocksy' )
+		'title' => __( 'List', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 	]
 ];
 
 if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.5' ) >= 0  ) {
 	$layout_choices['tainacan-view-modes'] = [
 		'src'   => tainacan_blocksy_image_picker_url( 'items-records.svg' ),
-		'title' => __( 'Tainacan View Modes', 'tainacan-blocksy' )
+		'title' => __( 'Tainacan View Modes', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 	];
 }
 
@@ -120,9 +120,9 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery')
 				]),
 				'choices' => blocksy_ordered_keys(
 					[
-						'carousel' => __( 'Carousel', 'tainacan-blocksy' ),
-						'grid' => __( 'Grid', 'tainacan-blocksy' ),
-						'list' => __( 'List', 'tainacan-blocksy' ),
+						'carousel' => __( 'Carousel', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+						'grid' => __( 'Grid', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+						'list' => __( 'List', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 					]
 				),
 			],
@@ -136,7 +136,7 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery')
 		],
 		'options' => [
 			$prefix . 'items_related_to_this_hide_image_thumbnails' => [
-				'label' => __( 'Hide thumbnail image', 'tainacan-blocksy' ),
+				'label' => __( 'Hide thumbnail image', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'type' => 'ct-switch',
 				'value' => 'no',
 				'desc' => __( 'Toggle to hide the item thumbnail and show only the title.', 'tainacan-blocksy' ),
@@ -158,7 +158,7 @@ $inner_options[ $prefix . 'items_related_to_this_max_items_number' ] = [
 	'sync' => ''
 ];
 $inner_options[ $prefix . 'items_related_to_this_order' ] = [
-	'label' => __('Order by', 'blocksy'),
+	'label' => __('Order by', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 	'type' => 'ct-select',
 	'value' => 'title_asc',
 	'view' => 'text',
@@ -224,7 +224,7 @@ $inner_options[blocksy_rand_md5()] = [
 	],
 	'options' => [
 		$prefix . 'items_related_to_this_image_size' => [
-			'label' => __('Image size', 'blocksy'),
+			'label' => __('Image size', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			'type' => 'ct-select',
 			'value' => 'tainacan-medium',
 			'view' => 'text',
@@ -263,10 +263,10 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.8' ) 
 		],
 		'options' => [
 			$prefix . 'items_related_to_this_variable_items_width' => [
-				'label' => __( 'Variable items width', 'tainacan-blocksy' ),
+				'label' => __( 'Variable items width', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'type' => 'ct-switch',
 				'value' => 'no',
-				'desc' => __( 'Toggle to define each slide size based on its content natural width.', 'tainacan-blocksy' ),
+				'desc' => __( 'Toggle to define each slide size based on its content natural width.', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'sync' => ''
 			]
 		]
@@ -299,7 +299,7 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
 		],
 		'options' => [
 			$prefix . 'items_related_to_this_enable_lightbox' => [
-				'label' => __( 'Open lightbox on click', 'tainacan-blocksy' ),
+				'label' => __( 'Open lightbox on click', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				'type' => 'ct-switch',
 				'value' => 'yes',
 				'sync' => ''
@@ -313,7 +313,7 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
 		],
 		'options' => [
 			$prefix . 'items_related_to_this_gallery_max_height' => [
-				'label' => __('Gallery main slider max height', 'tanacan-blocksy'),
+				'label' => __('Gallery main slider max height', 'tainacan-blocksy'),
 				'type' => 'ct-slider',
 				'value' => 60,
 				'min' => 10,
@@ -332,8 +332,8 @@ if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
 				'design' => 'block',
 				'sync' => '',
 				'choices' => [
-					'default' => __( 'Default', 'tainacan-blocksy' ),
-					'minimum' => __( 'Minimum', 'tainacan-blocksy' ),
+					'default' => __( 'Default', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+					'minimum' => __( 'Minimum', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				],
 			]
 		]

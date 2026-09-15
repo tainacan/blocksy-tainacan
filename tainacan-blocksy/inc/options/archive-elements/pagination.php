@@ -14,7 +14,7 @@ if (! isset($enabled)) {
 
 $options = [
 	$prefix . 'has_pagination' => [
-		'label' => __( 'Pagination', 'blocksy' ),
+		'label' => __( 'Pagination', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 		'type' => 'ct-panel',
 		'switch' => true,
 		'value' => $enabled,

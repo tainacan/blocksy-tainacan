@@ -71,7 +71,7 @@ $options = [
                 ]
             ],
             $prefix . 'hero_elements' => [
-                'label' => __('Elements', 'blocksy'),
+                'label' => __('Elements', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                 'type' => 'ct-layers',
                 'attr' => [ 'data-layers' => 'title-elements' ],
                 'design' => 'block',
@@ -80,10 +80,10 @@ $options = [
     
                 'settings' => [
                     'breadcrumbs' => [
-                        'label' => __('Breadcrumbs', 'blocksy'),
+                        'label' => __('Breadcrumbs', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                         'options' => [
                             'hero_item_spacing' => [
-                                'label' => __( 'Top Spacing', 'blocksy' ),
+                                'label' => __( 'Top Spacing', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                 'type' => 'ct-slider',
                                 'value' => 20,
                                 'min' => 0,
@@ -97,15 +97,15 @@ $options = [
                     ],
 
                     'custom_thumbnail' => [
-                        'label' => __('Thumbnail', 'blocksy')
+                        'label' => __('Thumbnail', 'blocksy') // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                     ],
                     
                     'custom_title' => [
-                        'label' => __('Title', 'blocksy'),
+                        'label' => __('Title', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                         'options' => [
                             [
                                 'heading_tag' => [
-                                    'label' => __('Heading tag', 'blocksy'),
+                                    'label' => __('Heading tag', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                     'type' => 'ct-select',
                                     'value' => 'h1',
                                     'view' => 'text',
@@ -130,7 +130,7 @@ $options = [
                             [
                                 [
                                     'has_category_label' => [
-                                        'label' => __('Category Label', 'blocksy'),
+                                        'label' => __('Category Label', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                         'type' => 'ct-switch',
                                         'value' => $prefix === 'tainacan-terms-items_archive_' ? 'yes' : 'no',
                                     ]
@@ -138,7 +138,7 @@ $options = [
                             ],
     
                             'hero_item_spacing' => [
-                                'label' => __( 'Top Spacing', 'blocksy' ),
+                                'label' => __( 'Top Spacing', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                 'type' => 'ct-slider',
                                 'value' => 20,
                                 'min' => 0,
@@ -152,11 +152,11 @@ $options = [
                     ],
     
                     'custom_description' => [
-                        'label' => __('Description', 'blocksy'),
+                        'label' => __('Description', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                         'options' => [
     
                             'description_visibility' => [
-                                'label' => __( 'Visibility', 'blocksy' ),
+                                'label' => __( 'Visibility', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                 'type' => 'ct-visibility',
                                 'design' => 'block',
     
@@ -167,9 +167,9 @@ $options = [
                                 ],
     
                                 'choices' => blocksy_ordered_keys([
-                                    'desktop' => __( 'Desktop', 'blocksy' ),
-                                    'tablet' => __( 'Tablet', 'blocksy' ),
-                                    'mobile' => __( 'Mobile', 'blocksy' )
+                                    'desktop' => __( 'Desktop', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+                                    'tablet' => __( 'Tablet', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
+                                    'mobile' => __( 'Mobile', 'blocksy' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                 ]),
     
                                 'sync' => [
@@ -178,7 +178,7 @@ $options = [
                             ],
     
                             'hero_item_spacing' => [
-                                'label' => __( 'Top Spacing', 'blocksy' ),
+                                'label' => __( 'Top Spacing', 'blocksy' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
                                 'type' => 'ct-slider',
                                 'value' => 20,
                                 'min' => 0,

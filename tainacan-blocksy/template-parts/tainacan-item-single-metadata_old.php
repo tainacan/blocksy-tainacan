@@ -1,17 +1,19 @@
-<?php 
+<?php
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
     $prefix = blocksy_manager()->screen->get_prefix(); 
 ?>
 
 <section class="tainacan-item-section tainacan-item-section--metadata">
-    <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan-blocksy' )) != '' ) : ?>
+    <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan' )) != '' ) : ?>
         <h2 class="tainacan-single-item-section" id="tainacan-item-metadata-label">
-            <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan-blocksy' ) ) ); ?>
+            <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan' ) ) ); ?>
         </h2>
     <?php endif; ?>
     <div class="tainacan-item-section__metadata <?php echo get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') ?>">
         <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">
-                <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'tainacan-blocksy' ); ?></h3>
+                <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'tainacan' ); ?></h3>
                 <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
             </div>
         <?php endif; ?>

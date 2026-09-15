@@ -23,9 +23,9 @@ if ( $has_thumbs_layout ) {
 			]),
 			'choices' => blocksy_ordered_keys(
 				[
-					'carousel' => __( 'Carousel', 'tainacan-blocksy' ),
-					'grid' => __( 'Grid', 'tainacan-blocksy' ),
-					'list' => __( 'List', 'tainacan-blocksy' ),
+					'carousel' => __( 'Carousel', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+					'grid' => __( 'Grid', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+					'list' => __( 'List', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 				]
 			),
 		],
@@ -36,7 +36,7 @@ if ( $has_thumbs_layout ) {
 			],
 			'options' => [
 				$prefix . 'hide_image_thumbnails' => [
-					'label' => __( 'Hide thumbnail image', 'tainacan-blocksy' ),
+					'label' => __( 'Hide thumbnail image', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
 					'type' => 'ct-switch',
 					'value' => 'no',
 					'setting' => [ 'transport' => 'postMessage' ],

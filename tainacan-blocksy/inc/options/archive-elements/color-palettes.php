@@ -16,7 +16,7 @@ $options = [
 		'design' => 'block',
 		// translators: The interpolations addes a html link around the word.
 		'desc' => sprintf(
-			__('Learn more about palettes and colors %shere%s.', 'blocksy'),
+			__('Learn more about palettes and colors %shere%s.', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			'<a href="https://creativethemes.com/blocksy/docs/general-options/colors/" target="_blank">',
 			'</a>'
 		),
@@ -81,7 +81,7 @@ $options = [
 		'design' => 'block',
 		// translators: The interpolations addes a html link around the word.
 		'desc' => sprintf(
-			__('Learn more about palettes and colors %shere%s.', 'blocksy'),
+			__('Learn more about palettes and colors %shere%s.', 'blocksy'), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Blocksy theme translation.
 			'<a href="https://creativethemes.com/blocksy/docs/general-options/colors/" target="_blank">',
 			'</a>'
 		),

@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Blocksy theme.
+
 $options = [
 	blocksy_get_options(
 		(

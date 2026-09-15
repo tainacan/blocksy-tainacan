@@ -16,9 +16,9 @@
     if ( function_exists('tainacan_the_media_component') && ( !empty( $attachments ) || ( $is_gallery_mode && tainacan_has_document() ) ) ) {
     ?>
         <section class="tainacan-item-section tainacan-item-section--<?php echo ((!$is_gallery_mode ? 'attachments' : 'gallery')) ?>">
-            <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan-blocksy' )) != '' ) : ?>
+            <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan' )) != '' ) : // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation. ?>
                 <h2 class="tainacan-single-item-section" id="tainacan-item-attachments-label">
-                    <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan-blocksy' ) ) ); ?>
+                    <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan' ) ) ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation. ?>
                 </h2>
             <?php endif; ?>
             <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && ($is_gallery_mode) && get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'tainacan-blocksy' )) != '') : ?>

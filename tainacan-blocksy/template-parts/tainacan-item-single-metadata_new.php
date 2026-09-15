@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
     $prefix = blocksy_manager()->screen->get_prefix();
     
     $section_layout = get_theme_mod($prefix . '_metadata_sections_layout_type', 'metadata-section-type-1');
@@ -24,7 +26,7 @@
             ob_start();
             ?>
                 <div class="tainacan-item-section__metadata-thumbnail">
-                    <h3 class="tainacan-metadata-label"><?php esc_html_e( 'Thumbnail', 'tainacan-blocksy' ); ?></h3>
+                    <h3 class="tainacan-metadata-label"><?php esc_html_e( 'Thumbnail', 'tainacan' ); ?></h3>
                     <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
                 </div>
             <?php

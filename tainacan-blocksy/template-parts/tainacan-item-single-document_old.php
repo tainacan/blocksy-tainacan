@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
     $prefix = blocksy_manager()->screen->get_prefix();
     
     // Galley mode is a shortname for when documents and attachments are displayed merged in the same list
@@ -13,9 +15,9 @@
 
     if ( tainacan_has_document() && !$is_gallery_mode ) : ?>
         <section class="tainacan-item-section tainacan-item-section--document">
-            <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan-blocksy' )) != '' ) : ?>
+            <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan' )) != '' ) : ?>
                 <h2 class="tainacan-single-item-section" id="tainacan-item-document-label">
-                    <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan-blocksy' ) ) ); ?>
+                    <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan' ) ) ); ?>
                 </h2>
             <?php endif; ?>
             <div class="tainacan-item-section__document">

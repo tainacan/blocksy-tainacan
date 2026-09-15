@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- All translatable strings in this file reuse translations from the Tainacan plugin.
 
 $repository_items_prefix = 'tainacan-repository-items_archive';
 $_GET['blocksy_prefix'] = $repository_items_prefix;
