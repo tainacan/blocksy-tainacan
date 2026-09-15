@@ -4,7 +4,7 @@ if (! isset($prefix)) {
 	$prefix = '';
 }
 
-$options = [	
+$thumbnails_image_size_option = [
 	$prefix . 'thumbnails_image_size' => [
 		'label' => __('Thumbnails image size', 'blocksy'),
 		'type' => 'ct-select',
@@ -16,6 +16,9 @@ $options = [
 			blocksy_get_all_image_sizes()
 		),
 	],
+];
+
+$attachments_size_option = [
 	$prefix . 'attachments_size' => [
 		'label' => __( 'Attachments size on carousel', 'tainacan-blocksy' ),
 		'type' => 'ct-slider',
@@ -36,6 +39,9 @@ $options = [
 			'prefix' => $prefix
 		])
 	],
+];
+
+$thumbs_have_fixed_height_option = [
 	$prefix . 'thumbs_have_fixed_height' => [
 		'label' => __( 'Thumbnails have fixed height', 'tainacan-blocksy' ),
 		'type' => 'ct-switch',
@@ -45,5 +51,41 @@ $options = [
 			'prefix' => $prefix
 		])
 	],
-
 ];
+
+$has_thumbs_layout = function_exists( 'tainacan_blocksy_has_media_thumbs_layout' )
+	&& tainacan_blocksy_has_media_thumbs_layout();
+
+$image_size_controls = array_merge(
+	$thumbnails_image_size_option,
+	$attachments_size_option
+);
+
+if ( $has_thumbs_layout ) {
+	$options = [
+		blocksy_rand_md5() => [
+			'type' => 'ct-condition',
+			'condition' => [
+				$prefix . 'thumbs_layout' => '!list',
+			],
+			'options' => array_merge(
+				$image_size_controls,
+				$thumbs_have_fixed_height_option
+			),
+		],
+		blocksy_rand_md5() => [
+			'type' => 'ct-condition',
+			'condition' => [
+				$prefix . 'thumbs_layout' => 'list',
+				$prefix . 'hide_image_thumbnails' => '!yes',
+			],
+			'options' => $image_size_controls,
+		],
+	];
+} else {
+	$options = array_merge(
+		$thumbnails_image_size_option,
+		$attachments_size_option,
+		$thumbs_have_fixed_height_option
+	);
+}
