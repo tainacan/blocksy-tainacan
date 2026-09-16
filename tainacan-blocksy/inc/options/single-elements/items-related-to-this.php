@@ -298,20 +298,45 @@ if ( null !== TAINACAN_VERSION && version_compare( TAINACAN_VERSION, '0.21.8' ) 
 }
 
 if ( method_exists('\Tainacan\Theme_Helper', 'get_tainacan_items_gallery') ) {
+	$gallery_layout_options = [
+		$prefix . 'items_related_to_this_enable_lightbox' => [
+			'label' => __( 'Open lightbox on click', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+			'type' => 'ct-switch',
+			'value' => 'yes',
+			'sync' => ''
+		]
+	];
+
 	$inner_options[blocksy_rand_md5()] = [
 		'type' => 'ct-condition',
 		'condition' => [
 			$prefix . 'items_related_to_this_layout'  => 'gallery-slider | gallery-thumbs',
 		],
-		'options' => [
-			$prefix . 'items_related_to_this_enable_lightbox' => [
-				'label' => __( 'Open lightbox on click', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
-				'type' => 'ct-switch',
-				'value' => 'yes',
-				'sync' => ''
-			]
-		]
+		'options' => $gallery_layout_options
 	];
+
+	if ( function_exists( 'tainacan_blocksy_has_media_cover_mime_types' )
+		&& tainacan_blocksy_has_media_cover_mime_types() ) {
+		$pdf_cover_options = blocksy_get_options(
+			TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/show-pdf-cover.php',
+			[
+				'prefix' => $prefix . 'items_related_to_this_',
+				'enabled' => 'no',
+				'sync' => '',
+			],
+			false
+		);
+
+		if ( is_array( $pdf_cover_options ) ) {
+			$inner_options[blocksy_rand_md5()] = [
+				'type' => 'ct-condition',
+				'condition' => [
+					$prefix . 'items_related_to_this_layout'  => 'gallery-slider',
+				],
+				'options' => $pdf_cover_options,
+			];
+		}
+	}
 	$inner_options[blocksy_rand_md5()] = [
 		'type' => 'ct-condition',
 		'condition' => [

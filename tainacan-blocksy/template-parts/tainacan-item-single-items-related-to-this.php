@@ -89,6 +89,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                         $tainacan_blocksy_items_gallery_options['hideImageThumbnails'] = $tainacan_blocksy_is_list_thumbs && $tainacan_blocksy_hide_image_thumbnails;
                     }
 
+                    if (
+                        $tainacan_blocksy_items_related_to_this_layout == 'gallery-slider'
+                        && function_exists( 'tainacan_blocksy_has_media_cover_mime_types' )
+                        && tainacan_blocksy_has_media_cover_mime_types()
+                    ) {
+                        $tainacan_blocksy_show_pdf_cover = get_theme_mod( $tainacan_blocksy_prefix . '_items_related_to_this_show_pdf_cover', 'no' ) === 'yes';
+                        $tainacan_blocksy_items_gallery_options['coverMimeTypesMain'] = $tainacan_blocksy_show_pdf_cover
+                            ? array( 'application/pdf' )
+                            : array();
+                    }
+
                     $tainacan_blocksy_items_related_to_this_layout = 'gallery';
 
                     if ( $tainacan_blocksy_gallery_spacing === 'minimum' && $tainacan_blocksy_thumbs_layout === 'carousel' ) {
