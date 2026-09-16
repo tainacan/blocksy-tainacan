@@ -29,6 +29,18 @@ if ( ! function_exists( 'tainacan_blocksy_has_media_thumbs_layout' ) ) {
 	}
 }
 
+if ( ! function_exists( 'tainacan_blocksy_has_media_cover_mime_types' ) ) {
+	/**
+	 * Whether the current Tainacan ships cover MIME types for the gallery main slider.
+	 *
+	 * @return bool
+	 */
+	function tainacan_blocksy_has_media_cover_mime_types() {
+		return class_exists( '\Tainacan\Media' )
+			&& method_exists( '\Tainacan\Media', 'get_item_document_cover_html' );
+	}
+}
+
 if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_settings' ) ) {
 	/**
 	 * Theme mods used by the item document / attachments gallery templates.
@@ -43,12 +55,17 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_settings' ) ) {
 
 		$thumbs_layout = 'carousel';
 		$hide_image_thumbnails = false;
+		$show_pdf_cover = false;
 
 		if ( tainacan_blocksy_has_media_thumbs_layout() ) {
 			$thumbs_layout = tainacan_sanitize_media_thumbs_layout(
 				get_theme_mod( $prefix . '_thumbs_layout', 'carousel' )
 			);
 			$hide_image_thumbnails = get_theme_mod( $prefix . '_hide_image_thumbnails', 'no' ) === 'yes';
+		}
+
+		if ( tainacan_blocksy_has_media_cover_mime_types() ) {
+			$show_pdf_cover = get_theme_mod( $prefix . '_show_pdf_cover', 'no' ) === 'yes';
 		}
 
 		$gallery_position = get_theme_mod( $prefix . '_document_attachments_position', 'below' );
@@ -75,6 +92,7 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_settings' ) ) {
 			'thumbs_have_fixed_height'      => get_theme_mod( $prefix . '_thumbs_have_fixed_height', 'no' ) === 'yes',
 			'thumbs_layout'                 => $thumbs_layout,
 			'hide_image_thumbnails'         => $hide_image_thumbnails,
+			'show_pdf_cover'                => $show_pdf_cover,
 			'metadata_alignment'            => get_theme_mod( $prefix . '_gallery_metadata_alignment', 'center' ),
 			'actions_appearance'            => get_theme_mod( $prefix . '_gallery_media_actions_appearance', 'icon' ),
 			'actions_behavior'              => get_theme_mod( $prefix . '_gallery_media_actions_behavior', 'hover' ),
@@ -218,6 +236,12 @@ if ( ! function_exists( 'tainacan_blocksy_get_item_gallery_args' ) ) {
 		if ( tainacan_blocksy_has_media_thumbs_layout() ) {
 			$shared['thumbsLayout'] = $thumbs_layout;
 			$shared['hideImageThumbnails'] = $is_list_thumbs && ! empty( $settings['hide_image_thumbnails'] );
+		}
+
+		if ( tainacan_blocksy_has_media_cover_mime_types() ) {
+			$shared['coverMimeTypesMain'] = ! empty( $settings['show_pdf_cover'] )
+				? array( 'application/pdf' )
+				: array();
 		}
 
 		if ( $context === 'document' ) {

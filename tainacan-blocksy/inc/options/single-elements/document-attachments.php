@@ -13,6 +13,8 @@ if (! isset($prefix)) {
 }
 
 $has_media_item_actions = function_exists( 'tainacan_get_the_media_item_expand_control' );
+$has_media_cover_mime_types = function_exists( 'tainacan_blocksy_has_media_cover_mime_types' )
+	&& tainacan_blocksy_has_media_cover_mime_types();
 
 $general_main_view_options = [
 	[
@@ -41,6 +43,13 @@ $general_main_view_options = [
 
 if ( $has_media_item_actions ) {
 	$general_main_view_options[] = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-expand-button.php', [
+		'prefix' => $prefix,
+		'enabled' => 'no'
+	], false);
+}
+
+if ( $has_media_cover_mime_types ) {
+	$general_main_view_options[] = blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/show-pdf-cover.php', [
 		'prefix' => $prefix,
 		'enabled' => 'no'
 	], false);
