@@ -382,6 +382,18 @@ body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabl
   display: block !important;
   clear: none;
 }
+body[class*=" post-type-archive-tnc_col_"] .hero-section.has-thumbnail-enabled .page-description > :first-child,
+body[class*=" tax-tnc_"] .hero-section.has-thumbnail-enabled .page-description > :first-child,
+body[data-prefix=tainacan-repository-items_archive] .hero-section.has-thumbnail-enabled .page-description > :first-child,
+body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabled .page-description > :first-child {
+  margin-top: 0;
+}
+body[class*=" post-type-archive-tnc_col_"] .hero-section.has-thumbnail-enabled .page-description > :last-child,
+body[class*=" tax-tnc_"] .hero-section.has-thumbnail-enabled .page-description > :last-child,
+body[data-prefix=tainacan-repository-items_archive] .hero-section.has-thumbnail-enabled .page-description > :last-child,
+body[data-prefix=tainacan-terms-items_archive] .hero-section.has-thumbnail-enabled .page-description > :last-child {
+  margin-bottom: 0;
+}
 body[class*=" post-type-archive-tnc_col_"] .ct-title-label,
 body[class*=" tax-tnc_"] .ct-title-label,
 body[data-prefix=tainacan-repository-items_archive] .ct-title-label,
@@ -599,7 +611,8 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata label:first-of-type:last-of-type {
   display: inline-block;
 }
-.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p {
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p,
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value {
   word-wrap: break-word;
 }
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata iframe {
@@ -624,10 +637,17 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
   padding-bottom: 0.75rem;
   border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
 }
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value > :first-child {
+  margin-top: 0;
+}
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value > :last-child {
+  margin-bottom: 0;
+}
 .tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-item-section__metadata-thumbnail img {
   border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
 }
-.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p:empty {
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata p:empty,
+.tainacan-item-single-page .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-value:empty {
   display: none;
   visibility: hidden;
 }
@@ -1633,6 +1653,12 @@ body[data-prefix=tainacan-terms-items_archive] .collection-thumbnail img {
 }
 .tainacan-taxonomy-terms-list-container .term-description {
   word-break: break-word;
+}
+.tainacan-taxonomy-terms-list-container .term-description > :first-child {
+  margin-top: 0;
+}
+.tainacan-taxonomy-terms-list-container .term-description > :last-child {
+  margin-bottom: 0;
 }
 .tainacan-taxonomy-terms-list-container .term-information {
   width: 100%;

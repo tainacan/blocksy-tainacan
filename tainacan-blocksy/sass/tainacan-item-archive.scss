@@ -396,6 +396,14 @@ body[data-prefix="tainacan-terms-items_archive"] {
             display: block !important;
             clear: none;
         }
+        .page-description {
+            > :first-child {
+                margin-top: 0;
+            }
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
     }
     
     .ct-title-label {

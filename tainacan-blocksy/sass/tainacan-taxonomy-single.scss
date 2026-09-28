@@ -59,6 +59,13 @@
 
     .term-description {
         word-break: break-word;
+
+        > :first-child {
+            margin-top: 0;
+        }
+        > :last-child {
+            margin-bottom: 0;
+        }
     }
     .term-information {
         width: 100%;

@@ -180,7 +180,8 @@
                     display: inline-block;
                 }
             }
-            p {
+            p,
+            .tainacan-metadata-value {
                 word-wrap: break-word;
             }
             iframe {
@@ -204,12 +205,20 @@
                 margin-bottom: 0.75rem;
                 padding-bottom: 0.75rem;
                 border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
+
+                > :first-child {
+                    margin-top: 0;
+                }
+                > :last-child {
+                    margin-bottom: 0;
+                }
             }
             .tainacan-item-section__metadata-thumbnail img {
                 border-radius: var(--theme-border-radius, var(--borderRadius, 3px));
             }
 
-            p:empty {
+            p:empty,
+            .tainacan-metadata-value:empty {
                 display: none;
                 visibility: hidden;
             }
