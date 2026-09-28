@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             ?>
                 <div class="tainacan-item-section__metadata-thumbnail">
                     <h3 class="tainacan-metadata-label"><?php esc_html_e( 'Thumbnail', 'tainacan' ); ?></h3>
-                    <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
+                    <div class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></div>
                 </div>
             <?php
     
@@ -52,8 +52,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		'after' 				=> '</div>',
         'before_title' => '<h3 class="tainacan-metadata-label">',
         'after_title' => '</h3>',
-        'before_value' => '<p class="tainacan-metadata-value">',
-        'after_value' => '</p>',
+        'before_value' => '<div class="tainacan-metadata-value">',
+        'after_value' => '</div>',
         'exclude_title' => $tainacan_blocksy_exclude_title_metadata
     );
 
