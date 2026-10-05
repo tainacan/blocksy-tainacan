@@ -4,7 +4,7 @@ Plugin Name: Tainacan Support for Blocksy
 Plugin URI: https://tainacan.org/
 Description: Tainacan plugin support for Blocksy theme
 Author: tainacan
-Version: 0.4.4
+Version: 0.5.0
 Text Domain: tainacan-blocksy
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** Theme/plugin version */
-const TAINACAN_BLOCKSY_VERSION = '0.4.4';
+const TAINACAN_BLOCKSY_VERSION = '0.5.0';
 const TAINACAN_BLOCKSY_IS_CHILD_THEME = false;
 
 /* Tools to define our next constants */

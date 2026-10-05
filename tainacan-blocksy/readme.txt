@@ -2,10 +2,10 @@
 Author: tainacan
 Contributors: wetah, vnmedeiros, leogermani, tainacan
 Tags: museums, archives, collections, tainacan, blocksy
-Requires at least: 6.0
+Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.4
+Stable tag: 0.5.0
 Requires Plugins: tainacan
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,15 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.5.0 =
+* Recommended version for Tainacan >= 1.4.0 due to the compatibility with new classes
+* Add option to show PDF cover instead of embedded reader in the media gallery
+* Add option to display the attachments carousel as a list or grid
+* Add option to style the download button in the media gallery
+* Options to style the expand button and the attachments metadata
+* Prepares metadata and description output to style `div` tags instead of `p` tags
+* WordPress Plugin Check review for security and compatibility
 
 = 0.4.4 =
 * Adds "Read more" functionality to textarea and core description metadata on the public item page
