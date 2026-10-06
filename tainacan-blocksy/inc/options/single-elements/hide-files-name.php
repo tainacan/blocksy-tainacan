@@ -14,6 +14,10 @@ if (! isset($enabled)) {
 }
 
 $hide_files_name_option = [
+	blocksy_rand_md5() => [
+		'type' => 'ct-title',
+		'label' => __( 'Thumbnails', 'tainacan' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
+	],
 	$prefix . 'hide_files_name' => [
 		'label' => __( 'Hide files name on carousel', 'tainacan-blocksy' ),
 		'type' => 'ct-switch',

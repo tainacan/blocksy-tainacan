@@ -5,7 +5,7 @@ Tags: museums, archives, collections, tainacan, blocksy
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.5.0
+Stable tag: 0.5.1
 Requires Plugins: tainacan
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,10 @@ License details: https://github.com/tainacan/blocksy-tainacan/blob/master/LICENS
 
 
 == Changelog ==
+
+= 0.5.1 =
+* Do not open the first metadata section in the collapse/accordion if the default section is separated
+* Fix fatal error when the default section is separated
 
 = 0.5.0 =
 * Recommended version for Tainacan >= 1.4.0 due to the compatibility with new classes

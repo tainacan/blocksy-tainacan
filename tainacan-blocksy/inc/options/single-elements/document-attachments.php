@@ -70,12 +70,6 @@ $general_tab_options = array_merge(
 	],
 	$general_main_view_options,
 	[
-		[
-			blocksy_rand_md5() => [
-				'type' => 'ct-title',
-				'label' => __( 'Thumbnails', 'tainacan' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Reuses Tainacan plugin translation.
-			]
-		],
 		blocksy_get_options(TAINACAN_BLOCKSY_PLUGIN_DIR_PATH . '/inc/options/single-elements/hide-files-name.php', [
 			'prefix' => $prefix,
 			'enabled' => 'no'
