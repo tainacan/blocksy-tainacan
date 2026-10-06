@@ -61,7 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         if ( $tainacan_blocksy_show_default_section_separated ) {
             $tainacan_blocksy_sections_args = array(
-                'metadata_sections__in' => [ \Tainacan\Entities\Metadata_Section::$tainacan_blocksy_default_section_slug ],
+                'metadata_sections__in' => [ \Tainacan\Entities\Metadata_Section::$default_section_slug ],
                 'before' => '<section class="tainacan-item-section tainacan-item-section--metadata">',
                 'after' => '</section>',
                 'before_name' => '<h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             }, 10, 2);
 
             $tainacan_blocksy_sections_args = array(
-                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$tainacan_blocksy_default_section_slug ] : [],
+                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
                 'before' => '',
                 'after' => '',
                 'before_name' => '<input name="tabs" type="radio" id="tab-section-$id" />
@@ -109,7 +109,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             }, 10, 2);
 
             $tainacan_blocksy_sections_args = array(
-                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$tainacan_blocksy_default_section_slug ] : [],
+                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
                 'before' => '',
                 'after' => '',
                 'before_name' => '<input name="collapses" type="checkbox" id="collapse-section-$id"/>
@@ -137,7 +137,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             }, 10, 2);
 
             $tainacan_blocksy_sections_args = array(
-                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$tainacan_blocksy_default_section_slug ] : [],
+                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
                 'before' => '',
                 'after' => '',
                 'before_name' => '<input name="accordion" type="radio" id="accordion-section-$id"/>
@@ -158,7 +158,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         } else {
             $tainacan_blocksy_sections_args = array(
-                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$tainacan_blocksy_default_section_slug ] : [],
+                'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
                 'before' => '<section class="tainacan-item-section tainacan-item-section--metadata">',
                 'after' => '</section>',
                 'before_name' => '<h2 class="tainacan-single-item-section" id="metadata-section-$slug">',
