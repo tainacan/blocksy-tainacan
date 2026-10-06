@@ -104,9 +104,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             wp_enqueue_style( 'tainacan-icons' );
 
-            add_filter('tainacan-get-metadata-section-as-html-before-name--index-0', function($tainacan_blocksy_before, $tainacan_blocksy_item_metadatum) {
-                return str_replace('<input', '<input checked="checked"', $tainacan_blocksy_before);
-            }, 10, 2);
+            // The separated default section is already visible, so the first collapse stays closed.
+            if ( ! $tainacan_blocksy_show_default_section_separated ) {
+                add_filter('tainacan-get-metadata-section-as-html-before-name--index-0', function($tainacan_blocksy_before, $tainacan_blocksy_item_metadatum) {
+                    return str_replace('<input', '<input checked="checked"', $tainacan_blocksy_before);
+                }, 10, 2);
+            }
 
             $tainacan_blocksy_sections_args = array(
                 'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
@@ -132,9 +135,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             wp_enqueue_style( 'tainacan-icons' );
 
-            add_filter('tainacan-get-metadata-section-as-html-before-name--index-0', function($tainacan_blocksy_before, $tainacan_blocksy_item_metadatum) {
-                return str_replace('<input', '<input checked="checked"', $tainacan_blocksy_before);
-            }, 10, 2);
+            // The separated default section is already visible, so the first accordion panel stays closed.
+            if ( ! $tainacan_blocksy_show_default_section_separated ) {
+                add_filter('tainacan-get-metadata-section-as-html-before-name--index-0', function($tainacan_blocksy_before, $tainacan_blocksy_item_metadatum) {
+                    return str_replace('<input', '<input checked="checked"', $tainacan_blocksy_before);
+                }, 10, 2);
+            }
 
             $tainacan_blocksy_sections_args = array(
                 'metadata_sections__not_in' => $tainacan_blocksy_show_default_section_separated ? [ \Tainacan\Entities\Metadata_Section::$default_section_slug ] : [],
