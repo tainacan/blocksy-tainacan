@@ -152,36 +152,66 @@ foreach ($tainacan_blocksy_hero_elements as $tainacan_blocksy_index => $tainacan
         }
 
         ob_start();
+        do_action('blocksy:hero:custom_title:before');
+        do_action('blocksy:hero:element:render', $tainacan_blocksy_single_hero_element);
         do_action('blocksy:hero:title:before');
         $tainacan_blocksy_before_hero_title = ob_get_clean();
 
         ob_start();
         do_action('blocksy:hero:title:after');
+        do_action('blocksy:hero:custom_title:after');
         $tainacan_blocksy_after_hero_title = ob_get_clean();
         
         $tainacan_blocksy_elements[] = $tainacan_blocksy_before_hero_title . $tainacan_blocksy_title . $tainacan_blocksy_after_hero_title;
         
-    } else if ($tainacan_blocksy_single_hero_element['id'] == 'custom_description' && $tainacan_blocksy_single_hero_element['enabled'] && tainacan_get_the_term_description()) {
-        $tainacan_blocksy_description_class = 'page-description';
-        $tainacan_blocksy_description_class .= ' ' . blocksy_visibility_classes(
-            blocksy_akg(
-                'description_visibility',
-                $tainacan_blocksy_single_hero_element,
-                [
-                    'desktop' => true,
-                    'tablet' => true,
-                    'mobile' => false,
-                ]
-            )
-        );
-        $tainacan_blocksy_elements[] = '<div class="' . $tainacan_blocksy_description_class . '">' . tainacan_get_the_term_description() . '</div>';
+    } else if ($tainacan_blocksy_single_hero_element['id'] == 'custom_description' && $tainacan_blocksy_single_hero_element['enabled']) {
+        $tainacan_blocksy_description = tainacan_get_the_term_description();
+        $tainacan_blocksy_description_html = '';
+
+        if ($tainacan_blocksy_description) {
+            $tainacan_blocksy_description_class = 'page-description';
+            $tainacan_blocksy_description_class .= ' ' . blocksy_visibility_classes(
+                blocksy_akg(
+                    'description_visibility',
+                    $tainacan_blocksy_single_hero_element,
+                    [
+                        'desktop' => true,
+                        'tablet' => true,
+                        'mobile' => false,
+                    ]
+                )
+            );
+            $tainacan_blocksy_description_html = '<div class="' . $tainacan_blocksy_description_class . '">' . $tainacan_blocksy_description . '</div>';
+        }
+
+        ob_start();
+        do_action('blocksy:hero:custom_description:before');
+        do_action('blocksy:hero:element:render', $tainacan_blocksy_single_hero_element);
+        do_action('blocksy:hero:description:before');
+        $tainacan_blocksy_before_hero_description = ob_get_clean();
+
+        ob_start();
+        do_action('blocksy:hero:description:after');
+        do_action('blocksy:hero:custom_description:after');
+        $tainacan_blocksy_after_hero_description = ob_get_clean();
+
+        $tainacan_blocksy_elements[] = $tainacan_blocksy_before_hero_description . $tainacan_blocksy_description_html . $tainacan_blocksy_after_hero_description;
     } else if ($tainacan_blocksy_single_hero_element['id'] == 'breadcrumbs' && $tainacan_blocksy_single_hero_element['enabled']) {
         if ( class_exists('Blocksy_Breadcrumbs_Builder') )
             $tainacan_blocksy_breadcrumbs_builder = new Blocksy_Breadcrumbs_Builder();
         else
             $tainacan_blocksy_breadcrumbs_builder = new \Blocksy\BreadcrumbsBuilder();
 
-        $tainacan_blocksy_elements[] = $tainacan_blocksy_breadcrumbs_builder->render();
+        ob_start();
+        do_action('blocksy:hero:breadcrumbs:before');
+        do_action('blocksy:hero:element:render', $tainacan_blocksy_single_hero_element);
+        $tainacan_blocksy_before_breadcrumbs = ob_get_clean();
+
+        ob_start();
+        do_action('blocksy:hero:breadcrumbs:after');
+        $tainacan_blocksy_after_breadcrumbs = ob_get_clean();
+
+        $tainacan_blocksy_elements[] = $tainacan_blocksy_before_breadcrumbs . $tainacan_blocksy_breadcrumbs_builder->render() . $tainacan_blocksy_after_breadcrumbs;
     }
 }
 

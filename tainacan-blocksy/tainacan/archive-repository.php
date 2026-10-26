@@ -95,11 +95,14 @@ foreach ($tainacan_blocksy_hero_elements as $tainacan_blocksy_index => $tainacan
         }
 
         ob_start();
+        do_action('blocksy:hero:custom_title:before');
+        do_action('blocksy:hero:element:render', $tainacan_blocksy_single_hero_element);
         do_action('blocksy:hero:title:before');
         $tainacan_blocksy_before_hero_title = ob_get_clean();
 
         ob_start();
         do_action('blocksy:hero:title:after');
+        do_action('blocksy:hero:custom_title:after');
         $tainacan_blocksy_after_hero_title = ob_get_clean();
         
         $tainacan_blocksy_elements[] = $tainacan_blocksy_before_hero_title . $tainacan_blocksy_title . $tainacan_blocksy_after_hero_title;
@@ -110,7 +113,16 @@ foreach ($tainacan_blocksy_hero_elements as $tainacan_blocksy_index => $tainacan
         else
             $tainacan_blocksy_breadcrumbs_builder = new \Blocksy\BreadcrumbsBuilder();
 
-        $tainacan_blocksy_elements[] = $tainacan_blocksy_breadcrumbs_builder->render();
+        ob_start();
+        do_action('blocksy:hero:breadcrumbs:before');
+        do_action('blocksy:hero:element:render', $tainacan_blocksy_single_hero_element);
+        $tainacan_blocksy_before_breadcrumbs = ob_get_clean();
+
+        ob_start();
+        do_action('blocksy:hero:breadcrumbs:after');
+        $tainacan_blocksy_after_breadcrumbs = ob_get_clean();
+
+        $tainacan_blocksy_elements[] = $tainacan_blocksy_before_breadcrumbs . $tainacan_blocksy_breadcrumbs_builder->render() . $tainacan_blocksy_after_breadcrumbs;
     }
 }
 
