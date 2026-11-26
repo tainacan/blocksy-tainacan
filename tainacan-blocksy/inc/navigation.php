@@ -14,8 +14,9 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 
 		$prefix = blocksy_manager()->screen->get_prefix();
 		
-		// We use Tainacan own method for obtaining previous and next item objects
-		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
+		// Tainacan chooses the neighbor and builds its URL, and returns it only when the visitor can read it.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
+		if ( function_exists( 'tainacan_get_adjacent_items' ) && isset( $_GET['pos'] ) && is_scalar( $_GET['pos'] ) ) {
 			$adjacent_items = tainacan_get_adjacent_items();
 
 			if (isset($adjacent_items['next'])) {
@@ -54,7 +55,8 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 			$previous_thumb = '';
 			$next_thumb = '';
 
-			if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query arg, not a form submission.
+			if ( function_exists( 'tainacan_get_adjacent_items' ) && isset( $_GET['pos'] ) && is_scalar( $_GET['pos'] ) ) {
 				if ($adjacent_items['next'] && $adjacent_items['next']['thumbnail'] && $adjacent_items['next']['thumbnail']['tainacan-medium']) {
 					$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-medium'][0];
 				}
@@ -87,21 +89,21 @@ if ( !function_exists('tainacan_blocksy_get_adjacent_item_links') ) {
 				
 		}
 
-		// Creates the links
+		// Creates the links. Titles and addresses come from the query string's neighbor, so they are escaped here.
 		$previous = $previous_link_url === false ? '' : (
-			'<a href="' . $previous_link_url .'" rel="prev" class="nav-item-prev"> ' .
+			'<a href="' . esc_url( $previous_link_url ) . '" rel="prev" class="nav-item-prev"> ' .
 				($has_thumb ? $previous_post_image_output : '') .
 				'<div class="item-content">' .
-					'<span class="item-label">' . __( 'Previous item', 'tainacan-blocksy' )	. '</span>' .
-					(( !empty( $previous_title ) && $has_title ) ? ('<span class="item-title">' . $previous_title . '</span>') : '') .
+					'<span class="item-label">' . esc_html__( 'Previous item', 'tainacan-blocksy' ) . '</span>' .
+					( ( ! empty( $previous_title ) && $has_title ) ? ( '<span class="item-title">' . esc_html( wp_strip_all_tags( $previous_title ) ) . '</span>' ) : '' ) .
 				'</div>'.
 			'</a>');
 
 		$next = $next_link_url === false ? '' : (
-			'<a href="' . $next_link_url .'" rel="prev" class="nav-item-next"> ' .
+			'<a href="' . esc_url( $next_link_url ) . '" rel="next" class="nav-item-next"> ' .
 				'<div class="item-content">' .
-					'<span class="item-label">' . __( 'Next item', 'tainacan-blocksy') . '</span>' .
-					(( !empty( $next_title ) && $has_title) ? ('<span class="item-title">' . $next_title . '</span>') : '') .
+					'<span class="item-label">' . esc_html__( 'Next item', 'tainacan-blocksy' ) . '</span>' .
+					( ( ! empty( $next_title ) && $has_title ) ? ( '<span class="item-title">' . esc_html( wp_strip_all_tags( $next_title ) ) . '</span>' ) : '' ) .
 				'</div>' .
 				($has_thumb ? $next_post_image_output : '') .
 			'</a>');
@@ -497,6 +499,66 @@ if ( !function_exists('tainacan_blocksy_custom_related_posts_query') ) {
 
 
 /**
+ * The URL, if it is an http(s) address on this site; empty string otherwise.
+ * Compared, never resolved, so another host does not trigger a DNS lookup.
+ * Blocksy prints the breadcrumb href with esc_attr(), which leaves a
+ * javascript: address intact.
+ *
+ * @param string $url Candidate URL.
+ * @return string
+ */
+function tainacan_blocksy_internal_url( $url ) {
+	if ( ! is_string( $url ) || '' === $url ) {
+		return '';
+	}
+
+	$url = preg_replace( '/[\x00-\x1F\x7F]/', '', $url );
+	if ( null === $url || '' === $url ) {
+		return '';
+	}
+
+	if ( '/' === $url[0] && ( ! isset( $url[1] ) || '/' !== $url[1] ) ) {
+		$home_parts = wp_parse_url( home_url() );
+		$url        = $home_parts['scheme'] . '://' . $home_parts['host'] . ( isset( $home_parts['port'] ) ? ':' . $home_parts['port'] : '' ) . $url;
+	}
+
+	$parts = wp_parse_url( $url );
+	$home  = wp_parse_url( home_url() );
+	if ( ! is_array( $parts ) || ! is_array( $home ) || ! isset( $parts['scheme'], $parts['host'], $home['host'] ) ) {
+		return '';
+	}
+	if ( ! in_array( strtolower( $parts['scheme'] ), array( 'http', 'https' ), true ) || isset( $parts['user'] ) || isset( $parts['pass'] ) ) {
+		return '';
+	}
+	$port      = isset( $parts['port'] ) ? (int) $parts['port'] : 0;
+	$home_port = isset( $home['port'] ) ? (int) $home['port'] : 0;
+	if ( strtolower( $parts['host'] ) !== strtolower( $home['host'] ) || $port !== $home_port ) {
+		return '';
+	}
+
+	return $url;
+}
+
+/**
+ * The list address carried by ref.
+ *
+ * ref is that list. Its query stays, including a status or a metakey the
+ * visitor was already using. The item's own query is not appended, so a ref
+ * that already has a query does not become ?a=b?c=d. Blocksy escapes the
+ * breadcrumb href on output, so this stays unescaped.
+ *
+ * @param string $ref Validated internal URL.
+ * @return string
+ */
+function tainacan_blocksy_list_url_from_ref( $ref ) {
+	$ref   = explode( '#', $ref, 2 )[0];
+	$path  = explode( '?', $ref, 2 )[0];
+	$query = wp_parse_url( $ref, PHP_URL_QUERY );
+
+	return is_string( $query ) && '' !== $query ? $path . '?' . $query : $path;
+}
+
+/**
  * Uses Blocksy filter to add custom link on the item breadcrumb
  */
 if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
@@ -557,7 +619,8 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 			}
 			// Check if we're inside the main loop in a single Post.
 			else if ( $is_collection && is_singular() && in_the_loop() && is_main_query() ) {
-				$args = wp_unslash( $_GET ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public listing query args used to rebuild breadcrumb URLs.
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only list address. Validated by tainacan_blocksy_internal_url() before it is stored.
+				$ref_raw = isset( $_GET['ref'] ) && is_string( $_GET['ref'] ) ? wp_unslash( $_GET['ref'] ) : '';
 
 				for ($i = 0; $i < count($array); $i++) {
 
@@ -573,17 +636,20 @@ if ( !function_exists('tainacan_blocksy_custom_breadcrumbs') ) {
 						continue;
 					}
 					
-					// Check if the current thumbnail links to the collection, then enriches its URL  
+					// The list address is ref itself. The item query is not appended:
+					// status, metakey and p would otherwise ride back to the list,
+					// and a ref that already has a query became ?a=b?c=d.
+					// Blocksy escapes this href with esc_attr() on output.
 					if (
-						isset($array[$i]['url']) &&
-						isset($args['ref']) &&
-						substr($array[$i]['url'], -strlen($args['ref']))===$args['ref']
+						'' !== $ref_raw &&
+						isset( $array[ $i ]['url'] ) &&
+						strlen( (string) $array[ $i ]['url'] ) >= strlen( $ref_raw ) &&
+						substr( (string) $array[ $i ]['url'], -strlen( $ref_raw ) ) === $ref_raw
 					) {
-						$ref = esc_js($args['ref']);
-						unset($args['pos']);
-						unset($args['ref']);
-						unset($args['source_list']);
-						$array[$i]['url'] = $ref . '?' . http_build_query(array_merge($args));
+						$ref = tainacan_blocksy_internal_url( $ref_raw );
+						if ( '' !== $ref ) {
+							$array[ $i ]['url'] = tainacan_blocksy_list_url_from_ref( $ref );
+						}
 
 						break;
 					}
@@ -732,8 +798,8 @@ if ( ! function_exists( 'tainacan_blocksy_the_taxonomies_pagination' ) ) {
 
 		$paginate_links_args = [
 			'format' => '?termspaged=%#%',
-			'total' => ceil( $total_terms / $current_args['perpage'] ),
-			'current' => max( 1, get_query_var('termspaged') ),
+			'total' => (int) ceil( $total_terms / $current_args['perpage'] ),
+			'current' => $current_args['termspaged'],
 			'add_args' => array(
 				'order' => $current_args['order'],
 				'orderby' => $current_args['orderby'],
